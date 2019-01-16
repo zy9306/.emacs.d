@@ -10,6 +10,7 @@
 (require 'init-elpa)
 (require 'init-gui-frames)
 (require 'init-modeline)
+(require 'init-edit-utils)
 (require 'init-ivy)
 (require 'init-avy)
 (require 'init-ace-window)
