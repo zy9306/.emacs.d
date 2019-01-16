@@ -12,6 +12,7 @@
 (require 'init-ivy)
 (require 'init-avy)
 (require 'init-ace-window)
+(require 'init-company)
 
 ;; end of the file reset gc
 (setq gc-cons-threshold 16777216
