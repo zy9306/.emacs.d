@@ -9,6 +9,7 @@
 
 (require 'init-elpa)
 (require 'init-gui-frames)
+(require 'init-modeline)
 (require 'init-ivy)
 (require 'init-avy)
 (require 'init-ace-window)
@@ -29,3 +30,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; close debug when finally load
+(setq debug-on-error nil)
