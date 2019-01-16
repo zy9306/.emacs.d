@@ -9,6 +9,7 @@
 
 (require 'init-elpa)
 (require 'init-gui-frames)
+(require 'init-ivy)
 
 ;; end of the file reset gc
 (setq gc-cons-threshold 16777216
