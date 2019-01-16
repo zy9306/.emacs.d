@@ -11,6 +11,7 @@
 (require 'init-gui-frames)
 (require 'init-ivy)
 (require 'init-avy)
+(require 'init-ace-window)
 
 ;; end of the file reset gc
 (setq gc-cons-threshold 16777216
