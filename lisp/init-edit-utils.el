@@ -12,4 +12,10 @@
   (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
 
+(delete-selection-mode t)  ;; if nil, when select `abc` then enter x,if will be `abcx` rather than `x`
+
+;; select a region, C-x tab then can use left/right or shift+left/shift+right to indent the region
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
+
 (provide 'init-edit-utils)
