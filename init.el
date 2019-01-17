@@ -16,6 +16,7 @@
 (require 'init-ace-window)
 (require 'init-company)
 (require 'init-vc)
+(require 'init-mac)
 
 ;; end of the file reset gc
 (setq gc-cons-threshold 16777216
