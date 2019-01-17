@@ -18,4 +18,21 @@
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
 
+;; auto close ()
+(electric-pair-mode t)
+
+;; shift+return
+(defun newline-at-end-of-line ()
+  (interactive)
+  (move-end-of-line 1)
+  (newline-and-indent))
+(global-set-key (kbd "S-<return>") 'newline-at-end-of-line)
+
+;; tips
+;; C-M-N and C-M-P go to ) from ( and so on...
+
+;; C-x b will see recent file
+(recentf-mode t)
+(setq-default recentf-max-saved-items 50)
+
 (provide 'init-edit-utils)
