@@ -10,9 +10,13 @@
 ;;       ))
 
 
-;; ok
 ;; Setting English Font
 (set-face-attribute 'default nil :font "Ubuntu Mono 13")
+
+;; mac dpi is too high, so enlarge font
+(when *is-a-mac*
+  (set-face-attribute 'default nil :font "Ubuntu Mono 15")
+)
 
 ;; Chinese Font
 ;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
@@ -48,7 +52,7 @@
 (setq locale-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-(when (eq system-type 'windows-nt)
+(when *win*
   (set-default 'process-coding-system-alist
                '(("[pP][lL][iI][nN][kK]" gbk-dos . gbk-dos)
                  ("[cC][mM][dD][pP][rR][oO][xX][yY]" gbk-dos . gbk-dos))))

@@ -7,6 +7,14 @@
 (setq gc-cons-threshold 402653184
       gc-cons-percentage 0.6)
 
+;; define variables for system type
+(defconst *is-a-mac* (eq system-type 'darwin))
+(defconst *win* (eq system-type 'windows-nt))
+(defconst *cygwin* (eq system-type 'cygwin))
+(defconst *linux* (or (eq system-type 'gnu/linux) (eq system-type 'linux)))
+(defconst *unix* (or *linux* (eq system-type 'usg-unix-v) (eq system-type 'berkeley-unix)))
+
+(require 'init-font)
 (require 'init-elpa)
 (require 'init-gui-frames)
 (require 'init-modeline)
@@ -17,7 +25,6 @@
 (require 'init-company)
 (require 'init-vc)
 (require 'init-mac)
-(require 'init-font)
 
 ;; end of the file reset gc
 (setq gc-cons-threshold 16777216
