@@ -23,7 +23,7 @@
 ;;   (set-fontset-font (frame-parameter nil 'font)
 ;;                     charset (font-spec :family "思源黑体"
 ;;                                        :size 16)))
-;; fix: 不设:size,而是改用1.2倍缩放,如果直接设置字号,则页面缩放时只能缩放英文
+;; fix: 不设:size,而是改用倍数缩放,如果直接设置字号,则页面缩放时只能缩放英文
 ;; 中文字体在-nw时都会报错
 (if (display-graphic-p)
     (dolist (charset '(kana han symbol cjk-misc bopomofo))
