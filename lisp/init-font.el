@@ -11,7 +11,13 @@
 
 
 ;; Setting English Font
-(set-face-attribute 'default nil :font "Ubuntu Mono 13")
+(when *linux*
+  (set-face-attribute 'default nil :font "Ubuntu Mono 13")
+)
+
+(when *win*
+  (set-face-attribute 'default nil :font "Ubuntu Mono 13")
+)
 
 ;; mac dpi is too high, so enlarge font
 (when *is-a-mac*
