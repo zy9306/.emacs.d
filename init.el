@@ -17,7 +17,7 @@
 (require 'init-font)
 (require 'init-elpa)
 (require 'init-gui-frames)
-(require 'init-modeline)
+;; (require 'init-modeline)
 (require 'init-edit-utils)
 (require 'init-ivy)
 (require 'init-avy)
@@ -27,6 +27,7 @@
 (require 'init-mac)
 (require 'init-org)
 (require 'init-md)
+(require 'init-python)
 
 ;; end of the file reset gc
 (setq gc-cons-threshold 16777216
