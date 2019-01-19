@@ -7,12 +7,14 @@
 (setq gc-cons-threshold 402653184
       gc-cons-percentage 0.6)
 
+
 ;; define variables for system type
 (defconst *is-a-mac* (eq system-type 'darwin))
 (defconst *win* (eq system-type 'windows-nt))
 (defconst *cygwin* (eq system-type 'cygwin))
 (defconst *linux* (or (eq system-type 'gnu/linux) (eq system-type 'linux)))
 (defconst *unix* (or *linux* (eq system-type 'usg-unix-v) (eq system-type 'berkeley-unix)))
+
 
 (require 'init-font)
 (require 'init-elpa)
@@ -29,9 +31,18 @@
 (require 'init-md)
 (require 'init-python)
 
+
+;; some variables
+
+;; don't ask me "Active processes exist; kill them and exit anyway?"
+(setq-default confirm-kill-processes nil)
+
+
 ;; end of the file reset gc
 (setq gc-cons-threshold 16777216
       gc-cons-percentage 0.1)
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
