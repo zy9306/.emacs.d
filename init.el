@@ -26,6 +26,7 @@
 (require 'init-vc)
 (require 'init-mac)
 (require 'init-org)
+(require 'init-md)
 
 ;; end of the file reset gc
 (setq gc-cons-threshold 16777216

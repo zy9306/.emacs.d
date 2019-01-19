@@ -5,6 +5,8 @@
 ;; 始终启用缩进
 (add-hook 'org-mode-hook 'org-indent-mode)
 
+;; ox-gfm is also installed by markdown-mode
+
 (use-package ox-qmd
   :ensure t
 
