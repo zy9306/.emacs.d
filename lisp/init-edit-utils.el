@@ -20,6 +20,12 @@
 
 ;; auto close ()
 (electric-pair-mode t)
+;; highlight ()
+(show-paren-mode t)
+;; todo this don't work
+(setq show-paren-when-point-inside-paren t)
+;; will highlight block with paren
+;; (setq show-paren-style 'expression)
 
 ;; shift+return
 (defun newline-at-end-of-line ()
