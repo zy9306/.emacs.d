@@ -24,6 +24,7 @@
 (require 'init-ivy)
 (require 'init-avy)
 (require 'init-ace-window)
+(require 'init-imenu-list)
 (require 'init-company)
 (require 'init-vc)
 (require 'init-mac)
