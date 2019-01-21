@@ -19,7 +19,7 @@
 (require 'init-font)
 (require 'init-elpa)
 (require 'init-gui-frames)
-(require 'init-dashboard)
+(require 'init-utils)
 ;; (require 'init-modeline)
 (require 'init-edit-utils)
 (require 'init-ivy)

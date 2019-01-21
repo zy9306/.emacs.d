@@ -7,6 +7,9 @@
   :ensure swiper
   :ensure counsel
 
+  :diminish ivy-mode
+  :diminish counsel-mode
+
   :config
   (ivy-mode 1)
   (counsel-mode 1)
