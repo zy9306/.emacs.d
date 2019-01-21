@@ -41,4 +41,9 @@
 (recentf-mode t)
 (setq-default recentf-max-saved-items 50)
 
+(when (version<= "26.0.50" emacs-version )
+  (global-display-line-numbers-mode))
+
+(column-number-mode t)
+
 (provide 'init-edit-utils)
