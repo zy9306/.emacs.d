@@ -20,4 +20,14 @@
   :ensure t
   :defer t)
 
+
+;; see also https://www.emacswiki.org/emacs/AutoSave `auto-save-visited-mode`
+(use-package real-auto-save
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'real-auto-save-mode)
+  (add-hook 'text-mode-hook 'real-auto-save-mode)
+  (setq real-auto-save-interval 1))
+
+
 (provide 'init-utils)
