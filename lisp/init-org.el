@@ -20,4 +20,7 @@
   :config
   (add-to-list 'ox-qmd-language-keyword-alist '("shell-script" . "sh")))
 
+(setq org-todo-keywords
+      (quote ((sequence "TODO(t)" "CONTINUE(n)" "DONE(d)" "CANCELLED(c)"))))
+
 (provide 'init-org)
