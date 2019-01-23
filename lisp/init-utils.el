@@ -24,6 +24,7 @@
 ;; see also https://www.emacswiki.org/emacs/AutoSave `auto-save-visited-mode`
 (use-package real-auto-save
   :ensure t
+  :diminish real-auto-save-mode
   :config
   (add-hook 'prog-mode-hook 'real-auto-save-mode)
   (add-hook 'text-mode-hook 'real-auto-save-mode)
