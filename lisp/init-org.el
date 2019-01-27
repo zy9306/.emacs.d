@@ -23,4 +23,7 @@
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "CONTINUE(n)" "DONE(d)" "CANCELLED(c)"))))
 
+;; 显示时间格式为 2019-01-25 Fri 14:55 ，若不设，星期会显示为中文
+(setq system-time-locale "C")
+
 (provide 'init-org)
