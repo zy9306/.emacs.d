@@ -19,4 +19,10 @@
 (if (fboundp 'menu-bar-mode)
   (menu-bar-mode -1))
 
+;; set frame title to filename with short path
+(setq frame-title-format
+      '((:eval (if (buffer-file-name)
+                   (abbreviate-file-name (buffer-file-name))
+                 "%b"))))
+
 (provide 'init-gui-frames)
