@@ -46,4 +46,12 @@
 
 (column-number-mode t)
 
+
+;; expand-region 快速选中及增减选区
+(use-package expand-region
+  :ensure t
+
+  :config
+  (global-set-key (kbd "C-=") 'er/expand-region))
+
 (provide 'init-edit-utils)
