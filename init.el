@@ -34,6 +34,17 @@
 (require 'init-python)
 
 
+;; 本地仓库
+;; https://github.com/redguardtoo/elpa-mirror
+;; M-x elpamr-create-mirror-for-installed to create local repository.
+;; M-x elpamr-create-mirror-for-installed command again for update
+;; should end of all require statements, or it will slow down the startup time
+(add-to-list 'load-path "~/.emacs.d/site-lisp/elpa-mirror")
+(require 'elpa-mirror)
+(setq elpamr-default-output-directory "~/Nutstore/apps/configs/emacs/myelpa/")
+;; (setq package-archives '(("myelpa" . "~/Nutstore/apps/configs/emacs/myelpa/")))
+
+
 ;; some variables
 
 ;; don't ask me "Active processes exist; kill them and exit anyway?"
