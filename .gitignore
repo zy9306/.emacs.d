@@ -3,3 +3,6 @@ elpa-*
 recentf
 bookmarks
 anaconda-mode/
+autosaves/
+backups/
+

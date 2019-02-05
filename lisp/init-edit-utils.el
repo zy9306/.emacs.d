@@ -54,4 +54,13 @@
   )
 (global-set-key (kbd "C-=") 'er/expand-region)
 
+
+;; change backup dir
+(make-directory "~/.emacs.d/autosaves/" t)
+(make-directory "~/.emacs.d/backups/" t)
+(setq backup-directory-alist
+      `((".*" . "~/.emacs.d/backups/")))
+(setq auto-save-file-name-transforms
+      `((".*" "~/.emacs.d/autosaves/" t)))
+
 (provide 'init-edit-utils)
