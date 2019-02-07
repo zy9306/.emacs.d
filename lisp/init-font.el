@@ -48,13 +48,16 @@
 ;; 如果一个非 UTF-8 编码, 比如 GBK 编码的文件打开, 会乱码, 这时候 M-x revert-buffer-with-coding-system 选择 gbk 即可.
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
-(set-buffer-file-coding-system 'utf-8-unix)
-(set-clipboard-coding-system 'utf-8-unix)
-(set-file-name-coding-system 'utf-8-unix)
-(set-keyboard-coding-system 'utf-8-unix)
-(set-next-selection-coding-system 'utf-8-unix)
-(set-selection-coding-system 'utf-8-unix)
-(set-terminal-coding-system 'utf-8-unix)
+(set-buffer-file-coding-system 'utf-8)
+(set-file-name-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+
+(set-next-selection-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+;; 避免复制粘贴乱码
+;; (set-clipboard-coding-system 'utf-8)
+
 (setq locale-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
