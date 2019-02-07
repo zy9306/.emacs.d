@@ -53,9 +53,9 @@
 (set-keyboard-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8)
 
-(set-next-selection-coding-system 'utf-8)
-(set-selection-coding-system 'utf-8)
 ;; 避免复制粘贴乱码
+;; (set-next-selection-coding-system 'utf-8)
+;; (set-selection-coding-system 'utf-8)
 ;; (set-clipboard-coding-system 'utf-8)
 
 (setq locale-coding-system 'utf-8)
