@@ -41,5 +41,6 @@
         ("t3" "TODO3" entry (file "~/Nutstore/gtd/TODO3.org")
          "* TODO %?\n  %i\n  %a")
         ))
+(setq org-agenda-files (file-expand-wildcards "~/Nutstore/gtd/*.org"))
 
 (provide 'init-org)
