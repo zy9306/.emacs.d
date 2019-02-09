@@ -26,4 +26,20 @@
 ;; 显示时间格式为 2019-01-25 Fri 14:55 ，若不设，星期会显示为中文
 (setq system-time-locale "C")
 
+;; org capture
+(global-set-key (kbd "C-c c") 'org-capture)
+;; http://www.zmonster.me/2018/02/28/org-mode-capture.html
+;; https://orgmode.org/manual/Capture-templates.html
+;; see C-h v org-capture-templates for more info
+(setq org-capture-templates
+      '(
+        ("t" "TODO")
+        ("t1" "TODO1" entry (file "~/Nutstore/gtd/TODO.org")
+         "* TODO %?\n  %i\n  %a")
+        ("t2" "TODO2" entry (file "~/Nutstore/gtd/TODO2.org")
+         "* TODO %?\n  %i\n  %a")
+        ("t3" "TODO3" entry (file "~/Nutstore/gtd/TODO3.org")
+         "* TODO %?\n  %i\n  %a")
+        ))
+
 (provide 'init-org)
