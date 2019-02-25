@@ -63,4 +63,34 @@
 (setq auto-save-file-name-transforms
       `((".*" "~/.emacs.d/autosaves/" t)))
 
+
+;; https://github.com/purcell/emacs.d/blob/master/lisp/init-editing-utils.el
+;; 高亮相同单词，可同时高亮多个，M-i增加单词
+(use-package symbol-overlay
+  :ensure t
+  :config
+  (dolist (hook '(prog-mode-hook html-mode-hook conf-mode-hook))
+  (add-hook hook 'symbol-overlay-mode))
+  (define-key symbol-overlay-mode-map (kbd "M-i") 'symbol-overlay-put)
+  (define-key symbol-overlay-mode-map (kbd "M-n") 'symbol-overlay-jump-next)
+  (define-key symbol-overlay-mode-map (kbd "M-p") 'symbol-overlay-jump-prev))
+
+
+;; https://github.com/purcell/emacs.d/blob/master/lisp/init-isearch.el
+;; 实时显示搜索及替换结果
+(use-package anzu
+  :ensure t
+  :config
+  (add-hook 'after-init-hook 'global-anzu-mode)
+  (setq anzu-mode-lighter "")
+  (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
+  (global-set-key [remap query-replace] 'anzu-query-replace))
+
+
+(use-package rainbow-delimiters
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+
+
 (provide 'init-edit-utils)
