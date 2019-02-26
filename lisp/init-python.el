@@ -45,6 +45,14 @@
 )
 
 
+;; pip install yapf
+(use-package yapfify
+  :ensure t
+  :diminish yapf-mode
+  :defer)
+(global-set-key (kbd "C-c C-y") 'yapfify-region)
+
+
 (defun my-python-mode-hook ()
   (modify-syntax-entry ?_ "w"))
 (add-hook 'python-mode-hook 'my-python-mode-hook)
