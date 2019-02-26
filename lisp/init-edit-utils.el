@@ -68,8 +68,9 @@
 ;; 高亮相同单词，可同时高亮多个，M-i增加单词
 (use-package symbol-overlay
   :ensure t
+  :diminish symbol-overlay-mode
   :config
-  (dolist (hook '(prog-mode-hook html-mode-hook conf-mode-hook))
+  (dolist (hook '(prog-mode-hook html-mode-hook conf-mode-hook text-mode-hook))
   (add-hook hook 'symbol-overlay-mode))
   (define-key symbol-overlay-mode-map (kbd "M-i") 'symbol-overlay-put)
   (define-key symbol-overlay-mode-map (kbd "M-n") 'symbol-overlay-jump-next)
