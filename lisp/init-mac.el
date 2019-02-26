@@ -6,7 +6,8 @@
 (when *is-a-mac*
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'none)
-)
+  global-set-key (kbd "M-ƒ") 'toggle-frame-maximized
+  )
 
 
 (provide 'init-mac)
