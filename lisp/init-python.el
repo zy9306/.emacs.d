@@ -49,7 +49,7 @@
 (use-package yapfify
   :ensure t
   :diminish yapf-mode
-  :defer)
+  :defer t)
 (global-set-key (kbd "C-c C-y") 'yapfify-region)
 
 
