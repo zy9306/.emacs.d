@@ -21,7 +21,7 @@
 
 ;; mac dpi is too high, so enlarge font
 (when *is-a-mac*
-  (set-face-attribute 'default nil :font "Ubuntu Mono 15")
+  (set-face-attribute 'default nil :font "Ubuntu Mono 17")
 )
 
 ;; Chinese Font
