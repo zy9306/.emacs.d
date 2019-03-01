@@ -94,4 +94,12 @@
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 
+;; C-q C-l 可以在当前位置插入并显示分页符
+(use-package page-break-lines
+  :ensure t
+  :diminish page-break-lines-mode)
+(dolist (hook '(prog-mode-hook html-mode-hook conf-mode-hook text-mode-hook))
+  (add-hook hook 'page-break-lines-mode))
+
+
 (provide 'init-edit-utils)
