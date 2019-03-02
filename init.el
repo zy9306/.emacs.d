@@ -20,6 +20,7 @@
 (require 'init-elpa)
 (require 'init-gui-frames)
 (require 'init-utils)
+(require 'init-dired)
 ;; (require 'init-modeline)
 (require 'init-edit-utils)
 (require 'init-ivy)
