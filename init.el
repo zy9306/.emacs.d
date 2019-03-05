@@ -28,6 +28,7 @@
 (require 'init-ace-window)
 (require 'init-imenu-list)
 (require 'init-company)
+(require 'init-flycheck)
 (require 'init-vc)
 (require 'init-mac)
 (require 'init-org)

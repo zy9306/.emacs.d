@@ -7,7 +7,7 @@
   :ensure t
 
   :config
-  (setq elpamr-default-output-directory "~/Nutstore/apps/configs/emacs/myelpa/"))
+  (setq elpamr-default-output-directory "~/myelpa/"))
 
 
 (provide 'init-elpa-mirror)
