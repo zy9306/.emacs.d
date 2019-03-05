@@ -41,4 +41,12 @@
 
 ;; todo C-o (hydra-ivy/body)
 
+
+;; https://github.com/mhayashi1120/Emacs-wgrep/tree/master
+;; work with ivy-occur
+(use-package wgrep
+  :ensure t
+  :defer t)
+
+
 (provide 'init-ivy)
