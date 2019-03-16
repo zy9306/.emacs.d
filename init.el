@@ -37,6 +37,7 @@
 (require 'init-elpa-mirror)
 
 
+(require 'init-keyfreq)
 ;; evil config
 (require 'init-evil)
 
