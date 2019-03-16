@@ -36,6 +36,10 @@
 (require 'init-python)
 (require 'init-elpa-mirror)
 
+
+;; evil config
+(require 'init-evil)
+
 ;; auto detected coding systems
 (use-package unicad)
 
