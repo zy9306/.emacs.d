@@ -27,36 +27,46 @@
 (setq system-time-locale "C")
 
 ;; org capture
-(global-set-key (kbd "C-c c") 'org-capture)
-;; http://www.zmonster.me/2018/02/28/org-mode-capture.html
-;; https://orgmode.org/manual/Capture-templates.html
-;; see C-h v org-capture-templates for more info
-(setq org-capture-templates
-      '(
-        ("t" "TODO")
-        ("t1" "TODO1" entry (file "~/Nutstore/gtd/TODO.org")
-         "* TODO %?\n  %i\n  %a")
-        ("t2" "TODO2" entry (file "~/Nutstore/gtd/TODO2.org")
-         "* TODO %?\n  %i\n  %a")
-        ("t3" "TODO3" entry (file "~/Nutstore/gtd/TODO3.org")
-         "* TODO %?\n  %i\n  %a")
+;; (global-set-key (kbd "C-c c") 'org-capture)
+;; ;; http://www.zmonster.me/2018/02/28/org-mode-capture.html
+;; ;; https://orgmode.org/manual/Capture-templates.html
+;; ;; see C-h v org-capture-templates for more info
+;; (setq org-capture-templates
+;;       '(
+;;         ("t" "TODO")
+;;         ("t1" "TODO1" entry (file "~/Nutstore/gtd/TODO.org")
+;;          "* TODO %?\n  %i\n  %a")
+;;         ("t2" "TODO2" entry (file "~/Nutstore/gtd/TODO2.org")
+;;          "* TODO %?\n  %i\n  %a")
+;;         ("t3" "TODO3" entry (file "~/Nutstore/gtd/TODO3.org")
+;;          "* TODO %?\n  %i\n  %a")
 
-        ("s" "snippet")
-        ("sp" "Python" entry (file+headline "~/Nutstore/gtd/snippet.org" "Python")
-         "** Python %?\n#+BEGIN_SRC python\n\n#+END_SRC" :empty-lines 1)
-        ("sl" "Linux" entry (file+headline "~/Nutstore/gtd/snippet.org" "Linux")
-         "** Linux %?\n  %i\n  %a" :empty-lines 1)
-        ("sg" "Git" entry (file+headline "~/Nutstore/gtd/snippet.org" "Git")
-         "** Git %?\n  %i\n  %a" :empty-lines 1)
-        ("sd" "Docker" entry (file+headline "~/Nutstore/gtd/snippet.org" "Docker")
-         "** Docker %?\n  %i\n  %a" :empty-lines 1)
-        ("sm" "Mongo" entry (file+headline "~/Nutstore/gtd/snippet.org" "Mongo")
-         "** Mongo %?\n  %i\n  %a" :empty-lines 1)
-        ("sq" "Sql" entry (file+headline "~/Nutstore/gtd/snippet.org" "Sql")
-         "** Sql %?\n  %i\n  %a" :empty-lines 1)
-        ("ss" "Skydata" entry (file+headline "~/Nutstore/gtd/snippet.org" "Skydata")
-         "** Skydata %?\n  %i\n  %a" :empty-lines 1)
-        ))
-(setq org-agenda-files (file-expand-wildcards "~/Nutstore/gtd/*.org"))
+;;         ("s" "snippet")
+;;         ("sp" "Python" entry (file+headline "~/Nutstore/gtd/snippet.org" "Python")
+;;          "** Python %?\n#+BEGIN_SRC python\n\n#+END_SRC" :empty-lines 1)
+;;         ("sl" "Linux" entry (file+headline "~/Nutstore/gtd/snippet.org" "Linux")
+;;          "** Linux %?\n  %i\n  %a" :empty-lines 1)
+;;         ("sg" "Git" entry (file+headline "~/Nutstore/gtd/snippet.org" "Git")
+;;          "** Git %?\n  %i\n  %a" :empty-lines 1)
+;;         ("sd" "Docker" entry (file+headline "~/Nutstore/gtd/snippet.org" "Docker")
+;;          "** Docker %?\n  %i\n  %a" :empty-lines 1)
+;;         ("sm" "Mongo" entry (file+headline "~/Nutstore/gtd/snippet.org" "Mongo")
+;;          "** Mongo %?\n  %i\n  %a" :empty-lines 1)
+;;         ("sq" "Sql" entry (file+headline "~/Nutstore/gtd/snippet.org" "Sql")
+;;          "** Sql %?\n  %i\n  %a" :empty-lines 1)
+;;         ("ss" "Skydata" entry (file+headline "~/Nutstore/gtd/snippet.org" "Skydata")
+;;          "** Skydata %?\n  %i\n  %a" :empty-lines 1)
+;;         ))
+;; (setq org-agenda-files (file-expand-wildcards "~/Nutstore/gtd/*.org"))
+
+
+;; https://github.com/abo-abo/org-download/tree/master
+;; -*- mode: Org; org-download-image-dir: "~/Pictures/foo"; -*-  to set dir for file
+;; or (setq-default org-download-image-dir "~/Pictures/foo") for all
+(use-package org-download
+  :ensure t
+  :config)
+(global-set-key (kbd "C-c y") 'org-download-yank)
+
 
 (provide 'init-org)
