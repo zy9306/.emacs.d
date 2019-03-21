@@ -36,10 +36,9 @@
 (require 'init-python)
 (require 'init-elpa-mirror)
 
-
-(require 'init-keyfreq)
 ;; evil config
 (require 'init-evil)
+(require 'init-keyfreq)
 
 ;; auto detected coding systems
 (use-package unicad)
