@@ -37,7 +37,10 @@
 (require 'init-elpa-mirror)
 
 ;; evil config
-(require 'init-evil)
+(if (not (display-graphic-p))
+    ;; 目前只在终端下使用evil
+    (require 'init-evil))
+
 (require 'init-keyfreq)
 
 ;; auto detected coding systems
