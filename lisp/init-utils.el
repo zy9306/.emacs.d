@@ -31,4 +31,13 @@
   (setq real-auto-save-interval 1))
 
 
+(use-package which-key
+  :ensure t
+  :diminish which-key-mode
+  :config
+  (which-key-mode)
+  (setq which-key-popup-type 'minibuffer)
+  (which-key-setup-minibuffer))
+
+
 (provide 'init-utils)

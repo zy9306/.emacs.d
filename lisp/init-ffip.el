@@ -17,8 +17,4 @@
 )
 
 
-(global-set-key (kbd "C-x g f") 'find-grep)
-(global-set-key (kbd "C-x g d") 'find-grep-dired)
-
-
 (provide 'init-ffip)

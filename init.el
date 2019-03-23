@@ -31,6 +31,7 @@
 (require 'init-flycheck)
 (require 'init-vc)
 (require 'init-ffip)
+(require 'init-find)
 (require 'init-mac)
 (require 'init-org)
 (require 'init-md)
