@@ -34,6 +34,7 @@
 (require 'init-org)
 (require 'init-md)
 (require 'init-python)
+(require 'init-yaml)
 (require 'init-elpa-mirror)
 
 ;; evil config
