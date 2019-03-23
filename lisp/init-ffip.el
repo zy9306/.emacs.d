@@ -4,7 +4,7 @@
 (use-package find-file-in-project
   :ensure t
   :config
-  (when (eq system-type 'windows-nt) (setq ffip-find-executable "c:\\\\cygwin64\\\\bin\\\\find"))
+  (when (eq system-type 'windows-nt) (setq ffip-find-executable "C:\\\\Program Files\\\\Git\\\\usr\\\\bin"))  ;; install git bash for windows
   (global-set-key (kbd "C-c p f") 'find-file-in-project)  ;; is slow when 10K+ files 但是可以实时显示结果
   (global-set-key (kbd "C-c p s f") 'find-file-in-project-by-selected)  ;; 性能好，但是需要按回车
   (global-set-key (kbd "C-c p d") 'find-directory-in-project)
@@ -17,5 +17,8 @@
 )
 
 
-(provide 'init-ffip)
+(global-set-key (kbd "C-x g f") 'find-grep)
+(global-set-key (kbd "C-x g d") 'find-grep-dired)
 
+
+(provide 'init-ffip)
