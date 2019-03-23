@@ -25,4 +25,6 @@
                    (abbreviate-file-name (buffer-file-name))
                  "%b"))))
 
+(setq-default cursor-type 'bar)  ;; box 方块
+
 (provide 'init-gui-frames)
