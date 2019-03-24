@@ -49,4 +49,13 @@
   :defer t)
 
 
+(use-package smex
+  ;; M-x时优先列出使用过的命令
+  :ensure t
+  :config
+  ;; (smex-initialize)
+  (setq-default smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
+  )
+
+
 (provide 'init-ivy)
