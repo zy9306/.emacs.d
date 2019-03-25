@@ -12,6 +12,10 @@
 ;; 始终启用缩进
 (add-hook 'org-mode-hook 'org-indent-mode)
 
+;; 默认收起所有代码块，shift + tab也不展开
+;; org-show-block-all展开所有代码块
+(add-hook 'org-mode-hook 'org-hide-block-all)
+
 ;; ox-gfm is also installed by markdown-mode
 
 (use-package ox-qmd
