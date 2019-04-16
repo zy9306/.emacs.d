@@ -47,6 +47,11 @@
 (column-number-mode t)
 
 
+(global-hl-line-mode t)
+
+(global-visual-line-mode t)
+
+
 ;; expand-region 快速选中及增减选区
 (use-package expand-region
   :ensure t
