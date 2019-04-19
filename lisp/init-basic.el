@@ -1,7 +1,7 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
 
-;; ;;;;;;; some utils ;;;;;;;
+;; ;;;;;;; utils ;;;;;;;
 
 (use-package diminish
   :ensure t
@@ -42,6 +42,19 @@
   (global-diff-hl-mode t)
   (diff-hl-margin-mode t)
   (add-hook 'dired-mode-hook 'diff-hl-dired-mode))
+
+(use-package company
+  :ensure t
+  :diminish company-mode
+  :config
+  (add-hook 'after-init-hook 'global-company-mode)
+  (setq company-idle-delay 0.05)
+  (setq company-tooltip-idle-delay 0.05)
+  (setq company-minimum-prefix-length 2)
+  (define-key company-mode-map (kbd "M-/") 'company-complete)
+  (define-key company-active-map (kbd "M-/") 'company-other-backend)
+  (define-key company-active-map (kbd "C-n") 'company-select-next)
+  (define-key company-active-map (kbd "C-p") 'company-select-previous))
 
 (use-package elpa-mirror
   ;; https://github.com/redguardtoo/elpa-mirror
