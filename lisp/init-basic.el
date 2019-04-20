@@ -1,7 +1,7 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
 
-;; ;;;;;;; utils ;;;;;;;
+;; ;;;;;;; 一些通用且无依赖的包 ;;;;;;;
 
 (use-package diminish
   :ensure t
@@ -55,6 +55,58 @@
   (define-key company-active-map (kbd "M-/") 'company-other-backend)
   (define-key company-active-map (kbd "C-n") 'company-select-next)
   (define-key company-active-map (kbd "C-p") 'company-select-previous))
+
+(use-package symbol-overlay
+  ;; https://github.com/purcell/emacs.d/blob/master/lisp/init-editing-utils.el
+  ;; 高亮相同单词，可同时高亮多个，M-i增加单词
+  :ensure t
+  :diminish symbol-overlay-mode
+  :config
+  (dolist (hook '(prog-mode-hook html-mode-hook conf-mode-hook text-mode-hook))
+  (add-hook hook 'symbol-overlay-mode))
+  (define-key symbol-overlay-mode-map (kbd "M-i") 'symbol-overlay-put)
+  (define-key symbol-overlay-mode-map (kbd "M-n") 'symbol-overlay-jump-next)
+  (define-key symbol-overlay-mode-map (kbd "M-p") 'symbol-overlay-jump-prev))
+
+(use-package anzu
+  ;; https://github.com/purcell/emacs.d/blob/master/lisp/init-isearch.el
+  ;; 实时显示搜索及替换结果
+  :ensure t
+  :config
+  (add-hook 'after-init-hook 'global-anzu-mode)
+  (setq anzu-mode-lighter "")
+  (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
+  (global-set-key [remap query-replace] 'anzu-query-replace))
+
+(use-package multiple-cursors
+  ;; https://github.com/magnars/multiple-cursors.el/tree/master
+  ;; To yank from the kill-rings of every cursor use yank-rectangle, normally found at C-x r y
+  :ensure t
+  :defer t
+  )
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+(use-package expand-region
+  ;; expand-region 快速选中及增减选区
+  :ensure t
+  :defer t
+  )
+(global-set-key (kbd "C-=") 'er/expand-region)
+
+(use-package page-break-lines
+  ;; C-q C-l 可以在当前位置插入并显示分页符
+  :ensure t
+  :diminish page-break-lines-mode)
+(dolist (hook '(prog-mode-hook html-mode-hook conf-mode-hook text-mode-hook))
+  (add-hook hook 'page-break-lines-mode))
+
+(use-package rainbow-delimiters
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 (use-package elpa-mirror
   ;; https://github.com/redguardtoo/elpa-mirror
@@ -110,6 +162,16 @@
 (let ((gls (executable-find "gls")))
   (when gls (setq insert-directory-program gls)))
 (setq dired-listing-switches "-al -h --group-directories-first --color=always")
+
+
+
+;; ;;;;;;; backup ;;;;;;;
+(make-directory "~/.emacs.d/autosaves/" t)
+(make-directory "~/.emacs.d/backups/" t)
+(setq backup-directory-alist
+      `((".*" . "~/.emacs.d/backups/")))
+(setq auto-save-file-name-transforms
+      `((".*" "~/.emacs.d/autosaves/" t)))
 
 
 
