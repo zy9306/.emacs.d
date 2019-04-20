@@ -26,9 +26,8 @@
 (require 'init-ide)
 (require 'init-find)
 (require 'init-org)
-(require 'init-md)
 (require 'init-python)
-(require 'init-yaml)
+(require 'init-additional-major-mode)
 
 ;; evil config
 (if (not (display-graphic-p))
