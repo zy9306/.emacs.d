@@ -21,7 +21,7 @@
 
 ;; mac dpi is too high, so enlarge font
 (when *is-a-mac*
-  (set-face-attribute 'default nil :font "Ubuntu Mono 20")
+  (set-face-attribute 'default nil :font "Source Code Pro 19")
 )
 
 ;; Chinese Font
@@ -37,7 +37,7 @@
                         charset (font-spec :family "FZKai-Z03"))))
 (if (display-graphic-p)
     ;; select a chinese font and type C-u C-x = what font used for chinese
-    (setq face-font-rescale-alist '(("FZKai-Z03" . 1.1))))
+    (setq face-font-rescale-alist '(("FZKai-Z03" . 1.2))))
 
 ;; 调整倍数使以下中文和英文长度相等
 ;; 你你你你你你你你你你你你你你你你你你你你
