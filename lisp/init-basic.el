@@ -116,6 +116,13 @@
   :config
   (setq elpamr-default-output-directory "~/myelpa/"))
 
+(use-package magit
+  :ensure t
+  :defer t)
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x M-g") 'magit-dispatch)
+(global-set-key (kbd "C-c M-g") 'magit-file-dispatch)
+
 
 
 ;; ;;;;;;; gui-frame ;;;;;;;
