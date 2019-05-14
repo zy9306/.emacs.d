@@ -40,4 +40,14 @@
 
 ;; (global-visual-line-mode t)
 
+
+;; scroll
+(global-unset-key (kbd "C-9"))
+(global-unset-key (kbd "C-0"))
+(global-set-key (kbd "C-0") (lambda () (interactive) (next-line 5)))
+(global-set-key (kbd "C-9") (lambda () (interactive) (previous-line 5)))
+(global-set-key (kbd "C-(") (lambda () (interactive) (scroll-down-line 5)))
+(global-set-key (kbd "C-)") (lambda () (interactive) (scroll-up-line 5)))
+
+
 (provide 'init-edit-utils)
