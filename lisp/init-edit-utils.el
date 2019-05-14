@@ -50,4 +50,12 @@
 (global-set-key (kbd "C-)") (lambda () (interactive) (scroll-up-line 5)))
 
 
+;; goto-chg: Goto the point of the most recent edit in the buffer.
+(use-package goto-chg
+  :ensure t
+  :defer t)
+(global-set-key (kbd "C-,") 'goto-last-change)
+(global-set-key (kbd "C-.") 'goto-last-change-reverse)
+
+
 (provide 'init-edit-utils)
