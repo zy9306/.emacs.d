@@ -192,4 +192,15 @@
 
 
 
+;; ;;;;;;; 设置某些目录下的文件以只读打开 ;;;;;;;
+; Define a read-only directory class
+(dir-locals-set-class-variables 'read-only
+ '((nil . ((buffer-read-only . t)))))
+
+;; Associate directories with the read-only class
+(dolist (dir (list "~/Envs" "/usr"))
+  (dir-locals-set-directory-class (file-truename dir) 'read-only))
+
+
+
 (provide 'init-basic)
