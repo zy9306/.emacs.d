@@ -203,4 +203,25 @@
 
 
 
+;; ;;;;;;; 折叠 ;;;;;;
+
+;; 主用yafolding和vimish-fold, origami行为有些诡异, 暂时不用, yafolding折叠所有的时候有些慢, 但是行为较明确
+;; vimish-fold可以自定义折叠区域, 且可持久化到本地
+
+(use-package yafolding
+  ;; C-RET: toggle-element  C-S-RET: hide-parent-element  C-M-RET: toggle-all
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'yafolding-mode))
+
+(use-package vimish-fold
+  :ensure t
+  :config
+  (vimish-fold-global-mode t)
+  (global-set-key (kbd "C-c v f") #'vimish-fold)
+  (global-set-key (kbd "C-c v v") #'vimish-fold-delete)
+  (global-set-key (kbd "C-c v t") #'vimish-fold-toggle))  ;; also C-`
+
+
+
 (provide 'init-basic)
