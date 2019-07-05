@@ -6,6 +6,7 @@
   :ensure t
   :ensure swiper
   :ensure counsel
+  :ensure ivy-hydra
 
   :diminish ivy-mode
   :diminish counsel-mode

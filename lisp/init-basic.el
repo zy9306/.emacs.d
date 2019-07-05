@@ -21,8 +21,7 @@
   :diminish which-key-mode
   :config
   (which-key-mode)
-  (setq which-key-popup-type 'minibuffer)
-  (which-key-setup-minibuffer))
+  (which-key-setup-side-window-bottom))
 
 (use-package imenu-list
   :ensure t

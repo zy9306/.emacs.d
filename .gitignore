@@ -2,7 +2,10 @@
 elpa-*
 recentf
 bookmarks
+projectile*
+.smex-items
 anaconda-mode/
 autosaves/
 backups/
-
+vimish-fold/
+transient/
