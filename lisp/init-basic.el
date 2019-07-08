@@ -122,6 +122,26 @@
 (global-set-key (kbd "C-x M-g") 'magit-dispatch)
 (global-set-key (kbd "C-c M-g") 'magit-file-dispatch)
 
+(use-package browse-kill-ring
+  :ensure t
+  :defer t
+  :config
+  (setq browse-kill-ring-highlight-current-entry t)
+  (setq browse-kill-ring-highlight-inserted-item t)
+  (setq browse-kill-ring-show-preview t))
+(global-set-key (kbd "M-y") 'browse-kill-ring)
+
+(use-package recentf
+  ;; C-x b will see recent file
+  :ensure t
+  :config
+  (setq-default recentf-max-saved-items 50)
+  (setq recentf-filename-handlers
+        (append '(abbreviate-file-name) recentf-filename-handlers))
+  (recentf-mode t))
+
+
+
 
 
 ;; ;;;;;;; gui-frame ;;;;;;;

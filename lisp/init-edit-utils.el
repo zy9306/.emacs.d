@@ -26,9 +26,6 @@
 ;; tips
 ;; C-M-N and C-M-P go to ) from ( and so on...
 
-;; C-x b will see recent file
-(recentf-mode t)
-(setq-default recentf-max-saved-items 50)
 
 (when (version<= "26.0.50" emacs-version )
   (global-display-line-numbers-mode))
