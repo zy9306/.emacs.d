@@ -1,42 +1,38 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
 
-(delete-selection-mode t)  ;; if nil, when select `abc` then enter x,if will be `abcx` rather than `x`
+;; tips
+;; C-M-N and C-M-P go to ) from ( and so on...
+;; C-x tab -> [left/right]/[shift+left/shift+right] indent the region
 
-;; select a region, C-x tab then can use left/right or shift+left/shift+right to indent the region
-(setq-default tab-width 4)
+
+(delete-selection-mode t)                   ; if nil, when select `abc` then enter x,if will be `abcx` rather than `x`
+(electric-pair-mode t)                      ; auto close ()
+(show-paren-mode t)                         ; highlight ()
+(column-number-mode t)
+(global-hl-line-mode t)
+
+(when (version<= "26.0.50" emacs-version )
+  (global-display-line-numbers-mode))
+
+(setq show-paren-when-point-inside-paren t) ; todo this don't work
+;; (setq show-paren-style 'expression)      ; will highlight block with paren
+(setq-default tab-width 4)  
 (setq-default indent-tabs-mode nil)
 
-;; auto close ()
-(electric-pair-mode t)
-;; highlight ()
-(show-paren-mode t)
-;; todo this don't work
-(setq show-paren-when-point-inside-paren t)
-;; will highlight block with paren
-;; (setq show-paren-style 'expression)
-
-;; shift+return
 (defun newline-at-end-of-line ()
+  ;; shift+return
   (interactive)
   (move-end-of-line 1)
   (newline-and-indent))
 (global-set-key (kbd "S-<return>") 'newline-at-end-of-line)
 
-;; tips
-;; C-M-N and C-M-P go to ) from ( and so on...
-
-
-(when (version<= "26.0.50" emacs-version )
-  (global-display-line-numbers-mode))
-
-(column-number-mode t)
-
-
-(global-hl-line-mode t)
-
-;; (global-visual-line-mode t)
-
+(use-package goto-chg
+  ;; goto-chg: Goto the point of the most recent edit in the buffer.
+  :ensure t
+  :defer t)
+(global-set-key (kbd "C-,") 'goto-last-change)
+(global-set-key (kbd "C-.") 'goto-last-change-reverse)
 
 ;; scroll
 (global-unset-key (kbd "C-9"))
@@ -45,14 +41,6 @@
 (global-set-key (kbd "C-9") (lambda () (interactive) (previous-line 5)))
 (global-set-key (kbd "C-(") (lambda () (interactive) (scroll-down-line 5)))
 (global-set-key (kbd "C-)") (lambda () (interactive) (scroll-up-line 5)))
-
-
-;; goto-chg: Goto the point of the most recent edit in the buffer.
-(use-package goto-chg
-  :ensure t
-  :defer t)
-(global-set-key (kbd "C-,") 'goto-last-change)
-(global-set-key (kbd "C-.") 'goto-last-change-reverse)
 
 
 (provide 'init-edit-utils)
