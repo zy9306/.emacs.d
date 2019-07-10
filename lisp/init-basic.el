@@ -33,7 +33,9 @@
 (use-package flycheck
   ;; http://www.flycheck.org/en/latest/
   :ensure t
-  :init (global-flycheck-mode))
+  :init (global-flycheck-mode)
+  :config
+  (setq-default flycheck-disabled-checkers '(emacs-lisp emacs-lisp-checkdoc)))
 
 (use-package diff-hl
   :ensure t
