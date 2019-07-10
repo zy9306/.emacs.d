@@ -62,4 +62,10 @@
   )
 
 
+(use-package ivy-rich
+  :ensure t
+  :config
+  (ivy-rich-mode 1))
+
+
 (provide 'init-ivy)
