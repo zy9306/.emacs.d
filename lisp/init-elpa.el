@@ -14,26 +14,12 @@
 
 (initialize-package)
 
-;; usually no need melpa-stable
-;; todo tsinghua mirrors Failed to download ‘melpa’ archive
-(setq package-archives
-      '(;; ("localelpa" . "~/.emacs.d/localelpa/")
-        ;; ("gnu" . "https://elpa.gnu.org/packages/")
-        ;; ("melpa" . "https://melpa.org/packages/")
-        ;; ("melpa-stable" . "https://stable.melpa.org/packages/")
-
-        ;; Use either 163 or tsinghua mirror repository when official melpa
-        ;; is too slow or shutdown.
-
-        ("gnu" . "https://mirrors.163.com/elpa/gnu/")
-        ("melpa" . "https://mirrors.163.com/elpa/melpa/")
-        ;; ("melpa-stable" . "https://mirrors.163.com/elpa/melpa-stable/")
-
-        ;; @see https://mirror.tuna.tsinghua.edu.cn/help/elpa/ on usage:
-        ;; ("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-        ;; ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-        ;; ("melpa-stable" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")
-))
+;; https://mirrors.tuna.tsinghua.edu.cn/help/elpa/
+;; https://elpa.gnu.org/packages/
+;; https://melpa.org/packages/
+;; or use local
+(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 
 ;; On-demand installation of packages
 (defun require-package (package &optional min-version no-refresh)
