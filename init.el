@@ -29,6 +29,7 @@
 (require 'init-python)
 (require 'init-go)
 (require 'init-additional-major-mode)
+(require 'init-display-buffer)
 
 ;; evil config
 (if (not (display-graphic-p))
