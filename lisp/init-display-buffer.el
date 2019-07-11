@@ -25,6 +25,13 @@
 
 
 (add-to-list 'display-buffer-alist
+             '(".*magit-diff.*"
+               (display-buffer-reuse-window display-buffer-in-side-window)
+               (side . right)
+               (window-width . 0.7)))
+
+
+(add-to-list 'display-buffer-alist
              '(".*ivy-occur.*"
                (display-buffer-reuse-window display-buffer-same-window)))
 
