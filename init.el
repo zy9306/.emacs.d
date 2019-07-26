@@ -27,6 +27,7 @@
 (require 'init-find)
 (require 'init-org)
 (require 'init-python)
+(require 'init-rust)
 (require 'init-go)
 (require 'init-additional-major-mode)
 (require 'init-display-buffer)
