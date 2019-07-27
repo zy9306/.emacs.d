@@ -12,6 +12,15 @@
 (column-number-mode t)
 (global-hl-line-mode t)
 
+;; https://www.emacswiki.org/emacs/TruncateLines
+(set-default 'truncate-lines t)
+(global-set-key "\C-c$" 'toggle-truncate-lines)
+;; Horizontal scrolling mouse events should actually scroll left and right.
+(global-set-key (kbd "<mouse-6>") (lambda () (interactive)
+                                    (if truncate-lines (scroll-right 1))))
+(global-set-key (kbd "<mouse-7>") (lambda () (interactive)
+				                    (if truncate-lines (scroll-left 1))))
+
 (when (version<= "26.0.50" emacs-version )
   (global-display-line-numbers-mode))
 
