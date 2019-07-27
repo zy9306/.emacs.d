@@ -185,10 +185,17 @@
   (setq dired-subtree-use-backgrounds nil)
   (setq dired-subtree-line-prefix "        ")
   (define-key dired-mode-map (kbd "C-<return>") 'dired-subtree-toggle))
-;; Prefer g-prefixed coreutils version of standard utilities when available
-;; brew install coreutils for mac
-(let ((gls (executable-find "gls")))
-  (when gls (setq insert-directory-program gls)))
+
+(when *is-a-mac*
+  ;; Prefer g-prefixed coreutils version of standard utilities when available
+  ;; brew install coreutils for mac
+  (let ((gls (executable-find "gls")))
+    (when gls (setq insert-directory-program gls))))
+
+(when *win*
+  ;; (setq ls-lisp-use-insert-directory-program t)
+  (setq insert-directory-program "C:/Program Files/Git/usr/bin/ls.exe"))
+
 (setq dired-listing-switches "-al -h --group-directories-first --color=always")
 
 
