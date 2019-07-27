@@ -193,7 +193,9 @@
     (when gls (setq insert-directory-program gls))))
 
 (when *win*
-  ;; (setq ls-lisp-use-insert-directory-program t)
+  ;; need git bash mingw environment
+  ;; https://git-scm.com/download/win
+  (setq ls-lisp-use-insert-directory-program t)
   (setq insert-directory-program "C:/Program Files/Git/usr/bin/ls.exe"))
 
 (setq dired-listing-switches "-al -h --group-directories-first --color=always")
