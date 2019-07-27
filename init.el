@@ -32,6 +32,15 @@
 (require 'init-additional-major-mode)
 (require 'init-display-buffer)
 
+
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (setq exec-path-from-shell-arguments nil)
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
+
+
 ;; evil config
 (if (not (display-graphic-p))
     ;; 目前只在终端下使用evil
