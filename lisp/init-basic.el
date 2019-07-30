@@ -52,6 +52,21 @@
   (setq company-idle-delay 0.05)
   (setq company-tooltip-idle-delay 0.05)
   (setq company-minimum-prefix-length 2)
+  ;; origin
+  ;; (company-bbdb
+  ;;  company-eclim
+  ;;  company-semantic
+  ;;  company-clang
+  ;;  company-xcode
+  ;;  company-cmake
+  ;;  company-capf
+  ;;  company-files
+  ;;  (company-dabbrev-code company-gtags company-etags company-keywords)
+  ;;  company-oddmuse company-dabbrev)
+  (setq company-backends
+        '((company-keywords company-dabbrev company-dabbrev-code)
+          company-capf  ; The CAPF back-end provides a bridge to the standard completion-at-point-functions facility
+          company-files))
   (define-key company-mode-map (kbd "M-/") 'company-complete)
   (define-key company-active-map (kbd "M-/") 'company-other-backend)
   (define-key company-active-map (kbd "C-n") 'company-select-next)
