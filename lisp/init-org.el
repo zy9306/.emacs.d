@@ -16,14 +16,6 @@
 ;; org-show-block-all展开所有代码块
 (add-hook 'org-mode-hook 'org-hide-block-all)
 
-;; ox-gfm is also installed by markdown-mode
-
-(use-package ox-qmd
-  :ensure t
-
-  :config
-  (add-to-list 'ox-qmd-language-keyword-alist '("shell-script" . "sh")))
-
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "CONTINUE(n)" "DONE(d)" "CANCELLED(c)"))))
 
@@ -64,13 +56,22 @@
 ;; (setq org-agenda-files (file-expand-wildcards "~/Nutstore/gtd/*.org"))
 
 
+;; ox-gfm is also installed by markdown-mode, use it default and disable ox-qmd
+
+;; it will take some startup time
+;; (use-package ox-qmd
+;;   :ensure t
+;;   :config
+;;   (add-to-list 'ox-qmd-language-keyword-alist '("shell-script" . "sh")))
+
+
 ;; https://github.com/abo-abo/org-download/tree/master
 ;; -*- mode: Org; org-download-image-dir: "~/Pictures/foo"; -*-  to set dir for file
 ;; or (setq-default org-download-image-dir "~/Pictures/foo") for all
-(use-package org-download
-  :ensure t
-  :config)
-(global-set-key (kbd "C-c y") 'org-download-yank)
+;; (use-package org-download
+;;   :ensure t
+;;   :config
+;;   (global-set-key (kbd "C-c y") 'org-download-yank))
 
 
 (provide 'init-org)
