@@ -46,7 +46,7 @@
 
 (use-package company
   :ensure t
-  :diminish company-mode
+  :diminish company-mode " co"
   :config
   (add-hook 'after-init-hook 'global-company-mode)
   (setq company-idle-delay 0.05)
@@ -64,9 +64,9 @@
   ;;  (company-dabbrev-code company-gtags company-etags company-keywords)
   ;;  company-oddmuse company-dabbrev)
   (setq company-backends
-        '((company-keywords company-dabbrev company-dabbrev-code)
-          company-capf  ; The CAPF back-end provides a bridge to the standard completion-at-point-functions facility
-          company-files))
+        ;; 同一组(即同一括号)中的backends能同时被用到
+        ;; The CAPF back-end provides a bridge to the standard completion-at-point-functions facility
+        '((company-capf company-keywords company-dabbrev company-dabbrev-code company-files)))
   (define-key company-mode-map (kbd "M-/") 'company-complete)
   (define-key company-active-map (kbd "M-/") 'company-other-backend)
   (define-key company-active-map (kbd "C-n") 'company-select-next)
