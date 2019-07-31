@@ -46,7 +46,7 @@
 
 (use-package company
   :ensure t
-  :diminish company-mode " co"
+  ;; :diminish company-mode " co"
   :config
   (add-hook 'after-init-hook 'global-company-mode)
   (setq company-idle-delay 0.05)
