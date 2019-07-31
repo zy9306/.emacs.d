@@ -204,8 +204,8 @@
 (when *is-a-mac*
   ;; Prefer g-prefixed coreutils version of standard utilities when available
   ;; brew install coreutils for mac
-  (let ((gls (executable-find "gls")))
-    (when gls (setq insert-directory-program gls))))
+  (let ((gls (executable-find "/usr/local/bin/gls")))
+    (when gls (setq insert-directory-program "/usr/local/bin/gls"))))
 
 (when *win*
   ;; need git bash mingw environment
