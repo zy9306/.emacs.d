@@ -15,22 +15,26 @@
 (defconst *linux* (or (eq system-type 'gnu/linux) (eq system-type 'linux)))
 (defconst *unix* (or *linux* (eq system-type 'usg-unix-v) (eq system-type 'berkeley-unix)))
 
+(defun local/load-package (package)
+  (setq _starttime (float-time))
+  (require package)
+  (message "load %s, time: %s" package (- (float-time) _starttime)))
 
-(require 'init-font)
-(require 'init-elpa)
-(require 'init-basic)
-(require 'init-edit-utils)
-(require 'init-ivy)
-(require 'init-avy)
-(require 'init-ace-window)
-(require 'init-ide)
-(require 'init-find)
-(require 'init-org)
-(require 'init-python)
-(require 'init-rust)
-(require 'init-go)
-(require 'init-additional-major-mode)
-(require 'init-display-buffer)
+(local/load-package 'init-font)
+(local/load-package 'init-elpa)
+(local/load-package 'init-basic)
+(local/load-package 'init-edit-utils)
+(local/load-package 'init-ivy)
+(local/load-package 'init-avy)
+(local/load-package 'init-ace-window)
+(local/load-package 'init-ide)
+(local/load-package 'init-find)
+(local/load-package 'init-org)
+(local/load-package 'init-python)
+(local/load-package 'init-rust)
+(local/load-package 'init-go)
+(local/load-package 'init-additional-major-mode)
+(local/load-package 'init-display-buffer)
 
 
 (use-package exec-path-from-shell
@@ -44,9 +48,9 @@
 ;; evil config
 (if (not (display-graphic-p))
     ;; 目前只在终端下使用evil
-    (require 'init-evil))
+    (local/load-package 'init-evil))
 
-(require 'init-keyfreq)
+(local/load-package 'init-keyfreq)
 
 ;; auto detected coding systems
 (use-package unicad)
@@ -82,3 +86,5 @@
 
 ;; close debug when finally load
 (setq debug-on-error nil)
+
+(message "init time: %s" (emacs-init-time))
