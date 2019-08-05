@@ -51,10 +51,19 @@
 
 (use-package company-lsp
   ;; https://github.com/tigersoldier/company-lsp
+  ;; Expand snippets on completion (requires yasnippet).
   :ensure t
   :config
   (push 'company-lsp company-backends)
   (setq company-lsp-async t))
+
+
+(use-package yasnippet
+  ;; https://github.com/joaotavora/yasnippet
+  :ensure t
+  :config
+  ;; (yas-global-mode 1)
+  (add-hook 'prog-mode-hook #'yas-minor-mode))
 
 
 (provide 'init-completion)
