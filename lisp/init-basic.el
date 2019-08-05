@@ -215,7 +215,7 @@
  '((nil . ((buffer-read-only . t)))))
 
 ;; Associate directories with the read-only class
-(dolist (dir (list "~/Envs" "/usr" "~/.cargo"))
+(dolist (dir (list "~/Envs" "/usr" "~/.cargo" "~/.rustup"))
   (dir-locals-set-directory-class (file-truename dir) 'read-only))
 
 
