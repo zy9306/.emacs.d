@@ -44,37 +44,6 @@
   (diff-hl-margin-mode t)
   (add-hook 'dired-mode-hook 'diff-hl-dired-mode))
 
-(use-package company
-  :ensure t
-  ;; :diminish company-mode " co"
-  :config
-  (add-hook 'after-init-hook 'global-company-mode)
-  (setq company-idle-delay 0.05)
-  (setq company-tooltip-idle-delay 0.05)
-  (setq company-minimum-prefix-length 2)
-  ;; origin
-  ;; (company-bbdb
-  ;;  company-eclim
-  ;;  company-semantic
-  ;;  company-clang
-  ;;  company-xcode
-  ;;  company-cmake
-  ;;  company-capf
-  ;;  company-files
-  ;;  (company-dabbrev-code company-gtags company-etags company-keywords)
-  ;;  company-oddmuse company-dabbrev)
-  (setq company-backends
-        ;; 同一组(即同一括号)中的backends能同时被用到
-        ;; The CAPF back-end provides a bridge to the standard completion-at-point-functions facility
-        '(company-capf
-          company-files
-          (company-dabbrev-code company-keywords)
-          company-dabbrev))
-  (define-key company-mode-map (kbd "M-/") 'company-complete)
-  (define-key company-active-map (kbd "M-/") 'company-other-backend)
-  (define-key company-active-map (kbd "C-n") 'company-select-next)
-  (define-key company-active-map (kbd "C-p") 'company-select-previous))
-
 (use-package symbol-overlay
   ;; https://github.com/purcell/emacs.d/blob/master/lisp/init-editing-utils.el
   ;; 高亮相同单词，可同时高亮多个，M-i增加单词

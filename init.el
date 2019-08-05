@@ -23,6 +23,7 @@
 (local/load-package 'init-font)
 (local/load-package 'init-elpa)
 (local/load-package 'init-basic)
+(local/load-package 'init-completion)
 (local/load-package 'init-edit-utils)
 (local/load-package 'init-ivy)
 (local/load-package 'init-avy)
