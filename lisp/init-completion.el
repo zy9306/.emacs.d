@@ -38,12 +38,18 @@
 (use-package lsp-mode
   ;; https://github.com/emacs-lsp/lsp-mode
   :ensure t
-  :commands lsp)
+  :commands lsp
+  :config
+  (setq lsp-prefer-flymake nil))
 
+;; TODO custom face
 (use-package lsp-ui
   ;; https://github.com/emacs-lsp/lsp-ui
+  :ensure t
   :commands lsp-ui-mode
   :config
+  (setq lsp-ui-doc-border "pink")
+  (setq lsp-ui-flycheck-enable t)
   (add-hook 'lsp-mode-hook 'lsp-ui-mode)
   (add-hook 'lsp-mode-hook 'flycheck-mode)
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
