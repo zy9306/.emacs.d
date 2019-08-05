@@ -4,6 +4,7 @@ recentf
 bookmarks
 projectile*
 .smex-items
+.lsp-session-*
 anaconda-mode/
 autosaves/
 backups/
