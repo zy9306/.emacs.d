@@ -40,6 +40,7 @@
   :ensure t
   :commands lsp
   :config
+  (setq lsp-auto-guess-root t)
   (setq lsp-prefer-flymake nil))
 
 ;; TODO custom face
