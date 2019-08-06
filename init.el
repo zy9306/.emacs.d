@@ -28,7 +28,7 @@
 (local/load-package 'init-ivy)
 (local/load-package 'init-avy)
 (local/load-package 'init-ace-window)
-(local/load-package 'init-ide)
+(local/load-package 'init-projectile)
 (local/load-package 'init-find)
 (local/load-package 'init-org)
 (local/load-package 'init-python)
