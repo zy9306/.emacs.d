@@ -57,6 +57,7 @@
 (use-package unicad)
 
 
+;; when offline
 ;; (setq package-archives '(("myelpa" . "~/Nutstore/apps/configs/emacs/myelpa/")))
 
 ;; some variables
