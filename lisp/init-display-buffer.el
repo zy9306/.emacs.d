@@ -43,6 +43,9 @@
           (magit-status-mode :select t :inhibit-window-quit t :same t)
           (".*ivy-occur.*" :regexp t :select t :inhibit-window-quit t :same t)
 
+          ;; TODO 临时规避 为了解决rust rls 处理过程宏时的bug https://github.com/emacs-lsp/lsp-mode/issues/963
+          ("*Warnings*" :ignore t)
+
           ;; the last rule
           ("\\*.*\\*" :regexp t :select t :size 0.3 :align below)
           )
