@@ -51,6 +51,7 @@
   :config
   (setq lsp-ui-doc-border "pink")
   (setq lsp-ui-flycheck-enable t)
+  (setq lsp-ui-sideline-enable nil)
   (add-hook 'lsp-mode-hook 'lsp-ui-mode)
   (add-hook 'lsp-mode-hook 'flycheck-mode)
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
