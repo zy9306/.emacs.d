@@ -37,6 +37,8 @@
 (local/load-package 'init-additional-major-mode)
 (local/load-package 'init-display-buffer)
 
+(local/load-package 'init-key-chord)
+
 
 (use-package exec-path-from-shell
   :ensure t
