@@ -17,7 +17,7 @@
   
   (setq ivy-use-virtual-buffers t)
   (setq ivy-count-format "(%d/%d) ")
-  (setq ivy-height 20)
+  (setq ivy-height 10)
 
   ;; recentf 显示相对路径，而不是只显示文件名
   (setq ivy-virtual-abbreviate 'abbreviate)
