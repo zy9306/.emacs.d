@@ -36,8 +36,12 @@
 (local/load-package 'init-go)
 (local/load-package 'init-additional-major-mode)
 (local/load-package 'init-display-buffer)
+(local/load-package 'init-keyfreq)
 
-(local/load-package 'init-key-chord)
+;; (local/load-package 'init-key-chord)
+
+;; auto detected coding systems
+(local/load-package 'unicad)
 
 
 (use-package exec-path-from-shell
@@ -50,13 +54,7 @@
 
 ;; evil config
 (if (not (display-graphic-p))
-    ;; 目前只在终端下使用evil
     (local/load-package 'init-evil))
-
-(local/load-package 'init-keyfreq)
-
-;; auto detected coding systems
-(use-package unicad)
 
 
 ;; when offline
