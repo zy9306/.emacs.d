@@ -7,6 +7,12 @@
   :ensure t
   :defer t)
 
+(use-package undo-tree
+  :ensure t
+  :diminish undo-tree-mode
+  :config
+  (global-undo-tree-mode))
+
 ;; see also https://www.emacswiki.org/emacs/AutoSave `auto-save-visited-mode`
 (use-package real-auto-save
   :ensure t
