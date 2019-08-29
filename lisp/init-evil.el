@@ -36,6 +36,7 @@
   "0" 'delete-window
   "o" 'other-window
   "b" 'switch-to-buffer
+  "k" 'kill-buffer
   "4f" 'find-file-other-window
   "aw" 'ace-window
   "as" 'ace-swap-window
