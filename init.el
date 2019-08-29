@@ -56,6 +56,8 @@
 (if (not (display-graphic-p))
     (local/load-package 'init-evil))
 
+(local/load-package 'init-evil)
+
 
 ;; when offline
 ;; (setq package-archives '(("myelpa" . "~/Nutstore/apps/configs/emacs/myelpa/")))
