@@ -14,18 +14,17 @@
   (modify-syntax-entry ?_ "w")
   )
 
-
 (use-package general
   :ensure t
   :config
-  (general-imap "j"
-                (general-key-dispatch 'self-insert-command
-                  :timeout 0.25
-                  "j" 'evil-normal-state)))
+  (general-evil-setup)
+  )
 
 
-(general-evil-setup)
-
+(general-imap "j"
+              (general-key-dispatch 'self-insert-command
+                :timeout 0.25
+                "j" 'evil-normal-state))
 
 (general-nmap
   :prefix "SPC"
