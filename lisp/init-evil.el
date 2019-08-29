@@ -50,11 +50,20 @@
   "e" 'er/expand-region
   "r" 'query-replace
   "R" 'query-replace-regexp
+  "y" 'browse-kill-ring
+  "TAB" 'indent-for-tab-command
+  "i" 'indent-rigidly
   )
 
 
 ;; (general-nmap
 ;;   :prefix ";"
 ;; )
+
+
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1))
 
 (provide 'init-evil)
