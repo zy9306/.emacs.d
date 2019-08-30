@@ -7,7 +7,7 @@
   :config (key-chord-mode 1)
 )
 
-
+;; must before load evil
 (setq evil-disable-insert-state-bindings t)
 
 (use-package evil
@@ -23,6 +23,9 @@
   (general-evil-setup)
   )
 
+(general-define-key
+ :states '(visual normal operator motion insert)
+ "C-c" 'evil-normal-state)
 
 (general-imap "j"
               (general-key-dispatch 'self-insert-command
