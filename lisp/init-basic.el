@@ -239,4 +239,16 @@
 
 
 
+
+
+;; ;;;;;;; Revert buffer without confirmation ;;;;;;
+
+(defun revert-buffer-no-confirm ()
+  "Revert buffer without confirmation."
+  (interactive) (revert-buffer t t))
+
+
+
+
+
 (provide 'init-basic)

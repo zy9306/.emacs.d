@@ -79,6 +79,7 @@
   "hb" 'describe-bindings
   "hv" 'counsel-describe-variable
   "hf" 'counsel-describe-function
+  "g" 'revert-buffer-no-confirm
   )
 
 
