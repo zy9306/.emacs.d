@@ -61,6 +61,9 @@
   "TAB" 'indent-for-tab-command
   "i" 'indent-rigidly
   "x" 'counsel-M-x
+  "hb" 'describe-bindings
+  "hv" 'counsel-describe-variable
+  "hf" 'counsel-describe-function
   )
 
 
