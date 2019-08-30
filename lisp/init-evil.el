@@ -23,14 +23,23 @@
   (general-evil-setup)
   )
 
+
 (general-define-key
  :states '(visual normal operator motion insert)
- "C-c" 'evil-normal-state)
+ "C-c" 'evil-normal-state
+ "S-RET" 'newline-at-end-of-line
+ )
+
+
+(general-define-key
+ :keymaps 'python-mode-map
+ "C-]" 'anaconda-mode-find-definitions)
 
 (general-imap "j"
               (general-key-dispatch 'self-insert-command
                 :timeout 0.25
                 "j" 'evil-normal-state))
+
 
 (general-nmap
   :prefix "SPC"
