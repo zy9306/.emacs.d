@@ -60,6 +60,7 @@
   "y" 'browse-kill-ring
   "TAB" 'indent-for-tab-command
   "i" 'indent-rigidly
+  "x" 'counsel-M-x
   )
 
 
