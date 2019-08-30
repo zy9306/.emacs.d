@@ -32,8 +32,10 @@
 
 
 (general-define-key
+ :states '(normal insert)
  :keymaps 'python-mode-map
  "C-]" 'anaconda-mode-find-definitions)
+
 
 (general-imap "j"
               (general-key-dispatch 'self-insert-command
@@ -74,11 +76,6 @@
   "hv" 'counsel-describe-variable
   "hf" 'counsel-describe-function
   )
-
-
-;; (general-nmap
-;;   :prefix ";"
-;; )
 
 
 (use-package evil-surround
