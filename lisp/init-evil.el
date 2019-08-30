@@ -37,6 +37,11 @@
  "C-]" 'anaconda-mode-find-definitions)
 
 
+(general-define-key
+ :states '(normal insert)
+  "TAB" 'indent-for-tab-command)
+
+
 (general-imap "j"
               (general-key-dispatch 'self-insert-command
                 :timeout 0.25
@@ -69,7 +74,6 @@
   "r" 'query-replace
   "R" 'query-replace-regexp
   "y" 'browse-kill-ring
-  "TAB" 'indent-for-tab-command
   "i" 'indent-rigidly
   "x" 'counsel-M-x
   "hb" 'describe-bindings
