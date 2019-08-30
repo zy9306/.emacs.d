@@ -42,6 +42,12 @@
   "TAB" 'indent-for-tab-command)
 
 
+(general-define-key
+ :states 'normal
+ "9" 'scroll-down-line
+ "0" 'scroll-up-line
+ )
+
 (general-imap "j"
               (general-key-dispatch 'self-insert-command
                 :timeout 0.25
