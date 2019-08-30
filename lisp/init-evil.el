@@ -7,6 +7,9 @@
   :config (key-chord-mode 1)
 )
 
+
+(setq evil-disable-insert-state-bindings t)
+
 (use-package evil
   :ensure t
   :config
