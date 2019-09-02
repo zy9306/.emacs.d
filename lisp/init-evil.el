@@ -44,8 +44,8 @@
 
 (general-define-key
  :states 'normal
- "9" 'scroll-down-line
- "0" 'scroll-up-line
+ "8" 'scroll-down-line
+ "9" 'scroll-up-line
  )
 
 (general-imap "j"
