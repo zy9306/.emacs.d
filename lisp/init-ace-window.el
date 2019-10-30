@@ -29,8 +29,40 @@
     (when other-buffer
       (set-window-buffer (next-window) other-buffer))))
 
-(global-set-key (kbd "C-x |") 'split-window-horizontally-instead)
-(global-set-key (kbd "C-x _") 'split-window-vertically-instead)
+;; (global-set-key (kbd "C-x |") 'split-window-horizontally-instead)
+;; (global-set-key (kbd "C-x _") 'split-window-vertically-instead)
+
+
+(defun iwindhelper (&optional arg)
+  "move window interactively."
+  (interactive)
+  ;; (if (one-window-p) (error "Cannot resize sole window"))
+  (or arg (setq arg 1))
+  (let (c)
+    (catch 'done
+	(message
+	 "h=left, j=down, k=up, l=right, s=ace-swap-window, d=ace-delete-other-windows, |=|, _=-"
+	 arg)
+	(setq c (read-char))
+	(condition-case ()
+	    (cond
+	     ((= c ?h) (windmove-left arg))
+	     ((= c ?j) (windmove-down arg))
+	     ((= c ?k) (windmove-up arg))
+	     ((= c ?l) (windmove-right arg))
+
+         ((= c ?s) (ace-swap-window))
+         ((= c ?d) (ace-delete-other-windows))
+
+         ((= c ?|) (split-window-horizontally-instead))
+         ((= c ?_) (split-window-vertically-instead))
+
+	     ((= c ?\^G) (keyboard-quit))
+	     ((= c ?q) (throw 'done t))
+	     (t (beep)))
+	  (error (beep))))))
+
+(global-set-key (kbd "C-x o") 'iwindhelper)
 
 
 (provide 'init-ace-window)
