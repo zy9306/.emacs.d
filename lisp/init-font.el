@@ -37,7 +37,8 @@
                         charset (font-spec :family "FZKai-Z03"))))
 (if (display-graphic-p)
     ;; select a chinese font and type C-u C-x = what font used for chinese
-    (setq face-font-rescale-alist '(("FZKai-Z03" . 1.2))))
+    ;; 中英文等宽可调至1.2左右，1.0即为等高，等宽等高二选一
+    (setq face-font-rescale-alist '(("FZKai-Z03" . 1.0))))
 
 ;; 调整倍数使以下中文和英文长度相等
 ;; 你你你你你你你你你你你你你你你你你你你你
