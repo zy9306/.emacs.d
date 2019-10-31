@@ -95,4 +95,19 @@
 (global-set-key (kbd "C-z") 'iwindhelper)
 
 
+;; 最大化当前窗口，再次执行回到先前的窗口状态
+(defvar window-split-saved-config nil)
+(defun window-split-toggle-one-window ()
+  "Make the current window fill the frame.
+If there is only one window try reverting to the most recently saved
+window configuration."
+  (interactive)
+  (if (and window-split-saved-config (not (window-parent)))
+      (set-window-configuration window-split-saved-config)
+    (setq window-split-saved-config (current-window-configuration))
+    (delete-other-windows)))
+
+(global-set-key (kbd "C-x 1") 'window-split-toggle-one-window)
+
+
 (provide 'init-ace-window)
