@@ -4,6 +4,8 @@
 (setq mc/cmds-to-run-for-all
       '(
         comment-dwim
+        electric-pair-delete-pair
+        kill-region
         yaml-electric-backspace
         yaml-electric-dash-and-dot
         ))
