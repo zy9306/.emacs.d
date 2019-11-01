@@ -92,7 +92,7 @@
 	     (t (beep)))
 	  (error (beep))))))
 
-(global-set-key (kbd "C-z") 'iwindhelper)
+(global-set-key (kbd "C-x w") 'iwindhelper)
 
 
 ;; 最大化当前窗口，再次执行回到先前的窗口状态
