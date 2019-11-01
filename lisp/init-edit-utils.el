@@ -7,7 +7,12 @@
 
 
 (delete-selection-mode t)                   ; if nil, when select `abc` then enter x,if will be `abcx` rather than `x`
+
 (electric-pair-mode t)                      ; auto close ()
+(push '(?\' . ?\') electric-pair-pairs)
+(push '(?" . ?") electric-pair-pairs)
+(push '(?` . ?`) electric-pair-pairs)
+
 (show-paren-mode t)                         ; highlight ()
 (column-number-mode t)
 (global-hl-line-mode t)
