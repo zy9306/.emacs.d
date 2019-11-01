@@ -8,7 +8,11 @@
 
   :config
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-  (global-set-key (kbd "M-o") 'ace-window))
+  (global-set-key (kbd "C-x o") 'ace-window))
+
+
+(global-set-key (kbd "M-o") 'other-window)  ;; 逆时针
+(global-set-key (kbd "M-O") (lambda () (interactive) (other-window -1)))  ;; 顺时针
 
 
 (defun split-window-horizontally-instead ()
