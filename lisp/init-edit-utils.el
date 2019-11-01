@@ -87,4 +87,11 @@
 (global-set-key (kbd "C-*") 'iscroll)
 
 
+(use-package move-text
+  :ensure t
+  :config
+  (global-set-key (kbd "M-P") 'move-text-up)
+  (global-set-key (kbd "M-N") 'move-text-down))
+
+
 (provide 'init-edit-utils)
