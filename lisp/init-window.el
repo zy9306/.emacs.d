@@ -110,4 +110,4 @@ window configuration."
 (global-set-key (kbd "C-x 1") 'window-split-toggle-one-window)
 
 
-(provide 'init-ace-window)
+(provide 'init-window)

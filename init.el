@@ -27,7 +27,7 @@
 (local/load-package 'init-edit-utils)
 (local/load-package 'init-ivy)
 (local/load-package 'init-avy)
-(local/load-package 'init-ace-window)
+(local/load-package 'init-window)
 (local/load-package 'init-projectile)
 (local/load-package 'init-find)
 (local/load-package 'init-org)
