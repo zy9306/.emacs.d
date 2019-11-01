@@ -35,7 +35,7 @@
 (local/load-package 'init-rust)
 (local/load-package 'init-go)
 (local/load-package 'init-additional-major-mode)
-(local/load-package 'init-display-buffer)
+;; (local/load-package 'init-display-buffer)
 (local/load-package 'init-keyfreq)
 
 ;; (local/load-package 'init-key-chord)
