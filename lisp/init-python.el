@@ -60,7 +60,5 @@
 
 ;; todo maybe need highlight-indentation
 
-(global-unset-key (kbd "C-c C-P"))  ;; disable run python
-
 
 (provide 'init-python)
