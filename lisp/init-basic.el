@@ -34,7 +34,8 @@
   :config
   (setq imenu-list-auto-resize t)
   (setq imenu-list-focus-after-activation t)
-  (global-set-key (kbd "C-\"") #'imenu-list-smart-toggle))
+  (global-set-key (kbd "C-x \"") #'imenu-list-smart-toggle)
+  (global-set-key (kbd "C-\"") #'counsel-imenu))
 
 (use-package flycheck
   ;; http://www.flycheck.org/en/latest/
