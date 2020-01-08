@@ -52,14 +52,17 @@
   (add-hook 'dired-mode-hook 'diff-hl-dired-mode))
 
 (use-package symbol-overlay
+  ;; https://github.com/wolray/symbol-overlay/tree/master
   ;; https://github.com/purcell/emacs.d/blob/master/lisp/init-editing-utils.el
   ;; 高亮相同单词，可同时高亮多个，M-i增加单词
+  ;; 一些mode的关键字会被忽略，在symbol-overlay-ignore-functions变量中定义相关mode的忽略函数
   :ensure t
   :diminish symbol-overlay-mode
   :config
-  (dolist (hook '(prog-mode-hook html-mode-hook conf-mode-hook text-mode-hook))
+  (dolist (hook '(prog-mode-hook html-mode-hook conf-mode-hook text-mode-hook yaml-mode-hook))
   (add-hook hook 'symbol-overlay-mode))
   (define-key symbol-overlay-mode-map (kbd "M-i") 'symbol-overlay-put)
+  (define-key symbol-overlay-mode-map (kbd "M-I") 'symbol-overlay-remove-all)
   (define-key symbol-overlay-mode-map (kbd "M-n") 'symbol-overlay-jump-next)
   (define-key symbol-overlay-mode-map (kbd "M-p") 'symbol-overlay-jump-prev))
 
