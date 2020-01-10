@@ -21,7 +21,7 @@
 
 ;; mac dpi is too high, so enlarge font
 (when *is-a-mac*
-  (set-face-attribute 'default nil :font "Source Code Pro 19")
+  (set-face-attribute 'default nil :font "Source Code Pro 15")
 )
 
 ;; Chinese Font
