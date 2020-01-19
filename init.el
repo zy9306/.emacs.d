@@ -53,8 +53,9 @@
 
 
 ;; evil config
-(if (not (display-graphic-p))
-   (local/load-package 'init-evil))
+;; make `emacs --daemon` not load evil.
+(if (and (not (daemonp)) (not (display-graphic-p)))
+    (local/load-package 'init-evil))
 
 
 ;; when offline

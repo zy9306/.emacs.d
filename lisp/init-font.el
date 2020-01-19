@@ -10,6 +10,11 @@
 ;;       ))
 
 
+;; fix `emacs --daemon` can't load font correctly.
+(if (daemonp)
+    (add-to-list 'default-frame-alist '(font . "Source Code Pro 15")))
+
+
 ;; Setting English Font
 (when *linux*
   (set-face-attribute 'default nil :font "Ubuntu Mono 13")
