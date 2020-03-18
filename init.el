@@ -52,6 +52,11 @@
     (exec-path-from-shell-initialize)))
 
 
+(use-package spacemacs-theme
+  :ensure t
+  :defer t)
+
+
 ;; evil config
 ;; make `emacs --daemon` not load evil.
 (if (and (not (daemonp)) (not (display-graphic-p)))
@@ -89,10 +94,6 @@
  ;; If there is more than one, they won't work right.
  )
 
-;; add to custom-set-faces when use default theme.
-;; '(hl-line ((t (:background "pink"))))
-;; '(mode-line ((t (:background "white" :foreground "grey20" :box (:line-width -1 :color "dim gray") :slant normal :weight light))))
-;; '(mode-line-inactive ((t (:background "white" :foreground "grey20" :box (:line-width -1 :color "gray") :slant italic :weight light))))
 
 ;; close debug when finally load
 (setq debug-on-error nil)
