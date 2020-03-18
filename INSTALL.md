@@ -33,3 +33,9 @@ download latest version from https://mirrors.syringanetworks.net/gnu/emacs/
 - libgtk2.0-dev
 - texinfo
 - libncurses5-dev or libncurses-dev # tmux编译时已安装ncurses，暂时先不用装试试
+
+
+## 注意事项
+
+- .zshrc或.bashrc需添加`export LC_CTYPE="zh_CN.UTF-8"`，否则通过终端打开无法输入中文
+- `~/.profile`中需添加`export LC_CTYPE="zh_CN.UTF-8"`，否则正常打开时无法输入中文
