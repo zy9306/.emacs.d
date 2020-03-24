@@ -2,14 +2,15 @@
 
 (use-package anaconda-mode
   :ensure t
+  :defer t
   :ensure company-anaconda
 
   :diminish anaconda-mode
 
-  :config
-  (add-hook 'python-mode-hook 'anaconda-mode)
-  (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
+  :hook ((python-mode . anaconda-mode)
+         (python-mode . anaconda-eldoc-mode))
 
+  :config
   (require 'rx)
   (eval-after-load "company"
     '(add-to-list 'company-backends 'company-anaconda))
@@ -17,20 +18,19 @@
   (global-set-key (kbd "C-c M-r") 'anaconda-mode-find-references)
 
   (setq python-shell-interpreter "ipython"
-        python-shell-interpreter-args "-i --simple-prompt")
-  )
+        python-shell-interpreter-args "-i --simple-prompt"))
 
 
 (use-package pyvenv
   :ensure t
-
+  :defer t
   :config
   (setenv "WORKON_HOME" "~/Envs"))
 
 
 (use-package auto-virtualenv
   :ensure t
-
+  :defer t
   :init
   ;; add .python-version file to project root, then add path of virtualenv eg:~/Envs/venv36/
   (add-hook 'python-mode-hook 'auto-virtualenv-set-virtualenv)

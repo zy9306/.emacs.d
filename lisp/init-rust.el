@@ -3,12 +3,14 @@
 
 (use-package rust-mode
   :ensure t
-  :config
+  :defer t
+  :init
   (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode)))
 
 (use-package flycheck-rust
   :ensure t
-  :config
+  :defer t
+  :init
   (with-eval-after-load 'rust-mode
     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
 
@@ -27,8 +29,11 @@
 ;; https://github.com/rust-analyzer/rust-analyzer
 ;; 使用rust-analyzer,缺点是不能使用snippet,但补全比rls强,rust-analyzer还在实验性阶段
 ;; 如果要切换为rls,注释掉以下行即可,lsp默认调用rls
-(require 'ra-emacs-lsp)
-(add-hook 'rust-mode-hook #'lsp)
+(use-package ra-emacs-lsp
+  :defer t
+  :init
+  (add-hook 'rust-mode-hook #'lsp))
+
 ;; (push '("rust" . company-lsp--rust-completion-snippet) company-lsp--snippet-functions)
 
 

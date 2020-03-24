@@ -3,9 +3,11 @@
 
 (use-package company
   :ensure t
+  :defer t
   ;; :diminish company-mode " co"
-  :config
+  :init
   (add-hook 'after-init-hook 'global-company-mode)
+  :config
   (setq company-idle-delay 0.05)
   (setq company-tooltip-idle-delay 0.05)
   (setq company-minimum-prefix-length 2)
@@ -38,6 +40,7 @@
 (use-package lsp-mode
   ;; https://github.com/emacs-lsp/lsp-mode
   :ensure t
+  :defer t
   :commands lsp
   :config
   (setq lsp-auto-guess-root t)
@@ -47,13 +50,15 @@
 (use-package lsp-ui
   ;; https://github.com/emacs-lsp/lsp-ui
   :ensure t
+  :defer t
+  :init
+  (add-hook 'lsp-mode-hook 'lsp-ui-mode)
+  (add-hook 'lsp-mode-hook 'flycheck-mode)
   :commands lsp-ui-mode
   :config
   (setq lsp-ui-doc-border "pink")
   (setq lsp-ui-flycheck-enable t)
   (setq lsp-ui-sideline-enable nil)
-  (add-hook 'lsp-mode-hook 'lsp-ui-mode)
-  (add-hook 'lsp-mode-hook 'flycheck-mode)
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
 
@@ -61,17 +66,21 @@
   ;; https://github.com/tigersoldier/company-lsp
   ;; Expand snippets on completion (requires yasnippet).
   :ensure t
+  :defer t
   :config
+  (setq company-lsp-async t)
   (push 'company-lsp company-backends)
-  (setq company-lsp-async t))
+)
 
 
 (use-package yasnippet
   ;; https://github.com/joaotavora/yasnippet
   :ensure t
-  :config
+  :defer t
+  :init
+  (add-hook 'prog-mode-hook #'yas-minor-mode)
   ;; (yas-global-mode 1)
-  (add-hook 'prog-mode-hook #'yas-minor-mode))
+  )
 
 
 (provide 'init-completion)

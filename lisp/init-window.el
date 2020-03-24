@@ -5,8 +5,8 @@
 
 (use-package ace-window
   :ensure t
-
-  :config
+  :defer t
+  :init
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   (global-set-key (kbd "C-x o") 'ace-window))
 
@@ -116,7 +116,8 @@ window configuration."
 
 (use-package buffer-move
   :ensure t
-  :config
+  :defer t
+  :init
   (global-set-key (kbd "<C-S-up>")     'buf-move-up)
   (global-set-key (kbd "<C-S-down>")   'buf-move-down)
   (global-set-key (kbd "<C-S-left>")   'buf-move-left)

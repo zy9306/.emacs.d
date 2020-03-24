@@ -10,7 +10,8 @@
 ;; ag config
 (use-package ag
   :ensure t
-  :config
+  :defer t
+  :init
   (setq ag-highlight-search t)
   (when *win*
     (setq ag-executable "C:/Wherever/I/Installed/Ag/ag.exe"))

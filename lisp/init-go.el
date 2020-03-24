@@ -3,19 +3,22 @@
 
 (use-package go-mode
   :ensure t
-  :config
+  :defer t
+  :init
   (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode)))
 
 (use-package go-eldoc
   :ensure t
-  :config
+  :defer t
+  :init
   (add-hook 'go-mode-hook 'go-eldoc-setup))
 
 (use-package company-go
   ;; should install gocode
   ;; https://github.com/nsf/gocode
   :ensure t
-  :config
+  :defer t
+  :init
   (add-hook 'go-mode-hook (lambda ()
                             (set (make-local-variable 'company-backends) '(company-go))
                             (company-mode))))

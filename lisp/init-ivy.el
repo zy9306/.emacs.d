@@ -4,6 +4,7 @@
 
 (use-package ivy
   :ensure t
+  :defer t
   :ensure swiper
   :ensure counsel
   :ensure ivy-hydra
@@ -11,10 +12,11 @@
   :diminish ivy-mode
   :diminish counsel-mode
 
-  :config
-  (ivy-mode 1)
-  (counsel-mode 1)
+  :init
+  (add-hook 'after-init-hook 'ivy-mode)
+  (add-hook 'after-init-hook 'counsel-mode)
   
+  :config
   (setq ivy-use-virtual-buffers t)
   (setq ivy-count-format "(%d/%d) ")
   (setq ivy-height 10)
@@ -56,6 +58,7 @@
 (use-package smex
   ;; M-x时优先列出使用过的命令
   :ensure t
+  :defer t
   :config
   ;; (smex-initialize)
   (setq-default smex-save-file (expand-file-name ".smex-items" user-emacs-directory))

@@ -2,7 +2,9 @@
 
 (use-package avy
   :ensure t
-
+  :defer t
+  :init
+  (add-hook 'after-init-hook 'avy-setup-default)
   :config
   (global-set-key (kbd "C-;") 'avy-goto-char)
   (global-set-key (kbd "C-'") 'avy-goto-char-2)
@@ -13,7 +15,7 @@
   ;; a char begin of word
   (global-set-key (kbd "M-g e") 'avy-goto-word-0)
 
-  (avy-setup-default)
+
   (global-set-key (kbd "C-c C-j") 'avy-resume))
 
 (provide 'init-avy)
