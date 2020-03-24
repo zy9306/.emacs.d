@@ -22,6 +22,18 @@
 ;; 显示时间格式为 2019-01-25 Fri 14:55 ，若不设，星期会显示为中文
 (setq system-time-locale "C")
 
+
+
+;; https://github.com/snosov1/toc-org
+(use-package toc-org
+  :ensure t
+  :defer t
+  :hook ((org-mode . toc-org-mode)
+         (markdown-mode . toc-org-mode)))
+;; (define-key markdown-mode-map (kbd "\C-c\C-o") 'toc-org-markdown-follow-thing-at-point)
+
+
+
 ;; org capture
 ;; (global-set-key (kbd "C-c c") 'org-capture)
 ;; ;; http://www.zmonster.me/2018/02/28/org-mode-capture.html
