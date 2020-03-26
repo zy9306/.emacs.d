@@ -33,8 +33,8 @@
     (when other-buffer
       (set-window-buffer (next-window) other-buffer))))
 
-;; (global-set-key (kbd "C-x |") 'split-window-horizontally-instead)
-;; (global-set-key (kbd "C-x _") 'split-window-vertically-instead)
+(global-set-key (kbd "C-x |") 'split-window-horizontally-instead)
+(global-set-key (kbd "C-x _") 'split-window-vertically-instead)
 
 
 ;; https://www.emacswiki.org/emacs/WindowResize#toc3
@@ -112,6 +112,21 @@ window configuration."
     (delete-other-windows)))
 
 (global-set-key (kbd "C-x 1") 'window-split-toggle-one-window)
+
+
+;; https://github.com/purcell/emacs.d/blob/master/lisp/init-windows.el
+;; 固定当前buffer不被覆盖
+(defun toggle-current-window-dedication ()
+  "Toggle whether the current window is dedicated to its current buffer."
+  (interactive)
+  (let* ((window (selected-window))
+         (was-dedicated (window-dedicated-p window)))
+    (set-window-dedicated-p window (not was-dedicated))
+    (message "Window %sdedicated to %s"
+             (if was-dedicated "no longer " "")
+             (buffer-name))))
+
+(global-set-key (kbd "C-c <down>") 'toggle-current-window-dedication)
 
 
 (use-package buffer-move
