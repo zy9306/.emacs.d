@@ -49,4 +49,9 @@ sudo apt-get build-dep emacs
   的正则directory-listing-before-filename-regexp会因中文日期出现问
   题
 
+- projectile-toggle-project-read-only会在当前项目目录下新
+  建.dir-locals.el文件，并将buffer-read-only打开，如果.emacs.d目录被设
+  置为只读，则安装package时会因为目录不可写导致报错，直接删
+  除.dir-locals.el或再次运行projectile-toggle-project-read-only即可
+
 修改完~/.profile需要重启
