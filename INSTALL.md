@@ -39,3 +39,7 @@ download latest version from https://mirrors.syringanetworks.net/gnu/emacs/
 
 - .zshrc或.bashrc需添加`export LC_CTYPE="zh_CN.UTF-8"`，否则通过终端打开无法输入中文
 - `~/.profile`中需添加`export LC_CTYPE="zh_CN.UTF-8"`，否则正常打开时无法输入中文
+- `~/.profile`中需添加`export LC_TIME="en_US.UTF-8"`，否则dired默认的
+  正则directory-listing-before-filename-regexp会因中文日期出现问题
+
+修改完`~/.profile`需要重启
