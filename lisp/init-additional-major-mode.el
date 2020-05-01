@@ -4,6 +4,7 @@
 
 (use-package markdown-mode
   :ensure t
+  :defer t
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
@@ -11,6 +12,7 @@
 
 (use-package yaml-mode
   :ensure t
+  :defer t
   :config
   (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
   (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
@@ -20,8 +22,15 @@
 
 (use-package dockerfile-mode
   :ensure t
+  :defer t
   :config
   (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
+
+(use-package protobuf-mode
+  :ensure t
+  :defer t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.proto\\'" . protobuf-mode)))
 
 
 (provide 'init-additional-major-mode)
