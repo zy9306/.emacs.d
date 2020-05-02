@@ -63,8 +63,19 @@
           (lambda()
             (local-unset-key (kbd "C-c C-p"))))
 
+(add-hook 'python-mode-hook
+          (lambda()
+            (local-unset-key (kbd "C-c C-l"))))
+
 
 ;; todo maybe need highlight-indentation
+
+(use-package highlight-indent-guides
+  :ensure t
+  :defer t
+  :config
+  (setq highlight-indent-guides-method 'bitmap))
+(global-set-key (kbd "C-c C-l") 'highlight-indent-guides-mode)
 
 
 (provide 'init-python)
