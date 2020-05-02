@@ -58,6 +58,12 @@
 (add-hook 'python-mode-hook 'my-python-mode-hook)
 
 
+;; disable run-python binding
+(add-hook 'python-mode-hook
+          (lambda()
+            (local-unset-key (kbd "C-c C-p"))))
+
+
 ;; todo maybe need highlight-indentation
 
 
