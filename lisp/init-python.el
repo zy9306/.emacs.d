@@ -53,6 +53,15 @@
 (global-set-key (kbd "C-c C-y") 'yapfify-region)
 
 
+(use-package flycheck-pycheckers
+  :ensure t
+  :defer t
+  :init
+  (with-eval-after-load 'flycheck
+    (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup))
+  (setq flycheck-pycheckers-checkers '(flake8)))
+
+
 (defun my-python-mode-hook ()
   (modify-syntax-entry ?_ "w"))
 (add-hook 'python-mode-hook 'my-python-mode-hook)
