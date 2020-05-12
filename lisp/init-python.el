@@ -21,7 +21,8 @@
 ;;         python-shell-interpreter-args "-i --simple-prompt"))
 
 
-;; TODO doc and keybinding
+;; https://github.com/emacs-lsp/lsp-python-ms
+;; 使用微软C#实现的lsp，比jedi和python实现的lsp性能更好
 (use-package lsp-python-ms
   :ensure t
   :defer t
@@ -30,6 +31,13 @@
                           (lsp)))  ; or lsp-deferred
   :init
   (setq lsp-ui-doc-enable nil))
+
+;; https://github.com/emacs-lsp/lsp-python-ms/blob/master/lsp-python-ms.el#L172
+;; 进入python-mode时会自动下载mspyls，如果不能正常下载，手动获取url进行下载
+(defun mspyls-latest-nupkg-url ()
+  (interactive)
+  (lsp)
+  (message "url: %s" (lsp-python-ms-latest-nupkg-url "stable")))
 
 
 (use-package pyvenv

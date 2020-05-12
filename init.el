@@ -30,6 +30,7 @@
 (local/load-package 'init-window)
 (local/load-package 'init-projectile)
 (local/load-package 'init-find)
+(local/load-package 'init-lsp)
 (local/load-package 'init-org)
 (local/load-package 'init-python)
 (local/load-package 'init-rust)
