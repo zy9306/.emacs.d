@@ -1,24 +1,35 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
-(use-package anaconda-mode
+;; (use-package anaconda-mode
+;;   :ensure t
+;;   :defer t
+;;   :ensure company-anaconda
+
+;;   :diminish anaconda-mode
+
+;;   :hook ((python-mode . anaconda-mode)
+;;          (python-mode . anaconda-eldoc-mode))
+
+;;   :config
+;;   (require 'rx)
+;;   (eval-after-load "company"
+;;     '(add-to-list 'company-backends 'company-anaconda))
+
+;;   (global-set-key (kbd "C-c M-r") 'anaconda-mode-find-references)
+
+;;   (setq python-shell-interpreter "ipython"
+;;         python-shell-interpreter-args "-i --simple-prompt"))
+
+
+;; TODO doc and keybinding
+(use-package lsp-python-ms
   :ensure t
   :defer t
-  :ensure company-anaconda
-
-  :diminish anaconda-mode
-
-  :hook ((python-mode . anaconda-mode)
-         (python-mode . anaconda-eldoc-mode))
-
-  :config
-  (require 'rx)
-  (eval-after-load "company"
-    '(add-to-list 'company-backends 'company-anaconda))
-
-  (global-set-key (kbd "C-c M-r") 'anaconda-mode-find-references)
-
-  (setq python-shell-interpreter "ipython"
-        python-shell-interpreter-args "-i --simple-prompt"))
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-python-ms)
+                          (lsp)))  ; or lsp-deferred
+  :init
+  (setq lsp-ui-doc-enable nil))
 
 
 (use-package pyvenv
