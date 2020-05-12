@@ -4,6 +4,8 @@
 ;; https://github.com/emacs-lsp/lsp-mode
 ;; https://emacs-lsp.github.io/lsp-mode/
 
+;; TODO init-completion中的lsp配置迁移
+
 (setq lsp-keymap-prefix "C-c l")
 
 (use-package lsp-mode

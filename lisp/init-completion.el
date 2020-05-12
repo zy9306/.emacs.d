@@ -35,42 +35,52 @@
   (define-key company-active-map (kbd "C-p") 'company-select-previous))
 
 
-;; lsp config  (目前使用lsp-mode作为client, 继续观望https://github.com/joaotavora/eglot/tree/master)
-
-(use-package lsp-mode
-  ;; https://github.com/emacs-lsp/lsp-mode
+;; https://github.com/sebastiencs/company-box/
+(use-package company-box
   :ensure t
   :defer t
-  :commands lsp
-  :config
-  (setq lsp-auto-guess-root t)
-  (setq lsp-prefer-flymake nil))
-
-;; TODO custom face
-(use-package lsp-ui
-  ;; https://github.com/emacs-lsp/lsp-ui
-  :ensure t
-  :defer t
+  :diminish company-box-mode
+  :hook (company-mode . company-box-mode)
   :init
-  (add-hook 'lsp-mode-hook 'lsp-ui-mode)
-  (add-hook 'lsp-mode-hook 'flycheck-mode)
-  :commands lsp-ui-mode
-  :config
-  (setq lsp-ui-doc-border "pink")
-  (setq lsp-ui-flycheck-enable t)
-  (setq lsp-ui-sideline-enable nil)
-  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-  (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
+  (setq company-box-doc-enable nil))
 
-(use-package company-lsp
-  ;; https://github.com/tigersoldier/company-lsp
-  ;; Expand snippets on completion (requires yasnippet).
-  :ensure t
-  :defer t
-  :config
-  (setq company-lsp-async t)
-  (push 'company-lsp company-backends)
-)
+
+;; ;; lsp config  (目前使用lsp-mode作为client, 继续观望https://github.com/joaotavora/eglot/tree/master)
+
+;; (use-package lsp-mode
+;;   ;; https://github.com/emacs-lsp/lsp-mode
+;;   :ensure t
+;;   :defer t
+;;   :commands lsp
+;;   :config
+;;   (setq lsp-auto-guess-root t)
+;;   (setq lsp-prefer-flymake nil))
+
+;; ;; TODO custom face
+;; (use-package lsp-ui
+;;   ;; https://github.com/emacs-lsp/lsp-ui
+;;   :ensure t
+;;   :defer t
+;;   :init
+;;   (add-hook 'lsp-mode-hook 'lsp-ui-mode)
+;;   (add-hook 'lsp-mode-hook 'flycheck-mode)
+;;   :commands lsp-ui-mode
+;;   :config
+;;   (setq lsp-ui-doc-border "pink")
+;;   (setq lsp-ui-flycheck-enable t)
+;;   (setq lsp-ui-sideline-enable nil)
+;;   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+;;   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
+
+;; (use-package company-lsp
+;;   ;; https://github.com/tigersoldier/company-lsp
+;;   ;; Expand snippets on completion (requires yasnippet).
+;;   :ensure t
+;;   :defer t
+;;   :config
+;;   (setq company-lsp-async t)
+;;   (push 'company-lsp company-backends)
+;; )
 
 
 (use-package yasnippet
