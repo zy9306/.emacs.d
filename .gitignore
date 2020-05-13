@@ -6,6 +6,7 @@ projectile*
 .smex-items
 .lsp-session-*
 anaconda-mode/
+.cache/
 autosaves/
 backups/
 vimish-fold/
