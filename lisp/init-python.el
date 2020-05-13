@@ -22,22 +22,26 @@
 
 
 ;; https://github.com/emacs-lsp/lsp-python-ms
-;; 使用微软C#实现的lsp，比jedi和python实现的lsp性能更好
+
 (use-package lsp-python-ms
   :ensure t
   :defer t
-  :hook (python-mode . (lambda ()
-                          (require 'lsp-python-ms)
-                          (lsp)))  ; or lsp-deferred
-  :init
-  (setq lsp-ui-doc-enable nil))
+  :hook
+  (python-mode . (lambda ()
+                   (require 'lsp-python-ms)
+                   (lsp)))  ; or lsp-deferred
+  )
 
-;; https://github.com/emacs-lsp/lsp-python-ms/blob/master/lsp-python-ms.el#L172
-;; 进入python-mode时会自动下载mspyls，如果不能正常下载，手动获取url进行下载
+
 (defun mspyls-latest-nupkg-url ()
+  ;; https://github.com/emacs-lsp/lsp-python-ms/blob/master/lsp-python-ms.el#L172
+  ;; 进入python-mode时会自动下载mspyls，如果不能正常下载，手动获取url进行下载
+  ;; 将下载的文件解压到~/.emacs.d/.cache/lsp/mspyls/
+  ;; 二进制文件为~/.emacs.d/.cache/lsp/mspyls/Microsoft.Python.LanguageServer
+  ;; 确实Microsoft.Python.LanguageServer在unix环境下有执行权限
   (interactive)
   (lsp)
-  (message "url: %s" (lsp-python-ms-latest-nupkg-url "stable")))
+  (message "%s" (lsp-python-ms-latest-nupkg-url "stable")))
 
 
 (use-package pyvenv
