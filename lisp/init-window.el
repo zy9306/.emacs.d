@@ -65,38 +65,14 @@
     (message "Done.")))
 
 
-(defun iwindhelper (&optional arg)
-  "move window interactively."
-  (interactive)
-  ;; (if (one-window-p) (error "Cannot resize sole window"))
-  (or arg (setq arg 1))
-  (let (c)
-    (catch 'done
-	(message
-	 "h=left, j=down, k=up, l=right, r=iresize-window, s=ace-swap-window, d=ace-delete-other-windows, |=|, _=-"
-	 arg)
-	(setq c (read-char))
-	(condition-case ()
-	    (cond
-	     ((= c ?h) (windmove-left arg))
-	     ((= c ?j) (windmove-down arg))
-	     ((= c ?k) (windmove-up arg))
-	     ((= c ?l) (windmove-right arg))
+(global-set-key (kbd "C-S-h") 'windmove-left)
+(global-set-key (kbd "C-S-j") 'windmove-down)
+(global-set-key (kbd "C-S-k") 'windmove-up)
+(global-set-key (kbd "C-S-l") 'windmove-right)
+(global-set-key (kbd "C-x w r") 'iresize-window)
+(global-set-key (kbd "C-x w s") 'ace-swap-window)
+(global-set-key (kbd "C-x w d") 'ace-delete-other-windows)
 
-         ((= c ?s) (ace-swap-window))
-         ((= c ?d) (ace-delete-other-windows))
-
-         ((= c ?|) (split-window-horizontally-instead))
-         ((= c ?_) (split-window-vertically-instead))
-
-         ((= c ?r) (iresize-window))
-
-	     ((= c ?\^G) (keyboard-quit))
-	     ((= c ?q) (throw 'done t))
-	     (t (beep)))
-	  (error (beep))))))
-
-(global-set-key (kbd "C-x w") 'iwindhelper)
 
 
 ;; 最大化当前窗口，再次执行回到先前的窗口状态
