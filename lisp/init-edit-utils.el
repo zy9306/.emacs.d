@@ -55,36 +55,11 @@
 (global-set-key (kbd "C-9") (lambda () (interactive) (previous-line 2)))
 (global-set-key (kbd "C-(") (lambda () (interactive) (scroll-down-line 2)))
 (global-set-key (kbd "C-)") (lambda () (interactive) (scroll-up-line 2)))
+(global-set-key (kbd "C-*") (lambda () (interactive) (scroll-left 1)))
+(global-set-key (kbd "C-&") (lambda () (interactive) (scroll-right 1)))
+(global-set-key (kbd "C-}") (lambda () (interactive) (scroll-left)))
+(global-set-key (kbd "C-{") (lambda () (interactive) (scroll-right)))
 
-
-(defun iscroll (&optional arg)
-  (interactive)
-  (or arg (setq arg 1))
-  (let (c)
-    (catch 'done
-      (while t
-	(message
-	 "k=up, j=down, h=left, l=right, n=scroll-down, p=scroll-up (by %d);  1-9=unit, q=quit"
-	 arg)
-	(setq c (read-char))
-	(condition-case ()
-	    (cond
-	     ((= c ?p) (scroll-down-line arg))
-	     ((= c ?n) (scroll-up-line arg))
-
-	     ((= c ?j) (next-line arg))
-	     ((= c ?k) (previous-line arg))
-         ((= c ?l) (forward-char))
-         ((= c ?h) (backward-char))
-
-	     ((= c ?\^G) (keyboard-quit))
-	     ((= c ?q) (throw 'done t))
-	     ((and (> c ?0) (<= c ?9)) (setq arg (- c ?0)))
-	     (t (beep)))
-	  (error (beep)))))
-    (message "Done.")))
-
-(global-set-key (kbd "C-*") 'iscroll)
 
 
 (use-package move-text
