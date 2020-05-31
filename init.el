@@ -74,6 +74,11 @@
 (setq-default confirm-kill-processes nil)
 
 
+;; some key binding
+(global-unset-key (kbd "C-x C-b"))
+(global-set-key (kbd "C-x C-S-b") 'list-buffers)
+
+
 ;; end of the file reset gc
 (setq gc-cons-threshold 16777216
       gc-cons-percentage 0.1)

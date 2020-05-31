@@ -34,7 +34,7 @@
   :defer t
   :init
   (global-set-key [f8] 'neotree-toggle)
-  (global-set-key (kbd "C-c C-p") 'neotree-project-dir)
+  (global-set-key (kbd "C-c C-n") 'neotree-project-dir)
   :config
   (setq neo-smart-open t)
   (setq projectile-switch-project-action 'neotree-projectile-action))

@@ -46,6 +46,8 @@
         '(
           (".*ivy-occur.*" :regexp t :select t :popup t :align right :size 0.33)
 
+          ("*Buffer List*" :regexp nil :select t :align right :size 0.33)
+
           ;; (magit-status-mode :select t :inhibit-window-quit t :same t)
 
           ;; the last rule
