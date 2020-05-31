@@ -42,7 +42,10 @@
 
   ;; ivy-resume resumes the last Ivy-based completion
   (global-set-key (kbd "C-c C-r") 'ivy-resume)
-  (global-set-key (kbd "C-c C-o") 'ivy-occur))
+  (global-set-key (kbd "C-c C-o") 'ivy-occur)
+
+  (global-set-key (kbd "C-;") 'counsel-mark-ring)
+  )
 
 
 ;; todo C-o (hydra-ivy/body)

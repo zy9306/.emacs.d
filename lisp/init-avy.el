@@ -6,7 +6,7 @@
   :init
   (add-hook 'after-init-hook 'avy-setup-default)
   :config
-  (global-set-key (kbd "C-;") 'avy-goto-char)
+  (global-set-key (kbd "C-:") 'avy-goto-char)
   (global-set-key (kbd "C-'") 'avy-goto-char-2)
   (global-set-key (kbd "M-g f") 'avy-goto-line)
 
