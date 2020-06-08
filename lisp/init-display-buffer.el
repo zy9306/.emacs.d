@@ -54,9 +54,6 @@
 
           ;; the last rule
           ;; ("\\*.*\\*" :regexp t :select t :size 0.3 :align below)
-
-          ;; 默认选中所有弹出buffer，方便直接q退出
-          ("\\*.*\\*" :regexp t :select t)
           )
         )
   (add-hook 'after-init-hook (lambda () (shackle-mode 1)))
