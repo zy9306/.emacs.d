@@ -33,10 +33,11 @@
 (use-package lsp-mode
   :ensure t
   :defer t
-  :hook
-  (
-   (lsp-mode . lsp-enable-which-key-integration)
-   )
+  ;; 已禁用which-key
+  ;; :hook
+  ;; (
+  ;;  (lsp-mode . lsp-enable-which-key-integration)
+  ;;  )
   :commands lsp
   :config
   (setq lsp-auto-guess-root t)
