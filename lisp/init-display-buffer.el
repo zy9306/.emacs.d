@@ -44,7 +44,7 @@
   (setq shackle-default-rule nil)
   (setq shackle-rules
         '(
-          (".*ivy-occur.*" :regexp t :select t :popup t :align right :size 0.33)
+          (".*ivy-occur.*" :regexp t :select t :popup t :align below :size 0.33)
 
           ("*Buffer List*" :regexp nil :select t :align right :size 0.33)
 
