@@ -22,12 +22,15 @@
   (add-hook 'text-mode-hook 'real-auto-save-mode)
   (setq real-auto-save-interval 1))
 
-;; (use-package which-key
-;;   :ensure t
-;;   :diminish which-key-mode
-;;   :config
-;;   (which-key-mode)
-;;   (which-key-setup-side-window-bottom))
+(use-package which-key
+  :ensure t
+  :diminish which-key-mode
+  :defer t
+  ;; enable manual
+  ;; :init
+  ;; (which-key-setup-side-window-bottom)
+  ;; (which-key-mode)
+  )
 
 (use-package imenu-list
   :ensure t
