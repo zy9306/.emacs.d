@@ -267,6 +267,10 @@
 
 (global-set-key (kbd "<f5>") 'revert-all-buffers)
 
+(auto-revert-mode t)
+(global-auto-revert-mode t)
+
+
 
 
 
