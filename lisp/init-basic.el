@@ -262,7 +262,7 @@
   (dolist (buf (buffer-list))
     (with-current-buffer buf
       (when (and (buffer-file-name) (file-exists-p (buffer-file-name)) (not (buffer-modified-p)))
-        (revert-buffer t t t) )))
+        (revert-buffer t t) )))
   (message "Refreshed open files.") )
 
 (global-set-key (kbd "<f5>") 'revert-all-buffers)
