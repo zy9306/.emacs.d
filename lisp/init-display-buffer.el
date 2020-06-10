@@ -50,6 +50,8 @@
 
           ("*Flycheck errors*" :regexp nil :select t :align below :size 0.33)
 
+          ("*Warnings*" :regexp nil :select t :align below :size 0.33)
+
           ;; (magit-status-mode :select t :inhibit-window-quit t :same t)
 
           ;; the last rule
