@@ -267,8 +267,10 @@
 
 (global-set-key (kbd "<f5>") 'revert-all-buffers)
 
-(auto-revert-mode t)
+;; revert settings
+;; (auto-revert-mode t)
 (global-auto-revert-mode t)
+(setq auto-revert-check-vc-info t)
 
 
 
