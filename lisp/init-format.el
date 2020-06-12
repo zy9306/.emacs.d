@@ -6,10 +6,9 @@
 ;; https://github.com/prettier/prettier
 (use-package format-all
   :ensure t
-  :defer t
-  :init
-  (global-unset-key (kbd "C-c C-l"))
-  (global-set-key (kbd "C-c C-l") 'format-all-buffer))
+  :defer t)
+
+(global-set-key (kbd "C-c C-f") 'format-all-buffer)
 
 
 (provide 'init-format)

@@ -99,6 +99,10 @@
           (lambda()
             (local-unset-key (kbd "C-c C-l"))))
 
+(add-hook 'python-mode-hook
+          (lambda()
+            (local-unset-key (kbd "C-c C-f"))))
+
 
 ;; todo maybe need highlight-indentation
 
