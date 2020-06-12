@@ -76,6 +76,15 @@
 (global-set-key (kbd "C-c C-y") 'yapfify-region)
 
 
+;; pip install black
+;; format region need black-macchiato
+;; pip install black-macchiato
+(use-package python-black
+  :ensure t
+  :defer t)
+(global-set-key (kbd "C-c C-b") 'python-black-region)
+
+
 (use-package flycheck-pycheckers
   :ensure t
   :defer t
