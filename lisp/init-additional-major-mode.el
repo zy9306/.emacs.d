@@ -30,7 +30,14 @@
   :ensure t
   :defer t
   :config
-  (add-to-list 'auto-mode-alist '("\\.proto\\'" . protobuf-mode)))
+  (add-to-list 'auto-mode-alist '("\\.proto\\'" . protobuf-mode))
+
+  (defconst my-protobuf-style
+    '((c-basic-offset . 4)
+      (indent-tabs-mode . nil)))
+  (add-hook 'protobuf-mode-hook
+            (lambda () (c-add-style "my-protobuf-style" my-protobuf-style t)))
+  )
 
 
 (provide 'init-additional-major-mode)
