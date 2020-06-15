@@ -42,9 +42,20 @@
   :config
   (setq lsp-auto-guess-root t)
   (setq lsp-ui-doc-enable nil)
+  (setq lsp-prefer-capf nil)
   ;; keymap
   (define-key lsp-mode-map [remap xref-find-definitions] #'lsp-find-definition)
   (define-key lsp-mode-map [remap xref-find-references] #'lsp-find-references)
+  )
+
+(use-package company-lsp
+  :ensure t
+  :defer t
+  :config
+  (setq company-lsp-cache-candidates 'auto)
+  (setq company-lsp-async t)
+  (setq company-lsp-enable-snippet t)
+  (setq company-lsp-enable-recompletion t)
   )
 
 (use-package lsp-ui
