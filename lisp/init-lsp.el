@@ -41,8 +41,8 @@
   :commands lsp
   :config
   (setq lsp-auto-guess-root t)
-  (setq lsp-ui-doc-enable nil)
   (setq lsp-prefer-capf nil)
+  (setq lsp-enable-imenu nil)
   ;; keymap
   (define-key lsp-mode-map [remap xref-find-definitions] #'lsp-find-definition)
   (define-key lsp-mode-map [remap xref-find-references] #'lsp-find-references)
@@ -71,6 +71,12 @@
   ;; keymap
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
+  (setq lsp-ui-doc-enable nil)
+  (setq lsp-ui-imenu-enable nil)
+  (setq lsp-ui-peek-enable nil)
+  (setq lsp-ui-doc-enable nil)
+  (setq lsp-ui-sideline-enable nil)
+  (setq lsp-ui-mode nil)
   )
 
 (use-package lsp-ivy
