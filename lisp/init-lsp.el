@@ -66,17 +66,20 @@
   (add-hook 'lsp-mode-hook 'flycheck-mode)
   :commands lsp-ui-mode
   :config
-  ;; lsp ui
-  (setq lsp-ui-sideline-enable t)
   ;; keymap
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   ;; (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
+  ;; lsp ui
+  (setq lsp-ui-mode t)
+  (setq lsp-ui-sideline-enable t
+        lsp-ui-sideline-show-symbol t
+        lsp-ui-sideline-show-hover t
+        lsp-ui-sideline-show-flycheck t
+        lsp-ui-sideline-show-code-actions t
+        lsp-ui-sideline-show-diagnostics nil)
   (setq lsp-ui-doc-enable nil)
   (setq lsp-ui-imenu-enable nil)
   (setq lsp-ui-peek-enable nil)
-  (setq lsp-ui-doc-enable nil)
-  (setq lsp-ui-sideline-enable nil)
-  (setq lsp-ui-mode nil)
   )
 
 (use-package lsp-ivy
