@@ -56,6 +56,8 @@
 
           ("*Help*" :regexp nil :select t :align below :size 0.33)
 
+          ("*xref*" :regexp nil :select t :align below :size 0.33)
+
           ;; (magit-status-mode :select t :inhibit-window-quit t :same t)
 
           ;; the last rule
