@@ -58,7 +58,7 @@
 
           ("*xref*" :regexp nil :select t :align below :size 0.33)
 
-          ("*Async Shell Command*" :regexp nil :select t :align below :size 0.33)
+          ("*Async Shell Command*" :regexp nil :ignore t)
 
           ;; (magit-status-mode :select t :inhibit-window-quit t :same t)
 
