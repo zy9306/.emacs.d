@@ -265,7 +265,8 @@
         (revert-buffer t t) )))
   (message "Refreshed open files.") )
 
-(global-set-key (kbd "<f5>") 'revert-all-buffers)
+(global-set-key (kbd "<f5>") 'revert-buffer-no-confirm)
+(global-set-key (kbd "<C-f5>") 'revert-all-buffers)
 
 ;; revert settings
 ;; (auto-revert-mode t)
