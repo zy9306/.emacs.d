@@ -220,7 +220,7 @@
  '((nil . ((buffer-read-only . t)))))
 
 ;; Associate directories with the read-only class
-(dolist (dir (list "~/Envs" "/usr" "~/.cargo" "~/.rustup"))
+(dolist (dir (list "~/Envs" "/usr" "~/.cargo" "~/.rustup" "/Library/Frameworks/Python.framework"))
   (dir-locals-set-directory-class (file-truename dir) 'read-only))
 
 
