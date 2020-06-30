@@ -92,7 +92,7 @@
 (setq gc-cons-percentage 0.1)
 
 ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
-(setq gc-cons-threshold 100000000) ;; 100mb
+(setq gc-cons-threshold (* 100 1024 1024)) ;; 100mb
 
 ;; read-process-output-max is only available on recent
 ;; development builds of Emacs 27 and above
