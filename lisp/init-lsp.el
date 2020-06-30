@@ -43,6 +43,8 @@
   (setq lsp-auto-guess-root t)
   (setq lsp-prefer-capf nil)
   (setq lsp-enable-imenu nil)
+  ;; Auto-kill LSP server once you've killed the last buffer associated with its project.
+  (setq lsp-keep-workspace-alive nil)
   ;; keymap
   (define-key lsp-mode-map [remap xref-find-definitions] #'lsp-find-definition)
   (define-key lsp-mode-map [remap xref-find-references] #'lsp-find-references)
