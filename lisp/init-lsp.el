@@ -52,6 +52,8 @@
         lsp-signature-doc-lines 2
         )
 
+  (define-key lsp-mode-map (kbd "M-*") 'lsp-signature-activate)
+
   ;; Auto-kill LSP server once you've killed the last buffer associated with its project.
   (setq lsp-keep-workspace-alive nil)
 
