@@ -38,7 +38,13 @@
   :config
   (setq neo-smart-open t)
   (setq neo-window-fixed-size nil)
-  (setq projectile-switch-project-action 'neotree-projectile-action))
+  (setq projectile-switch-project-action 'neotree-projectile-action)
+
+  (define-key neotree-mode-map (kbd "C") 'neotree-create-node)
+  (define-key neotree-mode-map (kbd "R") 'neotree-rename-node)
+  (define-key neotree-mode-map (kbd "D") 'neotree-delete-node)
+  (define-key neotree-mode-map (kbd "+") 'make-directory)
+  )
 
 
 (provide 'init-projectile)
