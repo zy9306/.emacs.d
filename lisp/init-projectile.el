@@ -37,6 +37,7 @@
   (global-set-key (kbd "C-c C-n") 'neotree-project-dir)
   :config
   (setq neo-smart-open t)
+  (setq neo-window-fixed-size nil)
   (setq projectile-switch-project-action 'neotree-projectile-action))
 
 
