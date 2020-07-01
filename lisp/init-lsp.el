@@ -41,24 +41,35 @@
   :commands lsp
   :config
   (setq lsp-auto-guess-root t)
-  (setq lsp-prefer-capf nil)
+
+  (setq lsp-prefer-capf t)
+
   (setq lsp-enable-imenu nil)
+
+  ;; minibuffer不显示文档，只显示签名
+  (setq lsp-signature-auto-activate t
+        lsp-signature-render-documentation nil
+        lsp-signature-doc-lines 2
+        )
+
   ;; Auto-kill LSP server once you've killed the last buffer associated with its project.
   (setq lsp-keep-workspace-alive nil)
+
   ;; keymap
   (define-key lsp-mode-map [remap xref-find-definitions] #'lsp-find-definition)
   (define-key lsp-mode-map [remap xref-find-references] #'lsp-find-references)
   )
 
-(use-package company-lsp
-  :ensure t
-  :defer t
-  :config
-  (setq company-lsp-cache-candidates 'auto)
-  (setq company-lsp-async t)
-  (setq company-lsp-enable-snippet t)
-  (setq company-lsp-enable-recompletion t)
-  )
+;; 默认使用lsp-prefer-capf
+;; (use-package company-lsp
+;;   :ensure t
+;;   :defer t
+;;   :config
+;;   (setq company-lsp-cache-candidates 'auto)
+;;   (setq company-lsp-async t)
+;;   (setq company-lsp-enable-snippet t)
+;;   (setq company-lsp-enable-recompletion t)
+;;   )
 
 (use-package lsp-ui
   :ensure t
@@ -71,14 +82,18 @@
   ;; keymap
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   ;; (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
+
   ;; lsp ui
   (setq lsp-ui-mode t)
+
+  ;; sideline
   (setq lsp-ui-sideline-enable t
         lsp-ui-sideline-show-symbol t
         lsp-ui-sideline-show-hover t
         lsp-ui-sideline-show-flycheck t
-        lsp-ui-sideline-show-code-actions t
+        lsp-ui-sideline-show-code-actions nil
         lsp-ui-sideline-show-diagnostics nil)
+
   (setq lsp-ui-doc-enable nil)
   (setq lsp-ui-imenu-enable nil)
   (setq lsp-ui-peek-enable nil)
