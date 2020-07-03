@@ -5,14 +5,79 @@
 ;; copy from https://github.com/bbatsov/prelude/blob/master/core/prelude-packages.el
 ;; and https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el
 
-(defun read-lines (filePath)
-  "Return a list of lines of a file at filePath."
-  (with-temp-buffer
-    (insert-file-contents filePath)
-    (split-string (buffer-string) "\n" t)))
-
 (defvar local/packages
   '(
+    ace-window
+    ag
+    anaconda-mode
+    anzu
+    auto-virtualenv
+    avy
+    browse-kill-ring
+    buffer-move
+    company
+    company-box
+    company-go
+    company-lsp
+    diff-hl
+    diminish
+    dired-subtree
+    dockerfile-mode
+    evil
+    evil-surround
+    exec-path-from-shell
+    expand-region
+    flycheck
+    flycheck-pycheckers
+    flycheck-rust
+    format-all
+    general
+    general
+    go-eldoc
+    go-mode
+    goto-chg
+    highlight-indent-guides
+    imenu-list
+    ivy
+    ivy-rich
+    key-chord
+    keyfreq
+    lsp-ivy
+    lsp-mode
+    lsp-python-ms
+    lsp-ui
+    magit
+    markdown-mode
+    move-text
+    multiple-cursors
+    neotree
+    org-download
+    ox-qmd
+    page-break-lines
+    projectile
+    protobuf-mode
+    python-black
+    pyvenv
+    ra-emacs-lsp
+    racer
+    rainbow-delimiters
+    real-auto-save
+    recentf
+    rust-mode
+    shackle
+    smex
+    spacemacs-theme
+    symbol-overlay
+    toc-org
+    undo-tree
+    use-package-chords
+    vimish-fold
+    wgrep
+    which-key
+    yafolding
+    yaml-mode
+    yapfify
+    yasnippet
     )
   "A list of packages to ensure are installed at launch.")
 
