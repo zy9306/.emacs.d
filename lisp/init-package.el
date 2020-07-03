@@ -5,6 +5,9 @@
 ;; copy from https://github.com/bbatsov/prelude/blob/master/core/prelude-packages.el
 ;; and https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el
 
+(require 'cl)
+(require 'package)
+
 (defvar local/packages
   '(
     ace-window
@@ -58,7 +61,6 @@
     protobuf-mode
     python-black
     pyvenv
-    ra-emacs-lsp
     racer
     rainbow-delimiters
     real-auto-save
