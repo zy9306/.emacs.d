@@ -43,6 +43,8 @@
   (define-key neotree-mode-map (kbd "C") 'neotree-create-node)
   (define-key neotree-mode-map (kbd "R") 'neotree-rename-node)
   (define-key neotree-mode-map (kbd "D") 'neotree-delete-node)
+  (define-key neotree-mode-map (kbd "P") 'neotree-copy-node)
+  (define-key neotree-mode-map (kbd "W") 'neotree-copy-filepath-to-yank-ring)
   (define-key neotree-mode-map (kbd "+") 'make-directory)
   )
 
