@@ -1,4 +1,4 @@
-;;; init-elpa.el --- Settings and helpers for package.el -*- lexical-binding: t -*-
+;;; init-package.el --- Install all packages listed in `local/packages' -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
