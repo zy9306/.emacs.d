@@ -20,9 +20,9 @@
   (require package)
   (message "load %s, time: %s" package (- (float-time) _starttime)))
 
-(local/load-package 'init-package)
+;; (local/load-package 'init-package)
 (local/load-package 'init-font)
-;; (local/load-package 'init-elpa)
+(local/load-package 'init-elpa)
 (local/load-package 'init-basic)
 (local/load-package 'init-completion)
 (local/load-package 'init-edit-utils)
