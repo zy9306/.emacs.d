@@ -5,13 +5,16 @@
 ;; copy from https://github.com/bbatsov/prelude/blob/master/core/prelude-packages.el
 ;; and https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el
 
+(defun read-lines (filePath)
+  "Return a list of lines of a file at filePath."
+  (with-temp-buffer
+    (insert-file-contents filePath)
+    (split-string (buffer-string) "\n" t)))
+
 (defvar local/packages
   '(
-    ace-window
-    zop-to-char
     )
   "A list of packages to ensure are installed at launch.")
-
 
 (let ((versioned-package-dir
        (expand-file-name (format "elpa-%s.%s" emacs-major-version emacs-minor-version)
