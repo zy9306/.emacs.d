@@ -37,7 +37,9 @@
   (global-set-key (kbd "C-c C-n") 'neotree-project-dir)
   :config
   (setq neo-smart-open t)
+  (setq neo-autorefresh t)
   (setq neo-window-fixed-size nil)
+  (setq neo-vc-integration '(face char))
   (setq projectile-switch-project-action 'neotree-projectile-action)
 
   (define-key neotree-mode-map (kbd "C") 'neotree-create-node)
