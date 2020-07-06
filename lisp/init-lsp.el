@@ -93,8 +93,9 @@
         lsp-ui-sideline-show-symbol t
         lsp-ui-sideline-show-hover t
         lsp-ui-sideline-show-flycheck t
+        lsp-ui-sideline-show-diagnostics t
         lsp-ui-sideline-show-code-actions nil
-        lsp-ui-sideline-show-diagnostics nil)
+        )
 
   (setq lsp-ui-doc-enable nil)
   (setq lsp-ui-imenu-enable nil)
