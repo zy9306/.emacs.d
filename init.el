@@ -44,6 +44,9 @@
 
 (local/load-package 'init-format)
 
+(local/load-package 'origami)
+(local/load-package 'init-folding)
+
 ;; (local/load-package 'init-key-chord)
 
 ;; 自动检测编码，如果错误的将utf-8检测成gbk等中文编码，可能会导致lsp崩
