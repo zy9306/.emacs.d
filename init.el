@@ -87,6 +87,20 @@
 
 (global-set-key (kbd "C-x C-x") 'local/set-mark-set-mark)
 
+(defun scroll-half-page-down ()
+  "scroll down half the page"
+  (interactive)
+  (scroll-down (/ (window-body-height) 2)))
+
+(defun scroll-half-page-up ()
+  "scroll up half the page"
+  (interactive)
+  (scroll-up (/ (window-body-height) 2)))
+
+(global-set-key (kbd "C-S-v") 'scroll-up-command)
+(global-set-key (kbd "M-S-v") 'scroll-down-command)
+(global-set-key (kbd "C-v") 'scroll-half-page-up)
+(global-set-key (kbd "M-v") 'scroll-half-page-down)
 
 ;; end of the file reset gc
 ;; (setq gc-cons-threshold 16777216)
