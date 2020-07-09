@@ -36,6 +36,7 @@
   :ensure t
   :config
   (setq imenu-list-auto-resize nil)
+  (setq imenu-list-size 30)
   (setq imenu-list-focus-after-activation t)
   (global-set-key (kbd "C-x \"") #'imenu-list-smart-toggle)
   (global-set-key (kbd "C-\"") #'counsel-imenu))
