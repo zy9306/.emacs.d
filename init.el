@@ -105,9 +105,9 @@
 (global-set-key (kbd "C-v") 'scroll-half-page-up)
 (global-set-key (kbd "M-v") 'scroll-half-page-down)
 
-;; 避免origami折叠大文件时栈溢出或内存超过阈值，不知道是否有副作用
-(setq max-specpdl-size 5000)
-(setq max-lisp-eval-depth 5000)
+;; ;; 避免origami折叠大文件时栈溢出或内存超过阈值，不知道是否有副作用
+;; (setq max-specpdl-size 10000)
+;; (setq max-lisp-eval-depth 10000)
 
 ;; end of the file reset gc
 ;; (setq gc-cons-threshold 16777216)
