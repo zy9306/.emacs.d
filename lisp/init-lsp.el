@@ -42,7 +42,7 @@
   :config
   (setq lsp-auto-guess-root t)
 
-  (setq lsp-prefer-capf t)
+  (setq lsp-prefer-capf nil)
 
   (setq lsp-enable-imenu nil)
 
@@ -62,16 +62,16 @@
   (define-key lsp-mode-map [remap xref-find-references] #'lsp-find-references)
   )
 
-;; 默认使用lsp-prefer-capf
-;; (use-package company-lsp
-;;   :ensure t
-;;   :defer t
-;;   :config
-;;   (setq company-lsp-cache-candidates 'auto)
-;;   (setq company-lsp-async t)
-;;   (setq company-lsp-enable-snippet t)
-;;   (setq company-lsp-enable-recompletion t)
-;;   )
+;; lsp-prefer-capf经常不能补全
+(use-package company-lsp
+  :ensure t
+  :defer t
+  :config
+  (setq company-lsp-cache-candidates 'auto)
+  (setq company-lsp-async t)
+  (setq company-lsp-enable-snippet t)
+  (setq company-lsp-enable-recompletion t)
+  )
 
 (use-package lsp-ui
   :ensure t
