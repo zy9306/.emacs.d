@@ -54,8 +54,8 @@
 
   (define-key lsp-mode-map (kbd "M-*") 'lsp-signature-activate)
 
-  ;; Auto-kill LSP server once you've killed the last buffer associated with its project.
-  (setq lsp-keep-workspace-alive nil)
+  ;; Whether auto-kill LSP server once you've killed the last buffer associated with its project.
+  (setq lsp-keep-workspace-alive t)
 
   ;; keymap
   (define-key lsp-mode-map [remap xref-find-definitions] #'lsp-find-definition)
