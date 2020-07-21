@@ -3,6 +3,7 @@
 (setq debug-on-error t)
 
 (push (expand-file-name "~/.emacs.d/lisp") load-path)
+(push (expand-file-name "~/.emacs.d/yasnippet-snippets") load-path)
 
 (setq gc-cons-threshold 402653184
       gc-cons-percentage 0.6)
