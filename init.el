@@ -45,6 +45,8 @@
 
 (local/load-package 'init-format)
 
+(local/load-package 'init-snippet)
+
 (local/load-package 'origami)
 (local/load-package 'init-folding)
 
