@@ -41,6 +41,8 @@
 (local/load-package 'init-display-buffer)
 (local/load-package 'init-keyfreq)
 
+(local/load-package 'init-bookmark)
+
 (local/load-package 'init-macro)
 
 (local/load-package 'init-format)
