@@ -1,13 +1,10 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
+(require-package 'company)
+(require-package 'prescient)
+(require-package 'company-prescient)
 
-(use-package company
-  :ensure t
-  :defer t
-  ;; :diminish company-mode " co"
-  :init
-  (add-hook 'after-init-hook 'global-company-mode)
-  :config
+(with-eval-after-load 'company
   (setq company-idle-delay 0.05)
   (setq company-tooltip-idle-delay 0.05)
   (setq company-minimum-prefix-length 2)
@@ -32,8 +29,12 @@
   (define-key company-mode-map (kbd "M-/") 'company-complete)
   (define-key company-active-map (kbd "M-/") 'company-other-backend)
   (define-key company-active-map (kbd "C-n") 'company-select-next)
-  (define-key company-active-map (kbd "C-p") 'company-select-previous))
+  (define-key company-active-map (kbd "C-p") 'company-select-previous)
+  (global-company-mode)
+  (company-prescient-mode)
+  )
 
+(local/after-init-hook 'company)
 
 ;; https://github.com/sebastiencs/company-box/
 ;; mac下图标异常
@@ -44,6 +45,5 @@
 ;;   :hook (company-mode . company-box-mode)
 ;;   :init
 ;;   (setq company-box-doc-enable nil))
-
 
 (provide 'init-completion)

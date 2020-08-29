@@ -53,15 +53,8 @@
          ;; Then new bookmarks can be saved before the buffer is reverted.
          ;; Make sure bookmarks is saved before check-in (and revert-buffer)
          (add-hook 'vc-before-checkin-hook #'bm-buffer-save)
-
-
-         :bind (("<f7>" . bm-next)
-                ("<f6>" . bm-previous)
-                ("C-x t" . bm-toggle)
-                ("C-x m" . bm-show)
-                ("C-x M" . bm-show-all)
-                )
          )
+
 
 
 (provide 'init-bookmark)

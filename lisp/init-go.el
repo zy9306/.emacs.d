@@ -1,33 +1,25 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
+;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md
 
-(use-package go-mode
-  :ensure t
-  :defer t
-  :init
-  (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode)))
+(require-package 'yasnippet)
 
-(use-package go-eldoc
-  :ensure t
-  :defer t
-  :init
-  (add-hook 'go-mode-hook 'go-eldoc-setup))
+(with-eval-after-load 'go-mode
+  (require 'lsp-mode)
+  (require 'yasnippet)
+  (lsp-register-custom-settings
+   '(("gopls.completeUnimported" t t)
+     ("gopls.staticcheck" t t)))
+  (lsp-deferred)
+  (yas-minor-mode)
+  )
 
-(use-package company-go
-  ;; should install gocode
-  ;; https://github.com/nsf/gocode
-  :ensure t
-  :defer t
-  :init
-  (add-hook 'go-mode-hook (lambda ()
-                            (set (make-local-variable 'company-backends) '(company-go))
-                            (company-mode))))
-
-
-;; https://github.com/flycheck/flycheck/issues/1523
-(let ((govet (flycheck-checker-get 'go-vet 'command)))
-  (when (equal (cadr govet) "tool")
-    (setf (cdr govet) (cddr govet))))
-
+;; 实时保存会造成卡顿
+;; Set up before-save hooks to format buffer and add/delete imports.
+;; Make sure you don't have other gofmt/goimports hooks enabled.
+;; (defun lsp-go-install-save-hooks ()
+;;   (add-hook 'before-save-hook #'lsp-format-buffer t t)
+;;   (add-hook 'before-save-hook #'lsp-organize-imports t t))
+;; (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
 
 (provide 'init-go)

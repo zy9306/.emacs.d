@@ -27,88 +27,55 @@
 ;; lsp-find-definition即可解决问题
 
 
+(require-package 'lsp-mode)
+(require-package 'lsp-ui)
+(require-package 'lsp-ivy)
 
 (setq lsp-keymap-prefix "C-c l")
 
-(use-package lsp-mode
-  :ensure t
-  :defer t
-  ;; 已禁用which-key
-  ;; :hook
-  ;; (
-  ;;  (lsp-mode . lsp-enable-which-key-integration)
-  ;;  )
-  :commands lsp
-  :config
+(with-eval-after-load 'lsp-mode
   (setq lsp-auto-guess-root t)
-
-  (setq lsp-prefer-capf nil)
-
+  (setq lsp-prefer-capf t)
   (setq lsp-enable-imenu nil)
-
   ;; minibuffer不显示文档，只显示签名
   (setq lsp-signature-auto-activate t
         lsp-signature-render-documentation nil
-        lsp-signature-doc-lines 2
-        )
-
-  (define-key lsp-mode-map (kbd "M-*") 'lsp-signature-activate)
-
-  ;; Whether auto-kill LSP server once you've killed the last buffer associated with its project.
+        lsp-signature-doc-lines 2)
   (setq lsp-keep-workspace-alive t)
-
-  ;; keymap
   (define-key lsp-mode-map [remap xref-find-definitions] #'lsp-find-definition)
   (define-key lsp-mode-map [remap xref-find-references] #'lsp-find-references)
+
+  (require 'lsp-ui)
   )
 
-;; lsp-prefer-capf经常不能补全
-(use-package company-lsp
-  :ensure t
-  :defer t
-  :config
-  (setq company-lsp-cache-candidates 'auto)
-  (setq company-lsp-async t)
-  (setq company-lsp-enable-snippet t)
-  (setq company-lsp-enable-recompletion t)
-  )
-
-(use-package lsp-ui
-  :ensure t
-  :defer t
-  :init
+(with-eval-after-load 'lsp-ui
   (add-hook 'lsp-mode-hook 'lsp-ui-mode)
   (add-hook 'lsp-mode-hook 'flycheck-mode)
-  :commands lsp-ui-mode
-  :config
-  ;; keymap
-  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-  ;; (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
-
-  ;; lsp ui
   (setq lsp-ui-mode t)
-
-  ;; sideline
+    ;; sideline
   (setq lsp-ui-sideline-enable t
         lsp-ui-sideline-show-symbol t
         lsp-ui-sideline-show-hover t
         lsp-ui-sideline-show-flycheck t
         lsp-ui-sideline-show-diagnostics t
-        lsp-ui-sideline-show-code-actions nil
-        )
-
+        lsp-ui-sideline-show-code-actions nil)
   (setq lsp-ui-doc-enable nil)
   (setq lsp-ui-imenu-enable nil)
   (setq lsp-ui-peek-enable nil)
+  ;; keymap
+  ;; (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+  ;; (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
   )
 
-(use-package lsp-ivy
-  :ensure t
-  :defer t
-  :config
-  (global-set-key (kbd "C-c l i") 'lsp-ivy-workspace-symbol)
-  (global-set-key (kbd "C-c l I") 'lsp-ivy-global-workspace-symbol)
-  )
-
+;; lsp-prefer-capf经常不能补全
+;; (use-package company-lsp
+;;   :ensure t
+;;   :defer t
+;;   :config
+;;   (setq company-lsp-cache-candidates 'auto)
+;;   (setq company-lsp-async t)
+;;   (setq company-lsp-enable-snippet t)
+;;   (setq company-lsp-enable-recompletion t)
+;;   )
 
 (provide 'init-lsp)

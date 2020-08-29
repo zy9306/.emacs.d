@@ -1,5 +1,54 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
+;; https://github.com/emacs-lsp/lsp-python-ms
+
+(require-package 'lsp-python-ms)
+(require-package 'pyvenv)
+(require-package 'auto-virtualenv)
+(require-package 'yapfify)
+(require-package 'flycheck-pycheckers)
+
+(setenv "WORKON_HOME" "~/Envs")
+
+(with-eval-after-load 'python
+  (require 'lsp-python-ms)
+  (require 'pyvenv)
+  (require 'yapfify)
+  (yapf-mode)
+  (lsp-deferred)
+  )
+
+(with-eval-after-load 'flycheck
+  (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup)
+  (setq flycheck-pycheckers-checkers '(flake8)))
+
+;; (with-eval-after-load 'auto-virtualenv
+;;   ;; add .python-version file to project root, then add path of virtualenv eg:~/Envs/venv36/
+;;   (add-hook 'python-mode-hook 'auto-virtualenv-set-virtualenv)
+;;   ;; Activate on changing buffers
+;;   (add-hook 'window-configuration-change-hook 'auto-virtualenv-set-virtualenv)
+;;   ;; Activate on focus in
+;;   (add-hook 'focus-in-hook 'auto-virtualenv-set-virtualenv)
+;;   ;; (add-hook 'projectile-after-switch-project-hook 'auto-virtualenv-set-virtualenv)
+;;   )
+
+(defun my-python-mode-hook ()
+  (modify-syntax-entry ?_ "w"))
+(add-hook 'python-mode-hook 'my-python-mode-hook)
+
+(defun mspyls-latest-nupkg-url ()
+  ;; https://github.com/emacs-lsp/lsp-python-ms/blob/master/lsp-python-ms.el#L172
+  ;; 进入python-mode时会自动下载mspyls，如果不能正常下载，手动获取url进行下载
+  ;; 将下载的文件解压到~/.emacs.d/.cache/lsp/mspyls/
+  ;; 二进制文件为~/.emacs.d/.cache/lsp/mspyls/Microsoft.Python.LanguageServer
+  ;; 确实Microsoft.Python.LanguageServer在unix环境下有执行权限
+  (interactive)
+  (lsp)
+  (message "%s" (lsp-python-ms-latest-nupkg-url "stable")))
+
+
+;; anaconda-mode old config
+
 ;; (use-package anaconda-mode
 ;;   :ensure t
 ;;   :defer t
@@ -19,108 +68,5 @@
 
 ;;   (setq python-shell-interpreter "ipython"
 ;;         python-shell-interpreter-args "-i --simple-prompt"))
-
-
-;; https://github.com/emacs-lsp/lsp-python-ms
-
-(use-package lsp-python-ms
-  :ensure t
-  :defer t
-  :hook
-  (python-mode . (lambda ()
-                   (require 'lsp-python-ms)
-                   (lsp)))  ; or lsp-deferred
-  )
-
-
-(defun mspyls-latest-nupkg-url ()
-  ;; https://github.com/emacs-lsp/lsp-python-ms/blob/master/lsp-python-ms.el#L172
-  ;; 进入python-mode时会自动下载mspyls，如果不能正常下载，手动获取url进行下载
-  ;; 将下载的文件解压到~/.emacs.d/.cache/lsp/mspyls/
-  ;; 二进制文件为~/.emacs.d/.cache/lsp/mspyls/Microsoft.Python.LanguageServer
-  ;; 确实Microsoft.Python.LanguageServer在unix环境下有执行权限
-  (interactive)
-  (lsp)
-  (message "%s" (lsp-python-ms-latest-nupkg-url "stable")))
-
-
-(use-package pyvenv
-  :ensure t
-  :defer t
-  :config
-  (setenv "WORKON_HOME" "~/Envs"))
-
-
-(use-package auto-virtualenv
-  :ensure t
-  :defer t
-  :init
-  ;; add .python-version file to project root, then add path of virtualenv eg:~/Envs/venv36/
-  (add-hook 'python-mode-hook 'auto-virtualenv-set-virtualenv)
-  
-  ;; Activate on changing buffers
-  (add-hook 'window-configuration-change-hook 'auto-virtualenv-set-virtualenv)
-  
-  ;; Activate on focus in
-  (add-hook 'focus-in-hook 'auto-virtualenv-set-virtualenv)
-  
-  ;; (add-hook 'projectile-after-switch-project-hook 'auto-virtualenv-set-virtualenv)
-)
-
-
-;; pip install yapf
-(use-package yapfify
-  :ensure t
-  :diminish yapf-mode
-  :defer t)
-(global-set-key (kbd "C-c C-y") 'yapfify-region)
-
-
-;; pip install black
-;; format region need black-macchiato
-;; pip install black-macchiato
-(use-package python-black
-  :ensure t
-  :defer t)
-(global-set-key (kbd "C-c C-b") 'python-black-region)
-
-
-(use-package flycheck-pycheckers
-  :ensure t
-  :defer t
-  :init
-  (with-eval-after-load 'flycheck
-    (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup))
-  (setq flycheck-pycheckers-checkers '(flake8)))
-
-
-(defun my-python-mode-hook ()
-  (modify-syntax-entry ?_ "w"))
-(add-hook 'python-mode-hook 'my-python-mode-hook)
-
-
-;; disable run-python binding
-(add-hook 'python-mode-hook
-          (lambda()
-            (local-unset-key (kbd "C-c C-p"))))
-
-(add-hook 'python-mode-hook
-          (lambda()
-            (local-unset-key (kbd "C-c C-l"))))
-
-(add-hook 'python-mode-hook
-          (lambda()
-            (local-unset-key (kbd "C-c C-f"))))
-
-
-;; todo maybe need highlight-indentation
-
-(use-package highlight-indent-guides
-  :ensure t
-  :defer t
-  :config
-  (setq highlight-indent-guides-method 'bitmap))
-(global-set-key (kbd "C-c C-l") 'highlight-indent-guides-mode)
-
 
 (provide 'init-python)

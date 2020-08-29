@@ -1,145 +1,172 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
+(require-package 'diminish)
+(require-package 'undo-tree)
+(require-package 'real-auto-save)
+(require-package 'which-key)
+(require-package 'imenu-list)
+(require-package 'flycheck)
+(require-package 'diff-hl)
+(require-package 'symbol-overlay)
+(require-package 'anzu)
+(require-package 'multiple-cursors)
+(require-package 'expand-region)
+(require-package 'page-break-lines)
+(require-package 'browse-kill-ring)
+(require-package 'magit)
+(require-package 'rainbow-delimiters)
+(require-package 'move-text)
+(require-package 'goto-chg)
+(require-package 'recentf)
+(require-package 'dired-subtree)
+(require-package 'highlight-indent-guides)
+(require-package 'wgrep)
+(require-package 'smex)
+(require-package 'exec-path-from-shell)
 
-;; ;;;;;;; 一些通用且无依赖的包 ;;;;;;;
 
-(use-package diminish
-  :ensure t
-  :defer t)
+(defun local/after-init-hook (package)
+  (add-hook 'after-init-hook (lambda () (require package))))
 
-(use-package undo-tree
-  :ensure t
-  :diminish undo-tree-mode
-  :config
+(with-eval-after-load 'exec-path-from-shell
+  (setq exec-path-from-shell-arguments nil)
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
+(local/after-init-hook 'exec-path-from-shell)
+
+(with-eval-after-load 'smex
+  (setq-default smex-save-file (expand-file-name ".smex-items" user-emacs-directory)))
+(local/after-init-hook 'smex)
+
+(with-eval-after-load 'undo-tree
+  (diminish 'undo-tree-mode)
   (global-undo-tree-mode))
+(local/after-init-hook 'undo-tree)
 
 ;; see also https://www.emacswiki.org/emacs/AutoSave `auto-save-visited-mode`
-(use-package real-auto-save
-  :ensure t
-  :diminish real-auto-save-mode
-  :config
+(with-eval-after-load 'real-auto-save
+  (diminish 'real-auto-save-mode)
+  (setq real-auto-save-interval 1)
   (add-hook 'prog-mode-hook 'real-auto-save-mode)
-  (add-hook 'text-mode-hook 'real-auto-save-mode)
-  (setq real-auto-save-interval 1))
+  (add-hook 'text-mode-hook 'real-auto-save-mode))
+(local/after-init-hook 'real-auto-save)
 
-(use-package which-key
-  :ensure t
-  :diminish which-key-mode
-  :defer t
-  ;; enable manual
-  ;; :init
-  ;; (which-key-setup-side-window-bottom)
-  ;; (which-key-mode)
-  )
+(with-eval-after-load 'which-key
+  (diminish 'which-key-mode)
+  (which-key-setup-side-window-bottom)
+  (which-key-mode))
+(local/after-init-hook 'which-key)
 
-(use-package imenu-list
-  :ensure t
-  :config
+(with-eval-after-load 'imenu-list
   (setq imenu-list-auto-resize nil)
   (setq imenu-list-size 30)
-  (setq imenu-list-focus-after-activation t)
-  (global-set-key (kbd "C-x \"") #'imenu-list-smart-toggle)
-  (global-set-key (kbd "C-\"") #'counsel-imenu))
+  (setq imenu-list-focus-after-activation t))
+(local/after-init-hook 'imenu-list)
 
-(use-package flycheck
-  ;; http://www.flycheck.org/en/latest/
-  :ensure t
-  :init (global-flycheck-mode)
-  :config
-  (setq-default flycheck-disabled-checkers '(emacs-lisp emacs-lisp-checkdoc)))
+(with-eval-after-load 'flycheck
+  (setq-default flycheck-disabled-checkers '(emacs-lisp emacs-lisp-checkdoc))
+  (global-flycheck-mode))
+(local/after-init-hook 'flycheck)
 
-(use-package diff-hl
-  :ensure t
-  :config
-  (global-diff-hl-mode t)
-  (diff-hl-margin-mode t)
+(with-eval-after-load 'diff-hl
+  (global-diff-hl-mode)
+  (diff-hl-margin-mode)
   (add-hook 'dired-mode-hook 'diff-hl-dired-mode))
+(local/after-init-hook 'diff-hl)
 
-(use-package symbol-overlay
-  ;; https://github.com/wolray/symbol-overlay/tree/master
-  ;; https://github.com/purcell/emacs.d/blob/master/lisp/init-editing-utils.el
-  ;; 高亮相同单词，可同时高亮多个，M-i增加单词
-  ;; 一些mode的关键字会被忽略，在symbol-overlay-ignore-functions变量中定义相关mode的忽略函数
-  :ensure t
-  :diminish symbol-overlay-mode
-  :config
-  (dolist (hook '(prog-mode-hook html-mode-hook conf-mode-hook text-mode-hook yaml-mode-hook))
-  (add-hook hook 'symbol-overlay-mode))
-  (define-key symbol-overlay-mode-map (kbd "M-i") 'symbol-overlay-put)
-  (define-key symbol-overlay-mode-map (kbd "M-I") 'symbol-overlay-remove-all)
-  (define-key symbol-overlay-mode-map (kbd "M-n") 'symbol-overlay-jump-next)
-  (define-key symbol-overlay-mode-map (kbd "M-p") 'symbol-overlay-jump-prev))
+;; https://github.com/wolray/symbol-overlay/tree/master
+;; 一些mode的关键字会被忽略，在symbol-overlay-ignore-functions变量中定义相关mode的忽略函数
+(with-eval-after-load 'symbol-overlay
+  (diminish 'symbol-overlay-mode)
+  (dolist (hook '(prog-mode-hook
+                  html-mode-hook
+                  conf-mode-hook
+                  text-mode-hook
+                  yaml-mode-hook))
+    (add-hook hook 'symbol-overlay-mode)))
+(local/after-init-hook 'symbol-overlay)
 
-(use-package anzu
-  ;; https://github.com/purcell/emacs.d/blob/master/lisp/init-isearch.el
-  ;; 实时显示搜索及替换结果
-  :ensure t
-  :config
-  (add-hook 'after-init-hook 'global-anzu-mode)
+;; https://github.com/purcell/emacs.d/blob/master/lisp/init-isearch.el
+;; 实时显示搜索及替换结果
+(with-eval-after-load 'anzu
   (setq anzu-mode-lighter "")
+  (global-anzu-mode)
   (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
   (global-set-key [remap query-replace] 'anzu-query-replace))
+(local/after-init-hook 'anzu)
 
-(use-package multiple-cursors
-  ;; https://github.com/magnars/multiple-cursors.el/tree/master
-  ;; To yank from the kill-rings of every cursor use yank-rectangle, normally found at C-x r y
-  :ensure t
-  :defer t
-  )
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+;; https://github.com/magnars/multiple-cursors.el/tree/master
+;; To yank from the kill-rings of every cursor use yank-rectangle, normally found at C-x r y
+(local/after-init-hook 'multiple-cursors)
 
-(use-package expand-region
-  ;; expand-region 快速选中及增减选区
-  :ensure t
-  :defer t
-  )
-(global-set-key (kbd "C-=") 'er/expand-region)
+(local/after-init-hook 'expand-region)
 
-(use-package page-break-lines
-  ;; C-q C-l 可以在当前位置插入并显示分页符
-  :ensure t
-  :diminish page-break-lines-mode)
-(dolist (hook '(prog-mode-hook html-mode-hook conf-mode-hook text-mode-hook))
-  (add-hook hook 'page-break-lines-mode))
+;; C-q C-l 可以在当前位置插入并显示分页符
+(with-eval-after-load 'page-break-lines
+  (diminish 'page-break-lines-mode)
+  (dolist (hook '(prog-mode-hook html-mode-hook conf-mode-hook text-mode-hook))
+    (add-hook hook 'page-break-lines-mode)))
+(local/after-init-hook 'page-break-lines)
 
-(use-package rainbow-delimiters
-  :ensure t
-  :config
+(with-eval-after-load 'rainbow-delimiters
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+(local/after-init-hook 'rainbow-delimiters)
 
-(use-package magit
-  :ensure t
-  :defer t)
-(global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-x M-g") 'magit-dispatch)
-(global-set-key (kbd "C-c M-g") 'magit-file-dispatch)
+(local/after-init-hook 'magit)
 
-(use-package browse-kill-ring
-  :ensure t
-  :defer t
-  :config
+(with-eval-after-load 'browse-kill-ring
   (setq browse-kill-ring-highlight-current-entry t)
   (setq browse-kill-ring-highlight-inserted-item t)
   (setq browse-kill-ring-show-preview t))
-(global-set-key (kbd "M-y") 'browse-kill-ring)
+(local/after-init-hook 'browse-kill-ring)
 
-(use-package recentf
-  ;; C-x b will see recent file
-  :ensure t
-  :config
+(with-eval-after-load 'recentf
+  (recentf-mode t)
   (setq-default recentf-max-saved-items 50)
   (setq recentf-filename-handlers
-        (append '(abbreviate-file-name) recentf-filename-handlers))
-  (recentf-mode t))
+        (append '(abbreviate-file-name) recentf-filename-handlers)))
+(local/after-init-hook 'recentf)
+
+(local/after-init-hook 'goto-chg)
+
+(local/after-init-hook 'move-text)
+
+(with-eval-after-load 'dired-subtree
+    (setq dired-subtree-use-backgrounds nil)
+    (setq dired-subtree-line-prefix "        "))
+(local/after-init-hook 'dired-subtree)
+
+(with-eval-after-load 'highlight-indent-guides
+  (setq highlight-indent-guides-method 'bitmap))
 
 
+;; settings
+
+(delete-selection-mode t)
+;; auto close ()
+(electric-pair-mode t)
+(push '(?\' . ?\') electric-pair-pairs)
+(push '(?\" . ?\") electric-pair-pairs)
+(push '(?` . ?`) electric-pair-pairs)
+
+;; ; highlight ()
+(show-paren-mode t)
+(column-number-mode t)
+(global-hl-line-mode t)
+
+;; https://www.emacswiki.org/emacs/TruncateLines
+(set-default 'truncate-lines t)
+
+(when (version<= "26.0.50" emacs-version )
+  (global-display-line-numbers-mode))
+
+;; todo this don't work
+(setq show-paren-when-point-inside-paren t)
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
 
 
-
-;; ;;;;;;; gui-frame ;;;;;;;
+;; gui
 
 ;; Suppress GUI features
 (setq use-file-dialog nil)
@@ -166,19 +193,9 @@
                    (abbreviate-file-name (buffer-file-name))
                  "%b"))))
 
-(setq-default cursor-type 'bar)  ;; box 方块
+(setq-default cursor-type 'box)  ;; box 方块
 
-
-
-;; ;;;;;;; dired ;;;;;;;
-
-(use-package dired-subtree
-  :ensure t
-  :config
-  (setq dired-subtree-use-backgrounds nil)
-  (setq dired-subtree-line-prefix "        ")
-  (define-key dired-mode-map (kbd "C-<return>") 'dired-subtree-toggle))
-
+;; dired
 (when *is-a-mac*
   ;; Prefer g-prefixed coreutils version of standard utilities when available
   ;; brew install coreutils for mac
@@ -193,9 +210,7 @@
 
 (setq dired-listing-switches "-al -h --group-directories-first --color=auto")
 
-
-
-;; ;;;;;;; backup ;;;;;;;
+;; backup
 (make-directory "~/.emacs.d/autosaves/" t)
 (make-directory "~/.emacs.d/backups/" t)
 (setq backup-directory-alist
@@ -203,96 +218,15 @@
 (setq auto-save-file-name-transforms
       `((".*" "~/.emacs.d/autosaves/" t)))
 
-
-
-;; ;;;;;;; mac ;;;;;;;
-(when *is-a-mac*
-  (setq mac-command-modifier 'meta)
-  (setq mac-option-modifier 'none)
-
-  (global-set-key (kbd "M-ƒ") 'toggle-frame-fullscreen)
-  )
-
-
-
-;; ;;;;;;; 设置某些目录下的文件以只读打开 ;;;;;;;
-; Define a read-only directory class
+;; read-only
 (dir-locals-set-class-variables 'read-only
  '((nil . ((buffer-read-only . t)))))
-
-;; Associate directories with the read-only class
 (dolist (dir (list "~/Envs" "/usr" "~/.cargo" "~/.rustup" "/Library/Frameworks/Python.framework"))
   (dir-locals-set-directory-class (file-truename dir) 'read-only))
-
-
-
-
-
-;; ;;;;;;; Revert buffer without confirmation ;;;;;;
-
-;; https://www.emacswiki.org/emacs/RevertBuffer
-
-(defun revert-buffer-no-confirm ()
-  "Revert buffer without confirmation."
-  (interactive) (revert-buffer t t))
-
-(defun revert-all-buffers ()
-  "Refreshes all open buffers from their respective files."
-  (interactive)
-  (dolist (buf (buffer-list))
-    (with-current-buffer buf
-      (when (and (buffer-file-name) (file-exists-p (buffer-file-name)) (not (buffer-modified-p)))
-        (revert-buffer t t) )))
-  (message "Refreshed open files.") )
-
-(global-set-key (kbd "<f5>") 'revert-buffer-no-confirm)
-(global-set-key (kbd "<C-f5>") 'revert-all-buffers)
 
 ;; revert settings
 ;; (auto-revert-mode t)
 (global-auto-revert-mode t)
 (setq auto-revert-check-vc-info t)
-
-
-
-
-
-(defun sudo-save ()
-  (interactive)
-  (if (not buffer-file-name)
-      (write-file (concat "/sudo:root@localhost:" (ido-read-file-name "File:")))
-    (write-file (concat "/sudo:root@localhost:" buffer-file-name))))
-
-
-
-
-
-;; ;;;;;;; rename current file and buffer ;;;;;;
-
-;; https://stackoverflow.com/questions/384284/how-do-i-rename-an-open-file-in-emacs/16838442#16838442
-
-(defun rename-current-buffer-file ()
-  "Renames current buffer and file it is visiting."
-  (interactive)
-  (let* ((name (buffer-name))
-        (filename (buffer-file-name))
-        (basename (file-name-nondirectory filename)))
-    (if (not (and filename (file-exists-p filename)))
-        (error "Buffer '%s' is not visiting a file!" name)
-      (let ((new-name (read-file-name "New name: " (file-name-directory filename) basename nil basename)))
-        (if (get-buffer new-name)
-            (error "A buffer named '%s' already exists!" new-name)
-          (rename-file filename new-name 1)
-          (rename-buffer new-name)
-          (set-visited-file-name new-name)
-          (set-buffer-modified-p nil)
-          (message "File '%s' successfully renamed to '%s'"
-                   name (file-name-nondirectory new-name)))))))
-
-(global-set-key (kbd "C-c r")  #'rename-current-buffer-file)
-
-
-
-
 
 (provide 'init-basic)

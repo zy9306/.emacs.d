@@ -21,21 +21,22 @@
   (require package)
   (message "load %s, time: %s" package (- (float-time) _starttime)))
 
-;; (local/load-package 'init-package)
 (local/load-package 'init-font)
-(local/load-package 'init-elpa)
+;; (local/load-package 'init-elpa)
+(local/load-package 'init-elpa-helpers)
 (local/load-package 'init-basic)
+(local/load-package 'init-utils)
 (local/load-package 'init-completion)
-(local/load-package 'init-edit-utils)
 (local/load-package 'init-ivy)
 (local/load-package 'init-avy)
 (local/load-package 'init-window)
 (local/load-package 'init-projectile)
-(local/load-package 'init-find)
+(local/load-package 'init-rg)
 (local/load-package 'init-lsp)
 (local/load-package 'init-org)
 (local/load-package 'init-python)
 (local/load-package 'init-rust)
+(local/load-package 'init-js-ts)
 (local/load-package 'init-go)
 (local/load-package 'init-additional-major-mode)
 (local/load-package 'init-display-buffer)
@@ -52,25 +53,10 @@
 (local/load-package 'origami)
 (local/load-package 'init-folding)
 
-;; (local/load-package 'init-key-chord)
 
 ;; 自动检测编码，如果错误的将utf-8检测成gbk等中文编码，可能会导致lsp崩
 ;; 溃，编码默认为utf-8，如遇gbk等乱码，尝试C-x RET手动切换编码
 ;; (local/load-package 'unicad)
-
-
-(use-package exec-path-from-shell
-  :ensure t
-  :config
-  (setq exec-path-from-shell-arguments nil)
-  (when (memq window-system '(mac ns x))
-    (exec-path-from-shell-initialize)))
-
-
-(use-package spacemacs-theme
-  :ensure t
-  :defer t)
-
 
 ;; evil config
 ;; make `emacs --daemon` not load evil.
@@ -86,15 +72,6 @@
 ;; don't ask me "Active processes exist; kill them and exit anyway?"
 (setq-default confirm-kill-processes nil)
 
-
-;; some key binding
-(global-unset-key (kbd "C-x C-b"))
-(global-set-key (kbd "C-x C-S-b") 'list-buffers)
-
-(global-set-key (kbd "C-x C-S-x") 'exchange-point-and-mark)
-
-(global-set-key (kbd "C-x C-x") 'local/set-mark-set-mark)
-
 (defun scroll-half-page-down ()
   "scroll down half the page"
   (interactive)
@@ -105,10 +82,6 @@
   (interactive)
   (scroll-up (/ (window-body-height) 2)))
 
-(global-set-key (kbd "C-S-v") 'scroll-up-command)
-(global-set-key (kbd "M-S-v") 'scroll-down-command)
-(global-set-key (kbd "C-v") 'scroll-half-page-up)
-(global-set-key (kbd "M-v") 'scroll-half-page-down)
 
 ;; ;; 避免origami折叠大文件时栈溢出或内存超过阈值，不知道是否有副作用
 ;; (setq max-specpdl-size 10000)
@@ -127,12 +100,16 @@
   (setq read-process-output-max (* 1024 1024)))
 
 
+(local/load-package 'init-keybinding)
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (spacemacs-theme use-package))))
+ '(package-selected-packages
+   '(general key-chord yasnippet tide js2-mode flycheck-pycheckers yapfify auto-virtualenv pyvenv lsp-python-ms lsp-ivy lsp-ui lsp-mode rg neotree counsel-projectile projectile avy ivy-prescient ivy-hydra counsel swiper ivy company-prescient prescient company exec-path-from-shell smex wgrep highlight-indent-guides dired-subtree recentf goto-chg move-text rainbow-delimiters magit browse-kill-ring page-break-lines expand-region multiple-cursors anzu symbol-overlay diff-hl flycheck imenu-list which-key real-auto-save undo-tree diminish use-package gnu-elpa-keyring-update fullframe seq)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
