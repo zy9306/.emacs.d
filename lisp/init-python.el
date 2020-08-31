@@ -15,12 +15,12 @@
   (require 'pyvenv)
   (require 'yapfify)
   (yapf-mode)
-  (lsp-deferred)
+  (add-hook 'python-mode-hook 'lsp-deferred)
   )
 
-(with-eval-after-load 'flycheck
-  (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup)
-  (setq flycheck-pycheckers-checkers '(flake8)))
+;; (with-eval-after-load 'flycheck
+;;   (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup)
+;;   (setq flycheck-pycheckers-checkers '(flake8)))
 
 ;; (with-eval-after-load 'auto-virtualenv
 ;;   ;; add .python-version file to project root, then add path of virtualenv eg:~/Envs/venv36/
