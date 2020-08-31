@@ -10,7 +10,7 @@
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
      ("gopls.staticcheck" t t)))
-  (lsp-deferred)
+  (add-hook 'go-mode-hook 'lsp-deferred)
   (yas-minor-mode)
   )
 
