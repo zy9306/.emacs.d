@@ -22,8 +22,7 @@
   (message "load %s, time: %s" package (- (float-time) _starttime)))
 
 (local/load-package 'init-font)
-;; (local/load-package 'init-elpa)
-(local/load-package 'init-elpa-helpers)
+(local/load-package 'init-elpa)
 (local/load-package 'init-basic)
 (local/load-package 'init-utils)
 (local/load-package 'init-completion)
@@ -109,7 +108,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(general key-chord yasnippet tide js2-mode flycheck-pycheckers yapfify auto-virtualenv pyvenv lsp-python-ms lsp-ivy lsp-ui lsp-mode rg neotree counsel-projectile projectile avy ivy-prescient ivy-hydra counsel swiper ivy company-prescient prescient company exec-path-from-shell smex wgrep highlight-indent-guides dired-subtree recentf goto-chg move-text rainbow-delimiters magit browse-kill-ring page-break-lines expand-region multiple-cursors anzu symbol-overlay diff-hl flycheck imenu-list which-key real-auto-save undo-tree diminish use-package gnu-elpa-keyring-update fullframe seq)))
+   '()))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
