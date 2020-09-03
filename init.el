@@ -35,15 +35,14 @@
 (local/load-package 'init-snippet)
 (local/load-package 'init-folding)
 
-;; 自动检测编码，如果错误的将utf-8检测成gbk等中文编码，可能会导致lsp崩
-;; 溃，编码默认为utf-8，如遇gbk等乱码，尝试C-x RET手动切换编码
-;; (local/load-package 'unicad)
-
-
 (if (and (not (daemonp)) (not (display-graphic-p)))
     (local/load-package 'init-evil))
 
 (local/load-package 'init-keybinding)
+
+;; 自动检测编码，如果错误的将utf-8检测成gbk等中文编码，可能会导致lsp崩
+;; 溃，编码默认为utf-8，如遇gbk等乱码，尝试C-x RET手动切换编码
+;; (local/load-package 'unicad)
 
 
 (custom-set-variables
@@ -51,6 +50,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

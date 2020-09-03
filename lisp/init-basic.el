@@ -48,13 +48,16 @@
   (global-undo-tree-mode))
 (local/after-init-hook 'undo-tree)
 
-;; ;; see also https://www.emacswiki.org/emacs/AutoSave `auto-save-visited-mode`
-;; (with-eval-after-load 'real-auto-save
-;;   (diminish 'real-auto-save-mode)
-;;   (setq real-auto-save-interval 1)
-;;   (add-hook 'prog-mode-hook 'real-auto-save-mode)
-;;   (add-hook 'text-mode-hook 'real-auto-save-mode))
-;; (local/after-init-hook 'real-auto-save)
+;; see also https://www.emacswiki.org/emacs/AutoSave `auto-save-visited-mode`
+(with-eval-after-load 'real-auto-save
+  (diminish 'real-auto-save-mode)
+  (setq real-auto-save-interval 1)
+  (dolist (hook '(text-mode-hook
+                  python-mode-hook
+                  yaml-mode-hook
+                  conf-mode-hook))
+    (add-hook hook 'real-auto-save-mode)))
+(local/after-init-hook 'real-auto-save)
 
 (with-eval-after-load 'which-key
   (diminish 'which-key-mode)
