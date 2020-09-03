@@ -11,7 +11,6 @@
 (require-package 'anzu)
 (require-package 'multiple-cursors)
 (require-package 'expand-region)
-(require-package 'page-break-lines)
 (require-package 'browse-kill-ring)
 (require-package 'magit)
 (require-package 'rainbow-delimiters)
@@ -49,13 +48,13 @@
   (global-undo-tree-mode))
 (local/after-init-hook 'undo-tree)
 
-;; see also https://www.emacswiki.org/emacs/AutoSave `auto-save-visited-mode`
-(with-eval-after-load 'real-auto-save
-  (diminish 'real-auto-save-mode)
-  (setq real-auto-save-interval 1)
-  (add-hook 'prog-mode-hook 'real-auto-save-mode)
-  (add-hook 'text-mode-hook 'real-auto-save-mode))
-(local/after-init-hook 'real-auto-save)
+;; ;; see also https://www.emacswiki.org/emacs/AutoSave `auto-save-visited-mode`
+;; (with-eval-after-load 'real-auto-save
+;;   (diminish 'real-auto-save-mode)
+;;   (setq real-auto-save-interval 1)
+;;   (add-hook 'prog-mode-hook 'real-auto-save-mode)
+;;   (add-hook 'text-mode-hook 'real-auto-save-mode))
+;; (local/after-init-hook 'real-auto-save)
 
 (with-eval-after-load 'which-key
   (diminish 'which-key-mode)
@@ -106,13 +105,6 @@
 (local/after-init-hook 'multiple-cursors)
 
 (local/after-init-hook 'expand-region)
-
-;; C-q C-l 可以在当前位置插入并显示分页符
-(with-eval-after-load 'page-break-lines
-  (diminish 'page-break-lines-mode)
-  (dolist (hook '(prog-mode-hook html-mode-hook conf-mode-hook text-mode-hook))
-    (add-hook hook 'page-break-lines-mode)))
-(local/after-init-hook 'page-break-lines)
 
 (with-eval-after-load 'rainbow-delimiters
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
