@@ -31,11 +31,8 @@
 (local/load-package 'init-additional-major-mode)
 (local/load-package 'init-display-buffer)
 (local/load-package 'init-keyfreq)
-(local/load-package 'init-bookmark)
 (local/load-package 'init-macro)
-(local/load-package 'init-format)
 (local/load-package 'init-snippet)
-(local/load-package 'origami)
 (local/load-package 'init-folding)
 
 ;; 自动检测编码，如果错误的将utf-8检测成gbk等中文编码，可能会导致lsp崩
