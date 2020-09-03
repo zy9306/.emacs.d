@@ -20,6 +20,8 @@
           (message "File '%s' successfully renamed to '%s'"
                    name (file-name-nondirectory new-name)))))))
 
+(global-set-key (kbd "C-c r")  #'rename-current-buffer-file)
+
 (defun sudo-save ()
   (interactive)
   (if (not buffer-file-name)
@@ -39,10 +41,26 @@
         (revert-buffer t t) )))
   (message "Refreshed open files.") )
 
+(global-set-key (kbd "<f5>") 'revert-buffer-no-confirm)
+(global-set-key (kbd "<C-f5>") 'revert-all-buffers)
+
 (defun newline-at-end-of-line ()
   ;; shift+return
   (interactive)
   (move-end-of-line 1)
   (newline-and-indent))
+
+(defun scroll-half-page-down ()
+  "scroll down half the page"
+  (interactive)
+  (scroll-down (/ (window-body-height) 2)))
+
+(defun scroll-half-page-up ()
+  "scroll up half the page"
+  (interactive)
+  (scroll-up (/ (window-body-height) 2)))
+
+(global-set-key (kbd "C-v") 'scroll-half-page-up)
+(global-set-key (kbd "M-v") 'scroll-half-page-down)
 
 (provide 'init-utils)

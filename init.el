@@ -5,22 +5,13 @@
 (push (expand-file-name "~/.emacs.d/lisp") load-path)
 (push (expand-file-name "~/.emacs.d/yasnippet-snippets") load-path)
 
-(setq gc-cons-threshold 402653184
-      gc-cons-percentage 0.6)
-
-
-;; define variables for system type
-(defconst *is-a-mac* (eq system-type 'darwin))
-(defconst *win* (eq system-type 'windows-nt))
-(defconst *cygwin* (eq system-type 'cygwin))
-(defconst *linux* (or (eq system-type 'gnu/linux) (eq system-type 'linux)))
-(defconst *unix* (or *linux* (eq system-type 'usg-unix-v) (eq system-type 'berkeley-unix)))
-
 (defun local/load-package (package)
   (setq _starttime (float-time))
   (require package)
   (message "load %s, time: %s" package (- (float-time) _starttime)))
 
+(local/load-package 'init-constant)
+(local/load-package 'init-option)
 (local/load-package 'init-font)
 (local/load-package 'init-elpa)
 (local/load-package 'init-basic)
@@ -40,64 +31,20 @@
 (local/load-package 'init-additional-major-mode)
 (local/load-package 'init-display-buffer)
 (local/load-package 'init-keyfreq)
-
 (local/load-package 'init-bookmark)
-
 (local/load-package 'init-macro)
-
 (local/load-package 'init-format)
-
 (local/load-package 'init-snippet)
-
 (local/load-package 'origami)
 (local/load-package 'init-folding)
-
 
 ;; 自动检测编码，如果错误的将utf-8检测成gbk等中文编码，可能会导致lsp崩
 ;; 溃，编码默认为utf-8，如遇gbk等乱码，尝试C-x RET手动切换编码
 ;; (local/load-package 'unicad)
 
-;; evil config
-;; make `emacs --daemon` not load evil.
+
 (if (and (not (daemonp)) (not (display-graphic-p)))
     (local/load-package 'init-evil))
-
-
-;; when offline
-;; (setq package-archives '(("myelpa" . "~/Nutstore/apps/configs/emacs/myelpa/")))
-
-;; some variables
-
-;; don't ask me "Active processes exist; kill them and exit anyway?"
-(setq-default confirm-kill-processes nil)
-
-(defun scroll-half-page-down ()
-  "scroll down half the page"
-  (interactive)
-  (scroll-down (/ (window-body-height) 2)))
-
-(defun scroll-half-page-up ()
-  "scroll up half the page"
-  (interactive)
-  (scroll-up (/ (window-body-height) 2)))
-
-
-;; ;; 避免origami折叠大文件时栈溢出或内存超过阈值，不知道是否有副作用
-;; (setq max-specpdl-size 10000)
-;; (setq max-lisp-eval-depth 10000)
-
-;; end of the file reset gc
-;; (setq gc-cons-threshold 16777216)
-(setq gc-cons-percentage 0.1)
-
-;; https://emacs-lsp.github.io/lsp-mode/page/performance/
-(setq gc-cons-threshold (* 100 1024 1024)) ;; 100mb
-
-;; read-process-output-max is only available on recent
-;; development builds of Emacs 27 and above
-(when (boundp 'read-process-output-max)
-  (setq read-process-output-max (* 1024 1024)))
-
 
 (local/load-package 'init-keybinding)
 

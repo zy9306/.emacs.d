@@ -25,7 +25,7 @@
 )
 
 ;; mac dpi is too high, so enlarge font
-(when *is-a-mac*
+(when *mac*
   (set-face-attribute 'default nil :font "Source Code Pro 15")
 )
 

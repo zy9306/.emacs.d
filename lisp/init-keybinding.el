@@ -45,8 +45,7 @@
 ;; scroll
 (global-set-key (kbd "C-S-v") 'scroll-up-command)
 (global-set-key (kbd "M-S-v") 'scroll-down-command)
-(global-set-key (kbd "C-v") 'scroll-half-page-up)
-(global-set-key (kbd "M-v") 'scroll-half-page-down)
+
 (global-unset-key (kbd "C-9"))
 (global-unset-key (kbd "C-0"))
 (global-set-key (kbd "C-0") (lambda () (interactive) (next-line 2)))
@@ -84,9 +83,7 @@
 (global-set-key (kbd "M-y") 'browse-kill-ring)
 (global-set-key (kbd "C-,") 'goto-last-change)
 (global-set-key (kbd "C-.") 'goto-last-change-reverse)
-(global-set-key (kbd "<f5>") 'revert-buffer-no-confirm)
-(global-set-key (kbd "<C-f5>") 'revert-all-buffers)
-(global-set-key (kbd "C-c r")  #'rename-current-buffer-file)
+
 
 ;; imenu
 (global-set-key (kbd "C-x \"") #'imenu-list-smart-toggle)
@@ -122,11 +119,6 @@
 (global-set-key (kbd "C-c C-y") 'yapfify-region)
 (global-set-key (kbd "C-c C-b") 'python-black-region)
 (global-set-key (kbd "C-c C-l") 'highlight-indent-guides-mode)
-
-(when *is-a-mac*
-  (setq mac-command-modifier 'meta)
-  (setq mac-option-modifier 'none)
-  (global-set-key (kbd "M-ƒ") 'toggle-frame-fullscreen))
 
 (with-eval-after-load 'key-chord
   ;; (key-chord-define-global "rr" 'revert-buffer)
