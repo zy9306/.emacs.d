@@ -7,6 +7,7 @@ projectile*
 .lsp-session-*
 anaconda-mode/
 .cache/
+.persist/
 autosaves/
 backups/
 vimish-fold/

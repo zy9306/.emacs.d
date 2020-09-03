@@ -1,7 +1,6 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
 (require-package 'company)
-(require-package 'prescient)
 (require-package 'company-prescient)
 
 (with-eval-after-load 'company

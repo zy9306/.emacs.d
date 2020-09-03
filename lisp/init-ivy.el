@@ -4,7 +4,6 @@
 (require-package 'swiper)
 (require-package 'counsel)
 (require-package 'ivy-hydra)
-(require-package 'prescient)
 (require-package 'ivy-prescient)
 
 (with-eval-after-load 'ivy
@@ -17,7 +16,7 @@
   (diminish 'counsel-mode)
   (ivy-mode)
   (counsel-mode)
-  (ivy-prescient-mode)
+  ;; (ivy-prescient-mode)
 
   (setq ivy-use-virtual-buffers t)
   (setq ivy-count-format "(%d/%d) ")

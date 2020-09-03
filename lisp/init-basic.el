@@ -23,10 +23,16 @@
 (require-package 'wgrep)
 (require-package 'smex)
 (require-package 'exec-path-from-shell)
+;; NOTE: 对ivy的支持不能保证：https://github.com/raxod502/prescient.el/issues/65
+(require-package 'prescient)
 
 
 (defun local/after-init-hook (package)
   (add-hook 'after-init-hook (lambda () (require package))))
+
+(with-eval-after-load 'prescient
+  (setq prescient-save-file (concat "~/.emacs.d/.persist/" "prescient-save.el"))
+  (prescient-persist-mode 1))
 
 (with-eval-after-load 'exec-path-from-shell
   (setq exec-path-from-shell-arguments nil)
