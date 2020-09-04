@@ -36,7 +36,7 @@
 (local/load-package 'init-folding)
 
 (if (and (not (daemonp)) (not (display-graphic-p)))
-    (local/load-package 'init-evil))
+    (local/load-package 'init-evil-v2))
 
 (local/load-package 'init-keybinding)
 
