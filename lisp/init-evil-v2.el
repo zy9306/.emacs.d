@@ -19,6 +19,8 @@
   (general-evil-setup)
   (key-chord-mode 1)
 
+  (evil-set-initial-state 'ivy-occur-grep-mode 'normal)
+
   (general-define-key
    :states '(visual normal operator motion insert emacs)
    "C-c" 'evil-normal-state

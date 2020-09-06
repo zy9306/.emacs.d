@@ -55,7 +55,8 @@
   (dolist (hook '(text-mode-hook
                   python-mode-hook
                   yaml-mode-hook
-                  conf-mode-hook))
+                  conf-mode-hook
+                  elisp-mode-hook))
     (add-hook hook 'real-auto-save-mode)))
 (local/after-init-hook 'real-auto-save)
 
