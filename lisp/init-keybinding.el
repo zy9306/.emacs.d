@@ -126,7 +126,7 @@
   )
 (with-eval-after-load 'general
   (key-chord-mode 1)
-  (general-define-key (general-chord "cc") (general-simulate-key "C-c"))
+  ;; (general-define-key (general-chord "cc") (general-simulate-key "C-c"))
   ;; (general-define-key (general-chord "  ") (general-simulate-key "C-c"))
   ;; (general-define-key (general-chord "xx") (general-simulate-key "C-x"))
   ;; (general-define-key (general-chord "ee") (general-simulate-key "C-e"))
