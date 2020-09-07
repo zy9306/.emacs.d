@@ -34,6 +34,7 @@
 (local/load-package 'init-macro)
 (local/load-package 'init-snippet)
 (local/load-package 'init-folding)
+(local/load-package 'init-emacs-surround)
 
 (if (and (not (daemonp)) (not (display-graphic-p)))
     (local/load-package 'init-evil-v2))
