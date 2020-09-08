@@ -11,17 +11,21 @@
 (defhydra hydra-dired-menu (:color pink
                             :hint nil)
   "
-  ^Mark^                             ^Actions^
+  ^Mark^                                    ^Actions^
   ------------------------------------------------------------------------------------
-  _m_: mark                           _x_: execute
-  _d_: mark for delete                _i_: insert subdir below
-  _t_: toggle mark for all file       _Q_: query-replace-regexp
-  _#_: mark auto save files           _(_: hide detail mode
-  _~_: mark backup files              _R_: dired do rename
-  _u_: mark                           _D_: dired do delete
-  _U_: unmark all                     _&_: dired do async shell command
-  ^ ^                                 _$_: hide subdir
-  ^ ^                                 _C_: copy
+  _m_: dired-mark                           _x_: dired-do-flagged-delete
+  _d_: dired-flag-file-deletion             _i_: dired-insert-subdir
+  _t_: dired-toggle-marks                   _Q_: dired-do-find-regexp-and-replace
+  _#_: dired-flag-auto-save-files           _(_: dired-hide-details-mode
+  _~_: dired-flag-backup-files              _R_: dired-do-rename
+  _u_: dired-unmark                         _D_: dired-do-delete
+  _U_: dired-unmark-all-marks               _&_: dired-do-async-shell-command
+  ^ ^                                       _$_: dired-hide-subdir
+  ^ ^                                       _C_: dired-do-copy
+
+  'C-x C-j': dired-jump
+  'w': copy file name
+  '0 w': copy file full path
   "
   ("m" dired-mark)
   ("d" dired-flag-file-deletion)
@@ -43,10 +47,7 @@
   ("q" quit-window "quit" :color blue)
   )
 
-
-(require 'dired)
-(define-key dired-mode-map "," 'hydra-dired-menu/body)
-
+(add-hook 'dired-mode-hook (lambda () (define-key dired-mode-map "," 'hydra-dired-menu/body)))
 
 
 (provide 'init-hydra)
