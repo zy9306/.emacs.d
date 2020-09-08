@@ -35,6 +35,7 @@
 (local/load-package 'init-snippet)
 (local/load-package 'init-folding)
 (local/load-package 'init-surround)
+(local/load-package 'init-hydra)
 
 (if (and (not (daemonp)) (not (display-graphic-p)))
     (local/load-package 'init-evil-v2))
