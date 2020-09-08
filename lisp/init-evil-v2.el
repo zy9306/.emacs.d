@@ -12,6 +12,9 @@
   (require 'general)
   (require 'key-chord)
   
+  (setq evil-want-keybinding nil)
+  (setq evil-want-integration t)
+  (setq evil-disable-insert-state-bindings t)
   (evil-mode 1)
 
   (modify-syntax-entry ?_ "w")
@@ -43,6 +46,7 @@
   ;; C-x/C-c -> SPC
   (general-nmap
    :prefix "SPC"
+   :keymaps 'override
    "f" 'counsel-find-file
    "1" 'delete-other-windows
    "2" 'split-window-below
@@ -72,7 +76,82 @@
    "hv" 'counsel-describe-variable
    "hf" 'counsel-describe-function)
 
-  (local/evil-ivy-setup)
+  (general-define-key
+   :states 'normal
+   :keymaps 'override
+   (kbd "C-v") 'scroll-half-page-up
+   (kbd "M-v") 'scroll-half-page-down
+   (kbd "C-f") 'forward-char
+   (kbd "C-b") 'backward-char
+   (kbd "C-d") 'delete-char
+   (kbd "C-n") 'next-line
+   (kbd "C-p") 'previous-line
+   (kbd "C-y") 'yank
+   (kbd "C-w") 'kill-region
+   (kbd "M-w") 'kill-ring-save)
+  (general-define-key
+   :states 'insert
+   :keymaps 'override
+   (kbd "C-v") 'scroll-half-page-up
+   (kbd "M-v") 'scroll-half-page-down
+   (kbd "C-f") 'forward-char
+   (kbd "C-b") 'backward-char
+   (kbd "C-d") 'delete-char
+   (kbd "C-n") 'next-line
+   (kbd "C-p") 'previous-line
+   (kbd "C-y") 'yank
+   (kbd "C-w") 'kill-region
+   (kbd "M-w") 'kill-ring-save)
+
+  (general-define-key
+   :states 'normal
+   :keymaps '(ivy-occur-mode-map
+              ivy-occur-grep-mode-map
+              ivy-minibuffer-map
+              )
+   [mouse-1] 'ivy-occur-click
+   (kbd "RET") 'ivy-occur-press-and-switch
+   "j" 'ivy-occur-next-line
+   "k" 'ivy-occur-previous-line
+   "h" 'evil-backward-char
+   "l" 'evil-forward-char
+   "g" nil
+   "gg" 'evil-goto-first-line
+   "gf" 'ivy-occur-press
+   "ga" 'ivy-occur-read-action
+   "go" 'ivy-occur-dispatch
+   "gc" 'ivy-occur-toggle-calling
+   "gr" 'ivy-occur-revert-buffer
+   "d" 'ivy-occur-delete-candidate
+   "q" 'quit-window
+   )
+  (general-define-key
+   :states 'visual
+   :keymaps 'ivy-occur-grep-mode-map
+   "j" 'evil-next-line
+   "k" 'evil-previous-line
+   )
+  (general-define-key
+   :states 'normal
+   :keymaps 'ivy-minibuffer-map
+   (kbd "<escape>") 'abort-recursive-edit
+   (kbd "RET") 'ivy-done
+   "q" 'quit-window
+   "j" 'ivy-next-line
+   "k" 'ivy-previous-line
+   "go" 'ivy-occur)
+
+  (general-define-key
+   :states 'insert
+   :keymaps 'ivy-minibuffer-map
+   [backspace] 'ivy-backward-delete-char
+   (kbd "C-r") 'ivy-reverse-i-search
+   (kbd "C-o") 'ivy-occur
+   (kbd "C-n") 'ivy-next-line
+   (kbd "C-p") 'ivy-previous-line
+   (kbd "RET") 'ivy-done)
+
+  ;; (local/evil-ivy-setup)
   (local/minibuffer-setup))
 
 
