@@ -50,4 +50,38 @@
 (add-hook 'dired-mode-hook (lambda () (define-key dired-mode-map "," 'hydra-dired-menu/body)))
 
 
+(defhydra hydra-mc (:color pink :hint nil)
+  "
+  ^Mark^                                 ^UMark^                               ^Special^
+  -----------------------------------------------------------------------------------------------------
+  _>_: mc/mark-next-like-this            _}_: mc/skip-to-next-like-this        _n_: mc/insert-numbers
+  _<_: mc/mark-previous-like-this        _{_: mc/skip-to-previous-like-this    _l_: mc/insert-letters
+  _+_: mc/mark-all-in-region             _]_: mc/unmark-next-like-this
+  _d_: mc/mark-all-like-this-in-defun    _[_: mc/unmark-previous-like-this
+  _i_: mc/mark-all-dwim
+
+  Tips:
+  C-': hide all lines without a cursor, again to unhide.
+  C-x r y: yank a rectangle
+  C-v/M-v:  scroll the screen to center on each cursor
+  C->/C-< and C-c < is origin binding for mark next and previous and all like this.
+  "
+  (">" mc/mark-next-like-this)
+  ("<" mc/mark-previous-like-this)
+  ("+" mc/mark-all-in-region)
+  ("d" mc/mark-all-like-this-in-defun)
+  ("i" mc/mark-all-dwim)
+  ("n" mc/insert-numbers)
+  ("l" mc/insert-letters)
+  ("}" mc/skip-to-next-like-this)
+  ("{" mc/skip-to-previous-like-this)
+  ("]" mc/unmark-next-like-this)
+  ("[" mc/unmark-previous-like-this)
+  ("c" nil "cancel")
+  ("q" quit-window "quit" :color blue)
+  )
+
+(global-unset-key (kbd "C-?"))
+(global-set-key (kbd "C-? m") 'hydra-mc/body)
+
 (provide 'init-hydra)

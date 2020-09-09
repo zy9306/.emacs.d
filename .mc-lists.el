@@ -12,4 +12,9 @@
 
 (setq mc/cmds-to-run-once
       '(
+        hydra-mc/mc/mark-next-like-this
+        hydra-mc/mc/mark-previous-like-this
+        hydra-mc/mc/skip-to-previous-like-this
+        hydra-mc/mc/unmark-next-like-this
+        hydra-mc/mc/unmark-previous-like-this
         ))
