@@ -22,6 +22,7 @@
 (local/load-package 'init-window)
 (local/load-package 'init-projectile)
 (local/load-package 'init-rg)
+(local/load-package 'init-code)
 (local/load-package 'init-lsp)
 (local/load-package 'init-org)
 (local/load-package 'init-python)

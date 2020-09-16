@@ -24,6 +24,7 @@
 (require-package 'exec-path-from-shell)
 ;; NOTE: 对ivy的支持不能保证：https://github.com/raxod502/prescient.el/issues/65
 (require-package 'prescient)
+(require-package 'golden-ratio)
 
 
 (defun local/after-init-hook (package)
@@ -51,7 +52,7 @@
 ;; see also https://www.emacswiki.org/emacs/AutoSave `auto-save-visited-mode`
 (with-eval-after-load 'real-auto-save
   (diminish 'real-auto-save-mode)
-  (setq real-auto-save-interval 1)
+  (setq real-auto-save-interval 5)
   (dolist (hook '(text-mode-hook
                   python-mode-hook
                   yaml-mode-hook
@@ -140,5 +141,10 @@
 
 (with-eval-after-load 'highlight-indent-guides
   (setq highlight-indent-guides-method 'bitmap))
+
+(with-eval-after-load 'golden-ratio
+  (global-set-key (kbd "M--") 'golden-ratio))
+(local/after-init-hook 'golden-ratio)
+
 
 (provide 'init-basic)

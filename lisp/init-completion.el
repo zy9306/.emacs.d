@@ -18,13 +18,14 @@
   ;;  company-files
   ;;  (company-dabbrev-code company-gtags company-etags company-keywords)
   ;;  company-oddmuse company-dabbrev)
-  (setq company-backends
-        ;; 同一组(即同一括号)中的backends能同时被用到
-        ;; The CAPF back-end provides a bridge to the standard completion-at-point-functions facility
-        '(company-capf
-          company-files
-          (company-dabbrev-code company-keywords)
-          company-dabbrev))
+  ;; use company-ctags-auto-setup
+  ;; (setq company-backends
+  ;;       ;; 同一组(即同一括号)中的backends能同时被用到
+  ;;       ;; The CAPF back-end provides a bridge to the standard completion-at-point-functions facility
+  ;;       '(company-capf
+  ;;         company-files
+  ;;         (company-dabbrev-code company-keywords)
+  ;;         company-dabbrev))
   (define-key company-mode-map (kbd "M-/") 'company-complete)
   (define-key company-active-map (kbd "M-/") 'company-other-backend)
   (define-key company-active-map (kbd "C-n") 'company-select-next)

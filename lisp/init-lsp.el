@@ -46,6 +46,7 @@
   (define-key lsp-mode-map [remap xref-find-references] #'lsp-find-references)
 
   (setq lsp-enable-file-watchers nil)
+  (setq lsp-enable-snippet t)
 
   ;; http://blog.binchen.org/posts/how-to-speed-up-lsp-mode.html
 
@@ -57,12 +58,9 @@
   ;; no real time syntax check
   (setq lsp-diagnostic-package :none)
 
-  (setq lsp-enable-snippet nil)
-
   ;; turn off for better performance
   (setq lsp-enable-symbol-highlighting nil)
 
-  ;; use ffip instead
   (setq lsp-enable-links nil)
 
   ;; auto restart lsp
