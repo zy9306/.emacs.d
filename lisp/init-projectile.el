@@ -4,6 +4,7 @@
 (require-package 'projectile)
 (require-package 'counsel-projectile)
 (require-package 'neotree)
+(require-package 'treemacs)
 
 (with-eval-after-load 'projectile
   (projectile-mode)
@@ -46,6 +47,11 @@
               (neotree-dir project-dir)
               (neotree-find file-name)))
       (message "Could not find git project root."))))
+
+
+(global-set-key [f9] 'treemacs)
+(with-eval-after-load 'treemacs
+  (treemacs-follow-mode -1))
 
 
 (provide 'init-projectile)
