@@ -29,9 +29,8 @@
 
 (require-package 'lsp-mode)
 (require-package 'lsp-ui)
-(require-package 'lsp-ivy)
 
-(setq lsp-keymap-prefix "C-c l")
+(setq lsp-keymap-prefix "s-l")
 
 (with-eval-after-load 'lsp-mode
   (setq lsp-auto-guess-root t)
@@ -45,10 +44,7 @@
   (define-key lsp-mode-map [remap xref-find-definitions] #'lsp-find-definition)
   (define-key lsp-mode-map [remap xref-find-references] #'lsp-find-references)
 
-  (setq lsp-enable-file-watchers nil)
-  (setq lsp-enable-snippet t)
-
-  ;; http://blog.binchen.org/posts/how-to-speed-up-lsp-mode.html
+  (setq lsp-enable-file-watchers t)
 
   ;; enable log only for debug
   (setq lsp-log-io nil)
@@ -56,7 +52,7 @@
   (setq lsp-enable-folding nil)
 
   ;; no real time syntax check
-  (setq lsp-diagnostic-package :none)
+  (setq lsp-diagnostics-provider :none)
 
   ;; turn off for better performance
   (setq lsp-enable-symbol-highlighting nil)
@@ -65,15 +61,6 @@
 
   ;; auto restart lsp
   (setq lsp-restart 'auto-restart)
-
-  ;; don't ping LSP lanaguage server too frequently
-  (defvar lsp-on-touch-time 0)
-  (defadvice lsp-on-change (around lsp-on-change-hack activate)
-    ;; don't run `lsp-on-change' too frequently
-    (when (> (- (float-time (current-time))
-                lsp-on-touch-time) 30) ;; 30 seconds
-      (setq lsp-on-touch-time (float-time (current-time)))
-      ad-do-it))
 
   (require 'lsp-ui)
   )
@@ -97,7 +84,7 @@
   ;; (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
   )
 
-;; lsp-prefer-capf经常不能补全
+;; company-lsp已不受支持
 ;; (use-package company-lsp
 ;;   :ensure t
 ;;   :defer t

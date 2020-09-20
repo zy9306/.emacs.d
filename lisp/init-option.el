@@ -50,7 +50,7 @@
 
 (show-paren-mode t)
 (column-number-mode t)
-(global-hl-line-mode t)
+;; (global-hl-line-mode t)
 
 (set-default 'truncate-lines t)
 
@@ -68,7 +68,7 @@
   (let ((gls (executable-find "/usr/local/bin/gls")))
     (when gls (setq insert-directory-program "/usr/local/bin/gls")))
   (setq mac-command-modifier 'meta)
-  (setq mac-option-modifier 'none)
+  (setq mac-option-modifier 'super)
   (global-set-key (kbd "M-ƒ") 'toggle-frame-fullscreen))
 
 (when *win*

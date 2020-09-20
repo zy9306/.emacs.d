@@ -6,6 +6,7 @@
         comment-dwim
         electric-pair-delete-pair
         kill-region
+        wgrep-finish-edit
         yaml-electric-backspace
         yaml-electric-dash-and-dot
         ))

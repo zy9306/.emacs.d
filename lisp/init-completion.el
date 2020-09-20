@@ -6,7 +6,8 @@
 (with-eval-after-load 'company
   (setq company-idle-delay 0.05)
   (setq company-tooltip-idle-delay 0.05)
-  (setq company-minimum-prefix-length 2)
+  (setq company-minimum-prefix-length 1)
+  (setq company-require-match nil)
   ;; origin
   ;; (company-bbdb
   ;;  company-eclim
@@ -26,8 +27,7 @@
   ;;         company-files
   ;;         (company-dabbrev-code company-keywords)
   ;;         company-dabbrev))
-  ;; (define-key company-mode-map (kbd "M-/") 'company-complete)
-  (define-key company-mode-map (kbd "M-/") 'company-ctags)
+  (define-key company-mode-map (kbd "M-/") 'company-complete)
   (define-key company-active-map (kbd "M-/") 'company-other-backend)
   (define-key company-active-map (kbd "C-n") 'company-select-next)
   (define-key company-active-map (kbd "C-p") 'company-select-previous)

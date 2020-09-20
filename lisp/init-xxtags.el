@@ -11,18 +11,18 @@
 
 
 ;; https://github.com/redguardtoo/company-ctags
-(with-eval-after-load 'company
-  (setq company-ctags-fuzzy-match-p t)
-  (company-ctags-auto-setup)
+;; (with-eval-after-load 'company
+;;   (setq company-ctags-fuzzy-match-p t)
+;;   (company-ctags-auto-setup)
 
-  (defun my-counsel-company ()
-    "Input code from company backend using fuzzy matching."
-    (interactive)
-    (company-abort)
-    (let* ((company-backends '(company-ctags))
-           (company-ctags-fuzzy-match-p t))
-      (counsel-company)))
-  )
+;;   (defun my-counsel-company ()
+;;     "Input code from company backend using fuzzy matching."
+;;     (interactive)
+;;     (company-abort)
+;;     (let* ((company-backends '(company-ctags))
+;;            (company-ctags-fuzzy-match-p t))
+;;       (counsel-company)))
+;;   )
 
 
 ;; https://github.com/redguardtoo/counsel-etags
@@ -41,4 +41,5 @@
 ;; disabled emacs etags ask for add tables
 (setq tags-add-tables nil)
 
-(provide 'init-code)
+
+(provide 'init-xxtags)
