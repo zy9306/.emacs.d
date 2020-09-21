@@ -8,11 +8,13 @@
 (autoload 'go-mode "go-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
 
+;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md
+
 (with-eval-after-load 'go-mode
   (require 'lsp-mode)
   (require 'yasnippet)
   (lsp-register-custom-settings
-   '(("gopls.completeUnimported" t t)
+   '(("gopls.completeUnimported" nil nil)
      ("gopls.staticcheck" t t)))
   (add-hook 'go-mode-hook 'lsp-deferred)
   (yas-minor-mode)
