@@ -40,7 +40,6 @@
   ;; ivy-resume resumes the last Ivy-based completion
   (global-set-key (kbd "C-c C-r") 'ivy-resume)
   (global-set-key (kbd "C-c C-o") 'ivy-occur)
-  (global-set-key (kbd "C-;") 'counsel-mark-ring)
   (define-key ivy-occur-grep-mode-map (kbd "z") 'ivy-occur-hide-lines-matching)
   (define-key ivy-occur-grep-mode-map (kbd "/") 'ivy-occur-hide-lines-not-matching)  
   )

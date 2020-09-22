@@ -103,4 +103,9 @@
 (setq auto-revert-check-vc-info t)
 
 
+;; buildin command keybinding
+
+(global-set-key (kbd "C-;") 'set-mark-command)
+
+
 (provide 'init-option)

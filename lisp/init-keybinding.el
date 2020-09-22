@@ -38,10 +38,6 @@
 ;; buffers
 (global-set-key (kbd "C-x C-S-b") 'list-buffers)
 
-;; mark
-(global-set-key (kbd "C-x C-S-x") 'exchange-point-and-mark)
-(global-set-key (kbd "C-x C-x") 'local/set-mark-set-mark)
-
 ;; scroll
 (global-set-key (kbd "C-S-v") 'scroll-up-command)
 (global-set-key (kbd "M-S-v") 'scroll-down-command)
