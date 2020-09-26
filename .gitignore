@@ -5,6 +5,7 @@ bookmarks
 projectile*
 .smex-items
 .lsp-session-*
+eln-cache/
 anaconda-mode/
 .cache/
 .persist/

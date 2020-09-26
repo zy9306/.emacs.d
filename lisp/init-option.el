@@ -99,8 +99,9 @@
 
 ;; revert settings
 ;; (auto-revert-mode t)
-(global-auto-revert-mode t)
-(setq auto-revert-check-vc-info t)
+;; TODO profiler测试发现比较耗cpu,暂时禁用
+;; (global-auto-revert-mode t)
+;; (setq auto-revert-check-vc-info t)
 
 
 ;; buildin command keybinding
