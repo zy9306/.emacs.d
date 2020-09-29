@@ -38,6 +38,7 @@
 (local/load-package 'init-surround)
 (local/load-package 'init-hydra)
 (local/load-package 'init-dap-mode)
+(local/load-package 'init-posframe)
 
 (if (and (not (daemonp)) (not (display-graphic-p)))
     (local/load-package 'init-evil-v2))
@@ -62,6 +63,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(hl-line ((t (:background "pink"))))
+ '(ivy-posframe ((t (:background "gray90"))))
  '(lsp-ui-sideline-symbol-info ((t (:foreground "grey" :slant italic :height 0.99))))
  '(mode-line ((t (:background "white" :foreground "grey20" :box (:line-width -1 :color "dim gray") :slant normal :weight light))))
  '(mode-line-inactive ((t (:background "white" :foreground "grey20" :box (:line-width -1 :color "gray") :slant italic :weight light)))))
