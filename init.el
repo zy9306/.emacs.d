@@ -38,7 +38,7 @@
 (local/load-package 'init-surround)
 (local/load-package 'init-hydra)
 (local/load-package 'init-dap-mode)
-(local/load-package 'init-posframe)
+;; TODO (local/load-package 'init-posframe)
 
 (if (and (not (daemonp)) (not (display-graphic-p)))
     (local/load-package 'init-evil-v2))
