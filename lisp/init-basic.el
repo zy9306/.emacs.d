@@ -25,6 +25,9 @@
 ;; NOTE: 对ivy的支持不能保证：https://github.com/raxod502/prescient.el/issues/65
 (require-package 'prescient)
 (require-package 'golden-ratio)
+;; 透明窗口
+;; see also: https://github.com/Benaiah/seethru
+(require-package 'transwin)
 
 
 (defun local/after-init-hook (package)
