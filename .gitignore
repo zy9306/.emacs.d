@@ -5,6 +5,7 @@ bookmarks
 projectile*
 .smex-items
 .lsp-session-*
+.dap-breakpoints
 eln-cache/
 anaconda-mode/
 .cache/
