@@ -28,6 +28,12 @@
   ;; `M-x package-install [ret] company`
   (company-mode +1))
 
+
+;; "*HTTP Response*" buffer 不要启用tide
+(defun setup-tide-mode-patch ()
+    (if (not (equal (buffer-name) "*HTTP Response*"))
+        (setup-tide-mode)))
+
 ;; aligns annotation to the right hand side
 (setq company-tooltip-align-annotations t)
 
@@ -36,7 +42,7 @@
 
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
 
-(add-hook 'js-mode-hook #'setup-tide-mode)
+(add-hook 'js-mode-hook #'setup-tide-mode-patch)
 
 
 (provide 'init-js-ts)
