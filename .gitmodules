@@ -1,3 +1,6 @@
 [submodule "yasnippet-snippets"]
 	path = yasnippet-snippets
 	url = git@github.com:zy9306/yasnippet-snippets.git
+[submodule "nox"]
+	path = nox
+	url = git@github.com:zy9306/nox.git
