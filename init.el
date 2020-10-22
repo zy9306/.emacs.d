@@ -3,6 +3,7 @@
 (setq debug-on-error t)
 
 (push (expand-file-name "~/.emacs.d/lisp") load-path)
+(push (expand-file-name "~/.emacs.d/nox") load-path)
 (push (expand-file-name "~/.emacs.d/yasnippet-snippets") load-path)
 
 (defun local/load-package (package)
@@ -23,7 +24,8 @@
 (local/load-package 'init-projectile)
 (local/load-package 'init-rg)
 (local/load-package 'init-xxtags)
-(local/load-package 'init-lsp)
+;; (local/load-package 'init-lsp)
+(local/load-package 'init-nox)
 (local/load-package 'init-org)
 (local/load-package 'init-python)
 (local/load-package 'init-rust)

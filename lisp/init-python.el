@@ -10,13 +10,17 @@
 
 (setenv "WORKON_HOME" "~/Envs")
 
-(with-eval-after-load 'python
-  (require 'lsp-python-ms)
-  (require 'pyvenv)
-  (require 'yapfify)
-  (yapf-mode)
-  (add-hook 'python-mode-hook 'lsp-deferred)
-  )
+;; START
+;; use nox instead of lsp-mode
+;; (with-eval-after-load 'python
+;;   (require 'lsp-python-ms)
+;;   (require 'pyvenv)
+;;   (require 'yapfify)
+;;   (yapf-mode)
+;;   (add-hook 'python-mode-hook 'lsp-deferred)
+;;   )
+;; END
+
 
 ;; (with-eval-after-load 'flycheck
 ;;   (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup)

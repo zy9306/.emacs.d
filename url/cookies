@@ -1,0 +1,14 @@
+;; Emacs-W3 HTTP cookies file
+;; Automatically generated file!!! DO NOT EDIT!!!
+
+(setq url-cookie-storage
+ '((".shanbay.com"
+  [url-cookie "csrftoken" "b51f8ebdd5ca2df491938a69480391b7" "Fri Oct 15 06:29:36 2021 GMT" "/" ".shanbay.com" nil]))
+)
+(setq url-cookie-secure-storage
+ 'nil)
+
+;; Local Variables:
+;; version-control: never
+;; no-byte-compile: t
+;; End:
