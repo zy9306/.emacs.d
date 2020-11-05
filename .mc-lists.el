@@ -4,8 +4,12 @@
 (setq mc/cmds-to-run-for-all
       '(
         comment-dwim
+        electric-newline-and-maybe-indent
         electric-pair-delete-pair
+        indent-for-tab-command
         kill-region
+        mark-sexp
+        newline-at-end-of-line
         wgrep-finish-edit
         yaml-electric-backspace
         yaml-electric-dash-and-dot
