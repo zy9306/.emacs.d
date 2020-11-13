@@ -23,7 +23,7 @@
 (local/load-package 'init-window)
 (local/load-package 'init-projectile)
 (local/load-package 'init-rg)
-(local/load-package 'init-xxtags)
+(local/load-package 'init-gnu-global)
 ;; (local/load-package 'init-lsp)
 (local/load-package 'init-nox)
 (local/load-package 'init-org)

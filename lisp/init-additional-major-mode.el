@@ -10,6 +10,10 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
+(use-package markdown-toc
+  :ensure t
+  :defer t)
+
 (use-package yaml-mode
   :ensure t
   :defer t

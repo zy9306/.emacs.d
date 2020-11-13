@@ -9,6 +9,7 @@
         indent-for-tab-command
         kill-region
         mark-sexp
+        markdown-outdent-or-delete
         newline-at-end-of-line
         wgrep-finish-edit
         yaml-electric-backspace
