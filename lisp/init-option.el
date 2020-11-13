@@ -109,4 +109,13 @@
 (global-set-key (kbd "C-;") 'set-mark-command)
 
 
+;; set tramp file
+(setq tramp-persistency-file-name "~/.emacs.d/.persist/tramp")
+(setq bookmark-default-file "~/.emacs.d/.persist/bookmarks")
+(setq recentf-save-file "~/.emacs.d/.persist/recentf")
+(setq smex-save-file "~/.emacs.d/.persist/.smex-items")
+(setq mc/list-file "~/.emacs.d/.persist/.mc-lists.el")
+(setq projectile-cache-file "~/.emacs.d/.persist/projectile.cache")
+(setq lsp-session-file "~/.emacs.d/.persist/.lsp-session-v1")
+
 (provide 'init-option)
