@@ -1,3 +1,5 @@
+# Emacs
+
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
 
@@ -9,8 +11,6 @@
         - [一些可能的问题](#一些可能的问题)
 
 <!-- markdown-toc end -->
-
-# Emacs
 
 ## 安装
 
