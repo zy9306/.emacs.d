@@ -118,5 +118,6 @@
 (setq projectile-cache-file "~/.emacs.d/.persist/projectile.cache")
 (setq projectile-known-projects-file "~/.emacs.d/.persist/projectile-bookmarks.eld")
 (setq lsp-session-file "~/.emacs.d/.persist/.lsp-session-v1")
+(setq vimish-fold-dir "~/.emacs.d/.persist/vimish-fold/")
 
 (provide 'init-option)
