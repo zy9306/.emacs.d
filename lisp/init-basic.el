@@ -29,6 +29,10 @@
 ;; see also: https://github.com/Benaiah/seethru
 (require-package 'transwin)
 
+;; underscore -> UPCASE -> CamelCase conversion of names
+;; https://github.com/akicho8/string-inflection
+(require-package 'string-inflection)
+
 
 (defun local/after-init-hook (package)
   (add-hook 'after-init-hook (lambda () (require package))))
@@ -149,5 +153,23 @@
   (global-set-key (kbd "M--") 'golden-ratio))
 (local/after-init-hook 'golden-ratio)
 
+;; string-inflection
+;; default
+(global-set-key (kbd "C-c C-u") 'string-inflection-all-cycle)
+
+;; for ruby
+(add-hook 'ruby-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "C-c C-u") 'string-inflection-ruby-style-cycle)))
+
+;; for java
+(add-hook 'java-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "C-c C-u") 'string-inflection-java-style-cycle)))
+
+;; for python
+(add-hook 'python-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "C-c C-u") 'string-inflection-python-style-cycle)))
 
 (provide 'init-basic)
