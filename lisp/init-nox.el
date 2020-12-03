@@ -19,6 +19,8 @@
 
 (require 'nox)
 
+(setq nox-autoshutdown t)
+
 (dolist (hook (list
                'rust-mode-hook
                'python-mode-hook
