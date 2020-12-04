@@ -47,8 +47,8 @@
     (exec-path-from-shell-initialize)))
 (local/after-init-hook 'exec-path-from-shell)
 
-(with-eval-after-load 'smex
-  (setq-default smex-save-file (expand-file-name ".smex-items" user-emacs-directory)))
+;; (with-eval-after-load 'smex
+;;   (setq-default smex-save-file (expand-file-name ".smex-items" user-emacs-directory)))
 (local/after-init-hook 'smex)
 
 (with-eval-after-load 'undo-tree

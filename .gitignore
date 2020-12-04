@@ -9,7 +9,9 @@ projectile*
 eln-cache/
 anaconda-mode/
 .cache/
-.persist/
+.persist/*
+!.persist/.mc-lists.el
+!.persist/.smex-items
 autosaves/
 backups/
 vimish-fold/
