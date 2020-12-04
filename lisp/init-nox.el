@@ -23,8 +23,6 @@
 
 (dolist (hook (list
                'rust-mode-hook
-               'python-mode-hook
-               'sh-mode-hook
                'go-mode-hook
                ))
   (add-hook hook '(lambda () (nox-ensure))))
