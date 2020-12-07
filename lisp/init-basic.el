@@ -29,6 +29,9 @@
 ;; see also: https://github.com/Benaiah/seethru
 (require-package 'transwin)
 
+;; https://github.com/leoliu/easy-kill
+(require-package 'easy-kill)
+
 ;; underscore -> UPCASE -> CamelCase conversion of names
 ;; https://github.com/akicho8/string-inflection
 (require-package 'string-inflection)
@@ -171,5 +174,8 @@
 (add-hook 'python-mode-hook
           '(lambda ()
              (local-set-key (kbd "C-c C-u") 'string-inflection-python-style-cycle)))
+
+;; easy-kill
+(global-set-key [remap kill-ring-save] 'easy-kill)
 
 (provide 'init-basic)
