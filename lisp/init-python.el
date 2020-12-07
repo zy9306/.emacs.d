@@ -1,30 +1,15 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
-;; https://github.com/emacs-lsp/lsp-python-ms
-
-(require-package 'lsp-python-ms)
 (require-package 'pyvenv)
 (require-package 'auto-virtualenv)
 (require-package 'yapfify)
-(require-package 'flycheck-pycheckers)
 
 (setenv "WORKON_HOME" "~/Envs")
 
-;; START
-;; use nox instead of lsp-mode
-;; (with-eval-after-load 'python
-;;   (require 'lsp-python-ms)
-;;   (require 'pyvenv)
-;;   (require 'yapfify)
-;;   (yapf-mode)
-;;   (add-hook 'python-mode-hook 'lsp-deferred)
-;;   )
-;; END
+(defun my-python-mode-hook ()
+  (modify-syntax-entry ?_ "w"))
+(add-hook 'python-mode-hook 'my-python-mode-hook)
 
-
-;; (with-eval-after-load 'flycheck
-;;   (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup)
-;;   (setq flycheck-pycheckers-checkers '(flake8)))
 
 ;; (with-eval-after-load 'auto-virtualenv
 ;;   ;; add .python-version file to project root, then add path of virtualenv eg:~/Envs/venv36/
@@ -36,9 +21,6 @@
 ;;   ;; (add-hook 'projectile-after-switch-project-hook 'auto-virtualenv-set-virtualenv)
 ;;   )
 
-(defun my-python-mode-hook ()
-  (modify-syntax-entry ?_ "w"))
-(add-hook 'python-mode-hook 'my-python-mode-hook)
 
 ;; 下载 Microsoft.Python.LanguageServer
 ;; nox 也有类似的函数
@@ -53,26 +35,26 @@
 ;;   (message "%s" (lsp-python-ms-latest-nupkg-url "stable")))
 
 
-;; nox 补全不是很好，lsp-mode 太慢
+;; START anaconda-mode
+;; (use-package anaconda-mode
+;;   :ensure t
+;;   :defer t
+;;   :ensure company-anaconda
 
-(use-package anaconda-mode
-  :ensure t
-  :defer t
-  :ensure company-anaconda
+;;   :diminish anaconda-mode
 
-  :diminish anaconda-mode
+;;   :hook ((python-mode . anaconda-mode)
+;;          )
 
-  :hook ((python-mode . anaconda-mode)
-         )
+;;   :config
+;;   (require 'rx)
+;;   (eval-after-load "company"
+;;     '(add-to-list 'company-backends 'company-anaconda))
 
-  :config
-  (require 'rx)
-  (eval-after-load "company"
-    '(add-to-list 'company-backends 'company-anaconda))
+;;   (global-set-key (kbd "C-c M-r") 'anaconda-mode-find-references)
 
-  (global-set-key (kbd "C-c M-r") 'anaconda-mode-find-references)
-
-  (setq anaconda-eldoc-mode nil)
-  )
+;;   (setq anaconda-eldoc-mode nil)
+;;   )
+;; END anaconda-mode
 
 (provide 'init-python)
