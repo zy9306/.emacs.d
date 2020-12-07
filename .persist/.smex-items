@@ -1,18 +1,18 @@
 
 ;; ----- smex-history -----
 (
+ package-delete
+ customize-variable
+ lsp-ui-mode
  pyvenv-workon
- counsel-gtags-find-symbol
- counsel-gtags-go-backward
- ggtags-mode
- python-mode
- ggtags-find-tag-dwim
- revert-buffer
+ lsp
+ package-list-packages
+ balance-windows
 )
 
 ;; ----- smex-data -----
 (
- (pyvenv-workon . 248)
+ (pyvenv-workon . 255)
  (revert-buffer . 322)
  (magit-blame . 82)
  (go-mode . 7)
@@ -24,11 +24,11 @@
  (magit-mode . 1)
  (yaml-mode . 1)
  (make-directory . 13)
- (balance-windows . 2)
- (package-delete . 28)
- (lsp-ui-mode . 14)
+ (balance-windows . 4)
+ (package-delete . 34)
+ (lsp-ui-mode . 16)
  (lsp-ui-doc-mode . 3)
- (lsp-workspace-restart . 74)
+ (lsp-workspace-restart . 75)
  (lsp-ui-flycheck-list . 5)
  (lsp-ui-doc-show . 1)
  (delete-selection-mode . 18)
@@ -36,7 +36,7 @@
  (lsp-lens-mode . 2)
  (lsp-log-io-next . 1)
  (lsp-restart-workspace . 2)
- (lsp . 21)
+ (lsp . 22)
  (magit-diff . 9)
  (magit-diff-range . 4)
  (magit-log-buffer-file . 6)
@@ -137,7 +137,7 @@
  (pyim-dicts-manager . 4)
  (pyim-start . 5)
  (toggle-truncate-lines . 5)
- (package-list-packages . 13)
+ (package-list-packages . 14)
  (magit-reset . 1)
  (js-mode . 1)
  (company-diag . 1)
@@ -303,4 +303,5 @@
  (counsel-gtags-dwim . 3)
  (counsel-gtags-go-backward . 1)
  (counsel-gtags-find-symbol . 1)
+ (customize-variable . 1)
 )

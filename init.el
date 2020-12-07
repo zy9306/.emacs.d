@@ -26,7 +26,7 @@
 (local/load-package 'init-projectile)
 (local/load-package 'init-rg)
 (local/load-package 'init-gnu-global)
-;; (local/load-package 'init-lsp)
+(local/load-package 'init-lsp)
 (local/load-package 'init-nox)
 (local/load-package 'init-org)
 (local/load-package 'init-python)
@@ -41,7 +41,6 @@
 (local/load-package 'init-folding)
 (local/load-package 'init-surround)
 (local/load-package 'init-hydra)
-(local/load-package 'init-dap-mode)
 (local/load-package 'init-restclient)
 ;; TODO (local/load-package 'init-posframe)
 

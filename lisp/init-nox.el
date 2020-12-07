@@ -19,6 +19,8 @@
 
 (require 'nox)
 
+;; TODO 自行设置 gc-cons-threshold，不通过 nox
+(setq nox-optimization-p nil)
 (setq nox-autoshutdown t)
 
 (dolist (hook (list

@@ -3,7 +3,6 @@
 
 ;; https://github.com/emacs-lsp/lsp-mode
 ;; https://emacs-lsp.github.io/lsp-mode/
-;; https://github.com/emacs-lsp/lsp-ui
 
 
 ;; lsp-auto-guess-root为t时
@@ -28,13 +27,15 @@
 
 
 (require-package 'lsp-mode)
-(require-package 'lsp-ui)
+(require-package 'lsp-python-ms)
 
 (setq lsp-keymap-prefix "s-l")
 
+(setq dap-auto-configure-mode nil)
+
 (with-eval-after-load 'lsp-mode
   (setq lsp-auto-guess-root t)
-  (setq lsp-prefer-capf t)
+  (setq lsp-completion-provider :capf)
   (setq lsp-enable-imenu nil)
   ;; minibuffer不显示文档，只显示签名
   (setq lsp-signature-auto-activate t
@@ -44,55 +45,37 @@
   (define-key lsp-mode-map [remap xref-find-definitions] #'lsp-find-definition)
   (define-key lsp-mode-map [remap xref-find-references] #'lsp-find-references)
 
-  (setq lsp-enable-file-watchers t)
-
-  ;; enable log only for debug
-  (setq lsp-log-io nil)
-
   (setq lsp-enable-folding nil)
 
   ;; no real time syntax check
   (setq lsp-diagnostics-provider :none)
 
-  ;; turn off for better performance
-  (setq lsp-enable-symbol-highlighting nil)
-
   (setq lsp-enable-links nil)
-
-  ;; auto restart lsp
-  (setq lsp-restart 'auto-restart)
-
-  (require 'lsp-ui)
   )
 
-(with-eval-after-load 'lsp-ui
-  (add-hook 'lsp-mode-hook 'lsp-ui-mode)
-  (add-hook 'lsp-mode-hook 'flycheck-mode)
-  (setq lsp-ui-mode t)
-    ;; sideline
-  (setq lsp-ui-sideline-enable t
-        lsp-ui-sideline-show-symbol t
-        lsp-ui-sideline-show-hover t
-        lsp-ui-sideline-show-flycheck t
-        lsp-ui-sideline-show-diagnostics t
-        lsp-ui-sideline-show-code-actions nil)
-  (setq lsp-ui-doc-enable nil)
-  (setq lsp-ui-imenu-enable nil)
-  (setq lsp-ui-peek-enable nil)
-  ;; keymap
-  ;; (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-  ;; (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
-  )
+;; 不需要 lsp-ui
+;; (with-eval-after-load 'lsp-ui
+;;   (add-hook 'lsp-mode-hook 'lsp-ui-mode)
+;;   (setq lsp-ui-mode nil)
+;;   (setq lsp-ui-doc-mode nil)
+;;   (setq lsp-eldoc-hook nil)
+;;   (setq lsp-ui-sigeline-enable nil)
+;;   (setq lsp-ui-imenu-enable nil)
+;;   (setq lsp-ui-peek-enable nil)
 
-;; company-lsp已不受支持
-;; (use-package company-lsp
-;;   :ensure t
-;;   :defer t
-;;   :config
-;;   (setq company-lsp-cache-candidates 'auto)
-;;   (setq company-lsp-async t)
-;;   (setq company-lsp-enable-snippet t)
-;;   (setq company-lsp-enable-recompletion t)
+;;   (setq lsp-ui-sideline-show-symbol nil
+;;         lsp-ui-sideline-show-hover nil
+;;         lsp-ui-sideline-show-flycheck nil
+;;         lsp-ui-sideline-show-diagnostics nil
+;;         lsp-ui-sideline-show-code-actions nil)
 ;;   )
+
+
+;; START lsp-python-ms
+(with-eval-after-load 'python
+  (require 'lsp-python-ms)
+  (add-hook 'python-mode-hook 'lsp-deferred)
+  )
+;; END lsp-python-ms
 
 (provide 'init-lsp)
