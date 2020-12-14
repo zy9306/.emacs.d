@@ -1,20 +1,20 @@
 
 ;; ----- smex-history -----
 (
- package-delete
- customize-variable
- lsp-ui-mode
+ lsp-workspace-restart
  pyvenv-workon
- lsp
- package-list-packages
- balance-windows
+ symbol-overlay-mode
+ count-lines-page
+ count-words
+ nox-format-buffer
+ emacs-version
 )
 
 ;; ----- smex-data -----
 (
- (pyvenv-workon . 255)
+ (pyvenv-workon . 259)
  (revert-buffer . 322)
- (magit-blame . 82)
+ (magit-blame . 86)
  (go-mode . 7)
  (list-faces-display . 6)
  (garbage-collect . 6)
@@ -28,7 +28,7 @@
  (package-delete . 34)
  (lsp-ui-mode . 16)
  (lsp-ui-doc-mode . 3)
- (lsp-workspace-restart . 75)
+ (lsp-workspace-restart . 76)
  (lsp-ui-flycheck-list . 5)
  (lsp-ui-doc-show . 1)
  (delete-selection-mode . 18)
@@ -53,7 +53,7 @@
  (profiler-start . 6)
  (profiler-stop . 3)
  (profiler-report . 8)
- (lsp-disconnect . 4)
+ (lsp-disconnect . 5)
  (describe-coding-system . 3)
  (universal-coding-system-argument . 1)
  (imenu . 1)
@@ -71,17 +71,17 @@
  (semantic-mode . 2)
  (list-processes . 3)
  (lsp-describe-session . 1)
- (symbol-overlay-mode . 46)
+ (symbol-overlay-mode . 47)
  (key-chord-mode . 2)
  (smerge-mode . 6)
  (yafolding-mode . 3)
  (version . 3)
- (lsp-diagnose . 9)
+ (lsp-diagnose . 10)
  (scroll-left . 3)
  (scroll-up-line . 1)
  (magit . 2)
  (toggle-debug-on-error . 8)
- (emacs-version . 1)
+ (emacs-version . 2)
  (highlight-indent-guides-mode . 2)
  (markdown-kill-ring-save . 1)
  (counsel-mark-ring . 3)
@@ -116,7 +116,7 @@
  (auto-revert-set-timer . 1)
  (global-auto-revert-mode . 5)
  (magit-auto-revert-mode . 3)
- (whitespace-cleanup . 19)
+ (whitespace-cleanup . 20)
  (company-lsp . 5)
  (sudo-save . 1)
  (load-file . 6)
@@ -145,7 +145,7 @@
  (cd . 1)
  (company-capf . 8)
  (neotree-copy-filepath-to-yank-ring . 2)
- (lsp-managed-mode . 3)
+ (lsp-managed-mode . 5)
  (mspyls-latest-nupkg-url . 1)
  (eglot . 5)
  (lsp-ui-sideline-apply-code-actions . 1)
@@ -291,7 +291,7 @@
  (nox . 2)
  (nox-show-doc . 9)
  (nox-format . 3)
- (nox-format-buffer . 9)
+ (nox-format-buffer . 10)
  (nox-rename . 2)
  (nox-reconnect . 7)
  (org-gfm-export-as-markdown . 1)
@@ -304,4 +304,7 @@
  (counsel-gtags-go-backward . 1)
  (counsel-gtags-find-symbol . 1)
  (customize-variable . 1)
+ (lsp-workspace-show-log . 4)
+ (count-words . 3)
+ (count-lines-page . 1)
 )

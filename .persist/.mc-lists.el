@@ -4,6 +4,7 @@
 (setq mc/cmds-to-run-for-all
       '(
         browse-kill-ring
+        easy-kill
         electric-newline-and-maybe-indent
         electric-pair-delete-pair
         forward-sentence
