@@ -125,6 +125,9 @@
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 (local/after-init-hook 'rainbow-delimiters)
 
+(with-eval-after-load 'magit
+  (define-key magit-hunk-section-map (kbd "RET") 'magit-diff-visit-file-other-window)
+  (define-key magit-file-section-map (kbd "RET") 'magit-diff-visit-file-other-window))
 (local/after-init-hook 'magit)
 
 (with-eval-after-load 'browse-kill-ring
