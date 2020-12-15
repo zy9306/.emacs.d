@@ -12,6 +12,7 @@
         ivy-wgrep-change-to-wgrep-mode
         mark-sexp
         org-self-insert-command
+        string-inflection-all-cycle
         wgrep-finish-edit
         yaml-electric-backspace
         yaml-electric-bar-and-angle
