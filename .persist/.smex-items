@@ -1,22 +1,22 @@
 
 ;; ----- smex-history -----
 (
- lsp-workspace-restart
+ list-faces-display
+ magit-blame
  pyvenv-workon
+ whitespace-cleanup
+ org-todo-list
+ magit-log
  symbol-overlay-mode
- count-lines-page
- count-words
- nox-format-buffer
- emacs-version
 )
 
 ;; ----- smex-data -----
 (
- (pyvenv-workon . 259)
+ (pyvenv-workon . 261)
  (revert-buffer . 322)
- (magit-blame . 86)
+ (magit-blame . 91)
  (go-mode . 7)
- (list-faces-display . 6)
+ (list-faces-display . 8)
  (garbage-collect . 6)
  (flycheck-pycheckers-setup . 1)
  (global-diff-hl-mode . 2)
@@ -116,7 +116,7 @@
  (auto-revert-set-timer . 1)
  (global-auto-revert-mode . 5)
  (magit-auto-revert-mode . 3)
- (whitespace-cleanup . 20)
+ (whitespace-cleanup . 21)
  (company-lsp . 5)
  (sudo-save . 1)
  (load-file . 6)
@@ -125,7 +125,7 @@
  (shell-command-with-editor-mode . 2)
  (async-shell-command . 2)
  (python-black-region . 4)
- (magit-log . 1)
+ (magit-log . 2)
  (eshell . 1)
  (View-scroll-half-page-forward . 3)
  (protobuf-mode . 1)
@@ -307,4 +307,5 @@
  (lsp-workspace-show-log . 4)
  (count-words . 3)
  (count-lines-page . 1)
+ (org-todo-list . 1)
 )
