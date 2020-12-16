@@ -74,6 +74,7 @@
 ;; START lsp-python-ms
 (with-eval-after-load 'python
   (require 'lsp-python-ms)
+  (setq lsp-python-ms-completion-add-brackets nil)
   (add-hook 'python-mode-hook 'lsp-deferred)
   )
 ;; END lsp-python-ms
