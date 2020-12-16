@@ -17,7 +17,15 @@
 (add-hook 'org-mode-hook 'org-hide-block-all)
 
 (setq org-todo-keywords
-      (quote ((sequence "TODO(t)" "CONTINUE(n)" "DONE(d)" "CANCELLED(c)"))))
+      '((sequence "TODO(t)" "DOING(c)" "BLOCKED(b)" "REVIEW(r)" "|" "DONE(d)" "ARCHIVED(a)")))
+
+(setq org-todo-keyword-faces
+      '(("TODO" . org-warning)
+        ("DOING" . "pink")
+        ("BLOCKED" . "red")
+        ("REVIEW" . "orange")
+        ("DONE" . "purple")
+        ("ARCHIVED" . "black")))
 
 ;; 显示时间格式为 2019-01-25 Fri 14:55 ，若不设，星期会显示为中文
 (setq system-time-locale "C")
