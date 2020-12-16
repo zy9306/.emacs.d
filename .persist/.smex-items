@@ -1,18 +1,18 @@
 
 ;; ----- smex-history -----
 (
+ set-frame-name
+ pyvenv-workon
  list-faces-display
  magit-blame
- pyvenv-workon
  whitespace-cleanup
  org-todo-list
  magit-log
- symbol-overlay-mode
 )
 
 ;; ----- smex-data -----
 (
- (pyvenv-workon . 261)
+ (pyvenv-workon . 262)
  (revert-buffer . 322)
  (magit-blame . 91)
  (go-mode . 7)
@@ -308,4 +308,5 @@
  (count-words . 3)
  (count-lines-page . 1)
  (org-todo-list . 1)
+ (set-frame-name . 1)
 )
