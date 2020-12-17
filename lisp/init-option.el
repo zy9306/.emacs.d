@@ -34,8 +34,15 @@
   (menu-bar-mode -1))
 
 ;; set frame title to filename with short path
+;; (setq frame-title-format
+;;       '((:eval (if (buffer-file-name)
+;;                    (abbreviate-file-name (buffer-file-name))
+;;                  "%b"))))
+
+;; 项目名 + 文件名
 (setq frame-title-format
-      '((:eval (if (buffer-file-name)
+      '("miku@"(:eval (projectile-project-name)) ": "
+        (:eval (if (buffer-file-name)
                    (abbreviate-file-name (buffer-file-name))
                  "%b"))))
 
