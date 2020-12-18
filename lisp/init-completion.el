@@ -8,6 +8,9 @@
   (setq company-tooltip-idle-delay 0.05)
   (setq company-minimum-prefix-length 1)
   (setq company-require-match nil)
+  ;; 补全时不要忽略大小写
+  (setq company-dabbrev-downcase nil)
+  (setq company-dabbrev-ignore-case nil)
   ;; origin
   ;; (company-bbdb
   ;;  company-eclim
