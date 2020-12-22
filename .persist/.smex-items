@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ whitespace-cleanup
  company-diag
+ nox-shutdown
  pyvenv-workon
  set-frame-name
  list-faces-display
  magit-blame
- whitespace-cleanup
- org-todo-list
 )
 
 ;; ----- smex-data -----
@@ -116,7 +116,7 @@
  (auto-revert-set-timer . 1)
  (global-auto-revert-mode . 5)
  (magit-auto-revert-mode . 3)
- (whitespace-cleanup . 21)
+ (whitespace-cleanup . 23)
  (company-lsp . 5)
  (sudo-save . 1)
  (load-file . 6)
@@ -140,7 +140,7 @@
  (package-list-packages . 14)
  (magit-reset . 1)
  (js-mode . 1)
- (company-diag . 2)
+ (company-diag . 6)
  (lsp-signature-toggle-full-docs . 1)
  (cd . 1)
  (company-capf . 8)
@@ -296,7 +296,7 @@
  (nox-reconnect . 7)
  (org-gfm-export-as-markdown . 1)
  (org-md-export-as-markdown . 1)
- (nox-shutdown . 1)
+ (nox-shutdown . 2)
  (ggtags-mode . 7)
  (ggtags-find-tag-dwim . 1)
  (ggtags-global-mode . 2)
