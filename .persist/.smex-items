@@ -1,18 +1,18 @@
 
 ;; ----- smex-history -----
 (
- set-frame-name
+ company-diag
  pyvenv-workon
+ set-frame-name
  list-faces-display
  magit-blame
  whitespace-cleanup
  org-todo-list
- magit-log
 )
 
 ;; ----- smex-data -----
 (
- (pyvenv-workon . 262)
+ (pyvenv-workon . 264)
  (revert-buffer . 322)
  (magit-blame . 91)
  (go-mode . 7)
@@ -140,7 +140,7 @@
  (package-list-packages . 14)
  (magit-reset . 1)
  (js-mode . 1)
- (company-diag . 1)
+ (company-diag . 2)
  (lsp-signature-toggle-full-docs . 1)
  (cd . 1)
  (company-capf . 8)

@@ -16,26 +16,26 @@
 
 (require-package 'posframe)
 
+(defun local/nox-ensure ()
+  (nox-ensure)
+  (local/config-company-backends)
+  )
 
-(require 'nox)
+(use-package nox
+  :ensure posframe
+  :config
+  ;; 自行设置 gc-cons-threshold，不通过 nox
+  (setq nox-optimization-p nil)
+  (setq nox-autoshutdown t)
+  (setq nox-python-server-dir "~/.emacs.d/.cache/lsp/mspyls/")
 
-;; TODO 自行设置 gc-cons-threshold，不通过 nox
-(setq nox-optimization-p nil)
-(setq nox-autoshutdown t)
+  (add-hook 'pyvenv-post-activate-hooks '(lambda () (setq nox-python-path (executable-find "python"))))
 
-(dolist (hook (list
-               'rust-mode-hook
-               'go-mode-hook
-               ))
-  (add-hook hook '(lambda () (nox-ensure))))
-
-
-;; python
-
-
-(setq nox-python-server-dir "~/.emacs.d/.cache/lsp/mspyls/")
-
-(add-hook 'pyvenv-post-activate-hooks '(lambda () (setq nox-python-path (executable-find "python"))))
-
+  (dolist (hook (list
+                 'rust-mode-hook
+                 'go-mode-hook
+                 ))
+    (add-hook hook '(lambda () (local/nox-ensure))))
+  )
 
 (provide 'init-nox)

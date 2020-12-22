@@ -71,11 +71,16 @@
 ;;   )
 
 
+(defun local/lsp-deferred ()
+  (lsp-deferred)
+  (local/config-company-backends)
+  )
+
 ;; START lsp-python-ms
 (with-eval-after-load 'python
   (require 'lsp-python-ms)
   (setq lsp-python-ms-completion-add-brackets nil)
-  (add-hook 'python-mode-hook 'lsp-deferred)
+  (add-hook 'python-mode-hook #'local/lsp-deferred)
   )
 ;; END lsp-python-ms
 
