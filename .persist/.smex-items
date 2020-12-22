@@ -1,18 +1,18 @@
 
 ;; ----- smex-history -----
 (
+ nox
+ nox-format-buffer
+ pyvenv-workon
  whitespace-cleanup
  company-diag
  nox-shutdown
- pyvenv-workon
  set-frame-name
- list-faces-display
- magit-blame
 )
 
 ;; ----- smex-data -----
 (
- (pyvenv-workon . 264)
+ (pyvenv-workon . 267)
  (revert-buffer . 322)
  (magit-blame . 91)
  (go-mode . 7)
@@ -288,10 +288,10 @@
  (restclient-mode . 1)
  (restclient-show-info . 1)
  (pixel-scroll-mode . 2)
- (nox . 2)
+ (nox . 3)
  (nox-show-doc . 9)
  (nox-format . 3)
- (nox-format-buffer . 10)
+ (nox-format-buffer . 11)
  (nox-rename . 2)
  (nox-reconnect . 7)
  (org-gfm-export-as-markdown . 1)

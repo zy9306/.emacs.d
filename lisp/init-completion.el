@@ -7,35 +7,46 @@
 
 ;; https://emacs-china.org/t/tabnine/9988/40
 
-(defun local/company-sort-by-tabnine (candidates)
-  (if (or (functionp company-backend)
-          (not (and (listp company-backend) (memq 'company-tabnine company-backend))))
-      candidates
-    (let ((candidates-table (make-hash-table :test #'equal))
-          candidates-1
-          candidates-2)
-      (dolist (candidate candidates)
-        (if (eq (get-text-property 0 'company-backend candidate)
-                'company-tabnine)
-            (unless (gethash candidate candidates-table)
-              (push candidate candidates-2))
-          (push candidate candidates-1)
-          (puthash candidate t candidates-table)))
-      (setq candidates-1 (nreverse candidates-1))
-      (setq candidates-2 (nreverse candidates-2))
-      (nconc (seq-take candidates-1 2)
-             (seq-take candidates-2 2)
-             (seq-drop candidates-1 2)
-             (seq-drop candidates-2 2)))))
+;; 有性能问题 company-tabnine 和 company-capf 同时用的话
+
+;; (defun local/company-sort-by-tabnine (candidates)
+;;   (if (or (functionp company-backend)
+;;           (not (and (listp company-backend) (memq 'company-tabnine company-backend))))
+;;       candidates
+;;     (let ((candidates-table (make-hash-table :test #'equal))
+;;           candidates-1
+;;           candidates-2)
+;;       (dolist (candidate candidates)
+;;         (if (eq (get-text-property 0 'company-backend candidate)
+;;                 'company-tabnine)
+;;             (unless (gethash candidate candidates-table)
+;;               (push candidate candidates-2))
+;;           (push candidate candidates-1)
+;;           (puthash candidate t candidates-table)))
+;;       (setq candidates-1 (nreverse candidates-1))
+;;       (setq candidates-2 (nreverse candidates-2))
+;;       (nconc (seq-take candidates-1 2)
+;;              (seq-take candidates-2 2)
+;;              (seq-drop candidates-1 2)
+;;              (seq-drop candidates-2 2)))))
+
+;; (defun local/config-company-backends ()
+;;   (require 'company)
+
+;;   ;; `:separate` 使得不同 backend 分开排序
+;;   (if (not (member '(company-capf :with company-tabnine :separate) company-backends))
+;;       (push '(company-capf :with company-tabnine :separate) company-backends)
+;;     )
+;;   )
 
 (defun local/config-company-backends ()
   (require 'company)
-
-  ;; `:separate` 使得不同 backend 分开排序
-  (if (not (member '(company-capf :with company-tabnine :separate) company-backends))
-      (push '(company-capf :with company-tabnine :separate) company-backends)
-    )
-  )
+  (setq company-backends
+        '(company-capf
+          company-tabnine
+          (company-dabbrev company-dabbrev-code)
+          company-keywords
+          company-files)))
 
 (with-eval-after-load 'company
   (setq company-idle-delay 0.05)
@@ -55,7 +66,7 @@
   (global-company-mode)
   ;; (company-prescient-mode)
 
-  (add-to-list 'company-transformers 'local/company-sort-by-tabnine t)
+  ;; (add-to-list 'company-transformers 'local/company-sort-by-tabnine t)
 
   (local/config-company-backends)
   )
