@@ -16,4 +16,26 @@
 
 (local/after-init-hook 'avy)
 
+(defun local/config-ace-isearch()
+  (global-ace-isearch-mode +1)
+  (define-key isearch-mode-map (kbd "C-'") 'ace-isearch-jump-during-isearch))
+
+(defun local/config-avy-zap()
+  (global-set-key (kbd "M-z") 'avy-zap-to-char-dwim)
+  (global-set-key (kbd "M-Z") 'avy-zap-up-to-char-dwim))
+
+(use-package ace-isearch
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'after-init-hook #'local/config-ace-isearch)
+)
+
+(use-package avy-zap
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'after-init-hook #'local/config-avy-zap)
+  )
+
 (provide 'init-avy)
