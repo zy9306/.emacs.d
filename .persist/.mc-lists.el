@@ -10,6 +10,7 @@
         forward-sentence
         forward-sexp
         ivy-wgrep-change-to-wgrep-mode
+        kill-region
         mark-sexp
         org-self-insert-command
         org-yank
