@@ -2,6 +2,9 @@
 
 (require-package 'company)
 (require-package 'company-tabnine)
+(require-package 'company-flx)
+;; company-fuzzy 比较卡，会将所有 backends 放一起，无效结果多，company-flx 只对 company-capf 起作用
+;; (require-package 'company-fuzzy)
 ;; (require-package 'company-prescient)
 
 
@@ -69,6 +72,8 @@
   ;; (add-to-list 'company-transformers 'local/company-sort-by-tabnine t)
 
   (local/config-company-backends)
+
+  (company-flx-mode +1)
   )
 
 (local/after-init-hook 'company)
