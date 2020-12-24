@@ -1,20 +1,20 @@
 
 ;; ----- smex-history -----
 (
+ company-flx-mode
+ global-company-fuzzy-mode
+ magit-blame
  nox
- nox-format-buffer
- pyvenv-workon
- whitespace-cleanup
- company-diag
- nox-shutdown
- set-frame-name
+ company-fuzzy-mode
+ company-tabnine
+ company-capf
 )
 
 ;; ----- smex-data -----
 (
- (pyvenv-workon . 267)
+ (pyvenv-workon . 268)
  (revert-buffer . 322)
- (magit-blame . 91)
+ (magit-blame . 92)
  (go-mode . 7)
  (list-faces-display . 8)
  (garbage-collect . 6)
@@ -75,7 +75,7 @@
  (key-chord-mode . 2)
  (smerge-mode . 6)
  (yafolding-mode . 3)
- (version . 3)
+ (version . 4)
  (lsp-diagnose . 10)
  (scroll-left . 3)
  (scroll-up-line . 1)
@@ -143,7 +143,7 @@
  (company-diag . 6)
  (lsp-signature-toggle-full-docs . 1)
  (cd . 1)
- (company-capf . 8)
+ (company-capf . 9)
  (neotree-copy-filepath-to-yank-ring . 2)
  (lsp-managed-mode . 5)
  (mspyls-latest-nupkg-url . 1)
@@ -288,7 +288,7 @@
  (restclient-mode . 1)
  (restclient-show-info . 1)
  (pixel-scroll-mode . 2)
- (nox . 3)
+ (nox . 8)
  (nox-show-doc . 9)
  (nox-format . 3)
  (nox-format-buffer . 11)
@@ -309,4 +309,9 @@
  (count-lines-page . 1)
  (org-todo-list . 1)
  (set-frame-name . 1)
+ (company-fuzzy-mode . 3)
+ (markdown-toc-refresh-toc . 1)
+ (company-tabnine . 1)
+ (company-flx-mode . 4)
+ (global-company-fuzzy-mode . 1)
 )
