@@ -40,9 +40,9 @@
 
 (with-eval-after-load 'company (local/config-company-backends))
 
-(with-eval-after-load 'company
-  (setq company-flx-limit 100)
-  (company-flx-mode +1))
+;; (with-eval-after-load 'company
+;;   (setq company-flx-limit 100)
+;;   (company-flx-mode +1))
 
 ;; (with-eval-after-load 'company (company-prescient-mode))
 
