@@ -45,6 +45,9 @@
   (define-key lsp-mode-map [remap xref-find-definitions] #'lsp-find-definition)
   (define-key lsp-mode-map [remap xref-find-references] #'lsp-find-references)
 
+  ;; 顶部面包屑栏
+  (lsp-headerline-breadcrumb-mode t)
+
   (setq lsp-enable-folding nil)
 
   ;; no real time syntax check
