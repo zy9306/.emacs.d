@@ -43,5 +43,16 @@
             (lambda () (c-add-style "my-protobuf-style" my-protobuf-style t)))
   )
 
+(use-package json-mode
+  :ensure t
+  :defer t
+  :mode "\\.json\\'")
+
+
+(use-package nix-mode
+  :ensure t
+  :defer t
+  :mode "\\.nix\\'")
+
 
 (provide 'init-additional-major-mode)
