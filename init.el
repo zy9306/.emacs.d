@@ -16,6 +16,7 @@
 (local/load-package 'init-constant)
 (local/load-package 'init-option)
 (local/load-package 'init-font)
+(local/load-package 'init-face)
 (local/load-package 'init-elpa)
 (local/load-package 'init-basic)
 (local/load-package 'init-utils)
@@ -68,10 +69,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(hl-line ((t (:background "pink"))))
- '(lsp-ui-sideline-symbol-info ((t (:foreground "grey" :slant italic :height 0.99))))
- '(mode-line ((t (:background "white" :foreground "grey20" :box (:line-width -1 :color "dim gray") :slant normal :weight light))))
- '(mode-line-inactive ((t (:background "white" :foreground "grey20" :box (:line-width -1 :color "gray") :slant italic :weight light)))))
+ )
 
 
 ;; close debug when finally load
