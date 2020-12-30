@@ -54,23 +54,10 @@
 ;; 溃，编码默认为utf-8，如遇gbk等乱码，尝试C-x RET手动切换编码
 ;; (local/load-package 'unicad)
 
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(easy-kill restclient treemacs eglot corral general key-chord vimish-fold yafolding keyfreq shackle protobuf-mode dockerfile-mode yaml-mode yasnippet go-mode tide js2-mode flycheck-rust rust-mode flycheck-pycheckers yapfify auto-virtualenv pyvenv lsp-python-ms toc-org lsp-ivy lsp-ui lsp-mode which-key use-package symbol-overlay spinner smex rg real-auto-save rainbow-delimiters neotree multiple-cursors move-text markdown-mode magit ivy-prescient ivy-hydra imenu-list highlight-indent-guides goto-chg flycheck expand-region exec-path-from-shell dired-subtree diminish diff-hl counsel-projectile company-prescient buffer-move browse-kill-ring anzu ace-window))
- '(safe-local-variable-values '((url-max-redirections . 0)))
- '(warning-suppress-types '((comp))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
+;; 将 custom-set-variables 和 custom-set-faces 移到单独的文件
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(when (file-exists-p custom-file)
+  (load custom-file))
 
 ;; close debug when finally load
 (setq debug-on-error nil)
