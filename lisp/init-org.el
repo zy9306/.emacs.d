@@ -87,7 +87,7 @@
      "read_only")
     (unless buf-mod
       (set-buffer-modified-p nil)))
- (message "Made all read only!"))
+ (message "Mark all read only!"))
 
 ;; 移除所有 read_only tag 只读状态
 (defun org-remove-all-readonly ()
@@ -118,7 +118,7 @@
       (set-buffer-modified-p nil)))
   (message "Cancel current read only!"))
 
-(add-hook 'org-mode-hook 'org-mark-readonly)
+(add-hook 'org-mode-hook #'org-mark-all-readonly)
 
 (with-eval-after-load 'org
   (define-key org-mode-map (kbd "C-c b") #'org-mark-all-readonly)
