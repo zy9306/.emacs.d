@@ -30,59 +30,32 @@
 ;; 显示时间格式为 2019-01-25 Fri 14:55 ，若不设，星期会显示为中文
 (setq system-time-locale "C")
 
-
-
 ;; https://github.com/snosov1/toc-org
 (use-package toc-org
   :ensure t
   :defer t
   :hook ((org-mode . toc-org-mode)
          (markdown-mode . toc-org-mode)))
-;; (define-key markdown-mode-map (kbd "\C-c\C-o") 'toc-org-markdown-follow-thing-at-point)
 
-
-
-;; org capture
+;; Capture
+;; http://www.zmonster.me/2018/02/28/org-mode-capture.html
+;; https://orgmode.org/manual/Capture-templates.html
+;; see C-h v org-capture-templates for more info
 ;; (global-set-key (kbd "C-c c") 'org-capture)
-;; ;; http://www.zmonster.me/2018/02/28/org-mode-capture.html
-;; ;; https://orgmode.org/manual/Capture-templates.html
-;; ;; see C-h v org-capture-templates for more info
 ;; (setq org-capture-templates
 ;;       '(
-;;         ("t" "TODO")
-;;         ("t1" "TODO1" entry (file "~/Nutstore/gtd/TODO.org")
-;;          "* TODO %?\n  %i\n  %a")
-;;         ("t2" "TODO2" entry (file "~/Nutstore/gtd/TODO2.org")
-;;          "* TODO %?\n  %i\n  %a")
-;;         ("t3" "TODO3" entry (file "~/Nutstore/gtd/TODO3.org")
+;;         ("t" "TODO" entry (file "~/Nutstore/gtd/TODO.org")
 ;;          "* TODO %?\n  %i\n  %a")
 
 ;;         ("s" "snippet")
+
 ;;         ("sp" "Python" entry (file+headline "~/Nutstore/gtd/snippet.org" "Python")
 ;;          "** Python %?\n#+BEGIN_SRC python\n\n#+END_SRC" :empty-lines 1)
+
 ;;         ("sl" "Linux" entry (file+headline "~/Nutstore/gtd/snippet.org" "Linux")
 ;;          "** Linux %?\n  %i\n  %a" :empty-lines 1)
-;;         ("sg" "Git" entry (file+headline "~/Nutstore/gtd/snippet.org" "Git")
-;;          "** Git %?\n  %i\n  %a" :empty-lines 1)
-;;         ("sd" "Docker" entry (file+headline "~/Nutstore/gtd/snippet.org" "Docker")
-;;          "** Docker %?\n  %i\n  %a" :empty-lines 1)
-;;         ("sm" "Mongo" entry (file+headline "~/Nutstore/gtd/snippet.org" "Mongo")
-;;          "** Mongo %?\n  %i\n  %a" :empty-lines 1)
-;;         ("sq" "Sql" entry (file+headline "~/Nutstore/gtd/snippet.org" "Sql")
-;;          "** Sql %?\n  %i\n  %a" :empty-lines 1)
-;;         ("ss" "Skydata" entry (file+headline "~/Nutstore/gtd/snippet.org" "Skydata")
-;;          "** Skydata %?\n  %i\n  %a" :empty-lines 1)
 ;;         ))
 ;; (setq org-agenda-files (file-expand-wildcards "~/Nutstore/gtd/*.org"))
-
-
-;; ox-gfm is also installed by markdown-mode, use it default and disable ox-qmd
-
-;; it will take some startup time
-;; (use-package ox-qmd
-;;   :ensure t
-;;   :config
-;;   (add-to-list 'ox-qmd-language-keyword-alist '("shell-script" . "sh")))
 
 
 ;; https://github.com/abo-abo/org-download/tree/master
@@ -92,6 +65,47 @@
 ;;   :ensure t
 ;;   :config
 ;;   (global-set-key (kbd "C-c y") 'org-download-yank))
+
+
+;; 标题加 read_only 标签，使该标签下的所有内容变成只读
+;; 该版本有个问题，打开文件时，文件会显示为已修改状态
+;; https://kitchingroup.cheme.cmu.edu/blog/2014/09/13/Make-some-org-sections-read-only/
+;; 该版本改进了文件会显示为已修改状态的问题，但是使用了 org-mark-subtree ，会导致无法在只读标题下新建标题
+;; https://emacs.stackexchange.com/questions/62495/how-can-i-mark-sections-of-a-very-large-org-agenda-file-as-read-only
+;; 结合两者的修改版
+(defun org-mark-readonly ()
+  (interactive)
+  (let ((buf-mod (buffer-modified-p)))
+    (org-map-entries
+     (lambda ()
+       (let* ((element (org-element-at-point))
+              (begin (org-element-property :begin element))
+              (end (org-element-property :end element)))
+         (add-text-properties begin (- end 1) '(read-only t))))
+     "read_only")
+    (unless buf-mod
+      (set-buffer-modified-p nil)))
+ (message "Made readonly!"))
+
+(defun org-remove-readonly ()
+  (interactive)
+  (let ((buf-mod (buffer-modified-p)))
+    (org-map-entries
+     (lambda ()
+       (let* ((element (org-element-at-point))
+              (begin (org-element-property :begin element))
+              (end (org-element-property :end element))
+              (inhibit-read-only t))
+         (remove-text-properties begin (- end 1) '(read-only t))))
+     "read_only")
+    (unless buf-mod
+      (set-buffer-modified-p nil))))
+
+(add-hook 'org-mode-hook 'org-mark-readonly)
+
+(with-eval-after-load 'org
+  (define-key org-mode-map (kbd "C-c 7") #'org-mark-readonly)
+  (define-key org-mode-map (kbd "C-c 8") #'org-remove-readonly))
 
 
 (provide 'init-org)
