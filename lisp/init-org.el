@@ -75,6 +75,8 @@
 ;; 结合两者的修改版
 (defun org-mark-readonly ()
   (interactive)
+  ;; 先强制移除所有只读状态
+  (org-remove-all-readonly)
   (let ((buf-mod (buffer-modified-p)))
     (org-map-entries
      (lambda ()
@@ -87,7 +89,8 @@
       (set-buffer-modified-p nil)))
  (message "Made readonly!"))
 
-(defun org-remove-readonly ()
+;; 移除所有 read_only tag 只读状态
+(defun org-remove-all-readonly ()
   (interactive)
   (let ((buf-mod (buffer-modified-p)))
     (org-map-entries
@@ -101,11 +104,24 @@
     (unless buf-mod
       (set-buffer-modified-p nil))))
 
+;; 只移除当前区块的只读状态
+(defun org-remove-readonly ()
+  (interactive)
+  (let ((buf-mod (buffer-modified-p)))
+    (let* ((element (org-element-at-point))
+           (begin (org-element-property :begin element))
+           (end (org-element-property :end element))
+           (inhibit-read-only t))
+      (remove-text-properties begin (- end 1) '(read-only t)))
+    (unless buf-mod
+      (set-buffer-modified-p nil))))
+
 (add-hook 'org-mode-hook 'org-mark-readonly)
 
 (with-eval-after-load 'org
   (define-key org-mode-map (kbd "C-c 7") #'org-mark-readonly)
-  (define-key org-mode-map (kbd "C-c 8") #'org-remove-readonly))
+  (define-key org-mode-map (kbd "C-c 8") #'org-remove-readonly)
+  (define-key org-mode-map (kbd "C-c 9") #'org-remove-readonly))
 
 
 (provide 'init-org)
