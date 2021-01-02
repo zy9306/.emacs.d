@@ -73,7 +73,7 @@
 ;; 该版本改进了文件会显示为已修改状态的问题，但是使用了 org-mark-subtree ，会导致无法在只读标题下新建标题
 ;; https://emacs.stackexchange.com/questions/62495/how-can-i-mark-sections-of-a-very-large-org-agenda-file-as-read-only
 ;; 结合两者的修改版
-(defun org-mark-readonly ()
+(defun org-mark-all-readonly ()
   (interactive)
   ;; 先强制移除所有只读状态
   (org-remove-all-readonly)
@@ -87,7 +87,7 @@
      "read_only")
     (unless buf-mod
       (set-buffer-modified-p nil)))
- (message "Made readonly!"))
+ (message "Made all read only!"))
 
 ;; 移除所有 read_only tag 只读状态
 (defun org-remove-all-readonly ()
@@ -102,9 +102,10 @@
          (remove-text-properties begin (- end 1) '(read-only t))))
      "read_only")
     (unless buf-mod
-      (set-buffer-modified-p nil))))
+      (set-buffer-modified-p nil)))
+  (message "Cancel all read only!"))
 
-;; 只移除当前区块的只读状态
+;; 只移除当前光标所在区块的只读状态
 (defun org-remove-readonly ()
   (interactive)
   (let ((buf-mod (buffer-modified-p)))
@@ -114,14 +115,15 @@
            (inhibit-read-only t))
       (remove-text-properties begin (- end 1) '(read-only t)))
     (unless buf-mod
-      (set-buffer-modified-p nil))))
+      (set-buffer-modified-p nil)))
+  (message "Cancel current read only!"))
 
 (add-hook 'org-mode-hook 'org-mark-readonly)
 
 (with-eval-after-load 'org
-  (define-key org-mode-map (kbd "C-c 7") #'org-mark-readonly)
-  (define-key org-mode-map (kbd "C-c 8") #'org-remove-readonly)
-  (define-key org-mode-map (kbd "C-c 9") #'org-remove-readonly))
+  (define-key org-mode-map (kbd "C-c b") #'org-mark-all-readonly)
+  (define-key org-mode-map (kbd "C-c J") #'org-remove-all-readonly)
+  (define-key org-mode-map (kbd "C-c j") #'org-remove-readonly))
 
 
 (provide 'init-org)
