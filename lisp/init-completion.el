@@ -4,7 +4,6 @@
 ;; company-flx 只对 company-capf 起作用
 ;; 可以尝试下 ycmd
 
-(require-package 'company)
 (require-package 'company-tabnine)
 (require-package 'company-flx)
 (require-package 'company-fuzzy)
