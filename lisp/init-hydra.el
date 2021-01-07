@@ -3,8 +3,6 @@
 
 ;; https://github.com/abo-abo/hydra
 
-(require-package 'hydra)
-
 
 (require 'hydra)
 

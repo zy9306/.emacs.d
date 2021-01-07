@@ -2,9 +2,6 @@
 
 ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md
 
-(require-package 'go-mode)
-(require-package 'yasnippet)
-
 (autoload 'go-mode "go-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
 

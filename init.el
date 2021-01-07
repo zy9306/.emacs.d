@@ -2,31 +2,15 @@
 
 (setq debug-on-error t)
 
-(make-directory "~/.emacs.d/.persist" t)
-
-(push (expand-file-name "~/.emacs.d/repo/dash.el") load-path)
-(push (expand-file-name "~/.emacs.d/repo/f.el") load-path)
-(push (expand-file-name "~/.emacs.d/repo/ht.el") load-path)
-(push (expand-file-name "~/.emacs.d/repo/spinner.el") load-path)
-(push (expand-file-name "~/.emacs.d/repo/pfuture") load-path)
-
-(push (expand-file-name "~/.emacs.d/lisp") load-path)
-
-(push (expand-file-name "~/.emacs.d/repo/swiper") load-path)
-(push (expand-file-name "~/.emacs.d/repo/company-mode") load-path)
-(push (expand-file-name "~/.emacs.d/repo/projectile") load-path)
-(push (expand-file-name "~/.emacs.d/repo/counsel-projectile") load-path)
-(push (expand-file-name "~/.emacs.d/repo/treemacs/src/elisp") load-path)
-(push (expand-file-name "~/.emacs.d/repo/treemacs/src/extra") load-path)
-(push (expand-file-name "~/.emacs.d/repo/treemacs/src/script") load-path)
-(push (expand-file-name "~/.emacs.d/repo/lsp-mode") load-path)
-(push (expand-file-name "~/.emacs.d/repo/lsp-python-ms") load-path)
-
-
 (defun local/load-package (package)
   (setq _starttime (float-time))
   (require package)
   (message "load %s, time: %s" package (- (float-time) _starttime)))
+
+(make-directory (expand-file-name "./persist") t)
+(push (expand-file-name "./lisp") load-path)
+(local/load-package 'init-elpa)
+(load-file (expand-file-name "./pkg.el"))
 
 (local/load-package 'init-constant)
 (local/load-package 'init-option)
@@ -34,7 +18,6 @@
 (local/load-package 'init-face-common)
 (local/load-package 'init-face)
 (local/load-package 'init-face-org)
-(local/load-package 'init-elpa)
 (local/load-package 'init-basic)
 (local/load-package 'init-utils)
 (local/load-package 'init-completion)

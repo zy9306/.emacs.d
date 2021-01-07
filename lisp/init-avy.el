@@ -1,7 +1,5 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
-(require-package 'avy)
-
 (with-eval-after-load 'avy
   (avy-setup-default)
 

@@ -4,8 +4,6 @@
 ;; https://github.com/mooz/js2-mode/tree/master
 ;; https://github.com/ananthakumaran/tide/tree/master
 
-(require-package 'js2-mode)
-(require-package 'tide)
 
 (add-to-list 'auto-mode-alist '("\\.\\(js\\|es6\\)\\(\\.erb\\)?\\'" . js-mode))
 

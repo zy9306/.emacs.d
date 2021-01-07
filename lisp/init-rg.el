@@ -2,7 +2,6 @@
 
 ;; https://github.com/dajva/rg.el
 
-(require-package 'rg)
 
 (with-eval-after-load 'rg
   (setq rg-show-header t)

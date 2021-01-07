@@ -1,42 +1,5 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
-(require-package 'diminish)
-(require-package 'undo-tree)
-(require-package 'real-auto-save)
-(require-package 'which-key)
-(require-package 'imenu-list)
-(require-package 'flycheck)
-(require-package 'diff-hl)
-(require-package 'symbol-overlay)
-(require-package 'anzu)
-(require-package 'multiple-cursors)
-(require-package 'expand-region)
-(require-package 'browse-kill-ring)
-(require-package 'magit)
-(require-package 'rainbow-delimiters)
-(require-package 'move-text)
-(require-package 'goto-chg)
-(require-package 'recentf)
-(require-package 'dired-subtree)
-(require-package 'highlight-indent-guides)
-(require-package 'wgrep)
-(require-package 'smex)
-(require-package 'exec-path-from-shell)
-;; NOTE: 对ivy的支持不能保证：https://github.com/raxod502/prescient.el/issues/65
-(require-package 'prescient)
-(require-package 'golden-ratio)
-;; 透明窗口
-;; see also: https://github.com/Benaiah/seethru
-(require-package 'transwin)
-
-;; https://github.com/leoliu/easy-kill
-(require-package 'easy-kill)
-
-;; underscore -> UPCASE -> CamelCase conversion of names
-;; https://github.com/akicho8/string-inflection
-(require-package 'string-inflection)
-
-
 (defun local/after-init-hook (package)
   (add-hook 'after-init-hook (lambda () (require package))))
 
