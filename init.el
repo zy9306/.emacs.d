@@ -4,7 +4,14 @@
 
 (make-directory "~/.emacs.d/.persist" t)
 
+(push (expand-file-name "~/.emacs.d/repo/dash.el") load-path)
+(push (expand-file-name "~/.emacs.d/repo/f.el") load-path)
+(push (expand-file-name "~/.emacs.d/repo/ht.el") load-path)
+(push (expand-file-name "~/.emacs.d/repo/spinner.el") load-path)
+(push (expand-file-name "~/.emacs.d/repo/pfuture") load-path)
+
 (push (expand-file-name "~/.emacs.d/lisp") load-path)
+
 (push (expand-file-name "~/.emacs.d/repo/swiper") load-path)
 (push (expand-file-name "~/.emacs.d/repo/company-mode") load-path)
 (push (expand-file-name "~/.emacs.d/repo/projectile") load-path)

@@ -25,3 +25,18 @@
 [submodule "repo/company-mode"]
 	path = repo/company-mode
 	url = git@github.com:company-mode/company-mode.git
+[submodule "repo/dash.el"]
+	path = repo/dash.el
+	url = git@github.com:magnars/dash.el.git
+[submodule "repo/f.el"]
+	path = repo/f.el
+	url = git@github.com:rejeep/f.el.git
+[submodule "repo/ht.el"]
+	path = repo/ht.el
+	url = git@github.com:Wilfred/ht.el.git
+[submodule "repo/spinner.el"]
+	path = repo/spinner.el
+	url = git@github.com:Malabarba/spinner.el.git
+[submodule "repo/pfuture"]
+	path = repo/pfuture
+	url = git@github.com:Alexander-Miller/pfuture.git
