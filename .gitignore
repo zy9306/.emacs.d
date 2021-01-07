@@ -3,7 +3,8 @@
 elpa-*
 recentf
 bookmarks
-projectile*
+projectile.*
+projectile-*
 .smex-items
 .lsp-session-*
 .dap-breakpoints
