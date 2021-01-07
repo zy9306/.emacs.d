@@ -25,10 +25,6 @@
 ;; 不在进入的文件启动M-.默认是xref-find-definitions，将其remap到
 ;; lsp-find-definition即可解决问题
 
-
-(require-package 'lsp-mode)
-(require-package 'lsp-python-ms)
-
 (setq lsp-keymap-prefix "s-l")
 
 (setq dap-auto-configure-mode nil)

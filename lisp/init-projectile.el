@@ -1,10 +1,5 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
-(push (expand-file-name "~/.emacs.d/repo/projectile") load-path)
-(push (expand-file-name "~/.emacs.d/repo/counsel-projectile") load-path)
-(push (expand-file-name "~/.emacs.d/repo/treemacs/src/elisp") load-path)
-(push (expand-file-name "~/.emacs.d/repo/treemacs/src/extra") load-path)
-(push (expand-file-name "~/.emacs.d/repo/treemacs/src/script") load-path)
 
 (with-eval-after-load 'projectile
   (require 'projectile)

@@ -13,3 +13,15 @@
 [submodule "repo/treemacs"]
 	path = repo/treemacs
 	url = git@github.com:Alexander-Miller/treemacs.git
+[submodule "repo/lsp-mode"]
+	path = repo/lsp-mode
+	url = git@github.com:emacs-lsp/lsp-mode.git
+[submodule "repo/lsp-python-ms"]
+	path = repo/lsp-python-ms
+	url = git@github.com:emacs-lsp/lsp-python-ms.git
+[submodule "repo/swiper"]
+	path = repo/swiper
+	url = git@github.com:abo-abo/swiper.git
+[submodule "repo/company-mode"]
+	path = repo/company-mode
+	url = git@github.com:company-mode/company-mode.git
