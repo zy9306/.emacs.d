@@ -1,13 +1,6 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
 
-(require-package 'evil)
-(require-package 'general)
-(require-package 'key-chord)
-(require-package 'goto-chg)
-(require-package 'undo-tree)
-
-
 (with-eval-after-load 'evil
   (require 'general)
   (require 'key-chord)

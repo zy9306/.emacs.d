@@ -1,8 +1,5 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
-(require-package 'ivy-hydra)
-(require-package 'ivy-prescient)
-
 (with-eval-after-load 'ivy
   (require 'ivy)
   (require 'swiper)

@@ -15,8 +15,6 @@
 
 (push (expand-file-name "~/.emacs.d/repo/nox") load-path)
 
-(require-package 'posframe)
-
 (defun local/nox-ensure ()
   (nox-ensure)
   (local/config-company-backends)

@@ -1,10 +1,6 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
 
-(require-package 'posframe)
-(require-package 'ivy-posframe)
-
-
 (with-eval-after-load 'posframe
   (require 'ivy-posframe)
   (setq ivy-posframe-border-width 5)

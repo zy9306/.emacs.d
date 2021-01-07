@@ -5,8 +5,6 @@
 ;; https://github.com/ganmacs/emacs-surround
 
 
-(require-package 'embrace)
-
 (require 'emacs-surround)
 
 (global-set-key (kbd "M-\"") 'emacs-surround)

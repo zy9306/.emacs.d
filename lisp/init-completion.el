@@ -4,12 +4,6 @@
 ;; company-flx 只对 company-capf 起作用
 ;; 可以尝试下 ycmd
 
-(require-package 'company-tabnine)
-(require-package 'company-flx)
-(require-package 'company-fuzzy)
-(require-package 'company-prescient)
-
-
 (with-eval-after-load 'company
   (setq company-idle-delay 0.05)
   (setq company-tooltip-idle-delay 0.05)

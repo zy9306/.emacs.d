@@ -1,9 +1,5 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
-(require-package 'pyvenv)
-(require-package 'auto-virtualenv)
-(require-package 'yapfify)
-
 (setenv "WORKON_HOME" "~/Envs")
 
 (defun my-python-mode-hook ()

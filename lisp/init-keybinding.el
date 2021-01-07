@@ -1,8 +1,5 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
-(require-package 'key-chord)
-(require-package 'general)
-
 ;; unset
 (global-unset-key (kbd "C-x C-b"))
 
