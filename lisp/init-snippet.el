@@ -1,6 +1,8 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
 
+(push (expand-file-name "~/.emacs.d/repo/yasnippet-snippets") load-path)
+
 ;; https://github.com/joaotavora/yasnippet
 (use-package yasnippet
   :ensure t

@@ -5,8 +5,7 @@
 (make-directory "~/.emacs.d/.persist" t)
 
 (push (expand-file-name "~/.emacs.d/lisp") load-path)
-(push (expand-file-name "~/.emacs.d/nox") load-path)
-(push (expand-file-name "~/.emacs.d/yasnippet-snippets") load-path)
+
 
 (defun local/load-package (package)
   (setq _starttime (float-time))
