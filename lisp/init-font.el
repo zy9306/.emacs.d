@@ -17,7 +17,7 @@
 
 ;; Setting English Font
 (when *linux*
-  (set-face-attribute 'default nil :font "Ubuntu Mono 13")
+  (set-face-attribute 'default nil :font "Source Code Pro 11")
 )
 
 (when *win*
