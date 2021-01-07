@@ -13,6 +13,7 @@
 
 ;; 如果要切换回 pyls ， 直接设置 (setq nox-python-server “pyls”) 即可
 
+(push (expand-file-name "~/.emacs.d/repo/nox") load-path)
 
 (require-package 'posframe)
 

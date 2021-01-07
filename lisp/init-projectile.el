@@ -1,27 +1,29 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
-
-(require-package 'projectile)
-(require-package 'counsel-projectile)
-(require-package 'neotree)
-(require-package 'treemacs)
+(push (expand-file-name "~/.emacs.d/repo/projectile") load-path)
+(push (expand-file-name "~/.emacs.d/repo/counsel-projectile") load-path)
+(push (expand-file-name "~/.emacs.d/repo/treemacs/src/elisp") load-path)
+(push (expand-file-name "~/.emacs.d/repo/treemacs/src/extra") load-path)
+(push (expand-file-name "~/.emacs.d/repo/treemacs/src/script") load-path)
 
 (with-eval-after-load 'projectile
+  (require 'projectile)
+  (require 'counsel-projectile)
+  (require 'treemacs)
+
   (projectile-mode)
   (counsel-projectile-mode)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
   (setq projectile-completion-system 'ivy)
   (setq projectile-mode-line-function '(lambda () (format " Proj[%s]" (projectile-project-name))))
+
+  (global-set-key [f9] 'treemacs)
+  (treemacs-follow-mode -1)
+  (global-set-key [f8] 'treemacs-find-file)
   )
 
 (local/after-init-hook 'projectile)
-
-
-(global-set-key [f9] 'treemacs)
-(with-eval-after-load 'treemacs
-  (treemacs-follow-mode -1)
-  (global-set-key [f8] 'treemacs-find-file))
 
 
 ;; use treemacs instead
