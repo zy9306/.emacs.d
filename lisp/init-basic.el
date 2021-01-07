@@ -65,6 +65,7 @@
   (setq real-auto-save-interval 10)
   (dolist (hook '(text-mode-hook
                   python-mode-hook
+                  go-mode-hook
                   yaml-mode-hook
                   conf-mode-hook
                   elisp-mode-hook))
