@@ -7,10 +7,10 @@
   (require package)
   (message "load %s, time: %s" package (- (float-time) _starttime)))
 
-(make-directory (expand-file-name "./persist") t)
-(push (expand-file-name "./lisp") load-path)
+(make-directory (expand-file-name ".persist" user-emacs-directory) t)
+(push (expand-file-name "lisp" user-emacs-directory) load-path)
 (local/load-package 'init-elpa)
-(load-file (expand-file-name "./pkg.el"))
+(load-file (expand-file-name "pkg.el" user-emacs-directory))
 
 (local/load-package 'init-constant)
 (local/load-package 'init-option)
