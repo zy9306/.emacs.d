@@ -4,8 +4,8 @@
 (use-package yafolding
   ;; C-RET: toggle-element  C-S-RET: hide-parent-element  C-M-RET: toggle-all
   :ensure t
-  ;; :config
-  ;; (add-hook 'prog-mode-hook 'yafolding-mode)
+  :config
+  (add-hook 'prog-mode-hook 'yafolding-mode)
   )
 
 (defun local/hs-minor-mode ()
@@ -15,7 +15,7 @@
   (define-key hs-minor-mode-map (kbd "<C-M-return>") 'hs-hide-all)
   (define-key hs-minor-mode-map (kbd "C-u <C-M-return>") 'hs-show-all)
   )
-(add-hook 'prog-mode-hook #'local/hs-minor-mode)
+;; (add-hook 'prog-mode-hook #'local/hs-minor-mode)
 
 (use-package vimish-fold
   :ensure t
