@@ -1,24 +1,10 @@
-;; basic
+;; install quelpa: https://github.com/quelpa/quelpa
+(unless (package-installed-p 'quelpa)
+  (with-temp-buffer
+    (url-insert-file-contents "https://raw.githubusercontent.com/quelpa/quelpa/master/quelpa.el")
+    (eval-buffer)
+    (quelpa-self-upgrade)))
 
-(require-package 'f)
-(require-package 's)
-(require-package 'dash)
-(require-package 'dash-functional)
-(require-package 'ht)
-(require-package 'pfuture)
-(require-package 'spinner)
-(require-package 'ert-runner)
-(require-package 'espuds)
-(require-package 'ecukes)
-(require-package 'undercover)
-(require-package 'deferred)
-(require-package 'seq)
-(require-package 'persp-mode)
-(require-package 'with-editor)
-(require-package 'buttercup)
-(require-package 'el-mock)
-
-;; all
 (require-package 'posframe)
 (require-package 'pyvenv)
 (require-package 'auto-virtualenv)
@@ -79,14 +65,67 @@
 (require-package 'counsel-gtags)
 (require-package 'counsel-etags)
 
-;; git repo
-(push (expand-file-name "repo/swiper" user-emacs-directory) load-path)
-(push (expand-file-name "repo/company-mode" user-emacs-directory) load-path)
-(push (expand-file-name "repo/projectile" user-emacs-directory) load-path)
-(push (expand-file-name "repo/counsel-projectile" user-emacs-directory) load-path)
-(push (expand-file-name "repo/treemacs/src/elisp" user-emacs-directory) load-path)
-(push (expand-file-name "repo/treemacs/src/extra" user-emacs-directory) load-path)
-(push (expand-file-name "repo/treemacs/src/script" user-emacs-directory) load-path)
-(push (expand-file-name "repo/lsp-mode" user-emacs-directory) load-path)
-(push (expand-file-name "repo/lsp-mode/clients" user-emacs-directory) load-path)
-(push (expand-file-name "repo/lsp-python-ms" user-emacs-directory) load-path)
+(quelpa
+ '(swiper
+   :fetcher git
+   :commit "71c59ae"
+   :url "git@github.com:abo-abo/swiper.git"))
+
+(quelpa
+ '(ivy
+   :fetcher git
+   :commit "71c59ae"
+   :url "git@github.com:abo-abo/swiper.git"))
+
+(quelpa
+ '(counsel
+   :fetcher git
+   :commit "71c59ae"
+   :url "git@github.com:abo-abo/swiper.git"))
+
+(quelpa
+ '(company-mode
+   :fetcher git
+   :commit "6116c4"
+   :url "git@github.com:company-mode/company-mode.git"))
+
+(quelpa
+ '(projectile
+   :fetcher git
+   :commit "c31bd41"
+   :url "git@github.com:bbatsov/projectile.git"))
+
+(quelpa
+ '(counsel-projectile
+   :fetcher git
+   :url "git@github.com:ericdanan/counsel-projectile.git"))
+
+(quelpa
+ '(treemacs
+   :fetcher git
+   :commit "16b0819"
+   :url "git@github.com:Alexander-Miller/treemacs.git"
+   :files (:defaults
+           "Changelog.org"
+           "icons"
+           "src/elisp/treemacs*.el"
+           "src/scripts/treemacs*.py"
+           (:exclude "src/extra/*"))))
+
+(quelpa
+ '(lsp-mode
+   :fetcher git
+   :commit "69c86db"
+   :url "git@github.com:emacs-lsp/lsp-mode.git"))
+
+(quelpa
+ '(lsp-python-ms
+   :fetcher git
+   :commit "c4ebc7a"
+   :url "git@github.com:emacs-lsp/lsp-python-ms.git"))
+
+(quelpa
+ '(nox
+   :fetcher git
+   :commit "679327b"
+   :url "git@github.com:zy9306/nox.git"))
