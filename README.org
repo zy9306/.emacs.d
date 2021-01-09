@@ -65,20 +65,17 @@ texinfo
 
 * 一些可能的问题
 
-- ~.zshrc~ 或 ~.bashrc~ 需添加 ~export LC_CTYPE="zh_CN.UTF-8"~ ，否则
-  通过终端打开无法输入中文
+.zshrc 或 .bashrc 需添加以下内容，否则通过终端打开无法输入中文
+#+begin_src shell
+export LC_CTYPE="zh_CN.UTF-8"
+#+end_src
 
-- =~/.profile= 中需添加 ~export LC_CTYPE="zh_CN.UTF-8"~ ，否则正常打开
-  时无法输入中文
+~/.profile 中需添加以下内容 （archlinux 有其它配置，不需要）
+#+begin_src shell
+export LC_CTYPE="zh_CN.UTF-8"
 
-- =~/.profile= 中需添加 ~export LC_TIME="en_US.UTF-8"~ ，否则 dired 默认
-  的正则 ~directory-listing-before-filename-regexp~ 会因中文日期出现问
-  题
+# directory-listing-before-filename-regexp 中文日期出现问题
+export LC_TIME="en_US.UTF-8"
+#+end_src
 
-- ~projectile-toggle-project-read-only~ 会在当前项目目录下新
-  建 ~.dir-locals.el~ 文件，并将 ~buffer-read-only~ 打开，如果 ~.emacs.d~
-  目录被设置为只读，则安装 ~package~ 时会因为目录不可写导致报错，直接
-  删除 ~.dir-locals.el~ 中的内容或再次运
-  行 ~projectile-toggle-project-read-only~ 即可
-
-- 修改完 =~/.profile= 需要重启
+需要重启
