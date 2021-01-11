@@ -9,6 +9,7 @@
         electric-pair-delete-pair
         forward-sentence
         forward-sexp
+        indent-for-tab-command
         ivy-wgrep-change-to-wgrep-mode
         kill-region
         mark-sexp
