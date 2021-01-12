@@ -42,7 +42,7 @@
   (define-key lsp-mode-map [remap xref-find-references] #'lsp-find-references)
 
   ;; 顶部面包屑栏
-  ;; (lsp-headerline-breadcrumb-mode t)
+  (lsp-headerline-breadcrumb-mode t)
 
   (setq lsp-enable-folding nil)
 
@@ -50,6 +50,8 @@
   (setq lsp-diagnostics-provider :none)
 
   (setq lsp-enable-links nil)
+
+  (setq lsp-enable-symbol-highlighting nil)
   )
 
 ;; 不需要 lsp-ui
