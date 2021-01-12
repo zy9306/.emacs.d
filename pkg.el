@@ -125,6 +125,12 @@
    :url "git@github.com:emacs-lsp/lsp-mode.git"))
 
 (quelpa
+ '(lsp-pyright
+   :fetcher git
+   :commit "71ff088"
+   :url "git@github.com:emacs-lsp/lsp-pyright.git"))
+
+(quelpa
  '(lsp-python-ms
    :fetcher git
    :commit "c4ebc7a"

@@ -5,9 +5,9 @@
 ;; 可以尝试下 ycmd
 
 (with-eval-after-load 'company
-  (setq company-idle-delay 0.05)
-  (setq company-tooltip-idle-delay 0.05)
-  (setq company-minimum-prefix-length 1)
+  (setq company-idle-delay 0.2)
+  (setq company-tooltip-idle-delay 0.2)
+  (setq company-minimum-prefix-length 3)
   (setq company-require-match nil)
   ;; 补全时不要忽略大小写
   (setq company-dabbrev-downcase nil)
