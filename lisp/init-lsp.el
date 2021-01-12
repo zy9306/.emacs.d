@@ -70,17 +70,15 @@
 ;;   )
 
 
+;; python
 (defun local/lsp-deferred ()
+  ;; use pyright instead
+  ;; (require 'lsp-python-ms)
+  ;; (setq lsp-python-ms-completion-add-brackets nil)
+  (require 'lsp-pyright)
   (lsp-deferred)
   (local/config-company-backends)
   )
-
-;; START lsp-python-ms
-(with-eval-after-load 'python
-  (require 'lsp-python-ms)
-  (setq lsp-python-ms-completion-add-brackets nil)
-  (add-hook 'python-mode-hook #'local/lsp-deferred)
-  )
-;; END lsp-python-ms
+;; (add-hook 'python-mode-hook #'local/lsp-deferred)
 
 (provide 'init-lsp)
