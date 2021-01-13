@@ -9,12 +9,15 @@
 
 (make-directory (expand-file-name ".persist" user-emacs-directory) t)
 (push (expand-file-name "lisp" user-emacs-directory) load-path)
+(push (expand-file-name "theme/doom-themes" user-emacs-directory) load-path)
+(push (expand-file-name "theme/awesome-tray" user-emacs-directory) load-path)
 (local/load-package 'init-elpa)
 (load-file (expand-file-name "pkg.el" user-emacs-directory))
 
 (local/load-package 'init-constant)
 (local/load-package 'init-option)
 (local/load-package 'init-font)
+(local/load-package 'init-theme)
 (local/load-package 'init-face-common)
 (local/load-package 'init-face)
 (local/load-package 'init-face-org)

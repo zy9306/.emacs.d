@@ -1,3 +1,9 @@
 [submodule "yasnippet-snippets"]
 	path = repo/yasnippet-snippets
 	url = git@github.com:zy9306/yasnippet-snippets.git
+[submodule "theme/doom-themes"]
+	path = theme/doom-themes
+	url = git@github.com:zy9306/emacs-doom-themes.git
+[submodule "theme/awesome-tray"]
+	path = theme/awesome-tray
+	url = git@github.com:zy9306/awesome-tray.git
