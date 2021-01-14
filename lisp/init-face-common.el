@@ -9,7 +9,9 @@
 
 (setq local/variant 'light)
 
-(setq miku-color "#39C5BB")
+(setq miku-origin "#39c5bb")
+(setq miku-brightness-50 "#258079")
+(setq miku-brightness-32 "#18524e")
 
 (setq
 ;; generic
