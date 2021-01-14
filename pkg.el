@@ -141,3 +141,9 @@
    :fetcher git
    :commit "679327b"
    :url "git@github.com:zy9306/nox.git"))
+
+(quelpa
+ '(pyvenv
+   :fetcher git
+   :commit "9b3678b"
+   :url "git@github.com:zy9306/pyvenv.git"))
