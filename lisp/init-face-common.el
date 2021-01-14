@@ -9,6 +9,8 @@
 
 (setq local/variant 'light)
 
+(setq miku-color "#39C5BB")
+
 (setq
 ;; generic
  local-color/act1          (if (eq local/variant 'dark) (if (true-color-p) "#222226" "#121212") (if (true-color-p) "#e7e5eb" "#d7dfff"))
