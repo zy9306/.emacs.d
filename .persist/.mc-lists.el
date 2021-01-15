@@ -16,6 +16,7 @@
         org-self-insert-command
         org-yank
         string-inflection-all-cycle
+        string-inflection-python-style-cycle
         wgrep-finish-edit
         yaml-electric-backspace
         yaml-electric-bar-and-angle
