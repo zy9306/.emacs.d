@@ -15,12 +15,12 @@
  :background miku-brightness-50)
 (set-face-attribute
  'font-lock-string-face nil
- :foreground miku-brightness-32)
+ :foreground miku-brightness-50)
 
 (with-eval-after-load 'imenu-list
   (set-face-attribute
    'imenu-list-entry-face-1 nil
-   :foreground miku-brightness-32))
+   :foreground miku-brightness-50))
 
 (with-eval-after-load 'hl-line-mode
   (set-face-attribute
