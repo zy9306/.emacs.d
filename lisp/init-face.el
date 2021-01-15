@@ -12,15 +12,23 @@
  :background miku-origin)
 (set-face-attribute
  'highlight nil
- :background miku-brightness-50)
+ :background miku-brightness-65)
 (set-face-attribute
  'font-lock-string-face nil
  :foreground miku-brightness-50)
+(set-face-attribute
+ 'tooltip nil
+ :background "white" :foreground miku-brightness-65)
+
+(with-eval-after-load 'company-mode
+  (set-face-attribute
+   'company-tooltip-selection nil
+   :background miku-origin :weight bold))
 
 (with-eval-after-load 'imenu-list
   (set-face-attribute
    'imenu-list-entry-face-1 nil
-   :foreground miku-brightness-50))
+   :foreground miku-brightness-65))
 
 (with-eval-after-load 'hl-line-mode
   (set-face-attribute

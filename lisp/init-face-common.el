@@ -1,5 +1,10 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
+(setq miku-origin "#39c5bb")
+(setq miku-brightness-65 "#30a69e")
+(setq miku-brightness-50 "#258079")
+
+
 ;; Copy from https://github.com/nashamri/spacemacs-theme/blob/master/spacemacs-common.el
 
 (defun true-color-p ()
@@ -8,10 +13,6 @@
    (= (tty-display-color-cells) 16777216)))
 
 (setq local/variant 'light)
-
-(setq miku-origin "#39c5bb")
-(setq miku-brightness-50 "#258079")
-(setq miku-brightness-32 "#18524e")
 
 (setq
 ;; generic
