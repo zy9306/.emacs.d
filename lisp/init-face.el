@@ -30,6 +30,11 @@
    'imenu-list-entry-face-1 nil
    :foreground miku-brightness-65))
 
+(with-eval-after-load 'easy-kill
+  (set-face-attribute
+   'easy-kill-selection nil
+   :inherit 'region))
+
 (with-eval-after-load 'hl-line-mode
   (set-face-attribute
    'hl-line nil
