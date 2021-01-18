@@ -70,6 +70,7 @@
 (require-package 'undo-tree)
 (require-package 'counsel-gtags)
 (require-package 'counsel-etags)
+(require-package 'memoize)
 
 (quelpa
  '(swiper
