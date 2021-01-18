@@ -1,22 +1,26 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
 
-;; >>>>>>> hooks <<<<<<<
+;; start hooks
 ;; eglot
 (add-hook 'go-mode-hook #'local/eglot-ensure)
 ;; nox
 (add-hook 'python-mode-hook #'local/nox-ensure)
 (add-hook 'rust-mode-hook #'local/nox-ensure)
+;; end hooks 
 
 
-;; >>>>>>> eglot <<<<<<<
+
+;; start eglot 
 (defun local/eglot-ensure ()
   (setq eldoc-echo-area-use-multiline-p nil)
-  (eglot-ensure)
-  (flymake-mode -1))
+  (flycheck-mode -1)
+  (eglot-ensure))
+;; end eglot 
 
 
-;; >>>>>>> nox <<<<<<<
+
+;; start nox 
 ;; fork of eglot
 ;; https://github.com/manateelazycat/nox
 ;; https://manateelazycat.github.io/emacs/nox/2020/03/29/nox.html
@@ -36,7 +40,9 @@
 ;; 1. nox-print-mspyls-download-url
 ;; 2. ~/.emacs.d/nox/mspyls/
 ;; 3. 保证这个目录下面可以直接找到 Microsoft.Python.LanguageServer 这个文件
-;; 4. sudo chmod +x ~/.emacs.d/nox/mspyls
 ;; (setq nox-python-server-dir "~/.emacs.d/.cache/lsp/mspyls/")
+;; end nox
 
-(provide 'init-nox)
+
+
+(provide 'init-eglot)

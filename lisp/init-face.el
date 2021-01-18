@@ -35,6 +35,11 @@
    'easy-kill-selection nil
    :inherit 'region))
 
+(with-eval-after-load 'eglot
+  (set-face-attribute
+   'eglot-highlight-symbol-face nil
+   :inherit 'normal))
+
 (with-eval-after-load 'hl-line-mode
   (set-face-attribute
    'hl-line nil
