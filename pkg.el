@@ -71,6 +71,8 @@
 (require-package 'counsel-gtags)
 (require-package 'counsel-etags)
 (require-package 'memoize)
+(require-package 'project)
+(require-package 'project-root)
 
 (quelpa
  '(swiper
@@ -136,6 +138,12 @@
    :fetcher git
    :commit "c4ebc7a"
    :url "git@github.com:emacs-lsp/lsp-python-ms.git"))
+
+(quelpa
+ '(eglot
+   :fetcher git
+   :commit "0c4daa4"
+   :url "git@github.com:zy9306/eglot.git"))
 
 (quelpa
  '(nox
