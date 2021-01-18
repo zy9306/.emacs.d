@@ -32,7 +32,7 @@
 (local/load-package 'init-rg)
 (local/load-package 'init-gnu-global)
 (local/load-package 'init-lsp)
-(local/load-package 'init-nox)
+(local/load-package 'init-eglot)
 (local/load-package 'init-org)
 (local/load-package 'init-python)
 (local/load-package 'init-rust)
