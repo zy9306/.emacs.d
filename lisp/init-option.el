@@ -101,7 +101,8 @@
                    "/usr"
                    "~/.cargo"
                    "~/.rustup"
-                   "/Library/Frameworks/Python.framework"))
+                   "/Library/Frameworks/Python.framework"
+                   "/nix"))
   (dir-locals-set-directory-class (file-truename dir) 'read-only))
 
 ;; revert settings
