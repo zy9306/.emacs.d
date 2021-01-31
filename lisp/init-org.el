@@ -9,6 +9,9 @@
 (setq org-hide-leading-stars nil)
 (setq org-indent-mode-turns-on-hiding-stars nil)
 
+;; 在有子树的结点上执行 C-k 时，提示是否删除子树
+(setq org-ctrl-k-protect-subtree t)
+
 ;; 始终启用缩进
 (add-hook 'org-mode-hook 'org-indent-mode)
 
