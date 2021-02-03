@@ -35,6 +35,11 @@
    'easy-kill-selection nil
    :inherit 'region))
 
+(with-eval-after-load 'symbol-overlay
+  (set-face-attribute
+   'symbol-overlay-default-face nil
+   :background "gray92"))
+
 (with-eval-after-load 'eglot
   (set-face-attribute
    'eglot-highlight-symbol-face nil
