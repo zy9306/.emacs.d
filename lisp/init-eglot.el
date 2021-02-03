@@ -3,10 +3,11 @@
 
 ;; start hooks
 ;; eglot
-(add-hook 'go-mode-hook #'local/eglot-ensure)
+;; (add-hook 'go-mode-hook #'local/eglot-ensure)
 ;; nox
 (add-hook 'python-mode-hook #'local/nox-ensure)
 (add-hook 'rust-mode-hook #'local/nox-ensure)
+(add-hook 'go-mode-hook #'local/nox-ensure)
 ;; end hooks 
 
 
