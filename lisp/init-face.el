@@ -14,6 +14,11 @@
  'highlight nil
  :background miku-brightness-65)
 (set-face-attribute
+ 'region nil
+ :background "gtk_selection_bg_color"
+ :distant-foreground "gtk_selection_fg_color"
+ :extend t)
+(set-face-attribute
  'font-lock-string-face nil
  :foreground miku-brightness-50)
 (set-face-attribute
@@ -38,7 +43,7 @@
 (with-eval-after-load 'symbol-overlay
   (set-face-attribute
    'symbol-overlay-default-face nil
-   :background "gray92"))
+   :background "darkseagreen2"))
 
 (with-eval-after-load 'eglot
   (set-face-attribute
