@@ -10,9 +10,14 @@
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   (global-set-key (kbd "C-x o") 'ace-window))
 
-
-(global-set-key (kbd "M-o") 'other-window)  ;; 逆时针
-(global-set-key (kbd "M-O") (lambda () (interactive) (other-window -1)))  ;; 顺时针
+(defun local/switch-to-last-window ()
+  (interactive)
+  (let ((win (get-mru-window t t t)))
+    (unless win (error "Last window not found"))
+    (let ((frame (window-frame win)))
+      (select-frame-set-input-focus frame)
+      (select-window win))))
+(global-set-key (kbd "M-o") #'local/switch-to-last-window)
 
 
 (defun split-window-horizontally-instead ()

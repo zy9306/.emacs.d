@@ -23,7 +23,7 @@
     :menu ("Search" "h" "Home"))
   )
 
-(global-set-key (kbd "C-c s") #'rg-menu)
+(global-set-key (kbd "C-c C-s") #'rg-menu)
 (local/after-init-hook 'rg)
 
 (defun my-rg-buffer-name ()
