@@ -73,6 +73,7 @@
 (require-package 'memoize)
 (require-package 'project)
 (require-package 'project-root)
+(require-package 'isearch-dabbrev)
 
 (quelpa
  '(swiper
