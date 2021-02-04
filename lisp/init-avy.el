@@ -26,8 +26,13 @@
   :ensure t
   :defer t
   :init
-  (add-hook 'after-init-hook #'local/config-ace-isearch)
-)
+  (add-hook 'after-init-hook #'local/config-ace-isearch))
+
+;; https://github.com/Dewdrops/isearch-dabbrev
+(eval-after-load "isearch"
+  '(progn
+     (require 'isearch-dabbrev)
+     (define-key isearch-mode-map (kbd "<tab>") 'isearch-dabbrev-expand)))
 
 (defun local/config-avy-zap()
   (global-set-key (kbd "M-z") 'avy-zap-to-char-dwim)
