@@ -18,7 +18,7 @@
   ;; recentf 显示相对路径，而不是只显示文件名
   (setq ivy-virtual-abbreviate 'abbreviate)
 
-  ;; (global-set-key (kbd "C-c s") 'swiper)
+  (global-set-key (kbd "C-c s") 'swiper)
   (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
   (global-set-key (kbd "<f1> f") 'counsel-describe-function)
@@ -26,16 +26,21 @@
   (global-set-key (kbd "<f1> l") 'counsel-find-library)
   (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
   (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+
   ;; Ivy-based interface to shell and system tools
   (global-set-key (kbd "C-c g") 'counsel-git)
   (global-set-key (kbd "C-c j") 'counsel-git-grep)
   (global-set-key (kbd "C-c k") 'counsel-ag)
   (global-set-key (kbd "C-x l") 'counsel-locate)
+
   ;; ivy-resume resumes the last Ivy-based completion
   (global-set-key (kbd "C-c C-r") 'ivy-resume)
   (global-set-key (kbd "C-c C-o") 'ivy-occur)
+
   (define-key ivy-occur-grep-mode-map (kbd "z") 'ivy-occur-hide-lines-matching)
-  (define-key ivy-occur-grep-mode-map (kbd "/") 'ivy-occur-hide-lines-not-matching)  
+  (define-key ivy-occur-grep-mode-map (kbd "/") 'ivy-occur-hide-lines-not-matching)
+
+  (define-key swiper-map (kbd "C-r") 'previous-line)
   )
 
 ;;;###autoload

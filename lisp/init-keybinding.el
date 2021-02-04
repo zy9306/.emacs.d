@@ -61,10 +61,6 @@
 ;; projectile
 (global-set-key (kbd "C-S-S") 'projectile-ripgrep)
 
-;; swipper
-(global-set-key (kbd "C-s") 'swiper)
-(global-set-key (kbd "C-c C-s") 'isearch-forward)
-
 ;; edit
 (global-set-key (kbd "M-P") 'move-text-up)
 (global-set-key (kbd "M-N") 'move-text-down)
@@ -113,10 +109,6 @@
 (global-set-key (kbd "C-c C-b") 'python-black-region)
 (global-set-key (kbd "C-c C-l") 'highlight-indent-guides-mode)
 
-(with-eval-after-load 'key-chord
-  ;; (key-chord-define-global "rr" 'revert-buffer)
-  ;; (key-chord-define-global "yy" 'yank)
-  )
 (with-eval-after-load 'general
   (key-chord-mode 1)
   ;; (general-define-key (general-chord "cc") (general-simulate-key "C-c"))

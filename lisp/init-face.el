@@ -15,8 +15,7 @@
  :background miku-brightness-65)
 (set-face-attribute
  'region nil
- :background "gtk_selection_bg_color"
- :distant-foreground "gtk_selection_fg_color"
+ :background "#d8d8d8"
  :extend t)
 (set-face-attribute
  'font-lock-string-face nil
