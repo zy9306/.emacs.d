@@ -74,6 +74,7 @@
 (require-package 'project)
 (require-package 'project-root)
 (require-package 'isearch-dabbrev)
+(require-package 'go-dlv)
 
 (quelpa
  '(swiper
