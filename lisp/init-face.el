@@ -23,6 +23,9 @@
 (set-face-attribute
  'tooltip nil
  :background "white" :foreground miku-brightness-65)
+(set-face-attribute
+ 'fringe nil
+ :background "grey95")
 
 (with-eval-after-load 'company-mode
   (set-face-attribute
