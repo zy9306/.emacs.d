@@ -5,7 +5,11 @@
   (require 'all-the-icons) ;; depends on memoize
 
   (setq doom-themes-treemacs-theme "doom-colors")
-  (doom-themes-treemacs-config))
+  (doom-themes-treemacs-config)
+
+  (with-eval-after-load 'treemacs
+    ;; doom-themes 会把 treemacs 的 mode-line 隐藏掉，改成需要显示
+    (remove-hook 'treemacs-mode-hook #'doom-themes-hide-modeline)))
 
 (defun local/doom-themes ()
   (require 'doom-themes)
