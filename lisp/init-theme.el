@@ -4,6 +4,8 @@
   (require 'doom-themes-ext-treemacs)
   (require 'all-the-icons) ;; depends on memoize
 
+  ;; 设置成默认 fringe 的宽度，否则无法显示左边 indicator
+  (setq doom-themes-treemacs-bitmap-indicator-width 8)
   (setq doom-themes-treemacs-theme "doom-colors")
   (doom-themes-treemacs-config)
 
