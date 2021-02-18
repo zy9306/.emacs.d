@@ -49,7 +49,7 @@
           (cond
            (current-test-name
             (setq go-test-buffer-name "*go-test*")
-            (setq go-test-command (concat "go" " test -- -test.run " current-test-name)))
+            (setq go-test-command (concat "go" " test -run " current-test-name)))
            (current-bench-name
             (setq go-test-buffer-name "*go-test*")
             (setq go-test-command (concat "go" " test -- -test.run='^$' -test.bench=" current-bench-name))))
