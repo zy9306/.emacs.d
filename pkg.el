@@ -158,3 +158,9 @@
    :fetcher git
    :commit "9b3678b"
    :url "git@github.com:zy9306/pyvenv.git"))
+
+(quelpa
+ '(git-auto-commit-mode
+   :fetcher git
+   :commit "a6b6e0f"
+   :url "git@github.com:zy9306/git-auto-commit-mode.git"))
