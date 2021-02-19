@@ -69,7 +69,9 @@
     (file-relative-name fname (locate-dominating-file fname ".git"))))
 
 (with-eval-after-load 'git-auto-commit-mode
-  (setq gac-default-message 'local/git-short-file-path))
+  (setq gac-default-message 'local/git-short-file-path)
+  ;; disable auto commit on save.
+  (git-auto-commit-mode -1))
 
 (defun local/git-auto-commit ()
   (interactive)
