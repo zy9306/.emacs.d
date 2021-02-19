@@ -64,11 +64,17 @@
 (global-set-key (kbd "M-v") 'scroll-half-page-down)
 
 
+(defun local/git-short-file-path (&optional filename)
+  (let ((fname (if filename filename (buffer-file-name))))
+    (file-relative-name fname (locate-dominating-file fname ".git"))))
+
 (with-eval-after-load 'git-auto-commit-mode
-  (remove-hook 'after-save-hook 'gac-after-save-func))
+  (setq gac-default-message 'local/git-short-file-path))
+
 (defun local/git-auto-commit ()
   (interactive)
   (require 'git-auto-commit-mode)
-  (gac-after-save-func))
+  (gac-after-save-func)
+  (diff-hl-reset-reference-rev))
 
 (provide 'init-utils)
