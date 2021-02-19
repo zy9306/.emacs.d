@@ -63,4 +63,12 @@
 (global-set-key (kbd "C-v") 'scroll-half-page-up)
 (global-set-key (kbd "M-v") 'scroll-half-page-down)
 
+
+(with-eval-after-load 'git-auto-commit-mode
+  (remove-hook 'after-save-hook 'gac-after-save-func))
+(defun local/git-auto-commit ()
+  (interactive)
+  (require 'git-auto-commit-mode)
+  (gac-after-save-func))
+
 (provide 'init-utils)
