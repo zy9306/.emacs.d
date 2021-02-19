@@ -55,7 +55,8 @@
 (with-eval-after-load 'diff-hl
   (global-diff-hl-mode)
   (diff-hl-margin-mode)
-  (add-hook 'dired-mode-hook 'diff-hl-dired-mode))
+  (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
+  (add-hook 'after-revert-hook 'diff-hl-reset-reference-rev))
 (local/after-init-hook 'diff-hl)
 
 ;; https://github.com/wolray/symbol-overlay/tree/master
