@@ -117,15 +117,18 @@
 (global-set-key (kbd "C-;") 'set-mark-command)
 
 
-;; set tramp file
-(setq tramp-persistency-file-name "~/.emacs.d/.persist/tramp")
-(setq bookmark-default-file "~/.emacs.d/.persist/bookmarks")
-(setq recentf-save-file "~/.emacs.d/.persist/recentf")
-(setq smex-save-file "~/.emacs.d/.persist/.smex-items")
-(setq mc/list-file "~/.emacs.d/.persist/.mc-lists.el")
-(setq projectile-cache-file "~/.emacs.d/.persist/projectile.cache")
-(setq projectile-known-projects-file "~/.emacs.d/.persist/projectile-bookmarks.eld")
-(setq lsp-session-file "~/.emacs.d/.persist/.lsp-session-v1")
-(setq vimish-fold-dir "~/.emacs.d/.persist/vimish-fold/")
+;; set persist file
+;; NOTE: expand-file-name 比直接设置路径要慢
+(setq local/persist-dir (expand-file-name ".persist" user-emacs-directory))
+(setq tramp-persistency-file-name (expand-file-name "tramp" local/persist-dir))
+(setq bookmark-default-file (expand-file-name "bookmarks" local/persist-dir))
+(setq recentf-save-file (expand-file-name "recentf" local/persist-dir))
+(setq smex-save-file (expand-file-name ".smex-items" local/persist-dir))
+(setq mc/list-file (expand-file-name ".mc-lists.el" local/persist-dir))
+(setq projectile-cache-file (expand-file-name "projectile.cache" local/persist-dir))
+(setq projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" local/persist-dir))
+(setq lsp-session-file (expand-file-name ".lsp-session-v1" local/persist-dir))
+(setq vimish-fold-dir (expand-file-name "vimish-fold" local/persist-dir))
+(setq project-list-file (expand-file-name "projects" local/persist-dir))
 
 (provide 'init-option)
