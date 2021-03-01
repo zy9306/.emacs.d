@@ -5,6 +5,4 @@
 
 (add-hook 'go-mode-hook 'apheleia-mode)
 
-(diminish 'apheleia-mode)
-
 (provide 'init-formatter)
