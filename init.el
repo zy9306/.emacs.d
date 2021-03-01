@@ -12,6 +12,7 @@
 (push (expand-file-name "theme/doom-themes" user-emacs-directory) load-path)
 (push (expand-file-name "theme/awesome-tray" user-emacs-directory) load-path)
 (push (expand-file-name "theme/all-the-icons.el" user-emacs-directory) load-path)
+(push (expand-file-name "repo/yasnippet-snippets" user-emacs-directory) load-path)
 (local/load-package 'init-elpa)
 (load-file (expand-file-name "pkg.el" user-emacs-directory))
 
