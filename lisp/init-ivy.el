@@ -1,17 +1,24 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
-(with-eval-after-load 'ivy
+(defun local/ivy ()
   (require 'ivy)
   (require 'swiper)
   (require 'counsel)
   (require 'ivy-hydra)
   (require 'wgrep)
 
-  (diminish 'ivy-mode)
-  (diminish 'counsel-mode)
   (ivy-mode)
+  (diminish 'ivy-mode)
   (counsel-mode)
-  ;; (ivy-prescient-mode)
+  (diminish 'counsel-mode))
+
+(defun local/dimish-counsel ()
+  (diminish 'counsel-mode))
+
+(add-hook 'after-init-hook #'local/dimish-counsel)
+
+(with-eval-after-load 'ivy
+  (local/ivy)
 
   (setq ivy-use-virtual-buffers t)
   (setq ivy-count-format "(%d/%d) ")
