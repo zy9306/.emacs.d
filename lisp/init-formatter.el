@@ -3,6 +3,11 @@
 (with-eval-after-load 'apheleia
   (setf (alist-get 'gofmt apheleia-formatters) '("goimports")))
 
-(add-hook 'go-mode-hook 'apheleia-mode)
+(defun local/apheleia-mode ()
+  (require 'apheleia)
+  (apheleia-mode)
+  (diminish 'apheleia-mode))
+
+(add-hook 'go-mode-hook #'local/apheleia-mode)
 
 (provide 'init-formatter)
