@@ -48,6 +48,7 @@
 (local/load-package 'init-surround)
 (local/load-package 'init-hydra)
 (local/load-package 'init-restclient)
+(local/load-package 'init-formatter)
 ;; TODO (local/load-package 'init-posframe)
 
 (if (and (not (daemonp)) (not (display-graphic-p)))
