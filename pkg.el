@@ -165,3 +165,9 @@
    :fetcher git
    :commit "a6b6e0f"
    :url "git@github.com:zy9306/git-auto-commit-mode.git"))
+
+(quelpa
+ '(apheleia
+   :fetcher git
+   :commit "HEAD"
+   :url "git@github.com:raxod502/apheleia.git"))

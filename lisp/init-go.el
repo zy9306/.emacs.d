@@ -23,11 +23,12 @@
 ;; 实时保存可能会造成卡顿
 ;; Set up before-save hooks to format buffer and add/delete imports.
 ;; Make sure you don't have other gofmt/goimports hooks enabled.
-(defun go-mode-save-hooks ()
-  (setq gofmt-show-errors 'echo)
-  (setq gofmt-command "goimports")
-  (add-hook 'before-save-hook 'gofmt-before-save))
-(add-hook 'go-mode-hook #'go-mode-save-hooks)
+;; use apheleia instead
+;; (defun go-mode-save-hooks ()
+;;   (setq gofmt-show-errors 'echo)
+;;   (setq gofmt-command "goimports")
+;;   (add-hook 'before-save-hook 'gofmt-before-save))
+;; (add-hook 'go-mode-hook #'go-mode-save-hooks)
 
 (defun local/go-test-current-func ()
   (interactive)
