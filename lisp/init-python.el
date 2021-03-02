@@ -2,11 +2,6 @@
 
 (setenv "WORKON_HOME" "~/Envs")
 
-(defun my-python-mode-hook ()
-  (modify-syntax-entry ?_ "w"))
-(add-hook 'python-mode-hook 'my-python-mode-hook)
-
-
 ;; (with-eval-after-load 'auto-virtualenv
 ;;   ;; add .python-version file to project root, then add path of virtualenv eg:~/Envs/venv36/
 ;;   (add-hook 'python-mode-hook 'auto-virtualenv-set-virtualenv)
