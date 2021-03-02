@@ -135,4 +135,9 @@
   (modify-syntax-entry ?_ "w"))
 (add-hook 'prog-mode-hook 'local/modify-syntax-entry)
 
+;; 当分屏后至少有 500 列时，垂直分屏，nil 表示禁止垂直分屏，此处设得大一些，以倾向于水平分屏
+(setq split-width-threshold 500)
+;; 当分屏后至少有 20 行时，水平分屏，nil 表示禁止水平分屏，此处设得小一些，以倾向于水平分屏
+(setq split-height-threshold 20)
+
 (provide 'init-option)
