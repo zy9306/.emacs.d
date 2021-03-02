@@ -131,4 +131,8 @@
 (setq vimish-fold-dir (expand-file-name "vimish-fold" local/persist-dir))
 (setq project-list-file (expand-file-name "projects" local/persist-dir))
 
+(defun local/modify-syntax-entry ()
+  (modify-syntax-entry ?_ "w"))
+(add-hook 'prog-mode-hook 'local/modify-syntax-entry)
+
 (provide 'init-option)
