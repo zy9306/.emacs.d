@@ -25,7 +25,7 @@
 ;; see also https://www.emacswiki.org/emacs/AutoSave `auto-save-visited-mode`
 (with-eval-after-load 'real-auto-save
   (diminish 'real-auto-save-mode)
-  (setq real-auto-save-interval 10)
+  (setq real-auto-save-interval 30)
   (dolist (hook '(text-mode-hook
                   python-mode-hook
                   go-mode-hook
