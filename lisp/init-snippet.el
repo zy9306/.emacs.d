@@ -10,7 +10,7 @@
   :ensure t
   :defer t
   :init
-  (add-hook 'prog-mode-hook #'local/yas-mode))
+  (add-hook 'after-init-hook #'local/yas-mode))
 
 
 (use-package yasnippet-snippets)
