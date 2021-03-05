@@ -76,6 +76,7 @@
 (require-package 'isearch-dabbrev)
 (require-package 'go-dlv)
 (require-package 'bufler)
+(require-package 'pytest)
 
 (quelpa
  '(swiper

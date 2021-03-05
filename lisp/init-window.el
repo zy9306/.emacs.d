@@ -120,4 +120,7 @@ window configuration."
   (global-set-key (kbd "<C-S-right>")  'buf-move-right))
 
 
+(advice-add #'delete-window :after 'balance-windows)
+(advice-add #'kill-buffer-and-window :after 'balance-windows)
+
 (provide 'init-window)
