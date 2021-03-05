@@ -54,7 +54,7 @@
         (name "PROC_ENV")
         (flask "flask")
         (sea "sea"))
-    (if (equal cur "")
+    (if (equal cur nil)
         (setenv name flask))
     (if (equal cur flask)
         (setenv name sea))
