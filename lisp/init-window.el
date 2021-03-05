@@ -120,7 +120,19 @@ window configuration."
   (global-set-key (kbd "<C-S-right>")  'buf-move-right))
 
 
-(advice-add #'delete-window :after 'balance-windows)
-(advice-add #'kill-buffer-and-window :after 'balance-windows)
+(defun local/delete-window (&optional window)
+  (interactive)
+  (if window
+      (delete-window window)
+    (delete-window))
+  (balance-windows))
+
+(defun local/kill-buffer-and-window ()
+  (interactive)
+  (kill-buffer-and-window)
+  (balance-windows))
+
+(global-set-key [remap delete-window] #'local/delete-window)
+(global-set-key [remap kill-buffer-and-window] #'local/kill-buffer-and-window)
 
 (provide 'init-window)
