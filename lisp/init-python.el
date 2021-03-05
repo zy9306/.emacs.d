@@ -74,4 +74,17 @@
   (message pytest-global-name))
 
 
+(defun local/pdb-current-test ()
+  (interactive)
+  (let* ((test-project-root (pytest-find-project-root))
+        (test-obj (pytest-py-testable))
+        (test-runner (pytest-find-test-runner))
+        (test-cmd (format "%s %s %s" test-runner pytest-cmd-flags test-obj))
+        )
+    (setq default-directory test-project-root)
+    (message test-cmd)
+    (pdb test-cmd)))
+
+
+
 (provide 'init-python)
