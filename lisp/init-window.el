@@ -125,12 +125,12 @@ window configuration."
   (if window
       (delete-window window)
     (delete-window))
-  (balance-windows))
+  (balance-windows-area))
 
 (defun local/kill-buffer-and-window ()
   (interactive)
   (kill-buffer-and-window)
-  (balance-windows))
+  (balance-windows-area))
 
 (global-set-key [remap delete-window] #'local/delete-window)
 (global-set-key [remap kill-buffer-and-window] #'local/kill-buffer-and-window)
