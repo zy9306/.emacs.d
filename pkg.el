@@ -77,6 +77,7 @@
 (require-package 'go-dlv)
 (require-package 'bufler)
 (require-package 'pytest)
+(require-package 'mini-frame)
 
 (quelpa
  '(swiper
