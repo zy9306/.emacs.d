@@ -173,3 +173,9 @@
    :fetcher git
    :commit "HEAD"
    :url "git@github.com:raxod502/apheleia.git"))
+
+(quelpa
+ '(centaur-tabs
+   :fetcher git
+   :commit "HEAD"
+   :url "git@github.com:zy9306/centaur-tabs.git"))

@@ -27,6 +27,18 @@
  'fringe nil
  :background "grey95")
 
+;; tab
+(with-eval-after-load 'centaur-tabs
+  (set-face-attribute
+   'centaur-tabs-unselected nil
+   :background "gainsboro" :foreground "#9ca0a4" :height 160 :family "Source Code Pro")
+  (set-face-attribute
+   'centaur-tabs-unselected-modified nil
+   :background "gainsboro" :foreground "#4db5bd" :height 160 :family "Source Code Pro")
+  (set-face-attribute
+   'centaur-tabs-modified-marker-unselected nil
+   :background "gainsboro" :foreground "#4db5bd"))
+
 (with-eval-after-load 'company-mode
   (set-face-attribute
    'company-tooltip-selection nil
