@@ -153,4 +153,8 @@
   (message (which-function)))
 (add-hook 'after-init-hook (lambda () (which-function-mode)))
 
+
+(with-eval-after-load 'key-chord
+  (key-chord-define-global "JJ" 'kill-ring-save))
+
 (provide 'init-basic)
