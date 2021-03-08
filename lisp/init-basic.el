@@ -155,6 +155,6 @@
 
 
 (with-eval-after-load 'key-chord
-  (key-chord-define-global "JJ" 'kill-ring-save))
+  (key-chord-define-global "jj" 'kill-ring-save))
 
 (provide 'init-basic)
