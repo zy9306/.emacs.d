@@ -9,5 +9,6 @@
   (diminish 'apheleia-mode))
 
 (add-hook 'go-mode-hook #'local/apheleia-mode)
+(add-hook 'python-mode-hook #'local/apheleia-mode)
 
 (provide 'init-formatter)
