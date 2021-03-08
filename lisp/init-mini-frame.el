@@ -9,9 +9,11 @@
           ;; linux xfce4 环境下无法法透明
           (alpha . (90 90))))
 
-  ;; mac 下无法显示 border，背景色用默认的，白色的对比度太低
-  (when *linux*
-    (add-to-list 'mini-frame-show-parameters '(background-color . "#ffffff")))
+  ;; mac 下无法显示 border，背景色用默认的，白色的对比度太低（emacsmacport 版本解决了此问题）
+  ;; (when *linux*
+  ;;   (add-to-list 'mini-frame-show-parameters '(background-color . "#ffffff")))
+
+  (add-to-list 'mini-frame-show-parameters '(background-color . "#ffffff"))
 
   (setq mini-frame-internal-border-color "#39c5bb")
 
