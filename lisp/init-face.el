@@ -31,10 +31,10 @@
 (with-eval-after-load 'centaur-tabs
   (set-face-attribute
    'centaur-tabs-unselected nil
-   :background "gainsboro" :foreground "#9ca0a4" :height 160 :family "Source Code Pro")
+   :background "gainsboro" :foreground "#9ca0a4")
   (set-face-attribute
    'centaur-tabs-unselected-modified nil
-   :background "gainsboro" :foreground "#4db5bd" :height 160 :family "Source Code Pro")
+   :background "gainsboro" :foreground "#4db5bd")
   (set-face-attribute
    'centaur-tabs-modified-marker-unselected nil
    :background "gainsboro" :foreground "#4db5bd"))
