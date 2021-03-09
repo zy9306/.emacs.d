@@ -14,6 +14,8 @@
   (setq centaur-tabs-set-modified-marker t)
   (setq centaur-tabs-modified-marker "*")
   (centaur-tabs-change-fonts "Source Code Pro" 160)
+
+  (global-set-key (kbd "C-c s") 'centaur-tabs-counsel-switch-group)
   )
 
 
