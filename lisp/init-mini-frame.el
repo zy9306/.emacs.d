@@ -19,6 +19,10 @@
 
   ;; 固定高度为 10, 禁用自动调整，否则会闪烁
   (setq mini-frame-resize nil)
+
+  ;; 如果为 t， 多 frame 时可能会乱跑
+  (setq mini-frame-detach-on-hide nil)
+
   (mini-frame-mode +1))
 
 
