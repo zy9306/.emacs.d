@@ -5,7 +5,7 @@
   :ensure t
   :config
   (centaur-tabs-headline-match)
-  (centaur-tabs-mode t)
+  (centaur-tabs-mode -1)
   (setq centaur-tabs-style "bar")
   (setq centaur-tabs-height 32)
   (setq centaur-tabs-set-icons t)
