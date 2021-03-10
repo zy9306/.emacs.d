@@ -79,7 +79,7 @@
 (global-set-key (kbd "C-x w d") 'ace-delete-other-windows)
 
 
-
+;; TODO error when use treemacs
 ;; 最大化当前窗口，再次执行回到先前的窗口状态
 (defvar window-split-saved-config nil)
 (defun window-split-toggle-one-window ()
@@ -92,7 +92,7 @@ window configuration."
     (setq window-split-saved-config (current-window-configuration))
     (delete-other-windows)))
 
-(global-set-key (kbd "C-x 1") 'window-split-toggle-one-window)
+;; (global-set-key (kbd "C-x 1") 'window-split-toggle-one-window)
 
 
 ;; https://github.com/purcell/emacs.d/blob/master/lisp/init-windows.el
@@ -125,12 +125,12 @@ window configuration."
   (if window
       (delete-window window)
     (delete-window))
-  (balance-windows-area))
+  (balance-windows))
 
 (defun local/kill-buffer-and-window ()
   (interactive)
   (kill-buffer-and-window)
-  (balance-windows-area))
+  (balance-windows))
 
 (global-set-key [remap delete-window] #'local/delete-window)
 (global-set-key [remap kill-buffer-and-window] #'local/kill-buffer-and-window)
