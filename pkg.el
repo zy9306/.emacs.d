@@ -78,6 +78,10 @@
 (require-package 'bufler)
 (require-package 'pytest)
 (require-package 'mini-frame)
+(require-package 'prescient)
+(require-package 'selectrum)
+(require-package 'selectrum-prescient)
+(require-package 'consult)
 
 (quelpa
  '(swiper
