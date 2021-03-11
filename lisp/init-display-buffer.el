@@ -60,6 +60,10 @@
 
           ("*Async Shell Command*" :regexp nil :ignore t)
 
+          ("*go-test*" :regexp nil :select t :align below :size 0.33)
+
+          ("\\*pytest-.*\\*" :regexp t :select t :align below :size 0.33)
+
           ;; (magit-status-mode :select t :inhibit-window-quit t :same t)
 
           ;; the last rule
