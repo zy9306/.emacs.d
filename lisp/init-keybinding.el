@@ -77,7 +77,6 @@
 
 ;; imenu
 (global-set-key (kbd "C-x \"") #'imenu-list-smart-toggle)
-(global-set-key (kbd "C-\"") #'counsel-imenu)
 
 (with-eval-after-load 'symbol-overlay
   (define-key symbol-overlay-mode-map (kbd "M-i") 'symbol-overlay-put)
