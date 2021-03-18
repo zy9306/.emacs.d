@@ -82,6 +82,7 @@
 (require-package 'selectrum)
 (require-package 'selectrum-prescient)
 (require-package 'consult)
+(require-package 'minimap)
 
 (quelpa
  '(swiper
