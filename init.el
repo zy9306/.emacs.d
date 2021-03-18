@@ -53,6 +53,7 @@
 (local/load-package 'init-mini-frame)
 ;; TODO (local/load-package 'init-posframe)
 (local/load-package 'init-tabs)
+(local/load-package 'init-minimap)
 
 (if (and (not (daemonp)) (not (display-graphic-p)))
     (local/load-package 'init-evil-v2))
