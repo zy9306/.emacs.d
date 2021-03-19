@@ -10,3 +10,6 @@
 [submodule "theme/all-the-icons.el"]
 	path = theme/all-the-icons.el
 	url = git@github.com:zy9306/all-the-icons.el.git
+[submodule "theme/spaceline"]
+	path = theme/spaceline
+	url = git@github.com:zy9306/spaceline.git
