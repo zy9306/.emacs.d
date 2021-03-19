@@ -10,7 +10,7 @@
 (setq visible-mark-faces `(visible-mark-face1 visible-mark-face2))
 
 
-(add-hook 'after-init-hook 'global-visible-mark-mode)
+;; (add-hook 'after-init-hook 'global-visible-mark-mode)
 
 (defun buffer-order-next-mark (arg)
   (interactive "p")
