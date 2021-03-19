@@ -83,6 +83,7 @@
 (require-package 'selectrum-prescient)
 (require-package 'consult)
 (require-package 'minimap)
+(require-package 'visible-mark)
 
 (quelpa
  '(swiper

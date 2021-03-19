@@ -54,6 +54,7 @@
 ;; TODO (local/load-package 'init-posframe)
 (local/load-package 'init-tabs)
 (local/load-package 'init-minimap)
+(local/load-package 'init-mark)
 
 (if (and (not (daemonp)) (not (display-graphic-p)))
     (local/load-package 'init-evil-v2))
