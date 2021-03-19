@@ -1,28 +1,43 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
+
 ;; mode-line
+;; (set-face-attribute
+;;  'mode-line nil
+;;  :background "white" :foreground "grey20" :box '(:line-width -1 :color "dim gray") :slant 'normal :weight 'light)
+;; (set-face-attribute
+;;  'mode-line-inactive nil
+;;  :background "white" :foreground "grey20" :box '(:line-width -1 :color "gray") :slant 'italic :weight 'light)
+
+(require 'spaceline-config)
+(spaceline-spacemacs-theme)
+
 (set-face-attribute
  'mode-line nil
- :background "white" :foreground "grey20" :box '(:line-width -1 :color "dim gray") :slant 'normal :weight 'light)
-(set-face-attribute
- 'mode-line-inactive nil
- :background "white" :foreground "grey20" :box '(:line-width -1 :color "gray") :slant 'italic :weight 'light)
+ :background "#e7e7e7" :box '(:line-width 1 :color "grey75"))
+
+
 (set-face-attribute
  'cursor nil
  :background miku-origin)
+
 (set-face-attribute
  'highlight nil
  :background miku-brightness-65)
+
 (set-face-attribute
  'region nil
  :background "#d8d8d8"
  :extend t)
+
 (set-face-attribute
  'font-lock-string-face nil
  :foreground miku-brightness-50)
+
 (set-face-attribute
  'tooltip nil
  :background "white" :foreground miku-brightness-65)
+
 (set-face-attribute
  'fringe nil
  :background "grey95")
