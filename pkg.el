@@ -85,7 +85,6 @@
 (require-package 'consult)
 (require-package 'minimap)
 (require-package 'visible-mark)
-(require-package 'spaceline)
 
 (quelpa
  '(swiper
