@@ -25,19 +25,12 @@
 (local/doom-themes)
 
 
-;; (defun local/awesome-tray-mode ()
-;;      (require 'awesome-tray)
-;;      (setq awesome-tray-active-modules
-;;            '("location"
-;;              "git"
-;;              "mode-name"
-;;              "parent-dir"
-;;              "buffer-name"
-;;              "battery"
-;;              "date"
-;;              "buffer-read-only"))
-;;      (awesome-tray-mode 1))
-;; (add-hook 'after-init-hook #'local/awesome-tray-mode)
+(require 'spaceline-config)
+(spaceline-spacemacs-theme)
+
+(set-face-attribute
+ 'mode-line nil
+ :background "#e7e7e7" :box '(:line-width 1 :color "grey75"))
 
 
 (provide 'init-theme)
