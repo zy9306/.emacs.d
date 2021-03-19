@@ -11,6 +11,7 @@
 
 (setq quelpa-update-melpa-p nil)
 
+(require-package 'toc-org)
 (require-package 'posframe)
 (require-package 'pyvenv)
 (require-package 'auto-virtualenv)
