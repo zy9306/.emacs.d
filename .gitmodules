@@ -4,9 +4,6 @@
 [submodule "theme/doom-themes"]
 	path = theme/doom-themes
 	url = git@github.com:zy9306/emacs-doom-themes.git
-[submodule "theme/awesome-tray"]
-	path = theme/awesome-tray
-	url = git@github.com:zy9306/awesome-tray.git
 [submodule "theme/all-the-icons.el"]
 	path = theme/all-the-icons.el
 	url = git@github.com:zy9306/all-the-icons.el.git

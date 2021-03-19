@@ -9,14 +9,6 @@
 ;;  'mode-line-inactive nil
 ;;  :background "white" :foreground "grey20" :box '(:line-width -1 :color "gray") :slant 'italic :weight 'light)
 
-(require 'spaceline-config)
-(spaceline-spacemacs-theme)
-
-(set-face-attribute
- 'mode-line nil
- :background "#e7e7e7" :box '(:line-width 1 :color "grey75"))
-
-
 (set-face-attribute
  'cursor nil
  :background miku-origin)

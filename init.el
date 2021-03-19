@@ -10,10 +10,11 @@
 (make-directory (expand-file-name ".persist" user-emacs-directory) t)
 
 (push (expand-file-name "lisp" user-emacs-directory) load-path)
+
 (push (expand-file-name "theme/doom-themes" user-emacs-directory) load-path)
-(push (expand-file-name "theme/awesome-tray" user-emacs-directory) load-path)
 (push (expand-file-name "theme/all-the-icons.el" user-emacs-directory) load-path)
 (push (expand-file-name "theme/spaceline" user-emacs-directory) load-path)
+
 (push (expand-file-name "repo/yasnippet-snippets" user-emacs-directory) load-path)
 
 (local/load-package 'init-elpa)
