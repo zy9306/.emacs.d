@@ -64,7 +64,7 @@
 
           ("*go-test*" :regexp nil :select t :align right :other t :size 0.5)
 
-          ("*Bufler*" :regexp nil :select t :align right :other t :size 0.33)
+          ("*Bufler*" :regexp nil :select t :align right :other t :size 0.27)
 
           ("\\*pytest-.*\\*" :regexp t :select t :align right :other t :size 0.5)
 
