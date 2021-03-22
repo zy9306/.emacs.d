@@ -16,6 +16,7 @@
 (push (expand-file-name "theme/spaceline" user-emacs-directory) load-path)
 
 (push (expand-file-name "repo/yasnippet-snippets" user-emacs-directory) load-path)
+(push (expand-file-name "repo/bufler" user-emacs-directory) load-path)
 
 (local/load-package 'init-elpa)
 
@@ -60,6 +61,7 @@
 (local/load-package 'init-tabs)
 (local/load-package 'init-minimap)
 (local/load-package 'init-mark)
+(local/load-package 'init-bufler)
 
 (if (and (not (daemonp)) (not (display-graphic-p)))
     (local/load-package 'init-evil-v2))

@@ -76,7 +76,6 @@
 (require-package 'project-root)
 (require-package 'isearch-dabbrev)
 (require-package 'go-dlv)
-(require-package 'bufler)
 (require-package 'pytest)
 (require-package 'mini-frame)
 (require-package 'prescient)
