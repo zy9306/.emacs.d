@@ -32,12 +32,6 @@
 (global-set-key (kbd "C-x m") 'bm-show)
 (global-set-key (kbd "C-x M") 'bm-show-all)
 
-;; buffers
-(global-set-key (kbd "C-x C-S-b") 'list-buffers)
-(global-set-key [remap list-buffers] 'bufler)
-(with-eval-after-load 'key-chord
-  (key-chord-define-global "jk" 'bufler))
-
 ;; scroll
 (global-set-key (kbd "C-S-v") 'scroll-up-command)
 (global-set-key (kbd "M-S-v") 'scroll-down-command)
