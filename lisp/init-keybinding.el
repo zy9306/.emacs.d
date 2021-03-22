@@ -35,6 +35,8 @@
 ;; buffers
 (global-set-key (kbd "C-x C-S-b") 'list-buffers)
 (global-set-key [remap list-buffers] 'bufler)
+(with-eval-after-load 'key-chord
+  (key-chord-define-global "jk" 'bufler))
 
 ;; scroll
 (global-set-key (kbd "C-S-v") 'scroll-up-command)
