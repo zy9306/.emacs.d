@@ -64,6 +64,8 @@
 
           ("*go-test*" :regexp nil :select t :align right :other t :size 0.5)
 
+          ("*Bufler*" :regexp nil :select t :align right :other t :size 0.33)
+
           ("\\*pytest-.*\\*" :regexp t :select t :align right :other t :size 0.5)
 
           ;; (magit-status-mode :select t :inhibit-window-quit t :same t)
