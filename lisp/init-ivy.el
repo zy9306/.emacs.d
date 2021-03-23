@@ -115,4 +115,20 @@
             (setq pos nil)
           (setq pos (re-search-forward search-text nil t)))))))
 
+
+(defun local/ivy-occur-next-and-press ()
+  (interactive)
+  (next-line)
+  (ivy-occur-press))
+
+(defun local/ivy-occur-previous-and-press ()
+  (interactive)
+  (previous-line)
+  (ivy-occur-press))
+
+(with-eval-after-load 'ivy
+  (define-key ivy-occur-grep-mode-map (kbd "p") #'local/ivy-occur-previous-and-press)
+  (define-key ivy-occur-grep-mode-map (kbd "n") #'local/ivy-occur-next-and-press))
+
+
 (provide 'init-ivy)
