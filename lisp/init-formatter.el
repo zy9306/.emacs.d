@@ -30,7 +30,7 @@
 
 ;;; START python
 
-(add-hook 'python-mode-hook #'local/apheleia-mode)
+;; (add-hook 'python-mode-hook #'local/apheleia-mode)
 
 ;;; END python
 
