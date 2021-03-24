@@ -48,29 +48,24 @@
 ;;   )
 ;; END anaconda-mode
 
-(defun local/shanbay-py-env ()
-  (interactive)
-  (let ((cur (getenv "PROC_ENV"))
-        (name "PROC_ENV")
-        (flask "flask")
-        (sea "sea"))
-    (if (equal cur nil)
-        (setenv name flask))
-    (if (equal cur flask)
-        (setenv name sea))
-    (if (equal cur sea)
-        (setenv name flask)))
-  (message (getenv "PROC_ENV")))
-
-
-(defun local/pytest-shanbay-cmd ()
-  (interactive)
-  (setq pytest-global-name "flask test")
-  (message pytest-global-name))
 
 (defun local/pytest-original-cmd ()
   (interactive)
-  (setq pytest-global-name "py.test")
+  (setq pytest-global-name "py.test --no-cov")
+  (message pytest-global-name))
+
+
+(defun local/pytest-shanbay-flask ()
+  (interactive)
+  (setenv "PROC_ENV" "flask")
+  (setq pytest-global-name "flask test --no-cov")
+  (message pytest-global-name))
+
+
+(defun local/pytest-shanbay-sea ()
+  (interactive)
+  (setenv "PROC_ENV" "sea")
+  (setq pytest-global-name "sea test --no-cov")
   (message pytest-global-name))
 
 
