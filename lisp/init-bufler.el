@@ -15,7 +15,7 @@
   (global-set-key [remap list-buffers] 'local/bufler)
 
   (with-eval-after-load 'key-chord
-    (key-chord-define-global "jk" 'local/bufler))
+    (key-chord-define-global "jl" 'local/bufler))
   )
 
 (local/after-init-hook 'bufler)
