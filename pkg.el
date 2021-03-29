@@ -185,3 +185,9 @@
    :fetcher git
    :commit "HEAD"
    :url "git@github.com:zy9306/centaur-tabs.git"))
+
+(quelpa
+ '(bufler
+   :fetcher file
+   :path "~/.emacs.d/repo/bufler"
+   :files (:defaults (:exclude "helm-bufler.el"))))
