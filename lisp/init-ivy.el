@@ -11,7 +11,8 @@
   (diminish 'ivy-mode)
   (counsel-mode)
   (diminish 'counsel-mode)
-  (ivy-prescient-mode +1)
+  ;; 过滤及重排候选, 用于 ivy 效果不好, 暂时禁用
+  ;; (ivy-prescient-mode +1)
   )
 
 (defun local/dimish-counsel ()
