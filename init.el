@@ -77,6 +77,11 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
+;; set desktop
+(let ((desktop-dir (expand-file-name ".persist" user-emacs-directory)))
+ (setq desktop-dirname desktop-dir)
+ (setq desktop-path `(,desktop-dir)))
+
 ;; close debug when finally load
 (setq debug-on-error nil)
 
