@@ -1,6 +1,7 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
 (defun local/mini-frame-mode ()
+  (interactive)
   (setq mini-frame-show-parameters
         '((top . 0.2)
           (left . 0.5)
