@@ -12,4 +12,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(mode-line ((t (:background "#e7e7e7" :box (:line-width 1 :color "grey75"))))))
+ )
