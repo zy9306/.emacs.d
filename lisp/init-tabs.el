@@ -21,6 +21,10 @@
 (setq tab-bar-close-button-show nil)
 (setq tab-bar-new-button-show nil)
 
+(set-face-attribute
+ 'tab-bar nil
+ :underline t :weight 'bold)
+
 (add-hook 'after-init-hook 'tab-bar-mode)
 
 
