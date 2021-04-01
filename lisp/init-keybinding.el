@@ -3,6 +3,10 @@
 ;; unset
 (global-unset-key (kbd "C-x C-b"))
 
+;; buildin
+(with-eval-after-load 'key-chord
+  (key-chord-define-global "JJ" 'read-only-mode))
+
 ;; disable run-python binding
 (add-hook 'python-mode-hook
           (lambda()
