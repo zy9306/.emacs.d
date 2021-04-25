@@ -33,6 +33,9 @@
 
 (with-eval-after-load 'company (local/config-company-backends))
 
+
+(global-set-key (kbd "M-<RET>") 'company-tabnine)
+
 ;; (with-eval-after-load 'company
 ;;   (setq company-flx-limit 100)
 ;;   (company-flx-mode +1))
