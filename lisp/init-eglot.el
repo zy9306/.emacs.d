@@ -60,6 +60,17 @@
 (setq nox-python-server-dir (expand-file-name ".cache/lsp/mspyls/" user-emacs-directory))
 
 
+;; switch pyls
+(defun local/pyls ()
+  (interactive)
+  (let (
+        (choices '("pyright" "mspyls"))
+        )
+    (setq nox-python-server (completing-read "Swith to:" choices)))
+  )
+
+
+
 ;;; END NOX
 
 
