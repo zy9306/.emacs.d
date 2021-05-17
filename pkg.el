@@ -104,10 +104,11 @@
    :url "git@github.com:abo-abo/swiper.git"))
 
 (quelpa
- '(company-mode
+ '(company
    :fetcher git
-   :commit "6116c4"
-   :url "git@github.com:company-mode/company-mode.git"))
+   :commit "5618f28"
+   :url "git@github.com:company-mode/company-mode.git"
+   :files (:defaults "icons")))
 
 (quelpa
  '(projectile
