@@ -1,10 +1,12 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
 ;; set package dir, should before (package-initialize)
-(let ((versioned-package-dir
-       (expand-file-name (format "elpa-%s.%s" emacs-major-version emacs-minor-version)
-                         user-emacs-directory)))
-  (setq package-user-dir versioned-package-dir))
+;; (let ((versioned-package-dir
+;;        (expand-file-name (format "elpa-%s.%s" emacs-major-version emacs-minor-version)
+;;                          user-emacs-directory)))
+;;   (setq package-user-dir versioned-package-dir))
+;; 不再区分版本号
+(setq package-user-dir (expand-file-name "elpa" user-emacs-directory))
 
 (defun initialize-package ()
   (unless nil ;package--initialized
