@@ -10,9 +10,6 @@
 [submodule "theme/spaceline"]
 	path = theme/spaceline
 	url = git@github.com:zy9306/spaceline.git
-[submodule "repo/bufler"]
-	path = repo/bufler
-	url = git@github.com:zy9306/bufler.el.git
 [submodule "elpa"]
 	path = elpa
 	url = git@github.com:zy9306/elpa.git
