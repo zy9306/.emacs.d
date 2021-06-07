@@ -1,22 +1,31 @@
 ;; -*- coding: utf-8; lexical-binding: t; -*-
 
+
+(setq
+ local/font-size-daemonp 15
+ local/font-size-linux 11
+ local/font-size-win 13
+ local/font-size-mac 18
+ )
+
+
 (if (daemonp)
     ;; fix emacs --daemon
-    (add-to-list 'default-frame-alist '(font . "Source Code Pro 15")))
+    (add-to-list 'default-frame-alist '(font . (format "Source Code Pro %d" local/font-size-daemonp))))
 
 ;; English Font
 (when *linux*
-  (set-face-attribute 'default nil :font "Source Code Pro 11")
+  (set-face-attribute 'default nil :font (format "Source Code Pro %d" local/font-size-linux))
 )
 (when *win*
-  (set-face-attribute 'default nil :font "Ubuntu Mono 13")
+  (set-face-attribute 'default nil :font (format "Ubuntu Mono %d" local/font-size-win))
 
   (set-default 'process-coding-system-alist
                '(("[pP][lL][iI][nN][kK]" gbk-dos . gbk-dos)
                  ("[cC][mM][dD][pP][rR][oO][xX][yY]" gbk-dos . gbk-dos))))
 (when *mac*
   ;; mac dpi is too high, so enlarge font
-  (set-face-attribute 'default nil :font "Source Code Pro 15")
+  (set-face-attribute 'default nil :font (format "Source Code Pro %d" local/font-size-mac))
 )
 
 ;; CJK Font
