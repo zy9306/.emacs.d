@@ -147,11 +147,5 @@
 (global-set-key [remap kill-ring-save] 'easy-kill)
 
 
-(defun local/which-function ()
-  (interactive)
-  (require 'which-func)
-  (message (which-function)))
-(add-hook 'after-init-hook (lambda () (which-function-mode)))
-
 
 (provide 'init-basic)

@@ -79,4 +79,29 @@
   (gac-after-save-func)
   (diff-hl-reset-reference-rev))
 
+
+;; show current function when cursor moves or mouse click.
+(defun local/which-function ()
+  (interactive)
+  (require 'which-func)
+  (let ((current-function (which-function)))
+    (if current-function
+        (message (which-function)))))
+(add-hook 'after-init-hook (lambda () (which-function-mode)))
+
+(defvar local/last-point-position 0)
+
+(make-variable-buffer-local 'local/last-point-position)
+
+(defun local/show-current-function-post-command ()
+  (let ((current-position (point)))
+    (if (not (equal current-position local/last-point-position))
+        (local/which-function)
+      (if (eq this-command 'mouse-set-point)
+          (local/which-function)))
+    (setq local/last-point-position current-position)))
+
+(add-hook 'post-command-hook #'local/show-current-function-post-command)
+
+
 (provide 'init-utils)
