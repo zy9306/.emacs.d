@@ -71,6 +71,7 @@
 
 (defun local/pdb-current-test ()
   (interactive)
+  (require 'pytest)
   (let* ((test-project-root (pytest-find-project-root))
         (test-obj (pytest-py-testable))
         (test-runner (pytest-find-test-runner))
@@ -84,6 +85,7 @@
 ;; copy test function path for pytest
 (defun local/pytest-test-path ()
   (interactive)
+  (require 'pytest)
   (let* ((test-project-root (pytest-find-project-root))
         (test-obj (pytest-py-testable))
         (relative-test-obj (string-trim-left test-obj test-project-root)))
