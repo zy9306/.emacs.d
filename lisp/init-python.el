@@ -81,5 +81,14 @@
     (pdb test-cmd)))
 
 
+;; copy test function path for pytest
+(defun local/pytest-test-path ()
+  (interactive)
+  (let* ((test-project-root (pytest-find-project-root))
+        (test-obj (pytest-py-testable))
+        (relative-test-obj (string-trim-left test-obj test-project-root)))
+    (message relative-test-obj)
+    (kill-new relative-test-obj)))
+
 
 (provide 'init-python)
