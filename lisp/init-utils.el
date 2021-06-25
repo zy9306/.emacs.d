@@ -89,10 +89,9 @@
         (message (which-function)))))
 (add-hook 'after-init-hook (lambda () (which-function-mode)))
 
+;; 鼠标点击或光标移动时调用 local/which-function 显示当前函数信息，有性能问题
 (defvar local/last-point-position 0)
-
 (make-variable-buffer-local 'local/last-point-position)
-
 (defun local/show-current-function-post-command ()
   (let ((current-position (point)))
     (if (not (equal current-position local/last-point-position))
@@ -100,8 +99,7 @@
       (if (eq this-command 'mouse-set-point)
           (local/which-function)))
     (setq local/last-point-position current-position)))
-
-(add-hook 'post-command-hook #'local/show-current-function-post-command)
+;; (add-hook 'post-command-hook #'local/show-current-function-post-command)
 
 
 (provide 'init-utils)
