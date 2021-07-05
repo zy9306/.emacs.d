@@ -15,6 +15,8 @@
 ;; 始终启用缩进
 (add-hook 'org-mode-hook 'org-indent-mode)
 
+(add-hook 'org-mode-hook #'(lambda () (display-line-numbers-mode -1)))
+
 ;; 默认收起所有代码块，shift + tab也不展开
 ;; org-show-block-all展开所有代码块
 (add-hook 'org-mode-hook 'org-hide-block-all)
