@@ -3,6 +3,9 @@
 ;; 代码语法高亮
 (setq org-src-fontify-natively t)
 
+;; 启用时会有奇怪的自动缩进问题
+(setq org-src-tab-acts-natively nil)
+
 ;; show all the character like * / etc...
 (setq org-hide-emphasis-markers nil)
 ;; show all level marks *
