@@ -1,67 +1,47 @@
 #+OPTIONS: ^:{}
 #+OPTIONS: -:nil
 
-* Table of Contents                                                     :TOC:QUOTE:
-#+BEGIN_QUOTE
-- [[#nix][nix]]
-- [[#debian-系][Debian 系]]
-- [[#archlinux][ArchLinux]]
-- [[#源码编译][源码编译]]
-  - [[#debian-系-1][Debian 系]]
-- [[#一些可能的问题][一些可能的问题]]
-#+END_QUOTE
-
-* nix
-
-#+begin_quote
-https://github.com/zy9306/nix-home
-#+end_quote
-
-* Debian 系
-
-#+begin_src shell
-# https://launchpad.net/~kelleyk/+archive/ubuntu/emacs
-sudo add-apt-repository ppa:kelleyk/emacs
-sudo apt-get update
-sudo apt install emacs27
-#+end_src
-
-* ArchLinux
-
-#+begin_src shell
-# `pacman -Ss emacs` to search emacs
-pacman -S emacs
-#+end_src
-
-* 源码编译
+* 编译安装(Debian)
 
 #+begin_quote
 https://mirrors.syringanetworks.net/gnu/emacs/
 #+end_quote
 
-** Debian 系
-
-#+begin_src shell
-# 先安装旧版本的依赖，编译新版本时报错再安装提示缺少的部分（建议）
-sudo apt-get build-dep emacs
+基础依赖
+#+begin_src
+sudo apt-get install libgtk-3-dev libxpm-dev libnettle6 libhogweed4 libx11-dev libjpeg-dev libpng-dev libgif-dev libtiff-dev
 #+end_src
 
-或者手动安装依赖
+gnutls
+https://gitlab.com/gnutls/gnutls/blob/master/INSTALL.md
+#+begin_src
+# 安装 gmplib
+# 安装 nettle
+# 安装 libtasn1
+# 安装 libunistring
 
-#+begin_example
-libgtk-3-dev
-libxpm-dev
-gnutls-dev
-libx11-dev
-libjpeg-dev
-libpng-dev
-libgif-dev
-libtiff-dev
-libgtk2.0-dev
-texinfo
-# libncurses5-dev
-# libncurses-dev
-#+end_example
+sudo apt-get install libunistring-dev 安装 libunistring 头文件或手动复制过去
+
+# 安装 p11-kit
+
+# 安装 nettle 后须 export PKG_CONFIG_PATH=/usr/local/lib64/pkgconfig
+
+# 安装 gnutls 后须将头文件复制到 /usr/include
+
+cp -r gnutls-3.6.16/lib/includes/gnutls /usr/include
+#+end_src
+
+安装完所有依赖后，编译前
+#+begin_src
+export PKG_CONFIG_PATH=/usr/local/lib64/pkgconfig
+sudo ldconfig /usr/lib
+sudo ldconfig /usr/local/lib
+sudo ldconfig /usr/local/lib64
+#+end_src
+
+至此，应该能正常编译了
+
+如果包管理有最新版，可以直接用包管理的
 
 * 一些可能的问题
 
@@ -70,7 +50,7 @@ texinfo
 export LC_CTYPE="zh_CN.UTF-8"
 #+end_src
 
-~/.profile 中需添加以下内容 （archlinux 有其它配置，不需要）
+~/.profile 中需添加以下内容
 #+begin_src shell
 export LC_CTYPE="zh_CN.UTF-8"
 
