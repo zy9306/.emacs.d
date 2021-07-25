@@ -22,6 +22,10 @@ https://gitlab.com/gnutls/gnutls/blob/master/INSTALL.md
 
 sudo apt-get install m4
 
+# 当 emacs 编译完成后，`readelf -d src/emacs | grep jansson`，如果出现以下表示 native json 编译成功
+# 0x0000000000000001 (NEEDED)             共享库：[libjansson.so.4]
+sudo apt install libjansson-dev
+
 sudo apt-get install libunistring-dev 安装 libunistring 头文件或手动复制过去
 
 # 安装 p11-kit
