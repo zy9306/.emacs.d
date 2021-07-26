@@ -140,4 +140,9 @@
 ;; ;; 当分屏后至少有 20 行时，水平分屏，nil 表示禁止水平分屏，此处设得小一些，以倾向于水平分屏
 ;; (setq split-height-threshold 20)
 
+
+;; 调整鼠标滚动速度
+(setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-scroll-amount '(1))
+
 (provide 'init-option)
