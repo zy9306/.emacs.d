@@ -133,4 +133,60 @@
 ;;   (define-key org-mode-map (kbd "C-c j") #'org-remove-readonly))
 
 
+;;; formatter start
+(require 'cl)
+
+(defvar org-blank-lines-after-heading 1
+  "Number of blank lines to separate a heading from the content.")
+
+(defvar org-blank-lines-after-content (cons 2 4)
+  "Cons cell for the number of blank lines after content in a heading.
+The car is for when the next heading is at the same level, and
+the cdr is for when the next heading is at a different level.
+This is for the body specific to the headline, not counting
+subheadings.")
+
+(defun org-format-heading-blank-lines ()
+  "Make sure each headline has exactly
+`org-blank-lines-after-heading' after the heading, and
+`org-blank-lines-after-content' blank lines at the end of its
+content. Only works when point is in a headline."
+  (interactive)
+  (when (org-at-heading-p)
+    (let ((current-level (nth 0 (org-heading-components)))
+          next-level)
+      (save-excursion
+        (org-end-of-meta-data)
+        ;; chomp blank lines then add what you want back.
+        (while (and (not (eobp)) (looking-at "^[[:space:]]*$"))
+          (kill-line))
+        (insert (cl-loop for i from 0 below org-blank-lines-after-heading concat "\n")))
+
+      ;; Now go to the end of content and insert lines if needed.
+      (save-excursion
+        (when (outline-next-heading)
+          (setq next-level (nth 0 (org-heading-components)))
+          ;; chomp lines back then reinsert them.
+          (previous-line)
+          (while (looking-at "^[[:space:]]*$")
+            (kill-line)
+            (previous-line))
+          (unless (eobp) (end-of-line))
+          (insert (cl-loop for i from 0 below (if (= current-level next-level)
+                                                  (car org-blank-lines-after-content)
+                                                (cdr org-blank-lines-after-content))
+                           concat "\n")))))))
+
+(defun org-format-headings (arg)
+  (interactive "P")
+  (save-excursion
+    (org-save-outline-visibility t
+      (org-cycle '(64))
+      (message nil)
+      (goto-char (point-min))
+      (while (re-search-forward org-heading-regexp nil t)
+        (org-format-heading-blank-lines)))))
+;;; formatter end
+
+
 (provide 'init-org)
