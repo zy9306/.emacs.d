@@ -24,7 +24,7 @@
   ;; 如果为 t， 多 frame 时可能会乱跑
   (setq mini-frame-detach-on-hide nil)
 
-  (mini-frame-mode +1))
+  (mini-frame-mode -1))
 
 
 (add-hook 'after-init-hook #'local/mini-frame-mode)
