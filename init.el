@@ -63,6 +63,8 @@
 (local/load-package 'init-mark)
 (local/load-package 'init-bufler)
 
+(local/load-package 'init-tree-sitter)
+
 (if (and (not (daemonp)) (not (display-graphic-p)))
     (local/load-package 'init-evil-v2))
 
