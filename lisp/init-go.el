@@ -5,7 +5,10 @@
 (autoload 'go-mode "go-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
 
-;; START
+;;; NOX
+(add-hook 'go-mode-hook #'local/nox-ensure)
+
+;;; START LSP-MODE
 ;; use nox instead of lsp-mode
 ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md
 
@@ -18,7 +21,21 @@
 ;;   (add-hook 'go-mode-hook 'lsp-deferred)
 ;;   (yas-minor-mode)
 ;;   )
-;; END
+;;; END LSP-MODE
+
+
+;;; FORMAT START
+;; 实时保存可能会造成卡顿
+;; Set up before-save hooks to format buffer and add/delete imports.
+;; Make sure you don't have other gofmt/goimports hooks enabled.
+(defun local/go-mode-save-hooks ()
+  (setq gofmt-show-errors 'echo)
+  (setq gofmt-command "goimports")
+  (add-hook 'before-save-hook 'gofmt-before-save))
+
+(add-hook 'go-mode-hook #'local/go-mode-save-hooks)
+;;; FORMAT END
+
 
 (defun local/go-test-current-func ()
   (interactive)

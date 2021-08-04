@@ -1,5 +1,7 @@
-;; -*- coding: utf-8; lexical-binding: t; -*-
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 
+
+(add-hook 'rust-mode-hook #'local/nox-ensure)
 
 (use-package rust-mode
   :ensure t
