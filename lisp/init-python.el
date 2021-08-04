@@ -27,6 +27,11 @@
 ;;; END NOX
 
 
+;;; keybindings
+(global-set-key (kbd "C-c C-y") 'yapfify-region)
+(global-set-key (kbd "C-c C-b") 'python-black-region)
+
+
 (defun local/pytest-original-cmd ()
   (interactive)
   (setq pytest-global-name "py.test --no-cov")

@@ -39,13 +39,17 @@
 (local/load-package 'init-rg)
 (local/load-package 'init-gnu-global)
 (local/load-package 'init-gud)
+
 (local/load-package 'init-lsp)
 (local/load-package 'init-eglot)
+
 (local/load-package 'init-org)
+
 (local/load-package 'init-python)
 (local/load-package 'init-rust)
 ;; (local/load-package 'init-js-ts)
 (local/load-package 'init-go)
+
 (local/load-package 'init-additional-major-mode)
 (local/load-package 'init-display-buffer)
 (local/load-package 'init-keyfreq)

@@ -21,6 +21,8 @@
 
 (local/after-init-hook 'projectile)
 
+(global-set-key (kbd "C-S-S") 'projectile-ripgrep)
+
 
 ;; use treemacs instead
 
