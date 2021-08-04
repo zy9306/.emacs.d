@@ -93,4 +93,11 @@
     (kill-new relative-test-obj)))
 
 
+(defun local/setup-flycheck-for-py ()
+  (flycheck-select-checker 'python-flake8)
+  (flycheck-add-next-checker 'python-flake8 '(warning . python-pyright)))
+
+(add-hook 'python-mode-hook #'local/setup-flycheck-for-py)
+
+
 (provide 'init-python)
