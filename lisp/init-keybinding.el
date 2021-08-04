@@ -1,13 +1,10 @@
-;; -*- coding: utf-8; lexical-binding: t; -*-
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 
-;; unset
+;;; unset
 (global-unset-key (kbd "C-x C-b"))
 
-;; buildin
-(with-eval-after-load 'key-chord
-  (key-chord-define-global "JJ" 'read-only-mode))
 
-;; disable run-python binding
+;;; disable run-python binding
 (add-hook 'python-mode-hook
           (lambda()
             (local-unset-key (kbd "C-c C-p"))))
@@ -20,23 +17,8 @@
           (lambda()
             (local-unset-key (kbd "C-c C-f"))))
 
-;; lsp
-(add-hook 'lsp-mode-hook
-          (lambda ()
-            (local-set-key (kbd "C-c l i") 'lsp-ivy-workspace-symbol)
-            (local-set-key (kbd "C-c l I") 'lsp-ivy-global-workspace-symbol)
-            ))
-(with-eval-after-load 'lsp-mode
-  (define-key lsp-mode-map (kbd "M-*") 'lsp-signature-activate))
 
-;; bm (bookmark)
-(global-set-key (kbd "C-c j") 'bm-next)
-(global-set-key (kbd "C-c k") 'bm-previous)
-(global-set-key (kbd "C-^") 'bm-toggle)
-(global-set-key (kbd "C-x m") 'bm-show)
-(global-set-key (kbd "C-x M") 'bm-show-all)
-
-;; scroll
+;;; scroll
 (global-set-key (kbd "C-S-v") 'scroll-up-command)
 (global-set-key (kbd "M-S-v") 'scroll-down-command)
 
@@ -51,6 +33,7 @@
 (global-set-key (kbd "C-}") (lambda () (interactive) (scroll-left)))
 (global-set-key (kbd "C-{") (lambda () (interactive) (scroll-right)))
 
+
 ;; Horizontal scrolling mouse events should actually scroll left and right.
 (global-set-key (kbd "<mouse-6>")
                 (lambda () (interactive)
@@ -59,10 +42,8 @@
                 (lambda () (interactive)
                   (if truncate-lines (scroll-left 1))))
 
-;; projectile
-(global-set-key (kbd "C-S-S") 'projectile-ripgrep)
 
-;; edit
+;;; edit
 (global-set-key (kbd "M-P") 'move-text-up)
 (global-set-key (kbd "M-N") 'move-text-down)
 (global-set-key (kbd "C-M-p") 'backward-list)
@@ -75,40 +56,54 @@
 (global-set-key (kbd "C-.") 'goto-last-change-reverse)
 
 
-;; imenu
+;;; imenu
 (global-set-key (kbd "C-x \"") #'imenu-list-smart-toggle)
 
+
+;;; symbol-overlay
 (with-eval-after-load 'symbol-overlay
   (define-key symbol-overlay-mode-map (kbd "M-i") 'symbol-overlay-put)
   (define-key symbol-overlay-mode-map (kbd "M-I") 'symbol-overlay-remove-all)
   (define-key symbol-overlay-mode-map (kbd "M-n") 'symbol-overlay-jump-next)
   (define-key symbol-overlay-mode-map (kbd "M-p") 'symbol-overlay-jump-prev))
 
+
+;;; dired-subtree
 (with-eval-after-load 'dired-subtree
   (define-key dired-mode-map (kbd "C-<return>") 'dired-subtree-toggle))
 
-;; mc
+
+;;; mc
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
-;; magit
+
+;;; magit
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x M-g") 'magit-dispatch)
 (global-set-key (kbd "C-c M-g") 'magit-file-dispatch)
 
-;; expand-region
+
+;;; expand-region
 (global-set-key (kbd "C-=") 'er/expand-region)
 
-;; snippet
+
+;;; snippet
 (global-set-key (kbd "C-x j") 'yas-insert-snippet)
 
-;; python
-(global-set-key (kbd "C-c C-y") 'yapfify-region)
-(global-set-key (kbd "C-c C-b") 'python-black-region)
+
+;;; highlight-indent-guides-mode
 (global-set-key (kbd "C-c C-l") 'highlight-indent-guides-mode)
 
+
+;;; key-chord
+(with-eval-after-load 'key-chord
+  (key-chord-define-global "JJ" 'read-only-mode))
+
+
+;;; general
 (with-eval-after-load 'general
   (key-chord-mode 1)
   ;; (general-define-key (general-chord "cc") (general-simulate-key "C-c"))
