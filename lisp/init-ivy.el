@@ -10,10 +10,7 @@
   (ivy-mode)
   (diminish 'ivy-mode)
   (counsel-mode)
-  (diminish 'counsel-mode)
-  ;; 过滤及重排候选, 用于 ivy 效果不好, 暂时禁用
-  ;; (ivy-prescient-mode +1)
-  )
+  (diminish 'counsel-mode))
 
 (defun local/dimish-counsel ()
   (diminish 'counsel-mode))
@@ -33,13 +30,12 @@
 
   (global-set-key (kbd "C-\"") 'consult-imenu)
 
-  (global-set-key (kbd "M-s r") 'consult-ripgrep)
-  )
+  (global-set-key (kbd "M-s r") 'consult-ripgrep))
 
 (with-eval-after-load 'ivy
   (local/ivy)
 
-  (local/consult)
+  ;; (local/consult)
 
   (setq ivy-use-virtual-buffers t)
   (setq ivy-count-format "(%d/%d) ")
@@ -50,8 +46,6 @@
   (global-set-key (kbd "C-s") 'swiper)
   (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-
-  ;; (global-set-key (kbd "C-\"") #'counsel-imenu)
 
   (global-set-key (kbd "<f1> f") 'counsel-describe-function)
   (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
@@ -72,8 +66,7 @@
   (define-key ivy-occur-grep-mode-map (kbd "z") 'ivy-occur-hide-lines-matching)
   (define-key ivy-occur-grep-mode-map (kbd "/") 'ivy-occur-hide-lines-not-matching)
 
-  (define-key swiper-map (kbd "C-r") 'previous-line)
-  )
+  (define-key swiper-map (kbd "C-r") 'previous-line))
 
 ;;;###autoload
 (defun ivy-occur-hide-lines-not-matching (search-text)
@@ -94,7 +87,7 @@
         (if (eq (point) (point-max))
             (setq pos nil)
           (setq pos (re-search-forward search-text nil t))))
-              (delete-region start-position (point-max) ))))
+      (delete-region start-position (point-max) ))))
 
 ;;;###autoload
 (defun ivy-occur-hide-lines-matching  (search-text)
