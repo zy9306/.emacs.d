@@ -1,4 +1,4 @@
-;; -*- coding: utf-8; lexical-binding: t; -*-
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 
 
 (with-eval-after-load 'projectile
@@ -16,8 +16,7 @@
   (global-set-key [f9] 'treemacs)
   (treemacs-follow-mode -1)
   (global-set-key [f8] 'treemacs-find-file)
-  (add-hook 'treemacs-mode-hook #'(lambda () (display-line-numbers-mode -1)))
-  )
+  (add-hook 'treemacs-mode-hook #'(lambda () (display-line-numbers-mode -1))))
 
 (local/after-init-hook 'projectile)
 

@@ -40,6 +40,7 @@
 (require-package 'diff-hl)
 (require-package 'diminish)
 (require-package 'dired-subtree)
+(require-package 'dir-treeview)
 (require-package 'easy-kill)
 (require-package 'eglot)
 (require-package 'embrace)
