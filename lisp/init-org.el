@@ -50,6 +50,23 @@
   :hook ((org-mode . toc-org-mode)
          (markdown-mode . toc-org-mode)))
 
+
+;;; babel
+;; https://orgmode.org/manual/Results-of-Evaluation.html
+;; https://orgmode.org/manual/Environment-of-a-Code-Block.html
+;; 所有带有 :session py 的代码块都会在同一进程中执行，否则每个代码块都
+;; 会创建一个进程 :results output 表示原样输出标准输出的内容
+;; #+begin_src python :results output :session py
+;; print(">>>")
+;; #+end_src
+(with-eval-after-load 'org
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (python . t)
+     (sh . t))))
+
+
 ;; Capture
 ;; http://www.zmonster.me/2018/02/28/org-mode-capture.html
 ;; https://orgmode.org/manual/Capture-templates.html
