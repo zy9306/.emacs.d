@@ -64,7 +64,13 @@
    'org-babel-load-languages
    '((emacs-lisp . t)
      (python . t)
-     (shell . t))))
+     (shell . t))
+   )
+
+  (setq org-babel-default-header-args:shell '((:results . "output") (:session . "sh"))
+        org-babel-default-header-args:python '((:results . "output") (:session . "py"))
+        org-babel-default-header-args:emacs-lisp '((:results . "output") (:session . "elisp"))
+        ))
 
 
 ;; Capture
