@@ -5,7 +5,6 @@
   (require 'treemacs)
 
   (setq treemacs-width 20)
-  (setq treemacs-is-never-other-window t)
 
   (global-set-key [f9] 'treemacs)
   (treemacs-follow-mode -1)
