@@ -1,5 +1,8 @@
-;; -*- coding: utf-8; lexical-binding: t; -*-
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 
+
+;; enable y/n answers
+(fset 'yes-or-no-p 'y-or-n-p)
 
 (setq gc-cons-percentage 0.1)
 
