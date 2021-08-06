@@ -22,7 +22,8 @@
   (let ((choices '("pyright" "mspyls")))
     (setq nox-python-server (completing-read "Swith to:" choices))))
 
-(add-hook 'python-mode-hook #'local/nox-ensure)
+(when (executable-find "pyright-langserver")
+  (add-hook 'python-mode-hook #'local/nox-ensure))
 
 ;;; END NOX
 
@@ -76,11 +77,19 @@
     (kill-new relative-test-obj)))
 
 
-(defun local/setup-flycheck-for-py ()
-  (flycheck-select-checker 'python-flake8)
-  (flycheck-add-next-checker 'python-flake8 '(warning . python-pyright)))
+(when (or *linux* *mac*)
+  (defun local/setup-flycheck-for-py ()
+    (let (
+          (flake8 (executable-find "flake8"))
+          (pyright (executable-find "pyright"))
+          )
+      (when flake8
+        (flycheck-select-checker 'python-flake8))
+      (when pyright
+        (flycheck-add-next-checker 'python-flake8 '(warning . python-pyright)))
+      ))
 
-(add-hook 'python-mode-hook #'local/setup-flycheck-for-py)
+  (add-hook 'python-mode-hook #'local/setup-flycheck-for-py))
 
 
 ;;; No longer used.

@@ -47,10 +47,11 @@
   (setq imenu-list-focus-after-activation t))
 (local/after-init-hook 'imenu-list)
 
-(with-eval-after-load 'flycheck
-  (setq-default flycheck-disabled-checkers '(emacs-lisp emacs-lisp-checkdoc))
-  (global-flycheck-mode))
-(local/after-init-hook 'flycheck)
+(when (or *linux* *mac*)
+  (with-eval-after-load 'flycheck
+    (setq-default flycheck-disabled-checkers '(emacs-lisp emacs-lisp-checkdoc))
+    (global-flycheck-mode))
+  (local/after-init-hook 'flycheck))
 
 (with-eval-after-load 'diff-hl
   (global-diff-hl-mode)
@@ -113,8 +114,8 @@
 (local/after-init-hook 'move-text)
 
 (with-eval-after-load 'dired-subtree
-    (setq dired-subtree-use-backgrounds nil)
-    (setq dired-subtree-line-prefix "        "))
+  (setq dired-subtree-use-backgrounds nil)
+  (setq dired-subtree-line-prefix "        "))
 (local/after-init-hook 'dired-subtree)
 
 (with-eval-after-load 'highlight-indent-guides
