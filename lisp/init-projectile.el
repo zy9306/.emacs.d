@@ -1,22 +1,29 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 
 
+(defun local/setup-treemacs ()
+  (require 'treemacs)
+
+  (setq treemacs-width 20)
+  (setq treemacs-is-never-other-window t)
+
+  (global-set-key [f9] 'treemacs)
+  (treemacs-follow-mode -1)
+  (global-set-key [f8] 'treemacs-find-file)
+  (add-hook 'treemacs-mode-hook #'(lambda () (display-line-numbers-mode -1))))
+
 (with-eval-after-load 'projectile
   (require 'projectile)
   (require 'counsel-projectile)
-  (require 'treemacs)
+
+  (local/setup-treemacs)
 
   (projectile-mode)
   (counsel-projectile-mode)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
   (setq projectile-completion-system 'ivy)
-  (setq projectile-mode-line-function '(lambda () (format " Proj[%s]" (projectile-project-name))))
-
-  (global-set-key [f9] 'treemacs)
-  (treemacs-follow-mode -1)
-  (global-set-key [f8] 'treemacs-find-file)
-  (add-hook 'treemacs-mode-hook #'(lambda () (display-line-numbers-mode -1))))
+  (setq projectile-mode-line-function '(lambda () (format " Proj[%s]" (projectile-project-name)))))
 
 (local/after-init-hook 'projectile)
 
