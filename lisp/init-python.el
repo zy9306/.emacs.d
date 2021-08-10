@@ -1,4 +1,4 @@
-;; -*- coding: utf-8; lexical-binding: t; -*-
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 
 (setenv "WORKON_HOME" "~/Envs")
 
@@ -85,8 +85,8 @@
           )
       (when flake8
         (flycheck-select-checker 'python-flake8))
-      (when pyright
-        (flycheck-add-next-checker 'python-flake8 '(warning . python-pyright)))
+      ;; (when pyright
+      ;;   (flycheck-add-next-checker 'python-flake8 '(warning . python-pyright)))
       ))
 
   (add-hook 'python-mode-hook #'local/setup-flycheck-for-py))
