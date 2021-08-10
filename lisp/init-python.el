@@ -79,6 +79,7 @@
 
 (when (or *linux* *mac*)
   (defun local/setup-flycheck-for-py ()
+    (add-to-list 'flycheck-disabled-checkers 'python-mypy)
     (let (
           (flake8 (executable-find "flake8"))
           (pyright (executable-find "pyright"))
