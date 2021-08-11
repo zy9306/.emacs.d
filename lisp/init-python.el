@@ -82,12 +82,9 @@
     (add-to-list 'flycheck-disabled-checkers 'python-mypy)
     (let (
           (flake8 (executable-find "flake8"))
-          (pyright (executable-find "pyright"))
           )
       (when flake8
         (flycheck-select-checker 'python-flake8))
-      ;; (when pyright
-      ;;   (flycheck-add-next-checker 'python-flake8 '(warning . python-pyright)))
       ))
 
   (add-hook 'python-mode-hook #'local/setup-flycheck-for-py))
