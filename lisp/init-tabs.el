@@ -1,4 +1,4 @@
-;; -*- coding: utf-8; lexical-binding: t; -*-
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 
 
 ;; (use-package centaur-tabs
@@ -25,7 +25,7 @@
  'tab-bar nil
  :underline t :weight 'bold)
 
-(add-hook 'after-init-hook 'tab-bar-mode)
+;; (add-hook 'after-init-hook 'tab-bar-mode)
 
 
 (provide 'init-tabs)
