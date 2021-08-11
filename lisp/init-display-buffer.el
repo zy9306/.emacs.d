@@ -62,6 +62,12 @@
            :inhibit-window-quit t
            :same t)
 
+          ("\\*Flycheck checker\\*"
+           :regexp t
+           :inhibit-window-quit t
+           :select nil
+           :ignore t)
+
           ;; the last rule
           ("\\*.*\\*"
            :regexp t
