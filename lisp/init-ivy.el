@@ -43,7 +43,7 @@
   ;; recentf 显示相对路径，而不是只显示文件名
   (setq ivy-virtual-abbreviate 'abbreviate)
 
-  (global-set-key (kbd "C-s") 'swiper)
+  (global-set-key (kbd "C-c s") 'swiper)
   (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 
