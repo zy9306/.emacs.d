@@ -43,7 +43,10 @@
   ;; recentf 显示相对路径，而不是只显示文件名
   (setq ivy-virtual-abbreviate 'abbreviate)
 
-  (global-set-key (kbd "C-c s") 'swiper-isearch)
+  ;; swiper-isearch 弹出高度设为 1，使其更接近 isearch
+  (add-to-list 'ivy-height-alist '(swiper-isearch . 1))
+
+  (global-set-key (kbd "C-s") 'swiper-isearch)
   (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 
