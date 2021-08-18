@@ -77,6 +77,15 @@
 ;; http://www.zmonster.me/2018/02/28/org-mode-capture.html
 ;; https://orgmode.org/manual/Capture-templates.html
 ;; see C-h v org-capture-templates for more info
+(setq org-capture-templates
+      '(
+        ("t" "Todo" entry (file "~/OneDrive/Illyasviel/task.org")
+         "* %u %?" :prepend t :empty-lines-after 2)
+        ("j" "Journal" entry (file+datetree "~/OneDrive/Illyasviel/journal.org")
+         "* %?\nEntered on %U\n  %i\n  %a")
+        ))
+(define-key global-map (kbd "C-c c t")
+  (lambda () (interactive) (org-capture nil "t")))
 
 
 ;; org-download
