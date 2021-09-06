@@ -3,8 +3,11 @@
 ;; 代码语法高亮
 (setq org-src-fontify-natively t)
 
-;; 启用时会有奇怪的自动缩进问题
-(setq org-src-tab-acts-natively nil)
+;; src 块自动缩进的空格数
+(setq org-edit-src-content-indentation 0)
+
+;; tab 和在对应 major-mode 下表现一致
+(setq org-src-tab-acts-natively t)
 
 ;; show all the character like * / etc...
 (setq org-hide-emphasis-markers nil)
