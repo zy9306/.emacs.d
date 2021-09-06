@@ -76,19 +76,41 @@
         ))
 
 
-;; Capture
+;;; Capture
 ;; http://www.zmonster.me/2018/02/28/org-mode-capture.html
 ;; https://orgmode.org/manual/Capture-templates.html
 ;; see C-h v org-capture-templates for more info
-(setq org-capture-templates
-      '(
-        ("t" "Todo" entry (file "~/OneDrive/Illyasviel/task.org")
-         "* %u %?" :prepend t :empty-lines-after 2)
-        ("j" "Journal" entry (file+datetree "~/OneDrive/Illyasviel/journal.org")
-         "* %?\nEntered on %U\n  %i\n  %a")
+
+(when *win*
+  (setq local/onedrive-dir
+        (expand-file-name
+         (format "%s/OneDrive" user-login-name)
+         "c:/Users")))
+(when (or *linux* *mac*)
+  (setq local/onedrive-dir "~/OneDrive"))
+
+(let (
+      (task_file (format "%s/Illyasviel/task.org" local/onedrive-dir))
+      (task_chtholly_file (format "%s/Illyasviel/task_chtholly.org" local/onedrive-dir))
+      (journal_file (format "%s/Illyasviel/journal.org" local/onedrive-dir))
+      )
+  (setq org-capture-templates
+        `(
+          ("t" "Todo" entry (file ,task_file)
+           "* %u %?" :prepend t :empty-lines-after 2)
+
+          ("c" "Chtholly" entry (file+headline ,task_chtholly_file "Chtholly")
+           "* %u %?" :prepend t :empty-lines-after 2)
+
+          ("j" "Journal" entry (file+datetree ,journal_file)
+           "* %?\nEntered on %U\n  %i\n  %a")
+          )
         ))
+
 (define-key global-map (kbd "C-c c t")
   (lambda () (interactive) (org-capture nil "t")))
+(define-key global-map (kbd "C-c c c")
+  (lambda () (interactive) (org-capture nil "c")))
 
 
 ;; org-download
