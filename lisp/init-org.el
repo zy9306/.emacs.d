@@ -90,19 +90,19 @@
   (setq local/onedrive-dir "~/OneDrive"))
 
 (let (
-      (task_file (format "%s/Illyasviel/task.org" local/onedrive-dir))
-      (task_chtholly_file (format "%s/Illyasviel/task_chtholly.org" local/onedrive-dir))
-      (journal_file (format "%s/Illyasviel/journal.org" local/onedrive-dir))
+      (task (format "%s/Illyasviel/task.org" local/onedrive-dir))
+      (Illyasviel (format "%s/Illyasviel/Illyasviel.org" local/onedrive-dir))
+      (journal (format "%s/Illyasviel/journal.org" local/onedrive-dir))
       )
   (setq org-capture-templates
         `(
-          ("t" "Todo" entry (file ,task_file)
+          ("t" "Todo" entry (file ,task)
            "* %u %?" :prepend t :empty-lines-after 2)
 
-          ("c" "Chtholly" entry (file+headline ,task_chtholly_file "Chtholly")
+          ("c" "Illyasviel" entry (file+headline ,Illyasviel "Illyasviel")
            "* %u %?" :prepend t :empty-lines-after 2)
 
-          ("j" "Journal" entry (file+datetree ,journal_file)
+          ("j" "Journal" entry (file+datetree ,journal)
            "* %?\nEntered on %U\n  %i\n  %a")
           )
         ))
