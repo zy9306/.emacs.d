@@ -113,10 +113,11 @@
   (lambda () (interactive) (org-capture nil "c")))
 
 
-;; org-download
+;;; org-download
 ;; https://github.com/abo-abo/org-download/tree/master
-;; -*- mode: Org; org-download-image-dir: "~/Pictures/foo"; -*-
-;; or (setq-default org-download-image-dir "~/Pictures/foo") for all
+(with-eval-after-load 'org
+  (require 'org-download)
+  (put 'org-download-image-dir 'safe-local-variable #'stringp))
 
 
 ;;; read_only start
