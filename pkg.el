@@ -76,6 +76,7 @@
 (require-package 'minimap)
 (require-package 'move-text)
 (require-package 'multiple-cursors)
+(require-package 'org-download)
 (require-package 'powerline)
 (require-package 'posframe)
 (require-package 'posframe)
