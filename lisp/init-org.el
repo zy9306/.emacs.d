@@ -115,12 +115,8 @@
 
 ;; org-download
 ;; https://github.com/abo-abo/org-download/tree/master
-;; -*- mode: Org; org-download-image-dir: "~/Pictures/foo"; -*-  to set dir for file
+;; -*- mode: Org; org-download-image-dir: "~/Pictures/foo"; -*-
 ;; or (setq-default org-download-image-dir "~/Pictures/foo") for all
-;; (use-package org-download
-;;   :ensure t
-;;   :config
-;;   (global-set-key (kbd "C-c y") 'org-download-yank))
 
 
 ;;; read_only start
