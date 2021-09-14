@@ -149,7 +149,7 @@ window configuration."
 ;;; 水平适应，垂直适应
 (defun local/fit-window-to-buffer-horizontally ()
   (interactive)
-  (setq fit-window-to-buffer-horizontally t)
+  (setq fit-window-to-buffer-horizontally 'only)
   (fit-window-to-buffer)
   (setq fit-window-to-buffer-horizontally nil))
 
