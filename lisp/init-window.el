@@ -1,8 +1,9 @@
-;; -*- coding: utf-8; lexical-binding: t; -*-
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 
+
+;;; ace-window
 ;; only more than two windows `M-o` will show keys
 ;; can type ? when `M-o` to show command help
-
 (use-package ace-window
   :ensure t
   :defer t
@@ -20,6 +21,8 @@
 (global-set-key (kbd "M-o") #'local/switch-to-last-window)
 
 
+
+;;; 调整 buffer 分割方向，有点问题
 (defun split-window-horizontally-instead ()
   "Kill any other windows and re-split such that the current window is on the top half of the frame."
   (interactive)
@@ -42,8 +45,9 @@
 (global-set-key (kbd "C-x _") 'split-window-vertically-instead)
 
 
-;; https://www.emacswiki.org/emacs/WindowResize#toc3
 
+;;; resize and switch window
+;; https://www.emacswiki.org/emacs/WindowResize#toc3
 (defun iresize-window (&optional arg)    ; Hirose Yuuji and Bob Wiener
   "*Resize window interactively."
   (interactive "p")
@@ -52,23 +56,22 @@
   (let (c)
     (catch 'done
       (while t
-	(message
-	 "h=heighten, s=shrink, w=widen, n=narrow (by %d);  1-9=unit, q=quit"
-	 arg)
-	(setq c (read-char))
-	(condition-case ()
-	    (cond
-	     ((= c ?h) (enlarge-window arg))
-	     ((= c ?s) (shrink-window arg))
-	     ((= c ?w) (enlarge-window-horizontally arg))
-	     ((= c ?n) (shrink-window-horizontally arg))
-	     ((= c ?\^G) (keyboard-quit))
-	     ((= c ?q) (throw 'done t))
-	     ((and (> c ?0) (<= c ?9)) (setq arg (- c ?0)))
-	     (t (beep)))
-	  (error (beep)))))
+	    (message
+	     "h=heighten, s=shrink, w=widen, n=narrow (by %d);  1-9=unit, q=quit"
+	     arg)
+	    (setq c (read-char))
+	    (condition-case ()
+	        (cond
+	         ((= c ?h) (enlarge-window arg))
+	         ((= c ?s) (shrink-window arg))
+	         ((= c ?w) (enlarge-window-horizontally arg))
+	         ((= c ?n) (shrink-window-horizontally arg))
+	         ((= c ?\^G) (keyboard-quit))
+	         ((= c ?q) (throw 'done t))
+	         ((and (> c ?0) (<= c ?9)) (setq arg (- c ?0)))
+	         (t (beep)))
+	      (error (beep)))))
     (message "Done.")))
-
 
 (global-set-key (kbd "C-S-h") 'windmove-left)
 (global-set-key (kbd "C-S-j") 'windmove-down)
@@ -79,8 +82,9 @@
 (global-set-key (kbd "C-x w d") 'ace-delete-other-windows)
 
 
+
+;;; 最大化当前窗口，再次执行回到先前的窗口状态
 ;; TODO error when use treemacs
-;; 最大化当前窗口，再次执行回到先前的窗口状态
 (defvar window-split-saved-config nil)
 (defun window-split-toggle-one-window ()
   "Make the current window fill the frame.
@@ -95,8 +99,9 @@ window configuration."
 ;; (global-set-key (kbd "C-x 1") 'window-split-toggle-one-window)
 
 
+
+;;; 固定当前buffer不被覆盖
 ;; https://github.com/purcell/emacs.d/blob/master/lisp/init-windows.el
-;; 固定当前buffer不被覆盖
 (defun toggle-current-window-dedication ()
   "Toggle whether the current window is dedicated to its current buffer."
   (interactive)
@@ -110,6 +115,8 @@ window configuration."
 (global-set-key (kbd "C-c <down>") 'toggle-current-window-dedication)
 
 
+
+;;; buffer-move
 (use-package buffer-move
   :ensure t
   :defer t
@@ -120,6 +127,8 @@ window configuration."
   (global-set-key (kbd "<C-S-right>")  'buf-move-right))
 
 
+
+;;; balance-windows
 ;; (defun local/delete-window (&optional window)
 ;;   (interactive)
 ;;   (if window
@@ -134,5 +143,18 @@ window configuration."
 
 ;; (global-set-key [remap delete-window] #'local/delete-window)
 ;; (global-set-key [remap kill-buffer-and-window] #'local/kill-buffer-and-window)
+
+
+
+;;; 水平适应，垂直适应
+(defun local/fit-window-to-buffer-horizontally ()
+  (interactive)
+  (setq fit-window-to-buffer-horizontally t)
+  (fit-window-to-buffer)
+  (setq fit-window-to-buffer-horizontally nil))
+
+(global-set-key (kbd "C-x w h") 'local/fit-window-to-buffer-horizontally)
+(global-set-key (kbd "C-x w v") 'fit-window-to-buffer)
+
 
 (provide 'init-window)
