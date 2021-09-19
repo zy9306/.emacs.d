@@ -4,6 +4,13 @@
 (defun local/setup-treemacs ()
   (require 'treemacs)
 
+  ;; 默认在最后使用的 window 中打开文件
+  (treemacs-define-RET-action 'file-node-open   #'treemacs-visit-node-in-most-recently-used-window)
+  (treemacs-define-RET-action 'file-node-closed #'treemacs-visit-node-in-most-recently-used-window)
+
+  (treemacs-define-doubleclick-action 'file-node-open   #'treemacs-visit-node-in-most-recently-used-window)
+  (treemacs-define-doubleclick-action 'file-node-closed #'treemacs-visit-node-in-most-recently-used-window)
+
   (setq treemacs-width 20)
 
   (global-set-key [f9] 'treemacs)
