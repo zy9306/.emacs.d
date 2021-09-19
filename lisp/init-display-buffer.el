@@ -40,7 +40,7 @@
   :ensure t
   :defer t
   :init
-  (setq shackle-default-rule nil)
+  (setq shackle-default-rule '(:same t))
   (setq shackle-rules
         '(("*Buffer List*"
            :regexp nil
