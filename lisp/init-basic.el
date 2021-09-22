@@ -144,6 +144,10 @@
           '(lambda ()
              (local-set-key (kbd "C-c C-u") 'string-inflection-python-style-cycle)))
 
+(add-hook 'protobuf-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "C-c C-u") 'string-inflection-all-cycle)))
+
 ;; easy-kill
 (global-set-key [remap kill-ring-save] 'easy-kill)
 
