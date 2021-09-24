@@ -49,7 +49,7 @@
 (defun local/setup-normal ()
   (general-define-key
    :states '(normal motion)
-   :prefix "SPC"
+   :prefix ";"
    :keymaps 'override
 
    "c" (general-simulate-key "C-c")
