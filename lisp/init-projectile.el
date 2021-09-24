@@ -28,6 +28,7 @@
   (counsel-projectile-mode)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
+  (setq counsel-projectile-rg-initial-input '(ivy-thing-at-point))
   (setq projectile-completion-system 'ivy)
   (setq projectile-mode-line-function '(lambda () (format " Proj[%s]" (projectile-project-name)))))
 
