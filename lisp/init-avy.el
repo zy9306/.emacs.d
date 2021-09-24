@@ -12,9 +12,10 @@
   (global-set-key (kbd "M-g e") 'avy-goto-word-0)
   (global-set-key (kbd "C-c C-j") 'avy-resume)
 
-  (with-eval-after-load 'key-chord
-    (key-chord-define-global "jf" 'avy-goto-char-2)
-    (key-chord-define-global "jj" 'avy-goto-line)))
+  ;; (with-eval-after-load 'key-chord
+  ;;   (key-chord-define-global "jf" 'avy-goto-char-2)
+  ;;   (key-chord-define-global "jj" 'avy-goto-line))
+  )
 
 (local/after-init-hook 'avy)
 
