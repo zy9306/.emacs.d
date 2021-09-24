@@ -3,6 +3,8 @@
 ;; 代码语法高亮
 (setq org-src-fontify-natively t)
 
+(setq org-M-RET-may-split-line '((default . nil)))
+
 ;; src 块自动缩进的空格数
 (setq org-edit-src-content-indentation 0)
 
