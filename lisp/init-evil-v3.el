@@ -71,6 +71,9 @@
    "4f" 'find-file-other-window
    "as" 'ace-swap-window
 
+   ;; w -> word, b -> fullfile, 0 -> filename, - -> dirname
+   "ae" 'easy-kill
+
    "q" 'read-only-mode
    "w" 'save-buffer
 
