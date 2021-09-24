@@ -30,6 +30,11 @@
   (local/evil-surround)
 
   (general-define-key
+   :state 'normal
+   :keymaps 'override
+   "U" 'string-inflection-all-cycle)
+
+  (general-define-key
    :states '(normal
              motion)
    "C-c C-c" 'evil-normal-state)
@@ -42,6 +47,7 @@
 
 
 (defun local/evil-init ()
+  (evil-set-initial-state 'imenu-list-major-mode 'emacs)
   (evil-set-initial-state 'ivy-occur-grep-mode 'normal)
   (evil-set-initial-state 'ivy-occur-mode 'normal))
 
@@ -142,7 +148,14 @@
    :states 'normal
    :keymaps 'org-mode-map
    "TAB" 'org-cycle
-   "S-TAB" 'org-shifttab))
+   "S-TAB" 'org-shifttab
+   ">" 'org-metaright
+   "<" 'org-metaleft
+   "M-j" 'org-metadown
+   "M-k" 'org-metaup
+   "O" 'org-insert-heading
+   "M-o" 'org-insert-subheading
+   "C-,"  'org-insert-structure-template))
 
 
 (local/after-init-hook 'evil)
