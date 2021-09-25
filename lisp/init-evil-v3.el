@@ -54,6 +54,7 @@
 
 
 (defun local/evil-init ()
+  (evil-set-initial-state 'treemacs-mode 'emacs)
   (evil-set-initial-state 'imenu-list-major-mode 'emacs)
   (evil-set-initial-state 'ivy-occur-grep-mode 'normal)
   (evil-set-initial-state 'ivy-occur-mode 'normal))
