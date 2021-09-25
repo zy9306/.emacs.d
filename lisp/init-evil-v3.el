@@ -20,6 +20,11 @@
 
   (evil-set-undo-system 'undo-fu)
 
+  (setq evil-normal-state-cursor '(box "#39c5bb")
+        evil-insert-state-cursor '(box "#FB7299")
+        evil-visual-state-cursor '(box "#DB7093"))
+
+
   (local/evil-init)
   (local/setup-normal)
   (local/setup-visual)
