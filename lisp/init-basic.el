@@ -125,6 +125,20 @@
   (global-set-key (kbd "M--") 'golden-ratio))
 (local/after-init-hook 'golden-ratio)
 
+
+;;; config terminal emacs
+(defun local/setup-terminal ()
+  (unless (display-graphic-p)
+    (xclip-mode)
+    (xterm-mouse-mode 1)
+
+    (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
+    (global-set-key (kbd "<mouse-5>") 'scroll-up-line)))
+
+(add-hook 'after-init-hook 'local/setup-terminal)
+
+
+
 ;; string-inflection
 ;; default
 (global-set-key (kbd "C-c C-u") 'string-inflection-all-cycle)

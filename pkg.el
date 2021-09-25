@@ -104,5 +104,6 @@
 (require-package 'visible-mark)
 (require-package 'wgrep)
 (require-package 'which-key)
+(require-package 'xclip)
 (require-package 'yapfify)
 (require-package 'yasnippet)
