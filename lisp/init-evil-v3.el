@@ -35,7 +35,7 @@
   (local/evil-surround)
 
   (general-define-key
-   :state 'normal
+   :states 'normal
    :keymaps 'override
    "U" 'string-inflection-all-cycle)
 
