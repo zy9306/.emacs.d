@@ -62,9 +62,13 @@
    :inherit 'region))
 
 (with-eval-after-load 'symbol-overlay
+  (if (display-graphic-p)
+      (set-face-attribute
+       'symbol-overlay-default-face nil
+       :background "darkseagreen2"))
   (set-face-attribute
    'symbol-overlay-default-face nil
-   :background "darkseagreen2"))
+   :background "pink"))
 
 (with-eval-after-load 'eglot
   (set-face-attribute
