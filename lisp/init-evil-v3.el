@@ -35,7 +35,7 @@
   (local/evil-browse-kill-ring)
 
   (general-define-key
-   :states 'normal
+   :states '(normal visual)
    :keymaps 'override
    "U" 'string-inflection-all-cycle)
 
@@ -66,6 +66,7 @@
    :keymaps 'override
 
    "c" (general-simulate-key "C-c")
+   "X" (general-simulate-key "C-x")
    "f" 'counsel-find-file
    "1" 'delete-other-windows
    "2" 'split-window-below
@@ -77,8 +78,6 @@
    "40" 'kill-buffer-and-window
    "4f" 'find-file-other-window
    "as" 'ace-swap-window
-
-   "i" 'indent-rigidly
 
    ;; w -> word, b -> fullfile, 0 -> filename, - -> dirname
    "ae" 'easy-kill
@@ -123,8 +122,9 @@
    (kbd "C-b") 'backward-char
    (kbd "C-d") 'delete-char
    (kbd "C-n") 'company-dabbrev
-   (kbd "C-<RET>") 'company-tabnine
-   )
+   (kbd "C-e") 'move-end-of-line
+   (kbd "C-a") 'move-beginning-of-line
+   (kbd "C-<RET>") 'company-tabnine)
 
   (general-imap "j"
     (general-key-dispatch 'self-insert-command
