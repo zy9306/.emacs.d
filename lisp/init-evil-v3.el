@@ -26,8 +26,7 @@
 
 
   (local/evil-init)
-  (local/setup-normal)
-  (local/setup-visual)
+  (local/setup-prefix)
   (local/setup-insert)
   (local/setup-org)
 
@@ -60,9 +59,9 @@
   (evil-set-initial-state 'ivy-occur-mode 'normal))
 
 
-(defun local/setup-normal ()
+(defun local/setup-prefix ()
   (general-define-key
-   :states '(normal motion)
+   :states '(normal motion visual)
    :prefix ";"
    :keymaps 'override
 
@@ -78,6 +77,8 @@
    "40" 'kill-buffer-and-window
    "4f" 'find-file-other-window
    "as" 'ace-swap-window
+
+   "i" 'indent-rigidly
 
    ;; w -> word, b -> fullfile, 0 -> filename, - -> dirname
    "ae" 'easy-kill
@@ -112,13 +113,6 @@
    "hb" 'describe-bindings
    "hv" 'counsel-describe-variable
    "hf" 'counsel-describe-function))
-
-
-(defun local/setup-visual ()
-  (general-vmap
-    :prefix "SPC"
-    :keymaps 'override
-    "i" 'indent-rigidly))
 
 
 (defun local/setup-insert ()
