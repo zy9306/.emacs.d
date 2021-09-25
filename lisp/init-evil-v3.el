@@ -39,16 +39,18 @@
    :keymaps 'override
    "U" 'string-inflection-all-cycle)
 
-  (general-define-key
-   :states '(normal
-             motion)
-   "C-c C-c" 'evil-normal-state)
+  ;; 为了保留 emacs C-c prefix, 还是用 ESC 当作 escape
+  ;; (general-define-key
+  ;;  :states '(normal
+  ;;            motion)
+  ;;  "C-c C-c" 'evil-normal-state)
 
-  (general-define-key
-   :states '(visual
-             operator
-             insert)
-   "C-c" 'evil-normal-state))
+  ;; (general-define-key
+  ;;  :states '(visual
+  ;;            operator
+  ;;            insert)
+  ;;  "C-c" 'evil-normal-state)
+  )
 
 
 (defun local/evil-init ()
