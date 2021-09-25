@@ -33,6 +33,7 @@
 
   (local/evil-mc)
   (local/evil-surround)
+  (local/evil-browse-kill-ring)
 
   (general-define-key
    :states 'normal
@@ -151,6 +152,32 @@
   (require 'evil-surround)
 
   (global-evil-surround-mode 1))
+
+
+(defun local/evil-browse-kill-ring ()
+  (evil-set-initial-state 'browse-kill-ring-mode 'normal)
+  (general-define-key
+   :states 'normal
+   :keymaps 'browse-kill-ring-mode-map
+   "C-g" 'browse-kill-ring-quit
+   "RET" 'browse-kill-ring-insert-and-quit
+   "a" 'browse-kill-ring-append-insert
+   "b" 'browse-kill-ring-prepend-insert
+   "d" 'browse-kill-ring-delete
+   "e" 'browse-kill-ring-edit
+   "g" 'browse-kill-ring-update
+   "i" 'browse-kill-ring-insert
+   "l" 'browse-kill-ring-occur
+   "j" 'browse-kill-ring-forward
+   "o" 'browse-kill-ring-insert-and-move
+   "k" 'browse-kill-ring-previous
+   "q" 'browse-kill-ring-quit
+   "r" 'browse-kill-ring-search-backward
+   "s" 'browse-kill-ring-search-forward
+   "u" 'browse-kill-ring-insert-move-and-quit
+   "x" 'browse-kill-ring-insert-and-delete
+   "y" 'browse-kill-ring-insert
+   "<M-return>" 'browse-kill-ring-insert-move-and-quit))
 
 
 (defun local/setup-org ()
