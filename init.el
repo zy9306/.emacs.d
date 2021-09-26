@@ -69,8 +69,8 @@
 
 (local/load-package 'init-keybinding)
 
-(when not (display-graphic-p)
-      (local/load-package 'init-evil-v3))
+(when (not (display-graphic-p))
+  (local/load-package 'init-evil-v3))
 
 
 ;; 自动检测编码，如果错误的将utf-8检测成gbk等中文编码，可能会导致lsp崩
