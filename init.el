@@ -69,7 +69,9 @@
 
 (local/load-package 'init-keybinding)
 
-(local/load-package 'init-evil-v3)
+(when not (display-graphic-p)
+      (local/load-package 'init-evil-v3))
+
 
 ;; 自动检测编码，如果错误的将utf-8检测成gbk等中文编码，可能会导致lsp崩
 ;; 溃，编码默认为utf-8，如遇gbk等乱码，尝试C-x RET手动切换编码
@@ -82,8 +84,8 @@
 
 ;; set desktop
 (let ((desktop-dir (expand-file-name ".persist" user-emacs-directory)))
- (setq desktop-dirname desktop-dir)
- (setq desktop-path `(,desktop-dir)))
+  (setq desktop-dirname desktop-dir)
+  (setq desktop-path `(,desktop-dir)))
 
 ;; close debug when finally load
 (setq debug-on-error nil)
