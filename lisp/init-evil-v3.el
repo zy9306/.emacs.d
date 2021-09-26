@@ -127,7 +127,6 @@
    (kbd "C-e") 'move-end-of-line
    (kbd "C-a") 'move-beginning-of-line
    (kbd "C-y") 'yank
-   (kbd "C-@") 'set-mark-command
    (kbd "M-n") 'mc/mark-next-like-this
    (kbd "M-p") 'mc/mark-previous-like-this
 )
