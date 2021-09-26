@@ -4,7 +4,6 @@
 (require-package 'undo-fu)
 (require-package 'undo-tree)
 (require-package 'goto-chg)
-(require-package 'evil-mc)
 (require-package 'evil-surround)
 
 
@@ -30,7 +29,6 @@
   (local/setup-insert)
   (local/setup-org)
 
-  (local/evil-mc)
   (local/evil-surround)
   (local/evil-browse-kill-ring)
 
@@ -124,25 +122,20 @@
    (kbd "C-f") 'forward-char
    (kbd "C-b") 'backward-char
    (kbd "C-d") 'delete-char
-   (kbd "C-n") 'company-dabbrev
+   (kbd "C-n") 'next-line
+   (kbd "C-p") 'previous-line
    (kbd "C-e") 'move-end-of-line
    (kbd "C-a") 'move-beginning-of-line
-   (kbd "C-<RET>") 'company-tabnine)
+   (kbd "C-y") 'yank
+   (kbd "C-@") 'set-mark-command
+   (kbd "M-n") 'mc/mark-next-like-this
+   (kbd "M-p") 'mc/mark-previous-like-this
+)
 
   (general-imap "j"
     (general-key-dispatch 'self-insert-command
       :timeout 0.25
       "j" 'evil-normal-state)))
-
-
-(defun local/evil-mc ()
-  (require 'evil-mc)
-
-  (global-evil-mc-mode 1)
-
-  (evil-define-key 'visual evil-mc-key-map
-    "A" #'evil-mc-make-cursor-in-visual-selection-end
-    "I" #'evil-mc-make-cursor-in-visual-selection-beg))
 
 
 (defun local/evil-surround ()
