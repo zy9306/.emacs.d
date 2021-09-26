@@ -68,6 +68,9 @@
 
    "c" (general-simulate-key "C-c")
    "X" (general-simulate-key "C-x")
+   "S" (general-simulate-key "C-u C-x s")
+   "Q" (general-simulate-key "C-x C-q")
+
    "f" 'counsel-find-file
    "1" 'delete-other-windows
    "2" 'split-window-below
@@ -83,8 +86,7 @@
    ;; w -> word, b -> fullfile, 0 -> filename, - -> dirname
    "ae" 'easy-kill
 
-   "q" 'read-only-mode
-   "w" 'save-buffer
+   "s" 'save-buffer
 
    "$" 'toggle-truncate-lines
 
@@ -94,7 +96,7 @@
    "pp" 'projectile-switch-project
    "\"" 'imenu-list-smart-toggle
 
-   "s" 'swiper-isearch
+   "i" 'swiper-isearch
    ";" 'avy-goto-char-2
    "'" 'avy-goto-char
    "l" 'avy-goto-line
