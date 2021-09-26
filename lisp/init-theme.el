@@ -20,7 +20,8 @@
         doom-themes-enable-italic t)
   (load-theme 'doom-one-light t)
 
-  (local/doom-themes-ext-treemacs))
+  (if (display-graphic-p)
+      (local/doom-themes-ext-treemacs)))
 
 (local/doom-themes)
 
