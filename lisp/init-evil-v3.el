@@ -129,6 +129,7 @@
    (kbd "C-y") 'yank
    (kbd "M-n") 'mc/mark-next-like-this
    (kbd "M-p") 'mc/mark-previous-like-this
+   (kbd "C-]") 'company-dabbrev
 )
 
   (general-imap "j"
