@@ -1,4 +1,4 @@
-;; -*- coding: utf-8; lexical-binding: t; -*-
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 
 
 ;; https://github.com/cute-jumper/embrace.el
@@ -13,13 +13,18 @@
 
 
 
+;;; my surround
+
 (setq local/pairs
       '(("(" . ")")
         ("[" . "]")
         ("{" . "}")
         ("<" . ">")
         ("'" . "'")
-        ("\"" . "\"")))
+        ("\"" . "\"")
+        ("~" . "~")
+        ("`" . "`")
+        ))
 
 
 (defun local/chtholly ()
@@ -34,7 +39,9 @@
 
    cs -> change pair, e.g. cs]) will replace the ] with )，cs()[] alse work
 
-   s -> add pair, e.g. sw' will wrap word with '
+   sw -> add pair to word, e.g. sw' will wrap word with '
+
+   sr -> add pair to region
 
    other will add in future."
 
@@ -93,7 +100,22 @@
                 (goto-char start)
                 (insert (car pp))
                 (goto-char cur_point)
-                (throw 'ok "OK"))))))))
+                (throw 'ok "OK"))))))
+
+    (if (string= "r" type)
+        (progn
+          (setq start (region-beginning))
+          (setq end (region-end))
+          (catch 'ok
+            (dolist (pp local/pairs)
+              (when (or (string= char (car pp)) (string= char (cdr pp)))
+                (goto-char end)
+                (insert (cdr pp))
+                (goto-char start)
+                (insert (car pp))
+                (goto-char cur_point)
+                (throw 'ok "OK"))))))
+    ))
 
 
 (defun local/pair (action c1 c2 new_char)
