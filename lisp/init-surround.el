@@ -37,7 +37,7 @@
 
    ds -> delete pair, e.g. ds' will delete ', ds'' also work
 
-   cs -> change pair, e.g. cs]) will replace the ] with )，cs()[] also work
+   cs -> change pair, e.g. cs]) will replace the ] with )，cs[]() also work
 
    sw -> add pair to word, e.g. sw' will wrap word with '
 
@@ -48,9 +48,12 @@
   (interactive)
   (let* ((input (delete-dups (split-string (read-string ":") "")))
          (_ (pop input))
-         (action (nth 0 input))
-         (char (nth 1 input))
+         (action)
+         (char)
          (new_char))
+
+    (setq action (nth 0 input)
+          char (nth 1 input))
 
     (if (string= "d" (nth 0 input))
         (if (string= "s" (nth 1 input))
@@ -119,9 +122,6 @@
 
 
 (defun local/pair (action c1 c2 new_char)
-  "action c/C -> copy
-   action d/D -> delete
-   action k/K -> kill"
   (interactive)
   (save-excursion)
   (let ((cur_point (point))
