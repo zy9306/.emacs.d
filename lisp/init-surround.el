@@ -29,21 +29,21 @@
 
 (defun local/chtholly ()
   "
-   c/C -> copy, e.g. C' will copy text in '' with ''，C'' alse work.
+   c/C -> copy, e.g. C' will copy text in '' with ''，C'' also work.
 
-   d/D -> delete, e.g. D' will delete text in '' with ''，D'' alse work.
+   d/D -> delete, e.g. D' will delete text in '' with ''，D'' also work.
 
-   k/K -> kill, e.g. K' will kill text in '' with ''，K'' will be in kill-ring, alse work.
+   k/K -> kill, e.g. K' will kill text in '' with ''，will be in kill-ring, K'' also work.
 
    ds -> delete pair, e.g. ds' will delete ', ds'' also work
 
-   cs -> change pair, e.g. cs]) will replace the ] with )，cs()[] alse work
+   cs -> change pair, e.g. cs]) will replace the ] with )，cs()[] also work
 
    sw -> add pair to word, e.g. sw' will wrap word with '
 
    sr -> add pair to region
 
-   other will add in future."
+   Others may adding in the future."
 
   (interactive)
   (let* ((input (delete-dups (split-string (read-string ":") "")))
