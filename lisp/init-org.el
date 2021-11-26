@@ -33,6 +33,11 @@
 (add-hook 'org-mode-hook 'org-hide-block-all)
 
 
+;; like C-j
+(with-eval-after-load 'org
+  (define-key org-mode-map (kbd "<RET>") 'org-return-indent))
+
+
 (setq org-todo-keywords
       '((sequence
          "TODO(t)"
