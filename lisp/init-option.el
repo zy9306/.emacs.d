@@ -60,6 +60,7 @@
 (set-default 'truncate-lines t)
 
 (when (version<= "26.0.50" emacs-version )
+  (setq display-line-numbers-type 'relative)
   (global-display-line-numbers-mode))
 
 ;; TODO: this don't work
