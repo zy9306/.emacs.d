@@ -1,14 +1,10 @@
-(push (expand-file-name "site-lisp/find-orphan" user-emacs-directory) load-path)
+(push (expand-file-name "site-lisp/color-rg" user-emacs-directory) load-path)
 
 (push (expand-file-name "theme/doom-themes" user-emacs-directory) load-path)
 (push (expand-file-name "theme/all-the-icons.el" user-emacs-directory) load-path)
 (push (expand-file-name "theme/spaceline" user-emacs-directory) load-path)
 
-(push (expand-file-name "repo/bufler" user-emacs-directory) load-path)
-
-
 (require-package 'quelpa)
-
 (setq quelpa-update-melpa-p nil)
 
 (require-package 'swiper)
@@ -18,19 +14,6 @@
 (require-package 'projectile)
 (require-package 'counsel-projectile)
 (require-package 'treemacs)
-
-(quelpa
- '(nox
-   :fetcher git
-   :commit "679327b"
-   :url "git@github.com:zy9306/nox.git"))
-
-(quelpa
- '(apheleia
-   :fetcher git
-   :commit "HEAD"
-   :url "git@github.com:raxod502/apheleia.git"))
-
 
 (require-package 'anzu)
 (require-package 'auto-virtualenv)
