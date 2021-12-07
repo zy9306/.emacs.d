@@ -1,7 +1,7 @@
 (native-compile-async
- '("~/.emacs.d/elpa-28.0"
-   "~/.emacs.d/nox"
+ '("~/.emacs.d/elpa"
    "~/.emacs.d/lisp"
+   "~/.emacs.d/site-lisp"
    )
  'recursively)
 
