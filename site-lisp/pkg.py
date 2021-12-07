@@ -10,6 +10,7 @@ from pathlib import Path
 
 
 pkg_file = "pkg.json"
+load_file = "load.el"
 
 
 @contextmanager
@@ -32,6 +33,26 @@ def run_cmd(cmd_str, need_stdout=False):
         raise
 
     return rv.stdout.decode() if rv.stdout else ""
+
+
+def write_load(pkg_info, delete=False):
+    path = Path(load_file)
+    if not path.exists():
+        loads = set()
+    else:
+        with open(path) as f:
+            loads = {line.strip() for line in f.readlines() if line}
+
+    pkg = pkg_info["pkg"]
+    line = f'(push (expand-file-name "site-lisp/{pkg}" user-emacs-directory) load-path)'  # noqa
+    if delete:
+        if line in loads:
+            loads.remove(line)
+    else:
+        loads.add(line)
+
+    with open(load_file, "w") as f:
+        f.write("\n".join(sorted(loads)))
 
 
 def write_pkg(pkg_info, delete=False):
@@ -75,6 +96,7 @@ def fetch(pkg_info):
 
     shutil.rmtree(bak_path, ignore_errors=True)
     write_pkg(pkg_info)
+    write_load(pkg_info)
 
 
 def delete(pkg_info):
@@ -82,6 +104,7 @@ def delete(pkg_info):
     path = Path(pkg)
     shutil.rmtree(path, ignore_errors=True)
     write_pkg(pkg_info, delete=True)
+    write_load(pkg_info, delete=True)
 
 
 def get_pkg_info(pkg_name, pkg_repo, commit):
