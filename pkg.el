@@ -1,4 +1,4 @@
-(push (expand-file-name "site-lisp/color-rg" user-emacs-directory) load-path)
+(load-file (expand-file-name "site-lisp/load.el" user-emacs-directory))
 
 (push (expand-file-name "theme/doom-themes" user-emacs-directory) load-path)
 (push (expand-file-name "theme/all-the-icons.el" user-emacs-directory) load-path)
