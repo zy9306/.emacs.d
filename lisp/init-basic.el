@@ -17,10 +17,18 @@
 ;;   (setq-default smex-save-file (expand-file-name ".smex-items" user-emacs-directory)))
 (local/after-init-hook 'smex)
 
-(with-eval-after-load 'undo-tree
-  (diminish 'undo-tree-mode)
-  (global-undo-tree-mode))
-(local/after-init-hook 'undo-tree)
+
+;; undo-tree undo-fu 二选一即可
+;; (with-eval-after-load 'undo-tree
+;;   (diminish 'undo-tree-mode)
+;;   (global-undo-tree-mode))
+;; (local/after-init-hook 'undo-tree)
+
+(with-eval-after-load 'undo-fu
+  (global-set-key (kbd "C-/")   'undo-fu-only-undo)
+  (global-set-key (kbd "M-_") 'undo-fu-only-redo))
+(local/after-init-hook 'undo-fu)
+
 
 ;; see also https://www.emacswiki.org/emacs/AutoSave `auto-save-visited-mode`
 (with-eval-after-load 'real-auto-save
