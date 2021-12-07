@@ -4,7 +4,6 @@
 (push (expand-file-name "theme/all-the-icons.el" user-emacs-directory) load-path)
 (push (expand-file-name "theme/spaceline" user-emacs-directory) load-path)
 
-(push (expand-file-name "repo/yasnippet-snippets" user-emacs-directory) load-path)
 (push (expand-file-name "repo/bufler" user-emacs-directory) load-path)
 
 
