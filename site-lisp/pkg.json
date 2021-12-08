@@ -4,6 +4,11 @@
     "pkg": "color-rg",
     "repo": "git@github.com:manateelazycat/color-rg.git"
   },
+  "thing-edit": {
+    "commit": "1948ae5498e58233f782fa91db9fb49880c933ca",
+    "pkg": "thing-edit",
+    "repo": "git@github.com:manateelazycat/thing-edit.git"
+  },
   "toggle-one-window": {
     "commit": "8ca741ca6be97c6049043aec6cec2e2bfbca5d19",
     "pkg": "toggle-one-window",
