@@ -92,7 +92,12 @@ def fetch(pkg_info):
         shutil.rmtree(".git", ignore_errors=True)
         if ignore:
             for i in ignore:
-                shutil.rmtree(i, ignore_errors=True)
+                tmp_path = Path(i)
+                if tmp_path.exists():
+                    if tmp_path.is_dir():
+                        shutil.rmtree(i, ignore_errors=True)
+                    else:
+                        os.remove(i)
 
     shutil.rmtree(bak_path, ignore_errors=True)
     write_pkg(pkg_info)
