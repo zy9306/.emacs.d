@@ -22,7 +22,7 @@
   (require 'projectile)
   (require 'counsel-projectile)
 
-  (local/setup-treemacs)
+  ;; (local/setup-treemacs)
 
   (projectile-mode)
   (counsel-projectile-mode)

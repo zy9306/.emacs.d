@@ -10,7 +10,6 @@
 (require-package 'company)
 (require-package 'projectile)
 (require-package 'counsel-projectile)
-(require-package 'treemacs)
 
 (require-package 'anzu)
 (require-package 'auto-virtualenv)
