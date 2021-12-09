@@ -21,6 +21,15 @@
     "pkg": "hydra-posframe",
     "repo": "git@github.com:Ladicle/hydra-posframe.git"
   },
+  "ivy-posframe": {
+    "commit": "5d9420252ca855d6d206f1f8ef5993a6be3c618f",
+    "ignore": [
+      "snapshots",
+      "README.md"
+    ],
+    "pkg": "ivy-posframe",
+    "repo": "git@github.com:tumashu/ivy-posframe.git"
+  },
   "one-key": {
     "commit": "2686dba1edaf1721b6ccaf3a2766afd1ee8a46d6",
     "ignore": [],
