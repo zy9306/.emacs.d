@@ -98,6 +98,8 @@ def fetch(pkg_info):
                         shutil.rmtree(i, ignore_errors=True)
                     else:
                         os.remove(i)
+        else:
+            pkg_info["ignore"] = []
 
     shutil.rmtree(bak_path, ignore_errors=True)
     write_pkg(pkg_info)
