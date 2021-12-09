@@ -26,6 +26,16 @@
     "pkg": "one-key",
     "repo": "git@github.com:manateelazycat/one-key.git"
   },
+  "posframe": {
+    "commit": "3b1dc400d286b0a4bd42e518bf3e7eedb49fd1e6",
+    "ignore": [
+      "snapshots",
+      ".gitignore",
+      "README.org"
+    ],
+    "pkg": "posframe",
+    "repo": "git@github.com:tumashu/posframe.git"
+  },
   "thing-edit": {
     "commit": "1948ae5498e58233f782fa91db9fb49880c933ca",
     "ignore": [
