@@ -62,6 +62,8 @@
 
 (local/load-package 'init-keybinding)
 
+(local/load-package 'init-edit)
+
 
 (if (and (not (daemonp)) (not (display-graphic-p)))
     (local/load-package 'init-evil-v3))

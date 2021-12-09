@@ -171,8 +171,5 @@
         (kill-region start end))
     ))
 
-(add-hook 'after-init-hook (lambda () (global-set-key (kbd "C-\\") #'local/chtholly)))
-
-
 
 (provide 'init-surround)

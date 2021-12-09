@@ -9,6 +9,23 @@
     "pkg": "duplicate-line",
     "repo": "git@github.com:manateelazycat/duplicate-line.git"
   },
+  "hydra-posframe": {
+    "commit": "343a269b52d6fb6e5ae6c09d91833ff4620490ec",
+    "ignore": [
+      ".github",
+      ".gitignore",
+      "screenshot",
+      "LICENSE",
+      "README.md"
+    ],
+    "pkg": "hydra-posframe",
+    "repo": "git@github.com:Ladicle/hydra-posframe.git"
+  },
+  "one-key": {
+    "commit": "2686dba1edaf1721b6ccaf3a2766afd1ee8a46d6",
+    "pkg": "one-key",
+    "repo": "git@github.com:manateelazycat/one-key.git"
+  },
   "thing-edit": {
     "commit": "1948ae5498e58233f782fa91db9fb49880c933ca",
     "ignore": [
