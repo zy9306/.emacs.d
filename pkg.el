@@ -1,6 +1,9 @@
 (load-file (expand-file-name "site-lisp/load.el" user-emacs-directory))
 (load-file (expand-file-name "theme/load.el" user-emacs-directory))
 
+(require-package 'paradox)
+(add-hook 'after-init-hook 'paradox-enable)
+
 (require-package 'quelpa)
 (setq quelpa-update-melpa-p nil)
 
