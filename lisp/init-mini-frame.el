@@ -1,30 +1,27 @@
-;; -*- coding: utf-8; lexical-binding: t; -*-
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 
 (defun local/mini-frame-mode ()
   (interactive)
+  (require 'mini-frame)
   (setq mini-frame-show-parameters
-        '((top . 0.2)
+        '((top . 0.5)
           (left . 0.5)
-          (width . 0.7)
-          (height . 10)
+          (width . 0.5)
+          (height . 0.5)
           ;; linux xfce4 环境下无法法透明
-          (alpha . (90 90))))
-
-  ;; mac 下无法显示 border，背景色用默认的，白色的对比度太低（emacsmacport 版本解决了此问题）
-  ;; (when *linux*
-  ;;   (add-to-list 'mini-frame-show-parameters '(background-color . "#ffffff")))
+          (alpha . (75 75))))
 
   (add-to-list 'mini-frame-show-parameters '(background-color . "#ffffff"))
 
   (setq mini-frame-internal-border-color "#39c5bb")
 
-  ;; 固定高度为 10, 禁用自动调整，否则会闪烁
-  (setq mini-frame-resize nil)
+  ;; 固定高度为 10, 禁用自动调整，否则会闪烁，好像已经解决了
+  ;; (setq mini-frame-resize nil)
 
   ;; 如果为 t， 多 frame 时可能会乱跑
   (setq mini-frame-detach-on-hide nil)
 
-  (mini-frame-mode -1))
+  (mini-frame-mode 1))
 
 
 (add-hook 'after-init-hook #'local/mini-frame-mode)

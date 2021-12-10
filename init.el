@@ -52,7 +52,6 @@
 (local/load-package 'init-surround)
 (local/load-package 'init-hydra)
 (local/load-package 'init-restclient)
-(local/load-package 'init-mini-frame)
 (local/load-package 'init-tabs)
 (local/load-package 'init-minimap)
 (local/load-package 'init-mark)

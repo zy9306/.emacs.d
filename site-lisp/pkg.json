@@ -9,6 +9,17 @@
     "pkg": "duplicate-line",
     "repo": "git@github.com:manateelazycat/duplicate-line.git"
   },
+  "emacs-mini-frame": {
+    "commit": "57a049b9e1ea4a9b65e82fc10c8c7e70a042f636",
+    "ignore": [
+      "screenshots",
+      ".gitignore",
+      "LICENSE",
+      "README.md"
+    ],
+    "pkg": "emacs-mini-frame",
+    "repo": "git@github.com:muffinmad/emacs-mini-frame.git"
+  },
   "hydra-posframe": {
     "commit": "343a269b52d6fb6e5ae6c09d91833ff4620490ec",
     "ignore": [

@@ -59,7 +59,6 @@
 (require-package 'lsp-python-ms)
 (require-package 'magit)
 (require-package 'memoize)
-(require-package 'mini-frame)
 (require-package 'minimap)
 (require-package 'move-text)
 (require-package 'multiple-cursors)
