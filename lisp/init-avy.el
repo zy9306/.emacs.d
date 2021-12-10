@@ -25,7 +25,7 @@
   ;; 默认输入超过 ace-isearch-input-length 个字符触发 swiper，禁用
   (setq ace-isearch-use-function-from-isearch nil)
   (setq ace-isearch-use-jump nil)
-  (define-key isearch-mode-map (kbd "C-'") 'ace-isearch-jump-during-isearch))
+  (define-key isearch-mode-map (kbd "C-n") 'ace-isearch-jump-during-isearch))
 (use-package ace-isearch
   :ensure t
   :defer t
