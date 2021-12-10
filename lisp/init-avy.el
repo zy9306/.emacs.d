@@ -19,20 +19,6 @@
 
 (local/after-init-hook 'avy)
 
-(defun local/config-ace-isearch()
-  (global-ace-isearch-mode +1)
-  (diminish 'ace-isearch-mode)
-  ;; 默认输入超过 ace-isearch-input-length 个字符触发 swiper，禁用
-  (setq ace-isearch-use-function-from-isearch nil)
-  (setq ace-isearch-use-jump nil)
-  (setq ace-isearch-input-length 99)
-  (define-key isearch-mode-map (kbd "C-n") 'ace-isearch-jump-during-isearch)
-  (define-key isearch-mode-map (kbd "SPC") 'ace-isearch-swiper-from-isearch))
-(use-package ace-isearch
-  :ensure t
-  :defer t
-  :init
-  (add-hook 'after-init-hook #'local/config-ace-isearch))
 
 ;; https://github.com/Dewdrops/isearch-dabbrev
 (eval-after-load "isearch"

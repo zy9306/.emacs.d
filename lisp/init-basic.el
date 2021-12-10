@@ -1,4 +1,4 @@
-;; -*- coding: utf-8; lexical-binding: t; -*-
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 
 (defun local/after-init-hook (package)
   (add-hook 'after-init-hook (lambda () (require package))))
@@ -80,6 +80,9 @@
     (add-hook hook 'symbol-overlay-mode)))
 (local/after-init-hook 'symbol-overlay)
 
+
+
+;;; isearch
 ;; https://github.com/purcell/emacs.d/blob/master/lisp/init-isearch.el
 ;; 实时显示搜索及替换结果
 (with-eval-after-load 'anzu
@@ -88,6 +91,36 @@
   (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
   (global-set-key [remap query-replace] 'anzu-query-replace))
 (local/after-init-hook 'anzu)
+
+(defun local/config-ace-isearch()
+  (global-ace-isearch-mode +1)
+  (diminish 'ace-isearch-mode)
+  ;; 默认输入超过 ace-isearch-input-length 个字符触发 swiper，禁用
+  (setq ace-isearch-use-function-from-isearch nil)
+  (setq ace-isearch-use-jump nil)
+  (setq ace-isearch-input-length 99))
+
+(use-package ace-isearch
+  :defer t
+  :init
+  (add-hook 'after-init-hook #'local/config-ace-isearch))
+
+;; (defun local/isearch-cur-word ()
+;;   (interactive)
+;;   (isearch-mode t)
+;;   (let ((cur (thing-at-point 'word t)))
+;;     (if cur
+;;         (isearch-yank-string cur))))
+
+(global-set-key (kbd "M-s") 'isearch-forward)
+(global-set-key (kbd "M-r") 'isearch-backward)
+(define-key isearch-mode-map (kbd "M-n") 'isearch-repeat-forward)
+(define-key isearch-mode-map (kbd "M-p") 'isearch-repeat-backward)
+(define-key isearch-mode-map (kbd "M-g") 'isearch-abort)
+(define-key isearch-mode-map (kbd ";") 'avy-isearch)  ;; or ace-isearch-jump-during-isearch
+(define-key isearch-mode-map (kbd "SPC") 'ace-isearch-swiper-from-isearch)
+
+
 
 ;; https://github.com/magnars/multiple-cursors.el/tree/master
 ;; To yank from the kill-rings of every cursor use yank-rectangle, normally found at C-x r y
