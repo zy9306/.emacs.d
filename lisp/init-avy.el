@@ -1,4 +1,4 @@
-;; -*- coding: utf-8; lexical-binding: t; -*-
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 
 (with-eval-after-load 'avy
   (avy-setup-default)
@@ -25,7 +25,9 @@
   ;; 默认输入超过 ace-isearch-input-length 个字符触发 swiper，禁用
   (setq ace-isearch-use-function-from-isearch nil)
   (setq ace-isearch-use-jump nil)
-  (define-key isearch-mode-map (kbd "C-n") 'ace-isearch-jump-during-isearch))
+  (setq ace-isearch-input-length 99)
+  (define-key isearch-mode-map (kbd "C-n") 'ace-isearch-jump-during-isearch)
+  (define-key isearch-mode-map (kbd "SPC") 'ace-isearch-swiper-from-isearch))
 (use-package ace-isearch
   :ensure t
   :defer t
