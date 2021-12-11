@@ -84,9 +84,10 @@
    "4f" 'find-file-other-window
    "as" 'ace-swap-window
 
-   "w" 'easy-kill  ;; w -> word, b -> fullfile, 0 -> filename, - -> dirname
-
    "s" 'save-buffer
+
+   "." 'xref-find-definitions
+   "," 'xref-pop-marker-stack
 
    "$" 'toggle-truncate-lines
 
@@ -109,8 +110,11 @@
 
    "g" 'revert-buffer-no-confirm
 
+   "w" 'easy-kill  ;; w -> word, b -> fullfile, 0 -> filename, - -> dirname
    "m" 'magit-blame
    "vu" 'vc-revert
+
+   "\\" 'local/Illyasviel/body
 
    "hb" 'describe-bindings
    "hv" 'counsel-describe-variable
