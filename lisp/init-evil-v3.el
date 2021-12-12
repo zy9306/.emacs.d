@@ -5,6 +5,8 @@
 (require-package 'undo-tree)
 (require-package 'goto-chg)
 (require-package 'evil-surround)
+(require-package 'evil-matchit)
+(require-package 'evil-textobj-line)
 
 
 (setq evil-disable-insert-state-bindings t)
@@ -52,6 +54,8 @@
   (local/setup-org)
 
   (local/evil-surround)
+  (local/evil-matchit)
+  (local/evil-textobj-line)
   (local/evil-browse-kill-ring))
 
 
@@ -126,6 +130,12 @@
 
   (global-evil-surround-mode 1))
 
+(defun local/evil-matchit ()
+  (require 'evil-matchit)
+  (global-evil-matchit-mode 1))
+
+(defun local/evil-textobj-line ()
+  (require 'evil-textobj-line))
 
 (defun local/evil-browse-kill-ring ()
   (evil-set-initial-state 'browse-kill-ring-mode 'normal)
