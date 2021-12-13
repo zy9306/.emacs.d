@@ -57,6 +57,15 @@
     "pkg": "posframe",
     "repo": "git@github.com:tumashu/posframe.git"
   },
+  "snails": {
+    "commit": "5899464de09cdf8c8e74dd428d54523b1f2433ce",
+    "ignore": [
+      "images",
+      "README.md"
+    ],
+    "pkg": "snails",
+    "repo": "git@github.com:manateelazycat/snails.git"
+  },
   "thing-edit": {
     "commit": "1948ae5498e58233f782fa91db9fb49880c933ca",
     "ignore": [
