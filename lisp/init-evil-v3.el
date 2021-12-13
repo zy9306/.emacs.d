@@ -38,16 +38,16 @@
    :keymaps 'override
    "U" 'string-inflection-all-cycle)
 
-  (general-define-key
-   :states '(normal
-             motion)
-   "C-c" 'evil-normal-state)
+  ;; (general-define-key
+  ;;  :states '(normal
+  ;;            motion)
+  ;;  "C-c" 'evil-normal-state)
 
-  (general-define-key
-   :states '(visual
-             operator
-             insert)
-   "C-c" 'evil-normal-state)
+  ;; (general-define-key
+  ;;  :states '(visual
+  ;;            operator
+  ;;            insert)
+  ;;  "C-c" 'evil-normal-state)
 
   (local/evil-init)
   (local/setup-prefix)
@@ -72,8 +72,9 @@
    :keymaps 'override
 
    "X" (general-simulate-key "C-x")
+   "c" (general-simulate-key "C-c")
    "S" (general-simulate-key "C-u C-x s")
-   "Q" (general-simulate-key "C-x C-q")
+   "q" (general-simulate-key "C-x C-q")
 
    "x" 'counsel-M-x
    "f" 'counsel-find-file
