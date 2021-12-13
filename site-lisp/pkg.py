@@ -126,7 +126,7 @@ def get_pkg_info(pkg_name, pkg_repo, commit):
         return pkg_info
 
     if pkg_repo:
-        pkg_name = pkg_repo.split("/")[-1].split(".")[0]
+        pkg_name = pkg_repo.split("/")[-1].rstrip(".git")
         out = run_cmd(f"git ls-remote {pkg_repo}", True)
         if not commit:
             commit = out.split()[0]
