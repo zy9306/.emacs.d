@@ -28,7 +28,7 @@
   (global-set-key (kbd "C-x 4 b") 'consult-buffer-other-window)
   (global-set-key (kbd "C-x 5 b") 'consult-buffer-other-frame)
 
-  (global-set-key (kbd "C-\"") 'consult-imenu)
+  ;; (global-set-key (kbd "C-\"") 'consult-imenu)
 
   (global-set-key (kbd "M-s r") 'consult-ripgrep))
 
