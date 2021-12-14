@@ -3,8 +3,8 @@
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Debuggers.html
 
 
-(pretty-hydra-define local/gud (:foreign-keys warn :title "GUD" :quit-key "q")
-  ("KEY"
+(pretty-hydra-define local/gud (:foreign-keys warn :title nil :quit-key "q")
+  ("GUD KEY"
    (("b" gud-break "break")
     ("d" gud-remove "remove")
     ("n" gud-next "next")
