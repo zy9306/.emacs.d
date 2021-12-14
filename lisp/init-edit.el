@@ -59,33 +59,34 @@
 
 (global-unset-key (kbd "C-\\"))
 
-(general-define-key
- :prefix "C-\\"
- "yw" 'thing-copy-word
- "yp" 'thing-copy-parentheses
- "yn" 'thing-copy-number
- "ys" 'thing-copy-symbol
- "yy" 'thing-copy-line
- "ya" 'thing-copy-to-line-beginning
- "ye" 'thing-copy-to-line-end
- "dw" 'thing-cut-word
- "dp" 'thing-cut-parentheses
- "dn" 'thing-cut-number
- "ds" 'thing-cut-symbol
- "dd" 'thing-cut-line
- "da" 'thing-cut-to-line-beginning
- "de" 'thing-cut-to-line-end
- "rw" 'thing-replace-word
- "rp" 'thing-replace-parentheses
- "rs" 'thing-replace-symbol
+(defhydra hydra-awesome-tab (global-map "C-\\" :exit t)
+  ("yw" thing-copy-word)
+  ("yp" thing-copy-parentheses)
+  ("yn" thing-copy-number)
+  ("ys" thing-copy-symbol)
+  ("yy" thing-copy-line)
+  ("ya" thing-copy-to-line-beginning)
+  ("ye" thing-copy-to-line-end)
 
- "pp" 'duplicate-line-or-region-above
- "nn" 'duplicate-line-or-region-below
- "PP" 'duplicate-line-above-comment
- "NN" 'duplicate-line-below-comment
+  ("dw" thing-cut-word)
+  ("dp" thing-cut-parentheses)
+  ("dn" thing-cut-number)
+  ("ds" thing-cut-symbol)
+  ("dd" thing-cut-line)
+  ("da" thing-cut-to-line-beginning)
+  ("de" thing-cut-to-line-end)
 
- "'" 'embrace-commander
- "\"" 'emacs-surround)
+  ("rw" thing-replace-word)
+  ("rp" thing-replace-parentheses)
+  ("rs" thing-replace-symbol)
+
+  ("pp" duplicate-line-or-region-above :exit nil)
+  ("nn" duplicate-line-or-region-below :exit nil)
+  ("PP" duplicate-line-above-comment :exit nil)
+  ("NN" duplicate-line-below-comment :exit nil)
+
+  ("'" 'embrace-commander)
+  ("\"" 'emacs-surround))
 
 
 
