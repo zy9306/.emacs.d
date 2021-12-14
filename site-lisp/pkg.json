@@ -1,4 +1,15 @@
 {
+  "awesome-tab": {
+    "commit": "1dc909488f893d1fe8bb113120da4b47b7d3fc39",
+    "ignore": [
+      ".gitattributes",
+      "dark-screenshot.png",
+      "light-screenshot.png",
+      "README.md"
+    ],
+    "pkg": "awesome-tab",
+    "repo": "git@github.com:manateelazycat/awesome-tab.git"
+  },
   "color-rg": {
     "commit": "54635dd395b0976d6f2cedfefa404e67fe7746ee",
     "pkg": "color-rg",

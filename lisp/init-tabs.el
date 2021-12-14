@@ -1,31 +1,25 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 
 
-;; (use-package centaur-tabs
-;;   :ensure t
-;;   :config
-;;   (centaur-tabs-headline-match)
-;;   (centaur-tabs-mode -1)
-;;   (setq centaur-tabs-style "bar")
-;;   (setq centaur-tabs-height 32)
-;;   (setq centaur-tabs-set-icons t)
-;;   (setq centaur-tabs-set-bar 'left)
-;;   (setq centaur-tabs-close-button "X")
-;;   (setq centaur-tabs-set-modified-marker t)
-;;   (setq centaur-tabs-modified-marker "*")
-;;   (centaur-tabs-change-fonts "Source Code Pro" 160)
+(with-eval-after-load 'awesome-tab
+  (require 'awesome-tab)
 
-;;   (global-set-key (kbd "C-c s") 'centaur-tabs-counsel-switch-group)
-;;   )
+  (setq awesome-tab-show-tab-index t)
+  (setq awesome-tab-active-bar-height 25)
 
-(setq tab-bar-close-button-show nil)
-(setq tab-bar-new-button-show nil)
+  (global-set-key (kbd "s-1") 'awesome-tab-select-visible-tab)
+  (global-set-key (kbd "s-2") 'awesome-tab-select-visible-tab)
+  (global-set-key (kbd "s-3") 'awesome-tab-select-visible-tab)
+  (global-set-key (kbd "s-4") 'awesome-tab-select-visible-tab)
+  (global-set-key (kbd "s-5") 'awesome-tab-select-visible-tab)
+  (global-set-key (kbd "s-6") 'awesome-tab-select-visible-tab)
+  (global-set-key (kbd "s-7") 'awesome-tab-select-visible-tab)
+  (global-set-key (kbd "s-8") 'awesome-tab-select-visible-tab)
+  (global-set-key (kbd "s-9") 'awesome-tab-select-visible-tab)
+  (global-set-key (kbd "s-0") 'awesome-tab-select-visible-tab)
 
-(set-face-attribute
- 'tab-bar nil
- :underline t :weight 'bold)
+  (awesome-tab-mode t))
 
-;; (add-hook 'after-init-hook 'tab-bar-mode)
-
+(local/after-init-hook 'awesome-tab)
 
 (provide 'init-tabs)
