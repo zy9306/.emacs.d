@@ -21,6 +21,9 @@
   (global-set-key (kbd "M-<right>") 'awesome-tab-forward-tab)
   (global-set-key (kbd "M-<left>") 'awesome-tab-backward-tab)
 
+  (global-unset-key (kbd "C-<tab>"))
+  (global-set-key (kbd "C-<tab>") 'awesome-tab-forward-group)
+
   (global-set-key (kbd "M-S-<right>") 'awesome-tab-move-current-tab-to-right)
   (global-set-key (kbd "M-S-<left>") 'awesome-tab-move-current-tab-to-left)
 
