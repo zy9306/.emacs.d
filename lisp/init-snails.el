@@ -4,6 +4,7 @@
 (with-eval-after-load 'snails
   (require 'snails)
 
+  (setq snails-show-with-frame nil)
   (global-set-key (kbd "M-[") 'snails))
 
 
