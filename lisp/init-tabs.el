@@ -18,15 +18,11 @@
   (global-set-key (kbd "s-9") 'awesome-tab-select-visible-tab)
   (global-set-key (kbd "s-0") 'awesome-tab-select-visible-tab)
 
-  (setq hydra-is-helpful nil)
+  (global-set-key (kbd "M-<right>") 'awesome-tab-forward-tab)
+  (global-set-key (kbd "M-<left>") 'awesome-tab-backward-tab)
 
-  (defhydra hydra-awesome-tab (global-map "<f9>")
-    ("f" awesome-tab-forward-tab)
-    ("b" awesome-tab-backward-tab)
-    ("j" awesome-tab-ace-jump)
-    ("F" awesome-tab-move-current-tab-to-right)
-    ("B" awesome-tab-move-current-tab-to-left)
-    ("s" awesome-tab-switch-group))
+  (global-set-key (kbd "M-S-<right>") 'awesome-tab-move-current-tab-to-right)
+  (global-set-key (kbd "M-S-<left>") 'awesome-tab-move-current-tab-to-left)
 
   (awesome-tab-mode t))
 
