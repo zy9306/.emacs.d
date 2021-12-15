@@ -10,19 +10,6 @@
     "pkg": "awesome-tab",
     "repo": "git@github.com:manateelazycat/awesome-tab.git"
   },
-  "centaur-tabs": {
-    "commit": "5860a5c40c2318797f1274ea4c6907ae77ea1ec9",
-    "ignore": [
-      "images",
-      ".dir-locals.el",
-      ".gitignore",
-      "LICENSE",
-      "README.org",
-      "screenshot.png"
-    ],
-    "pkg": "centaur-tabs",
-    "repo": "git@github.com:ema2159/centaur-tabs.git"
-  },
   "color-rg": {
     "commit": "54635dd395b0976d6f2cedfefa404e67fe7746ee",
     "pkg": "color-rg",

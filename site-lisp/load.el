@@ -1,5 +1,4 @@
 (push (expand-file-name "site-lisp/awesome-tab" user-emacs-directory) load-path)
-(push (expand-file-name "site-lisp/centaur-tabs" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/color-rg" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/duplicate-line" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/emacs-mini-frame" user-emacs-directory) load-path)
