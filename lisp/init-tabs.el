@@ -21,8 +21,8 @@
   (setq hydra-is-helpful nil)
 
   (defhydra hydra-awesome-tab (global-map "<f9>")
-    ("f" awesome-tab-forward)
-    ("b" awesome-tab-backward)
+    ("f" awesome-tab-forward-tab)
+    ("b" awesome-tab-backward-tab)
     ("j" awesome-tab-ace-jump)
     ("F" awesome-tab-move-current-tab-to-right)
     ("B" awesome-tab-move-current-tab-to-left)
