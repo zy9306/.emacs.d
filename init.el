@@ -25,6 +25,7 @@
 (local/load-package 'init-basic)
 (local/load-package 'init-utils)
 (local/load-package 'init-completion)
+(local/load-package 'init-tabnine-capf)
 (local/load-package 'init-ivy)
 (local/load-package 'init-avy)
 (local/load-package 'init-window)
