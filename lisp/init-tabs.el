@@ -27,7 +27,29 @@
   (global-set-key (kbd "M-S-<right>") 'awesome-tab-move-current-tab-to-right)
   (global-set-key (kbd "M-S-<left>") 'awesome-tab-move-current-tab-to-left)
 
+  (global-set-key [tab-line mouse-2] 'local/close-tab-by-click)
+
   (awesome-tab-mode t))
+
+
+(defun local/close-tab-by-click (event)
+  (interactive "e")
+  (let* ((pos (posn-string (event-start event)))
+         (visible-tabs (awesome-tab-view awesome-tab-current-tabset))
+         (raw (string-trim (car pos)))
+         (_ (set-text-properties 0 (length raw) nil raw))
+         (s_l (split-string raw))
+         (index (car (last s_l)))
+         (tab)
+         (buffer_name))
+    (setq index (string-remove-prefix "[" index))
+    (setq index (string-remove-suffix "]" index))
+    (setq index (string-to-number index))
+    (setq tab (nth (- index 1) visible-tabs))
+    (setq buffer_name (car tab))
+    (kill-buffer buffer_name)
+    (message "Killed: <%s>" buffer_name)))
+
 
 (local/after-init-hook 'awesome-tab)
 
