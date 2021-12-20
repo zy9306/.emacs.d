@@ -70,7 +70,7 @@
           ((string= kill-conditional "delete")
            (when thing-edit-show-message-p
              (message "%s [ %s ]"
-                      (propertize "Cut" 'face 'thing-edit-font-lock-action)
+                      (propertize "Delete" 'face 'thing-edit-font-lock-action)
                       (buffer-substring object-beg object-end)))
            (delete-region object-beg object-end))
           ((string= kill-conditional "copy")
