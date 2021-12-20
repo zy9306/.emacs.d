@@ -29,7 +29,22 @@
 
   (global-set-key [tab-line mouse-2] 'local/close-tab-by-click)
 
-  (awesome-tab-mode t))
+  (awesome-tab-mode t)
+
+  ;; override awesome-tab-buffer-groups
+  (defun awesome-tab-buffer-groups ()
+    (list
+     (cond
+      ((string-equal "*" (substring (buffer-name) 0 1))
+       "Emacs")
+      ((derived-mode-p 'eshell-mode)
+       "EShell")
+      ((derived-mode-p 'emacs-lisp-mode)
+       "Elisp")
+      ((memq major-mode '(org-mode org-agenda-mode diary-mode))
+       "OrgMode")
+      (t
+       (awesome-tab-get-group-name (current-buffer)))))))
 
 
 (defun local/close-tab-by-click (event)
