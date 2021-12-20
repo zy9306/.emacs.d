@@ -229,8 +229,8 @@
   ("NN" duplicate-line-below-comment :exit nil)
 
   ;; surround
-  ("'" 'embrace-commander)
-  ("\"" 'emacs-surround))
+  ("'" embrace-commander)
+  ("\"" emacs-surround))
 
 
 
