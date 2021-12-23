@@ -17,25 +17,8 @@
 
 (add-hook 'after-init-hook #'local/dimish-counsel)
 
-(defun local/consult ()
-  (selectrum-mode +1)
-  (selectrum-prescient-mode +1)
-
-  (autoload 'projectile-project-root "projectile")
-  (setq consult-project-root-function #'projectile-project-root)
-
-  (global-set-key (kbd "C-x b") 'consult-buffer)
-  (global-set-key (kbd "C-x 4 b") 'consult-buffer-other-window)
-  (global-set-key (kbd "C-x 5 b") 'consult-buffer-other-frame)
-
-  ;; (global-set-key (kbd "C-\"") 'consult-imenu)
-
-  (global-set-key (kbd "M-s r") 'consult-ripgrep))
-
 (with-eval-after-load 'ivy
   (local/ivy)
-
-  ;; (local/consult)
 
   (setq ivy-use-virtual-buffers t)
   (setq ivy-count-format "(%d/%d) ")
@@ -46,7 +29,7 @@
   ;; swiper-isearch 弹出高度设为 1，使其更接近 isearch
   (add-to-list 'ivy-height-alist '(swiper-isearch . 1))
 
-  (global-set-key (kbd "C-c s") 'swiper-isearch)
+  (global-set-key (kbd "C-s") 'swiper-isearch)
   (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 
