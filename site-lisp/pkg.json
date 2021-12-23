@@ -15,6 +15,25 @@
     "pkg": "color-rg",
     "repo": "git@github.com:manateelazycat/color-rg.git"
   },
+  "consult": {
+    "commit": "39366355f4897dfae73d14d93dbe6ca97f7fc713",
+    "ignore": [
+      "images",
+      "CHANGELOG.org",
+      "README.org",
+      "LICENSE"
+    ],
+    "pkg": "consult",
+    "repo": "git@github.com:minad/consult.git"
+  },
+  "consult-projectile": {
+    "commit": "655b328ce3fe51a8ff89d7b0a839bc8dfe9e51c0",
+    "ignore": [
+      "README.org"
+    ],
+    "pkg": "consult-projectile",
+    "repo": "https://gitlab.com/OlMon/consult-projectile.git"
+  },
   "duplicate-line": {
     "commit": "5abe4b81fa1618212938eb2e9b153975c34c11f1",
     "pkg": "duplicate-line",
@@ -30,6 +49,16 @@
     ],
     "pkg": "emacs-mini-frame",
     "repo": "git@github.com:muffinmad/emacs-mini-frame.git"
+  },
+  "embark": {
+    "commit": "2772ca0b35e8eb59724c31b5cb88ff802f21067a",
+    "ignore": [
+      ".gitignore",
+      "LICENSE",
+      "README.org"
+    ],
+    "pkg": "embark",
+    "repo": "git@github.com:oantolin/embark.git"
   },
   "fuz.el": {
     "commit": "fee874aa35d2ee6b12b836290b5c8eaa44175a28",
@@ -67,6 +96,17 @@
     "pkg": "one-key",
     "repo": "git@github.com:manateelazycat/one-key.git"
   },
+  "orderless": {
+    "commit": "1ccf74ffdbb0dd34caa63022e92f947c09c49c86",
+    "ignore": [
+      "images",
+      ".gitignore",
+      "LICENSE",
+      "README.org"
+    ],
+    "pkg": "orderless",
+    "repo": "git@github.com:oantolin/orderless.git"
+  },
   "posframe": {
     "commit": "3b1dc400d286b0a4bd42e518bf3e7eedb49fd1e6",
     "ignore": [
@@ -98,5 +138,15 @@
     "commit": "8ca741ca6be97c6049043aec6cec2e2bfbca5d19",
     "pkg": "toggle-one-window",
     "repo": "git@github.com:manateelazycat/toggle-one-window.git"
+  },
+  "vertico": {
+    "commit": "eedcb847869226701acaf9a36dce0a51d1b60862",
+    "ignore": [
+      "LICENSE",
+      "README.org",
+      "screenshot.svg"
+    ],
+    "pkg": "vertico",
+    "repo": "git@github.com:minad/vertico.git"
   }
 }
