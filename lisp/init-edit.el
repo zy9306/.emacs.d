@@ -173,50 +173,49 @@
 
 (defhydra hydra-awesome-tab (global-map "C-\\" :exit t)
   ;; er copy
-  ("yaw" (lambda () (interactive) (local/word "copy")))
+  ("yw" (lambda () (interactive) (local/word "copy")))
   ("ys" (lambda () (interactive) (local/symbol "copy")))
   ("yf" (lambda () (interactive) (local/defun "copy")))
 
-  ("yip" (lambda () (interactive) (local/inside-pairs "copy")))
+  ("yp" (lambda () (interactive) (local/inside-pairs "copy")))
   ("yap" (lambda () (interactive) (local/outside-pairs "copy")))
 
-  ("yi\"" (lambda () (interactive) (local/inside-quotes "copy")))
+  ("y\"" (lambda () (interactive) (local/inside-quotes "copy")))
   ("ya\"" (lambda () (interactive) (local/outside-quotes "copy")))
 
   ;; er cut
-  ("daw" (lambda () (interactive) (local/word "cut")))
+  ("dw" (lambda () (interactive) (local/word "cut")))
   ("ds" (lambda () (interactive) (local/symbol "cut")))
   ("df" (lambda () (interactive) (local/defun "cut")))
 
-  ("dip" (lambda () (interactive) (local/inside-pairs "cut")))
+  ("dp" (lambda () (interactive) (local/inside-pairs "cut")))
   ("dap" (lambda () (interactive) (local/outside-pairs "cut")))
 
   ("di\"" (lambda () (interactive) (local/inside-quotes "cut")))
   ("da\"" (lambda () (interactive) (local/outside-quotes "cut")))
 
   ;; er delete
-  ("Daw" (lambda () (interactive) (local/word "delete")))
+  ("Dw" (lambda () (interactive) (local/word "delete")))
   ("Ds" (lambda () (interactive) (local/symbol "delete")))
   ("Df" (lambda () (interactive) (local/defun "delete")))
 
-  ("Dip" (lambda () (interactive) (local/inside-pairs "delete")))
+  ("Dp" (lambda () (interactive) (local/inside-pairs "delete")))
   ("Dap" (lambda () (interactive) (local/outside-pairs "delete")))
 
-  ("Di\"" (lambda () (interactive) (local/inside-quotes "delete")))
+  ("D\"" (lambda () (interactive) (local/inside-quotes "delete")))
   ("Da\"" (lambda () (interactive) (local/outside-quotes "delete")))
 
   ;; thing at point
-  ("yp" thing-copy-parentheses)
   ("yn" thing-copy-number)
   ("yy" thing-copy-line)
-  ("yla" thing-copy-to-line-beginning)
-  ("yle" thing-copy-to-line-end)
+  ("yA" thing-copy-to-line-beginning)
+  ("yE" thing-copy-to-line-end)
 
   ("dp" thing-cut-parentheses)
   ("dn" thing-cut-number)
   ("dd" thing-cut-line)
-  ("dla" thing-cut-to-line-beginning)
-  ("dle" thing-cut-to-line-end)
+  ("dA" thing-cut-to-line-beginning)
+  ("dE" thing-cut-to-line-end)
 
   ("rw" thing-replace-word)
   ("rp" thing-replace-parentheses)
