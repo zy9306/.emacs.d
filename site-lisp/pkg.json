@@ -10,6 +10,15 @@
     "pkg": "awesome-tab",
     "repo": "git@github.com:manateelazycat/awesome-tab.git"
   },
+  "better-jumper": {
+    "commit": "3148a17b5920bba8ec4f81b717b99acde5fd5b74",
+    "ignore": [
+      "Readme.md",
+      "LICENSE"
+    ],
+    "pkg": "better-jumper",
+    "repo": "git@github.com:gilbertw1/better-jumper.git"
+  },
   "color-rg": {
     "commit": "54635dd395b0976d6f2cedfefa404e67fe7746ee",
     "pkg": "color-rg",

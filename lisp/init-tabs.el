@@ -18,8 +18,8 @@
   (global-set-key (kbd "s-9") 'awesome-tab-select-visible-tab)
   (global-set-key (kbd "s-0") 'awesome-tab-select-visible-tab)
 
-  (global-set-key (kbd "M-<right>") 'awesome-tab-forward-tab)
-  (global-set-key (kbd "M-<left>") 'awesome-tab-backward-tab)
+  ;; (global-set-key (kbd "M-<right>") 'awesome-tab-forward-tab)
+  ;; (global-set-key (kbd "M-<left>") 'awesome-tab-backward-tab)
 
   (global-unset-key (kbd "C-<tab>"))
   (global-set-key (kbd "C-<tab>") 'awesome-tab-forward-group)

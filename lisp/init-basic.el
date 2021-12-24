@@ -164,6 +164,16 @@
 
 
 
+;;; better-jumper
+(with-eval-after-load 'better-jumper
+  (better-jumper-mode +1)
+  (global-set-key (kbd "M-*") 'better-jumper-set-jump)
+  (global-set-key (kbd "M-<left>") 'better-jumper-jump-backward)
+  (global-set-key (kbd "M-<right>") 'better-jumper-jump-forward))
+(local/after-init-hook 'better-jumper)
+
+
+
 ;; string-inflection
 ;; default
 (global-set-key (kbd "C-c C-u") 'string-inflection-all-cycle)
