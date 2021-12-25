@@ -89,17 +89,17 @@
 ;; see C-h v org-capture-templates for more info
 
 (when *win*
-  (setq local/onedrive-dir
+  (setq local/cloud-dir
         (expand-file-name
          (format "%s/OneDrive" user-login-name)
          "c:/Users")))
 (when (or *linux* *mac*)
-  (setq local/onedrive-dir "~/OneDrive"))
+  (setq local/cloud-dir "~/OneDrive"))
 
 (let (
-      (task (format "%s/Illyasviel/task.org" local/onedrive-dir))
-      (Illyasviel (format "%s/Illyasviel/Illyasviel.org" local/onedrive-dir))
-      (journal (format "%s/Illyasviel/journal.org" local/onedrive-dir))
+      (task (format "%s/Illyasviel/task.org" local/cloud-dir))
+      (Illyasviel (format "%s/Illyasviel/Illyasviel.org" local/cloud-dir))
+      (journal (format "%s/Illyasviel/journal.org" local/cloud-dir))
       )
   (setq org-capture-templates
         `(
@@ -124,6 +124,10 @@
 ;; https://github.com/abo-abo/org-download/tree/master
 (with-eval-after-load 'org
   (require 'org-download)
+
+  (let ((dir (format "%s/Tsukihi/image/bed" local/cloud-dir)))
+    (setq-default org-download-image-dir dir))
+
   (put 'org-download-image-dir 'safe-local-variable #'stringp))
 
 
