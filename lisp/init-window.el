@@ -46,40 +46,9 @@
 
 
 
-;;; resize and switch window
+;;; TODO resize and switch window
 ;; https://www.emacswiki.org/emacs/WindowResize#toc3
-(defun iresize-window (&optional arg)    ; Hirose Yuuji and Bob Wiener
-  "*Resize window interactively."
-  (interactive "p")
-  (if (one-window-p) (error "Cannot resize sole window"))
-  (or arg (setq arg 1))
-  (let (c)
-    (catch 'done
-      (while t
-	    (message
-	     "h=heighten, s=shrink, w=widen, n=narrow (by %d);  1-9=unit, q=quit"
-	     arg)
-	    (setq c (read-char))
-	    (condition-case ()
-	        (cond
-	         ((= c ?h) (enlarge-window arg))
-	         ((= c ?s) (shrink-window arg))
-	         ((= c ?w) (enlarge-window-horizontally arg))
-	         ((= c ?n) (shrink-window-horizontally arg))
-	         ((= c ?\^G) (keyboard-quit))
-	         ((= c ?q) (throw 'done t))
-	         ((and (> c ?0) (<= c ?9)) (setq arg (- c ?0)))
-	         (t (beep)))
-	      (error (beep)))))
-    (message "Done.")))
-
-(global-set-key (kbd "C-S-h") 'windmove-left)
-(global-set-key (kbd "C-S-j") 'windmove-down)
-(global-set-key (kbd "C-S-k") 'windmove-up)
-(global-set-key (kbd "C-S-l") 'windmove-right)
-(global-set-key (kbd "C-x w r") 'iresize-window)
-(global-set-key (kbd "C-x w s") 'ace-swap-window)
-(global-set-key (kbd "C-x w d") 'ace-delete-other-windows)
+;; enlarge-window, shrink-window, enlarge-window-horizontally, shrink-window-horizontally
 
 
 
@@ -116,24 +85,6 @@
 
 
 
-;;; balance-windows
-;; (defun local/delete-window (&optional window)
-;;   (interactive)
-;;   (if window
-;;       (delete-window window)
-;;     (delete-window))
-;;   (balance-windows))
-
-;; (defun local/kill-buffer-and-window ()
-;;   (interactive)
-;;   (kill-buffer-and-window)
-;;   (balance-windows))
-
-;; (global-set-key [remap delete-window] #'local/delete-window)
-;; (global-set-key [remap kill-buffer-and-window] #'local/kill-buffer-and-window)
-
-
-
 ;;; 水平适应，垂直适应
 (defun local/fit-window-to-buffer-horizontally ()
   (interactive)
@@ -143,6 +94,11 @@
 
 (global-set-key (kbd "C-x w h") 'local/fit-window-to-buffer-horizontally)
 (global-set-key (kbd "C-x w v") 'fit-window-to-buffer)
+
+
+
+;;; other keybinding
+(global-set-key (kbd "<mouse-2>") 'kill-buffer-and-window)
 
 
 (provide 'init-window)
