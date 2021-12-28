@@ -28,21 +28,26 @@
 
 ;; NO tool bar
 (if (fboundp 'tool-bar-mode)
-  (tool-bar-mode -1))
+    (tool-bar-mode -1))
 ;; no scroll bar
 (if (fboundp 'set-scroll-bar-mode)
-  (set-scroll-bar-mode nil))
+    (set-scroll-bar-mode nil))
 ;; no menu bar
 (if (fboundp 'menu-bar-mode)
-  (menu-bar-mode -1))
+    (menu-bar-mode -1))
+
 
 
 ;; 项目名 + 文件名
-(setq frame-title-format
-      '("miku@"(:eval (projectile-project-name)) ": "
-        (:eval (if (buffer-file-name)
-                   (abbreviate-file-name (buffer-file-name))
-                 "%b"))))
+(with-eval-after-load 'projectile
+  (require 'projectile)
+  (setq frame-title-format
+        '("miku@"(:eval (projectile-project-name)) ": "
+          (:eval (if (buffer-file-name)
+                     (abbreviate-file-name (buffer-file-name))
+                   "%b")))))
+
+
 
 (setq-default cursor-type 'box)  ;; box 方块
 
@@ -95,7 +100,7 @@
 
 ;; read-only
 (dir-locals-set-class-variables 'read-only
- '((nil . ((buffer-read-only . t)))))
+                                '((nil . ((buffer-read-only . t)))))
 (dolist (dir (list "~/Envs"
                    "/usr"
                    "~/.cargo"
