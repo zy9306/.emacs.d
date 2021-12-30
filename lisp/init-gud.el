@@ -3,24 +3,14 @@
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Debuggers.html
 
 
-(pretty-hydra-define local/gud (:foreign-keys warn :title nil :quit-key "q")
-  ("GUD KEY"
-   (("b" gud-break "break")
-    ("d" gud-remove "remove")
-    ("n" gud-next "next")
-    ("s" gud-step "step")
-    ("p" gud-print "print")
-    ("t" gud-trace "trace")
-    ("r" gud-cont "continue")
-    ("f" gud-finish "finish")
-    ("l" gud-refresh "refresh")
-    ("<" gud-up "up")
-    (">" gud-down "down")
+(global-set-key (kbd "<f8>") 'gud-print)
+(global-set-key (kbd "<f9>") 'gud-next)
+(global-set-key (kbd "<f10>") 'gud-step)
+(global-set-key (kbd "<f12>") 'gud-cont)
 
-    ("G" dlv-current-func "dlv-current-func"))))
+(global-set-key [left-margin mouse-1] 'gud-break)
+(global-set-key [left-fringe mouse-1] 'gud-break)
 
-
-(global-set-key (kbd "C-x C-a h") 'local/gud)
 
 
 (with-eval-after-load 'go-mode
