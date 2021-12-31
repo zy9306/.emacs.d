@@ -1,5 +1,6 @@
 *~
 .#*
+.DS_Store
 elpa-*
 recentf
 bookmarks
@@ -23,5 +24,5 @@ eshell/
 tutorial/
 url/
 quelpa/
-tree-sitter/
+tree-sitter/src
 site-lisp/fuz.el/target/*
