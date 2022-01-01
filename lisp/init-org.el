@@ -125,6 +125,10 @@
 (with-eval-after-load 'org
   (require 'org-download)
 
+  ;; 默认 0，会以一级标题建子文件夹，好处是利于分类，坏处是如果改了标
+  ;; 题，路径就不对了
+  (setq-default org-download-heading-lvl nil)
+
   (let ((dir (format "%s/Tsukihi/image/bed" local/cloud-dir)))
     (setq-default org-download-image-dir dir))
 
