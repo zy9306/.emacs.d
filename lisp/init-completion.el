@@ -17,22 +17,53 @@
   (define-key company-active-map (kbd "M-v") 'company-previous-page)
   (define-key company-active-map (kbd "C-v") 'company-next-page)
 
+  ;; Remove duplicate candidate.
+  (add-to-list 'company-transformers #'delete-dups)
+
   (global-company-mode))
 
 (local/after-init-hook 'company)
 
 
+;;; config backends
 ;; https://manateelazycat.github.io/emacs/2021/06/30/company-multiple-backends.html
+
+;; (defun local/config-company-backends ()
+;;   (require 'company)
+;;   (setq company-backends
+;;         '((company-dabbrev
+;;            company-dabbrev-code
+;;            company-keywords
+;;            company-files
+;;            company-citre
+;;            company-capf))))
 
 (defun local/config-company-backends ()
   (require 'company)
   (setq company-backends
-        '((company-dabbrev
-           company-dabbrev-code
-           company-keywords
-           company-files
-           company-citre
-           company-capf))))
+        '(
+          (company-files company-keywords company-dabbrev company-citre company-capf)
+          ))
+
+  ;; Add yasnippet support for all company backends.
+  (defvar company-mode/enable-yas t
+    "Enable yasnippet for all backends.")
+
+  (defun company-mode/backend-with-yas (backend)
+    (if (or (not company-mode/enable-yas) (and (listp backend) (member 'company-yasnippet backend)))
+        backend
+      (append (if (consp backend) backend (list backend))
+              '(:with company-yasnippet))))
+
+  (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
+
+  ;; Add `company-elisp' backend for elisp.
+  (add-hook 'emacs-lisp-mode-hook
+            #'(lambda ()
+                (require 'company-elisp)
+                (push 'company-elisp company-backends)))
+  )
+
 
 (with-eval-after-load 'company (local/config-company-backends))
 
@@ -46,16 +77,6 @@
 (with-eval-after-load 'citre
   (require 'citre)
   (require 'citre-config)
-
-  (define-advice xref--create-fetcher (:around (-fn &rest -args) fallback)
-    (let ((fetcher (apply -fn -args))
-          (citre-fetcher
-           (let ((xref-backend-functions '(citre-xref-backend t)))
-             (apply -fn -args))))
-      (lambda ()
-        (or (with-demoted-errors "%s, fallback to citre"
-              (funcall fetcher))
-            (funcall citre-fetcher)))))
 
   (defun my--push-point-to-xref-marker-stack (&rest r)
     (xref-push-marker-stack (point-marker)))
