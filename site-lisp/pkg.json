@@ -19,6 +19,23 @@
     "pkg": "better-jumper",
     "repo": "git@github.com:gilbertw1/better-jumper.git"
   },
+  "citre": {
+    "commit": "641f2f7f69de2c0f4f055efe55b3ecd899a60b24",
+    "ignore": [
+      ".github",
+      "docs",
+      "img",
+      "scripts",
+      "tests",
+      ".gitignore",
+      "CHANGELOG.md",
+      "LICENSE",
+      "Makefile",
+      "README.md"
+    ],
+    "pkg": "citre",
+    "repo": "git@github.com:universal-ctags/citre.git"
+  },
   "color-rg": {
     "commit": "54635dd395b0976d6f2cedfefa404e67fe7746ee",
     "pkg": "color-rg",
