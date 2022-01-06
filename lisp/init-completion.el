@@ -82,11 +82,12 @@
   (setq-default citre-enable-imenu-integration nil)
 
   ;; make sure lsp at first
-  (dolist (xref-backend '(nox-xref-backend))
-    (if (member xref-backend xref-backend-functions)
-        (progn
-          (setq xref-backend-functions (remove xref-backend xref-backend-functions))
-          (add-to-list 'xref-backend-functions xref-backend))))
+  (add-hook 'citre-mode-hook
+            '(lambda ()   (dolist (xref-backend '(nox-xref-backend))
+                            (if (member xref-backend xref-backend-functions)
+                                (progn
+                                  (setq xref-backend-functions (remove xref-backend xref-backend-functions))
+                                  (add-to-list 'xref-backend-functions xref-backend))))))
 
   (defun my--push-point-to-xref-marker-stack (&rest r)
     (xref-push-marker-stack (point-marker)))
