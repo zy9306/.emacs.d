@@ -1,5 +1,11 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 
+;; hook
+(with-eval-after-load 'org
+  (require 'init-org-list)
+  (add-hook 'org-mode-hook 'local/org-list-prettify-mode))
+
+
 ;; 代码语法高亮
 (setq org-src-fontify-natively t)
 
