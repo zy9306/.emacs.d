@@ -42,7 +42,7 @@
   (require 'company)
   (setq company-backends
         '(
-          (company-files company-keywords company-dabbrev company-citre company-capf)
+          (company-keywords company-files company-dabbrev company-dabbrev-code company-capf)
           ))
 
   ;; Add yasnippet support for all company backends.
@@ -111,6 +111,25 @@
     (annotation (citre-capf--get-annotation -arg))
     (candidates (all-completions -arg (citre-capf--get-collection -arg)))
     (ignore-case (not citre-completion-case-sensitive))))
+
+
+;; Put company-citre before company-capf if you don't use the following
+(defun lsp-citre-capf-function ()
+  "A capf backend that tries lsp first, then Citre."
+  (let ((lsp-result (nox-completion-at-point)))
+    (if (and lsp-result
+             (try-completion
+              (buffer-substring (nth 0 lsp-result)
+                                (nth 1 lsp-result))
+              (nth 2 lsp-result)))
+        lsp-result
+      (citre-completion-at-point))))
+
+(defun enable-lsp-citre-capf-backend ()
+  "Enable the lsp + Citre capf backend in current buffer."
+  (add-hook 'completion-at-point-functions #'lsp-citre-capf-function nil t))
+
+(add-hook 'citre-mode-hook #'enable-lsp-citre-capf-backend)
 
 
 (local/after-init-hook 'citre)
