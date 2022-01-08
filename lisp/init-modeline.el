@@ -1,47 +1,77 @@
-;; -*- coding: utf-8; lexical-binding: t; -*-
+;;; awesome-tray
+(with-eval-after-load 'awesome-tray
+  (require 'awesome-tray)
 
-;; https://github.com/redguardtoo/emacs.d/blob/master/lisp/init-modeline.el
+  (awesome-tray-mode 1)
 
-(setq-default mode-line-format
-  (list
-    ;; the buffer name; the file name as a tool tip
-    '(:eval (propertize "%b " 'face nil
-        'help-echo (buffer-file-name)))
+  ;; see awesome-tray-module-alist
+  (setq awesome-tray-active-modules
+        '("location"
+          "awesome-tab"
+          "belong"
+          "buffer-name"
+          "git"
+          "buffer-read-only"
+          "mode-name"
+          "battery"
+          "date")))
+(local/after-init-hook 'awesome-tray)
 
-    ;; line and column
-    "(" ;; '%02' to set to 2 chars at least; prevents flickering
-    "%02l" "," "%01c"
-      ;; (propertize "%02l" 'face 'font-lock-type-face) ","
-      ;; (propertize "%02c" 'face 'font-lock-type-face)
-    ") "
 
-    ;; the current major mode for the buffer.
-    "["
 
-    '(:eval (propertize "%m" 'face nil
-              'help-echo buffer-file-coding-system))
-    " "
+;;; spaceline
+(with-eval-after-load 'spaceline
+  (setq spaceline-minor-modes-p nil)
 
-    ;; was this buffer modified since the last save?
-    '(:eval (when (buffer-modified-p)
-              (concat ","  (propertize "Mod"
-                             'face nil
-                             'help-echo "Buffer has been modified"))))
+  (require 'spaceline-config)
+  (require 'spaceline-segments)
 
-    ;; is this buffer read-only?
-    '(:eval (when buffer-read-only
-              (concat ","  (propertize "RO"
-                             'face nil
-                             'help-echo "Buffer is read-only"))))
-    "] "
+  ;; override spaceline--theme
+  (defun spaceline--theme (left second-left &rest additional-segments)
+    (spaceline-compile
+      `(,left
+        auto-compile
+        ,second-left
+        (which-function :priority 99)
+        (major-mode :priority 79)
+        (process :when active)
+        ((flycheck-error flycheck-warning flycheck-info)
+         :when active
+         :priority 89)
+        (minor-modes :when active
+                     :priority 9)
+        (mu4e-alert-segment :when active)
+        (erc-track :when active)
+        (version-control :when active
+                         :priority 78)
+        (org-pomodoro :when active)
+        (org-clock :when active)
+        nyan-cat)
+      `((python-pyvenv :fallback python-pyenv)
+        (purpose :priority 94)
+        (battery :when active)
+        (selection-info :priority 95)
+        input-method
+        ((buffer-encoding-abbrev
+          point-position
+          line-column)
+         :separator " | "
+         :priority 96)
+        (global :when active)
+        ,@additional-segments
+        (buffer-position :priority 99)
+        (hud :priority 99)))
 
-    ;;global-mode-string, org-timer-set-timer in org-mode need this
-    (propertize "%M" 'face nil)
+    (setq-default mode-line-format '("%e" (:eval (spaceline-ml-main)))))
 
-    " --"
-    ;; i don't want to see minor-modes; but if you want, uncomment this:
-    ;; minor-mode-alist  ;; list of minor modes
-    "%-" ;; fill with '-'
-    ))
+  (spaceline-spacemacs-theme)
+
+  (set-face-attribute
+   'mode-line nil
+   :background "#e7e7e7" :box '(:line-width 1 :color "grey75"))
+  )
+;; (local/after-init-hook 'spaceline)
+
+
 
 (provide 'init-modeline)

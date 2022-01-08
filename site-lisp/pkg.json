@@ -10,6 +10,15 @@
     "pkg": "awesome-tab",
     "repo": "git@github.com:manateelazycat/awesome-tab.git"
   },
+  "awesome-tray": {
+    "commit": "35b4c301d768cba199b73bac8270f2e4415673a1",
+    "ignore": [
+      "README.md",
+      "screenshot.png"
+    ],
+    "pkg": "awesome-tray",
+    "repo": "git@github.com:manateelazycat/awesome-tray.git"
+  },
   "better-jumper": {
     "commit": "3148a17b5920bba8ec4f81b717b99acde5fd5b74",
     "ignore": [
