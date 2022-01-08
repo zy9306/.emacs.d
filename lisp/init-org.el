@@ -3,8 +3,17 @@
 ;; hook
 (with-eval-after-load 'org
   (require 'init-org-list)
-  (add-hook 'org-mode-hook 'local/org-list-prettify-mode))
+  (add-hook 'org-mode-hook 'local/org-list-prettify-mode)
 
+  ;; https://github.com/tonyaldon/org-bars
+  (require 'org-bars)
+  (add-hook 'org-mode-hook #'org-bars-mode)
+)
+
+
+;; https://orgmode.org/manual/Dynamic-Headline-Numbering.html
+;; 如果用 hook，#+startup: nonum 可能会不起作用
+(setq org-startup-numerated t)
 
 ;; 代码语法高亮
 (setq org-src-fontify-natively t)

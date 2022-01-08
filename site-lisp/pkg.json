@@ -133,6 +133,17 @@
     "pkg": "orderless",
     "repo": "git@github.com:oantolin/orderless.git"
   },
+  "org-bars": {
+    "commit": "59ff8976ce789c0c594fd4756cbeb5354b6178d2",
+    "ignore": [
+      "org-bars.org",
+      "org-bars.png",
+      "org-bars-tests.el",
+      "README.md"
+    ],
+    "pkg": "org-bars",
+    "repo": "git@github.com:tonyaldon/org-bars.git"
+  },
   "posframe": {
     "commit": "3b1dc400d286b0a4bd42e518bf3e7eedb49fd1e6",
     "ignore": [
