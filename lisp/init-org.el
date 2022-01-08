@@ -8,7 +8,7 @@
   ;; https://github.com/tonyaldon/org-bars
   (require 'org-bars)
   (add-hook 'org-mode-hook #'org-bars-mode)
-)
+  )
 
 
 ;; https://orgmode.org/manual/Dynamic-Headline-Numbering.html
@@ -255,6 +255,22 @@ content. Only works when point is in a headline."
       (while (re-search-forward org-heading-regexp nil t)
         (org-format-heading-blank-lines)))))
 ;;; formatter end
+
+
+;;; hide src block
+(defvar local/org-blocks-toggle-flag nil)
+
+(defun local/org-toggle-blocks ()
+  (interactive)
+  (if local/org-blocks-toggle-flag
+      (org-show-block-all)
+    (org-hide-block-all))
+  (setq-local local/org-blocks-toggle-flag (not local/org-blocks-toggle-flag)))
+
+(with-eval-after-load 'org
+  (add-hook 'org-mode-hook 'local/org-toggle-blocks)
+  (define-key org-mode-map (kbd "C-c t") 'local/org-toggle-blocks))
+
 
 
 (provide 'init-org)
