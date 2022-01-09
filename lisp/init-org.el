@@ -18,6 +18,9 @@
 ;; 如果用 hook，#+startup: nonum 可能会不起作用
 (setq org-startup-numerated t)
 
+;; 打开文件时收起所有结点
+(setq org-startup-folded t)
+
 ;; 代码语法高亮
 (setq org-src-fontify-natively t)
 
