@@ -1,9 +1,4 @@
-;; -*- coding: utf-8; lexical-binding: t; -*-
-
-(setq miku-origin "#39c5bb")
-(setq miku-brightness-65 "#30a69e")
-(setq miku-brightness-50 "#258079")
-
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 
 ;; Copy from https://github.com/nashamri/spacemacs-theme/blob/master/spacemacs-common.el
 

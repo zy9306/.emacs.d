@@ -1,4 +1,4 @@
-;; -*- coding: utf-8; lexical-binding: t; -*-
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 
 ;; Copy from https://github.com/nashamri/spacemacs-theme/blob/master/spacemacs-common.el
 
@@ -32,8 +32,7 @@
  (set-face-attribute 'org-ellipsis nil :foreground local-color/keyword)
  (set-face-attribute 'org-footnote nil :underline t :foreground local-color/base)
  (set-face-attribute 'org-hide nil :foreground local-color/base)
- ;; (set-face-attribute 'org-level-1 nil :inherit 'bold :bold (if local/org-bold 'unspecified nil) :foreground local-color/head1 :height (if local/org-height 1.3 1.0) :background (when local/org-highlight local-color/head1-bg))
- (set-face-attribute 'org-level-1 nil :inherit 'bold :bold (if local/org-bold 'unspecified nil) :foreground miku-brightness-65 :height (if local/org-height 1.3 1.0) :background (when local/org-highlight local-color/head1-bg))
+ (set-face-attribute 'org-level-1 nil :inherit 'bold :bold (if local/org-bold 'unspecified nil) :foreground local-color/head1 :height (if local/org-height 1.3 1.0) :background (when local/org-highlight local-color/head1-bg))
  (set-face-attribute 'org-level-2 nil :inherit 'bold :bold (if local/org-bold 'unspecified nil) :foreground local-color/head2 :height (if local/org-height 1.2 1.0) :background (when local/org-highlight local-color/head2-bg))
  (set-face-attribute 'org-level-3 nil :bold nil :foreground local-color/head3 :height (if local/org-height 1.1 1.0) :background (when local/org-highlight local-color/head3-bg))
  (set-face-attribute 'org-level-4 nil :bold nil :foreground local-color/head4 :background (when local/org-highlight local-color/head4-bg))
@@ -62,4 +61,4 @@
  (set-face-attribute 'org-warning nil :foreground local-color/err :inherit 'org-priority)
 )
 
-(provide 'init-face-org)
+(provide 'init-org-face)

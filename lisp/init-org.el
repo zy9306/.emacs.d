@@ -2,6 +2,9 @@
 
 ;; hook
 (with-eval-after-load 'org
+  ;; face
+  (require 'init-org-face)
+
   (require 'init-org-list)
   (add-hook 'org-mode-hook 'local/org-list-prettify-mode)
 

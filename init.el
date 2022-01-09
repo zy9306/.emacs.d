@@ -21,7 +21,6 @@
 (local/load-package 'init-face-common)
 (local/load-package 'init-theme)
 (local/load-package 'init-face)
-(local/load-package 'init-face-org)
 (local/load-package 'init-basic)
 (local/load-package 'init-utils)
 (local/load-package 'init-completion)
