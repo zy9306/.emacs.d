@@ -10,9 +10,9 @@
           "awesome-tab"
           "belong"
           "buffer-name"
-          "git"
           "buffer-read-only"
           "mode-name"
+          "git"
           "battery"
           "date")))
 (local/after-init-hook 'awesome-tray)
