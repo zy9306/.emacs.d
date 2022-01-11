@@ -180,8 +180,8 @@
   ("yp" (lambda () (interactive) (local/inside-pairs "copy")))
   ("yap" (lambda () (interactive) (local/outside-pairs "copy")))
 
-  ("y\"" (lambda () (interactive) (local/inside-quotes "copy")))
-  ("ya\"" (lambda () (interactive) (local/outside-quotes "copy")))
+  ("y'" (lambda () (interactive) (local/inside-quotes "copy")))
+  ("ya'" (lambda () (interactive) (local/outside-quotes "copy")))
 
   ;; er cut
   ("dw" (lambda () (interactive) (local/word "cut")))
@@ -191,8 +191,8 @@
   ("dp" (lambda () (interactive) (local/inside-pairs "cut")))
   ("dap" (lambda () (interactive) (local/outside-pairs "cut")))
 
-  ("di\"" (lambda () (interactive) (local/inside-quotes "cut")))
-  ("da\"" (lambda () (interactive) (local/outside-quotes "cut")))
+  ("di'" (lambda () (interactive) (local/inside-quotes "cut")))
+  ("da'" (lambda () (interactive) (local/outside-quotes "cut")))
 
   ;; er delete
   ("Dw" (lambda () (interactive) (local/word "delete")))
@@ -202,8 +202,8 @@
   ("Dp" (lambda () (interactive) (local/inside-pairs "delete")))
   ("Dap" (lambda () (interactive) (local/outside-pairs "delete")))
 
-  ("D\"" (lambda () (interactive) (local/inside-quotes "delete")))
-  ("Da\"" (lambda () (interactive) (local/outside-quotes "delete")))
+  ("D'" (lambda () (interactive) (local/inside-quotes "delete")))
+  ("Da'" (lambda () (interactive) (local/outside-quotes "delete")))
 
   ;; thing at point
   ("yn" thing-copy-number)
