@@ -114,9 +114,12 @@
 
 
 ;; Put company-citre before company-capf if you don't use the following
+(defun local/nox-result ()
+  (ignore-errors (nox-completion-at-point)))
+
 (defun lsp-citre-capf-function ()
   "A capf backend that tries lsp first, then Citre."
-  (let ((lsp-result (nox-completion-at-point)))
+  (let ((lsp-result (local/nox-result)))
     (if (and lsp-result
              (try-completion
               (buffer-substring (nth 0 lsp-result)
