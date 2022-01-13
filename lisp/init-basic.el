@@ -51,7 +51,7 @@
 
 (with-eval-after-load 'imenu-list
   (setq imenu-list-auto-resize nil)
-  (setq imenu-list-position 'below)
+  (setq imenu-list-position 'left)
   (setq imenu-list-size 0.3)
   (setq imenu-max-item-length 120)
   (setq imenu-list-focus-after-activation t))
