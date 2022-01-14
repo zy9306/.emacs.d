@@ -101,8 +101,7 @@
 ;; read-only
 (dir-locals-set-class-variables 'read-only
                                 '((nil . ((buffer-read-only . t)))))
-(dolist (dir (list "~/.emacs.d/elpa"
-                   "~/Envs"
+(dolist (dir (list "~/Envs"
                    "/usr"
                    "~/.cargo"
                    "~/.rustup"
