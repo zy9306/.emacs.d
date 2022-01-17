@@ -279,4 +279,11 @@ content. Only works when point is in a headline."
 
 
 
+;;; hugo
+(with-eval-after-load 'ox
+  (require 'ox-hugo))
+
+;; 导出时不要执行代码块
+(setq org-export-babel-evaluate nil)
+
 (provide 'init-org)
