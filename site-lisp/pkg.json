@@ -153,6 +153,23 @@
     "pkg": "org-bars",
     "repo": "git@github.com:tonyaldon/org-bars.git"
   },
+  "ox-hugo": {
+    "commit": "30d55cad86ccc5dedb607bb5c580aa5fdc366b6f",
+    "ignore": [
+      ".github",
+      "doc",
+      "test",
+      ".dir-locals.el",
+      ".gitignore",
+      ".gitmodules",
+      "CONTRIBUTING.org",
+      "LICENSE",
+      "Makefile",
+      "README.org"
+    ],
+    "pkg": "ox-hugo",
+    "repo": "git@github.com:kaushalmodi/ox-hugo.git"
+  },
   "posframe": {
     "commit": "3b1dc400d286b0a4bd42e518bf3e7eedb49fd1e6",
     "ignore": [
