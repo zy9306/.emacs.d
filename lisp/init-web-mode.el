@@ -13,6 +13,10 @@
 
 (setq json-reformat:indent-width 2)
 
+(setq css-indent-offset 2)
+
+(setq web-mode-css-indent-offset 2)
+
 ;;; tide
 (defun setup-tide-mode ()
   (interactive)
