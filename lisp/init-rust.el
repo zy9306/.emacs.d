@@ -17,26 +17,14 @@
     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
 
 
-;; 1. backends racer
-;; (use-package racer
-;;   ;; cargo +nightly install racer
-;;   :ensure t
-;;   :config
-;;   (add-hook 'rust-mode-hook #'racer-mode)
-;;   (add-hook 'racer-mode-hook #'eldoc-mode)
-;;   (add-hook 'racer-mode-hook #'company-mode))
 
+;; rust-analyzer 表现优于 rls，racer 是非 lsp 方案中较快的，但目前没有处于积极维护状态
+;; rustup component add rust-src 安装标准库源码，不手动安装的话，rust-analyzer 也会尝试自动下载
+;; https://github.com/rust-analyzer/rust-analyzer/releases 下载二进制
+(with-eval-after-load 'nox
+  (add-to-list 'nox-server-programs
+               `(rust-mode . ("rust-analyzer"))))
 
-;; or 2. backends rust-analyzer use lsp
-;; https://github.com/rust-analyzer/rust-analyzer
-;; 使用rust-analyzer,缺点是不能使用snippet,但补全比rls强,rust-analyzer还在实验性阶段
-;; 如果要切换为rls,注释掉以下行即可,lsp默认调用rls
-(use-package ra-emacs-lsp
-  :defer t
-  :init
-  (add-hook 'rust-mode-hook #'lsp))
-
-;; (push '("rust" . company-lsp--rust-completion-snippet) company-lsp--snippet-functions)
 
 
 (provide 'init-rust)

@@ -34,7 +34,7 @@
 (local/load-package 'init-gud)
 
 (local/load-package 'init-lsp)
-(local/load-package 'init-eglot)
+(local/load-package 'init-nox)
 
 (local/load-package 'init-org)
 
