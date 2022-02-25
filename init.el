@@ -52,7 +52,7 @@
 (local/load-package 'init-surround)
 (local/load-package 'init-hydra)
 (local/load-package 'init-restclient)
-(local/load-package 'init-tabs)
+;; (local/load-package 'init-tabs)
 (local/load-package 'init-minimap)
 (local/load-package 'init-mark)
 (local/load-package 'init-bufler)
@@ -63,7 +63,7 @@
 
 (local/load-package 'init-edit)
 
-(local/load-package 'init-snails)
+;; (local/load-package 'init-snails)
 (local/load-package 'init-modeline)
 
 ;; (local/load-package 'init-evil-v3)
