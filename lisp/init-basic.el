@@ -13,21 +13,14 @@
     (exec-path-from-shell-initialize)))
 (local/after-init-hook 'exec-path-from-shell)
 
-;; (with-eval-after-load 'smex
-;;   (setq-default smex-save-file (expand-file-name ".smex-items" user-emacs-directory)))
+
 (local/after-init-hook 'smex)
 
 
-;; undo-tree undo-fu 二选一即可
-;; (with-eval-after-load 'undo-tree
-;;   (diminish 'undo-tree-mode)
-;;   (global-undo-tree-mode))
-;; (local/after-init-hook 'undo-tree)
-
-(with-eval-after-load 'undo-fu
-  (global-set-key (kbd "C-/")   'undo-fu-only-undo)
-  (global-set-key (kbd "M-_") 'undo-fu-only-redo))
-(local/after-init-hook 'undo-fu)
+(with-eval-after-load 'undo-tree
+  (diminish 'undo-tree-mode)
+  (global-undo-tree-mode))
+(local/after-init-hook 'undo-tree)
 
 
 ;; see also https://www.emacswiki.org/emacs/AutoSave `auto-save-visited-mode`
@@ -43,11 +36,13 @@
     (add-hook hook 'real-auto-save-mode)))
 (local/after-init-hook 'real-auto-save)
 
+
 (with-eval-after-load 'which-key
   (diminish 'which-key-mode)
   (which-key-setup-side-window-bottom)
   (which-key-mode))
 (local/after-init-hook 'which-key)
+
 
 (with-eval-after-load 'imenu-list
   (setq imenu-list-auto-resize nil)
@@ -57,11 +52,13 @@
   (setq imenu-list-focus-after-activation t))
 (local/after-init-hook 'imenu-list)
 
+
 (when (or *linux* *mac*)
   (with-eval-after-load 'flycheck
     (setq-default flycheck-disabled-checkers '(emacs-lisp emacs-lisp-checkdoc))
     (global-flycheck-mode))
   (local/after-init-hook 'flycheck))
+
 
 (with-eval-after-load 'diff-hl
   (global-diff-hl-mode)
@@ -70,23 +67,21 @@
   (add-hook 'after-revert-hook 'diff-hl-reset-reference-rev))
 (local/after-init-hook 'diff-hl)
 
-;; https://github.com/wolray/symbol-overlay/tree/master
-;; 一些mode的关键字会被忽略，在symbol-overlay-ignore-functions变量中定义相关mode的忽略函数
+
 (with-eval-after-load 'symbol-overlay
   (diminish 'symbol-overlay-mode)
   (dolist (hook '(prog-mode-hook
                   html-mode-hook
                   conf-mode-hook
                   text-mode-hook
+                  protobuf-mode-hook
                   yaml-mode-hook))
     (add-hook hook 'symbol-overlay-mode)))
 (local/after-init-hook 'symbol-overlay)
 
 
-
-;;; anzu
-;; 实时显示搜索及替换结果
 (with-eval-after-load 'anzu
+  ;; 实时显示搜索及替换结果
   (setq anzu-mode-lighter "")
   (global-anzu-mode)
   (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
@@ -94,8 +89,6 @@
 (local/after-init-hook 'anzu)
 
 
-
-;;; ace-isearch，可以结合 swiper 和 avy
 (defun local/config-ace-isearch()
   (require 'ace-isearch)
   (global-ace-isearch-mode +1)
@@ -107,27 +100,30 @@
 (add-hook 'after-init-hook #'local/config-ace-isearch)
 
 
-
-;; https://github.com/magnars/multiple-cursors.el/tree/master
 ;; To yank from the kill-rings of every cursor use yank-rectangle, normally found at C-x r y
 (local/after-init-hook 'multiple-cursors)
 
+
 (local/after-init-hook 'expand-region)
+
 
 (with-eval-after-load 'rainbow-delimiters
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 (local/after-init-hook 'rainbow-delimiters)
+
 
 (with-eval-after-load 'magit
   (define-key magit-hunk-section-map (kbd "RET") 'magit-diff-visit-file-other-window)
   (define-key magit-file-section-map (kbd "RET") 'magit-diff-visit-file-other-window))
 (local/after-init-hook 'magit)
 
+
 (with-eval-after-load 'browse-kill-ring
   (setq browse-kill-ring-highlight-current-entry t)
   (setq browse-kill-ring-highlight-inserted-item t)
   (setq browse-kill-ring-show-preview t))
 (local/after-init-hook 'browse-kill-ring)
+
 
 (with-eval-after-load 'recentf
   (recentf-mode t)
@@ -136,24 +132,28 @@
         (append '(abbreviate-file-name) recentf-filename-handlers)))
 (local/after-init-hook 'recentf)
 
+
 (local/after-init-hook 'goto-chg)
 
+
 (local/after-init-hook 'move-text)
+
 
 (with-eval-after-load 'dired-subtree
   (setq dired-subtree-use-backgrounds nil)
   (setq dired-subtree-line-prefix "        "))
 (local/after-init-hook 'dired-subtree)
 
+
 (with-eval-after-load 'highlight-indent-guides
   (setq highlight-indent-guides-method 'bitmap))
+
 
 (with-eval-after-load 'golden-ratio
   (global-set-key (kbd "M--") 'golden-ratio))
 (local/after-init-hook 'golden-ratio)
 
 
-;;; config terminal emacs
 (defun local/setup-terminal ()
   (unless (display-graphic-p)
     (xclip-mode)
@@ -165,8 +165,6 @@
 (add-hook 'after-init-hook 'local/setup-terminal)
 
 
-
-;;; better-jumper
 (with-eval-after-load 'better-jumper
   (better-jumper-mode +1)
   (global-set-key (kbd "M-*") 'better-jumper-set-jump)
@@ -176,32 +174,20 @@
 
 
 
-;; string-inflection
-;; default
 (global-set-key (kbd "C-c C-u") 'string-inflection-all-cycle)
-
-;; for ruby
 (add-hook 'ruby-mode-hook
           '(lambda ()
              (local-set-key (kbd "C-c C-u") 'string-inflection-ruby-style-cycle)))
-
-;; for java
 (add-hook 'java-mode-hook
           '(lambda ()
              (local-set-key (kbd "C-c C-u") 'string-inflection-java-style-cycle)))
-
-;; for python
 (add-hook 'python-mode-hook
           '(lambda ()
              (local-set-key (kbd "C-c C-u") 'string-inflection-python-style-cycle)))
-
 (add-hook 'protobuf-mode-hook
           '(lambda ()
              (local-set-key (kbd "C-c C-u") 'string-inflection-all-cycle)))
-
-;; easy-kill
 (global-set-key [remap kill-ring-save] 'easy-kill)
-
 
 
 (provide 'init-basic)
