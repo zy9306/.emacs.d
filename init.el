@@ -59,8 +59,6 @@
 
 (local/load-package 'init-tree-sitter)
 
-(local/load-package 'init-keybinding)
-
 (local/load-package 'init-edit)
 
 ;; (local/load-package 'init-snails)

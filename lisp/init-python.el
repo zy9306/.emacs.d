@@ -1,5 +1,16 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 
+(add-hook 'python-mode-hook
+          (lambda()
+            (local-unset-key (kbd "C-c C-p"))))
+(add-hook 'python-mode-hook
+          (lambda()
+            (local-unset-key (kbd "C-c C-l"))))
+(add-hook 'python-mode-hook
+          (lambda()
+            (local-unset-key (kbd "C-c C-f"))))
+
+
 (setenv "WORKON_HOME" "~/Envs")
 
 ;;; START NOX
@@ -88,40 +99,6 @@
       ))
 
   (add-hook 'python-mode-hook #'local/setup-flycheck-for-py))
-
-
-;;; No longer used.
-;; (with-eval-after-load 'auto-virtualenv
-;;   ;; add .python-version file to project root, then add path of virtualenv eg:~/Envs/venv36/
-;;   (add-hook 'python-mode-hook 'auto-virtualenv-set-virtualenv)
-;;   ;; Activate on changing buffers
-;;   (add-hook 'window-configuration-change-hook 'auto-virtualenv-set-virtualenv)
-;;   ;; Activate on focus in
-;;   (add-hook 'focus-in-hook 'auto-virtualenv-set-virtualenv)
-;;   ;; (add-hook 'projectile-after-switch-project-hook 'auto-virtualenv-set-virtualenv)
-;;   )
-
-;;; START anaconda-mode
-;; (use-package anaconda-mode
-;;   :ensure t
-;;   :defer t
-;;   :ensure company-anaconda
-
-;;   :diminish anaconda-mode
-
-;;   :hook ((python-mode . anaconda-mode)
-;;          )
-
-;;   :config
-;;   (require 'rx)
-;;   (eval-after-load "company"
-;;     '(add-to-list 'company-backends 'company-anaconda))
-
-;;   (global-set-key (kbd "C-c M-r") 'anaconda-mode-find-references)
-
-;;   (setq anaconda-eldoc-mode nil)
-;;   )
-;;; END anaconda-mode
 
 
 (provide 'init-python)

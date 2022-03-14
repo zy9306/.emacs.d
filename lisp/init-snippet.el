@@ -15,5 +15,7 @@
 
 (use-package yasnippet-snippets)
 
+(global-set-key (kbd "C-x j") 'yas-insert-snippet)
+
 
 (provide 'init-snippet)
