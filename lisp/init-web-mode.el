@@ -2,7 +2,11 @@
 
 (require-package 'tide)
 (require-package 'web-mode)
+(require-package 'prettier)
 
+;; npm install -g prettier
+(add-hook 'after-init-hook #'global-prettier-mode)
+(add-hook 'yaml-mode-hook (lambda () (prettier-mode -1)))
 
 (add-to-list 'auto-mode-alist '("\\.\\(js\\|es6\\)\\(\\.erb\\)?\\'" . js-mode))
 (add-to-list 'interpreter-mode-alist (cons "node" 'js2-mode))
@@ -37,8 +41,8 @@
 ;; aligns annotation to the right hand side
 (setq company-tooltip-align-annotations t)
 
-;; formats the buffer before saving
-(add-hook 'before-save-hook 'tide-format-before-save)
+;; use prettier
+;; (add-hook 'before-save-hook 'tide-format-before-save)
 
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
 
