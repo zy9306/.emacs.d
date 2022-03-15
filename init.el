@@ -30,7 +30,6 @@
 (local/load-package 'init-window)
 (local/load-package 'init-projectile)
 (local/load-package 'init-rg)
-(local/load-package 'init-gnu-global)
 (local/load-package 'init-gud)
 
 (local/load-package 'init-lsp)
