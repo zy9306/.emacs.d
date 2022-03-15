@@ -74,17 +74,6 @@
     "pkg": "duplicate-line",
     "repo": "git@github.com:manateelazycat/duplicate-line.git"
   },
-  "emacs-mini-frame": {
-    "commit": "57a049b9e1ea4a9b65e82fc10c8c7e70a042f636",
-    "ignore": [
-      "screenshots",
-      ".gitignore",
-      "LICENSE",
-      "README.md"
-    ],
-    "pkg": "emacs-mini-frame",
-    "repo": "git@github.com:muffinmad/emacs-mini-frame.git"
-  },
   "embark": {
     "commit": "2772ca0b35e8eb59724c31b5cb88ff802f21067a",
     "ignore": [

@@ -6,7 +6,6 @@
 (push (expand-file-name "site-lisp/consult" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/consult-projectile" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/duplicate-line" user-emacs-directory) load-path)
-(push (expand-file-name "site-lisp/emacs-mini-frame" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/embark" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/fuz.el" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/hydra-posframe" user-emacs-directory) load-path)
