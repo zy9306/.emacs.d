@@ -66,7 +66,6 @@
 (require-package 'markdown-mode)
 (require-package 'markdown-toc)
 (require-package 'memoize)
-(require-package 'minimap)
 (require-package 'move-text)
 (require-package 'multiple-cursors)
 (require-package 'nix-mode)

@@ -51,7 +51,6 @@
 (local/load-package 'init-hydra)
 (local/load-package 'init-restclient)
 ;; (local/load-package 'init-tabs)
-(local/load-package 'init-minimap)
 (local/load-package 'init-mark)
 (local/load-package 'init-bufler)
 
