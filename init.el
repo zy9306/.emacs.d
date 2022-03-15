@@ -45,7 +45,6 @@
 
 (local/load-package 'init-additional-major-mode)
 (local/load-package 'init-display-buffer)
-(local/load-package 'init-keyfreq)
 (local/load-package 'init-macro)
 (local/load-package 'init-snippet)
 (local/load-package 'init-folding)
