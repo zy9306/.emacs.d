@@ -16,7 +16,6 @@
 (push (expand-file-name "site-lisp/org-bars" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/ox-hugo" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/posframe" user-emacs-directory) load-path)
-(push (expand-file-name "site-lisp/snails" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/thing-edit" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/toggle-one-window" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/vertico" user-emacs-directory) load-path)

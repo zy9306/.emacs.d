@@ -60,7 +60,6 @@
 
 (local/load-package 'init-edit)
 
-;; (local/load-package 'init-snails)
 (local/load-package 'init-modeline)
 
 ;; (local/load-package 'init-evil-v3)
