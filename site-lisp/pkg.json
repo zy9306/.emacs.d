@@ -114,12 +114,6 @@
     "pkg": "ivy-posframe",
     "repo": "git@github.com:tumashu/ivy-posframe.git"
   },
-  "one-key": {
-    "commit": "2686dba1edaf1721b6ccaf3a2766afd1ee8a46d6",
-    "ignore": [],
-    "pkg": "one-key",
-    "repo": "git@github.com:manateelazycat/one-key.git"
-  },
   "orderless": {
     "commit": "1ccf74ffdbb0dd34caa63022e92f947c09c49c86",
     "ignore": [

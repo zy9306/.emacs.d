@@ -10,7 +10,6 @@
 (push (expand-file-name "site-lisp/fuz.el" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/hydra-posframe" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/ivy-posframe" user-emacs-directory) load-path)
-(push (expand-file-name "site-lisp/one-key" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/orderless" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/org-bars" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/ox-hugo" user-emacs-directory) load-path)
