@@ -18,8 +18,10 @@
 
           ("*Bufler*"
            :regexp nil
+           :select t
+           :align left
            :inhibit-window-quit t
-           :same t)
+           :size 0.20)
 
           ("\\*Flycheck errors\\*.*"
            :regexp t
