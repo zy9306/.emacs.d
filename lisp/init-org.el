@@ -110,7 +110,7 @@
       (journal (format "%s/Illyasviel/journal.org" local/cloud-dir)))
   (setq org-capture-templates
         `(
-          ("t" "TASK" entry (file ,task)
+          ("t" "Task" entry (file+headline ,task "Task")
            "* %u %?" :prepend t :empty-lines-after 2)
 
           ("c" "Chtholly" entry (file+headline ,Illyasviel "Chtholly")
