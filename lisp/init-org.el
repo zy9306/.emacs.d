@@ -95,6 +95,8 @@
         org-babel-default-header-args:python '((:results . "output") (:session . "py"))
         org-babel-default-header-args:emacs-lisp '((:results . "output") (:session . "elisp"))))
 
+
+;;; CAPTURE
 (when *win*
   (setq local/cloud-dir
         (expand-file-name
@@ -104,14 +106,14 @@
   (setq local/cloud-dir "~/OneDrive"))
 
 (let ((task (format "%s/Illyasviel/task.org" local/cloud-dir))
-      (Illyasviel (format "%s/Illyasviel/Illyasviel.org" local/cloud-dir))
+      (Illyasviel (format "%s/Illyasviel/Chtholly.org" local/cloud-dir))
       (journal (format "%s/Illyasviel/journal.org" local/cloud-dir)))
   (setq org-capture-templates
         `(
-          ("t" "Todo" entry (file ,task)
+          ("t" "TASK" entry (file ,task)
            "* %u %?" :prepend t :empty-lines-after 2)
 
-          ("c" "Illyasviel" entry (file+headline ,Illyasviel "Illyasviel")
+          ("c" "Chtholly" entry (file+headline ,Illyasviel "Chtholly")
            "* %u %?" :prepend t :empty-lines-after 2)
 
           ("j" "Journal" entry (file+datetree ,journal)
