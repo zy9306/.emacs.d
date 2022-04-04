@@ -103,8 +103,8 @@
 (setq backup-by-copying t)
 (setq delete-old-versions t)
 (setq delete-by-moving-to-trash t)
-(setq kept-old-versions 10)
-(setq kept-new-versions 10)
+(setq kept-old-versions 0)
+(setq kept-new-versions 20)
 
 (defun local/backup-on-save ()
   (let ((buffer-backed-up nil))
