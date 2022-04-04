@@ -97,6 +97,12 @@
       `((".*" . "~/.emacs.d/backups/")))
 (setq auto-save-file-name-transforms
       `((".*" "~/.emacs.d/autosaves/" t)))
+(setq version-control t)
+(setq backup-by-copying t)
+(setq delete-old-versions t)
+(setq delete-by-moving-to-trash t)
+(setq kept-old-versions 10)
+(setq kept-new-versions 10)
 
 ;; read-only
 (dir-locals-set-class-variables 'read-only
