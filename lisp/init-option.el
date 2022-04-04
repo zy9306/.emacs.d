@@ -90,6 +90,7 @@
 
 (setq dired-listing-switches "-al -h --group-directories-first --color=auto")
 
+
 ;; backup
 (make-directory "~/.emacs.d/autosaves/" t)
 (make-directory "~/.emacs.d/backups/" t)
@@ -98,11 +99,23 @@
 (setq auto-save-file-name-transforms
       `((".*" "~/.emacs.d/autosaves/" t)))
 (setq version-control t)
+(setq vc-make-backup-files t)
 (setq backup-by-copying t)
 (setq delete-old-versions t)
 (setq delete-by-moving-to-trash t)
 (setq kept-old-versions 10)
 (setq kept-new-versions 10)
+
+(defun local/backup-on-save ()
+  (let ((buffer-backed-up nil))
+    (if (<= (buffer-size) (* 1 1024 1024))  ;; 1 MB
+        (progn
+          (message "Made per save backup of %s." (buffer-name))
+          (backup-buffer))
+      (message "WARNING: File %s too large to backup." (buffer-name)))))
+
+(add-hook 'before-save-hook 'local/backup-on-save)
+
 
 ;; read-only
 (dir-locals-set-class-variables 'read-only
@@ -154,5 +167,6 @@
 ;; 调整鼠标滚动速度
 (setq mouse-wheel-progressive-speed nil)
 (setq mouse-wheel-scroll-amount '(1))
+
 
 (provide 'init-option)
