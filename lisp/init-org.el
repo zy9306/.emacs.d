@@ -146,7 +146,7 @@
 
 (defvar org-blank-lines-after-heading 1)
 
-(defvar org-blank-lines-after-content (cons 2 4))
+(defvar org-blank-lines-after-content (cons 2 2))
 
 (defun org-format-heading-blank-lines ()
   (interactive)
@@ -176,11 +176,12 @@
   (interactive "P")
   (save-excursion
     (org-save-outline-visibility t
-                                 (org-cycle '(64))
-                                 (message nil)
-                                 (goto-char (point-min))
-                                 (while (re-search-forward org-heading-regexp nil t)
-                                   (org-format-heading-blank-lines)))))
+      (org-cycle '(64))
+      (goto-char (point-min))
+      (while (re-search-forward org-heading-regexp nil t)
+        (org-format-heading-blank-lines))))
+  (save-buffer)
+  (revert-buffer-no-confirm))
 ;;; FORMATTER END
 
 
