@@ -259,4 +259,8 @@
 (local/after-init-hook 'general)
 
 
+;;; format
+(add-hook 'sh-mode-hook 'shfmt-on-save-mode)
+
+
 (provide 'init-basic)

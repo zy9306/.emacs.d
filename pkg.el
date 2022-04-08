@@ -85,6 +85,7 @@
 (require-package 'rg)
 (require-package 'selectrum)
 (require-package 'selectrum-prescient)
+(require-package 'shfmt)
 (require-package 'smex)
 (require-package 'string-inflection)
 (require-package 'symbol-overlay)
