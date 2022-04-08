@@ -260,6 +260,7 @@
 
 
 ;;; format
+(setq shfmt-arguments (list "-i" "2"))
 (add-hook 'sh-mode-hook 'shfmt-on-save-mode)
 
 
