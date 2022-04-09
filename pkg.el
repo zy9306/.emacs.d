@@ -72,7 +72,7 @@
 (require-package 'org-download)
 (require-package 'powerline)
 (require-package 'prescient)
-(require-package 'prescient)
+(require-package 'prettier)
 (require-package 'project)
 (require-package 'project-root)
 (require-package 'protobuf-mode)
