@@ -84,15 +84,6 @@
     "pkg": "embark",
     "repo": "git@github.com:oantolin/embark.git"
   },
-  "fuz.el": {
-    "commit": "fee874aa35d2ee6b12b836290b5c8eaa44175a28",
-    "ignore": [
-      ".github",
-      "README.org"
-    ],
-    "pkg": "fuz.el",
-    "repo": "git@github.com:rustify-emacs/fuz.el.git"
-  },
   "hydra-posframe": {
     "commit": "343a269b52d6fb6e5ae6c09d91833ff4620490ec",
     "ignore": [
