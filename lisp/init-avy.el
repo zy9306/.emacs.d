@@ -26,13 +26,4 @@
      (require 'isearch-dabbrev)
      (define-key isearch-mode-map (kbd "<tab>") 'isearch-dabbrev-expand)))
 
-(defun local/config-avy-zap()
-  (global-set-key (kbd "M-z") 'avy-zap-to-char-dwim)
-  (global-set-key (kbd "M-Z") 'avy-zap-up-to-char-dwim))
-(use-package avy-zap
-  :ensure t
-  :defer t
-  :init
-  (add-hook 'after-init-hook #'local/config-avy-zap))
-
 (provide 'init-avy)
