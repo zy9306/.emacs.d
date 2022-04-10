@@ -25,8 +25,6 @@
 (require-package 'company-restclient)
 (require-package 'company-tabnine)
 (require-package 'consult)
-(require-package 'counsel-etags)
-(require-package 'counsel-gtags)
 (require-package 'deadgrep)
 (require-package 'diff-hl)
 (require-package 'diminish)
