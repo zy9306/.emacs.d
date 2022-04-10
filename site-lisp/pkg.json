@@ -45,11 +45,6 @@
     "pkg": "citre",
     "repo": "git@github.com:universal-ctags/citre.git"
   },
-  "color-rg": {
-    "commit": "54635dd395b0976d6f2cedfefa404e67fe7746ee",
-    "pkg": "color-rg",
-    "repo": "git@github.com:manateelazycat/color-rg.git"
-  },
   "consult": {
     "commit": "39366355f4897dfae73d14d93dbe6ca97f7fc713",
     "ignore": [

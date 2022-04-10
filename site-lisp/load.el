@@ -2,7 +2,6 @@
 (push (expand-file-name "site-lisp/awesome-tray" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/better-jumper" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/citre" user-emacs-directory) load-path)
-(push (expand-file-name "site-lisp/color-rg" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/consult" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/consult-projectile" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/duplicate-line" user-emacs-directory) load-path)
