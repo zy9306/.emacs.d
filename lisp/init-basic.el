@@ -19,6 +19,8 @@
 
 (with-eval-after-load 'undo-tree
   (diminish 'undo-tree-mode)
+  ;; 不需要持久化
+  (setq undo-tree-auto-save-history nil)
   (global-undo-tree-mode)
   (global-set-key (kbd "M-_") 'undo-tree-redo))
 (local/after-init-hook 'undo-tree)
