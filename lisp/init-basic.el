@@ -205,17 +205,17 @@
 
 (global-set-key (kbd "C-c C-u") 'string-inflection-all-cycle)
 (add-hook 'ruby-mode-hook
-          '(lambda ()
-             (local-set-key (kbd "C-c C-u") 'string-inflection-ruby-style-cycle)))
+          (lambda ()
+            (local-set-key (kbd "C-c C-u") 'string-inflection-ruby-style-cycle)))
 (add-hook 'java-mode-hook
-          '(lambda ()
-             (local-set-key (kbd "C-c C-u") 'string-inflection-java-style-cycle)))
+          (lambda ()
+            (local-set-key (kbd "C-c C-u") 'string-inflection-java-style-cycle)))
 (add-hook 'python-mode-hook
-          '(lambda ()
-             (local-set-key (kbd "C-c C-u") 'string-inflection-python-style-cycle)))
+          (lambda ()
+            (local-set-key (kbd "C-c C-u") 'string-inflection-python-style-cycle)))
 (add-hook 'protobuf-mode-hook
-          '(lambda ()
-             (local-set-key (kbd "C-c C-u") 'string-inflection-all-cycle)))
+          (lambda ()
+            (local-set-key (kbd "C-c C-u") 'string-inflection-all-cycle)))
 (global-set-key [remap kill-ring-save] 'easy-kill)
 
 

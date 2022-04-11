@@ -59,9 +59,9 @@
 
   ;; Add `company-elisp' backend for elisp.
   (add-hook 'emacs-lisp-mode-hook
-            #'(lambda ()
-                (require 'company-elisp)
-                (push 'company-elisp company-backends)))
+            (lambda ()
+              (require 'company-elisp)
+              (push 'company-elisp company-backends)))
   )
 
 
@@ -83,11 +83,11 @@
 
   ;; make sure lsp at first
   (add-hook 'citre-mode-hook
-            '(lambda ()   (dolist (xref-backend '(nox-xref-backend))
-                            (if (member xref-backend xref-backend-functions)
-                                (progn
-                                  (setq xref-backend-functions (remove xref-backend xref-backend-functions))
-                                  (add-to-list 'xref-backend-functions xref-backend))))))
+            (lambda ()   (dolist (xref-backend '(nox-xref-backend))
+                           (if (member xref-backend xref-backend-functions)
+                               (progn
+                                 (setq xref-backend-functions (remove xref-backend xref-backend-functions))
+                                 (add-to-list 'xref-backend-functions xref-backend))))))
 
   (defun my--push-point-to-xref-marker-stack (&rest r)
     (xref-push-marker-stack (point-marker)))

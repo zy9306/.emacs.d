@@ -16,8 +16,8 @@
 ;;; START NOX
 
 (add-hook 'pyvenv-post-activate-hooks
-          '(lambda ()
-             (setq nox-python-path (executable-find "python"))))
+          (lambda ()
+            (setq nox-python-path (executable-find "python"))))
 
 ;; For pyright
 ;; sudo npm install -g pyright
