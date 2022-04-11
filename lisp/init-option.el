@@ -154,6 +154,10 @@
 (setq vimish-fold-dir (expand-file-name "vimish-fold" local/persist-dir))
 (setq project-list-file (expand-file-name "projects" local/persist-dir))
 
+(let ((undo-tree-history-dir (expand-file-name "undo-tree-history" local/persist-dir)))
+  (setq undo-tree-history-directory-alist `((".*" . ,undo-tree-history-dir))))
+
+
 (defun local/modify-syntax-entry ()
   (modify-syntax-entry ?_ "w"))
 (add-hook 'prog-mode-hook 'local/modify-syntax-entry)
