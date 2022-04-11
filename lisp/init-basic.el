@@ -19,7 +19,8 @@
 
 (with-eval-after-load 'undo-tree
   (diminish 'undo-tree-mode)
-  (global-undo-tree-mode))
+  (global-undo-tree-mode)
+  (global-set-key (kbd "M-_") 'undo-tree-redo))
 (local/after-init-hook 'undo-tree)
 
 
