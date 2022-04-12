@@ -174,7 +174,11 @@
 
 (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode)))
 
+(with-eval-after-load 'diredfl
+  (diredfl-global-mode))
+
 (local/after-init-hook 'dired-subtree)
+(local/after-init-hook 'diredfl)
 
 
 (with-eval-after-load 'highlight-indent-guides

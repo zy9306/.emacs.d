@@ -30,6 +30,7 @@
 (require-package 'diminish)
 (require-package 'dir-treeview)
 (require-package 'dired-subtree)
+(require-package 'diredfl)
 (require-package 'dockerfile-mode)
 (require-package 'easy-kill)
 (require-package 'eglot)
