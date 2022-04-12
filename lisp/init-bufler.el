@@ -5,7 +5,8 @@
   (bufler)
   (let ((buffer-window (get-buffer-window "*Bufler*")))
     (set-window-parameter buffer-window 'no-delete-other-windows t)
-    (set-window-dedicated-p buffer-window t)))
+    (set-window-dedicated-p buffer-window t)
+    (window-preserve-size buffer-window t t)))
 
 (with-eval-after-load 'bufler
   (global-set-key [remap list-buffers] 'local/bufler)
