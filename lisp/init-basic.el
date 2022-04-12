@@ -167,10 +167,12 @@
 
 (with-eval-after-load 'dired-subtree
   (setq dired-subtree-use-backgrounds nil)
-  (setq dired-subtree-line-prefix "        "))
+  (setq dired-subtree-line-prefix "  ↳"))
 
 (with-eval-after-load 'dired-subtree
   (define-key dired-mode-map (kbd "C-<return>") 'dired-subtree-toggle))
+
+(add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode)))
 
 (local/after-init-hook 'dired-subtree)
 
