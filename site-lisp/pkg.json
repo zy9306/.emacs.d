@@ -12,13 +12,19 @@
   },
   "awesome-tray": {
     "commit": "35b4c301d768cba199b73bac8270f2e4415673a1",
-    "ignore": ["README.md", "screenshot.png"],
+    "ignore": [
+      "README.md",
+      "screenshot.png"
+    ],
     "pkg": "awesome-tray",
     "repo": "git@github.com:manateelazycat/awesome-tray.git"
   },
   "better-jumper": {
     "commit": "3148a17b5920bba8ec4f81b717b99acde5fd5b74",
-    "ignore": ["Readme.md", "LICENSE"],
+    "ignore": [
+      "Readme.md",
+      "LICENSE"
+    ],
     "pkg": "better-jumper",
     "repo": "git@github.com:gilbertw1/better-jumper.git"
   },
@@ -41,43 +47,70 @@
   },
   "consult": {
     "commit": "39366355f4897dfae73d14d93dbe6ca97f7fc713",
-    "ignore": ["images", "CHANGELOG.org", "README.org", "LICENSE"],
+    "ignore": [
+      "images",
+      "CHANGELOG.org",
+      "README.org",
+      "LICENSE"
+    ],
     "pkg": "consult",
     "repo": "git@github.com:minad/consult.git"
   },
   "consult-projectile": {
     "commit": "655b328ce3fe51a8ff89d7b0a839bc8dfe9e51c0",
-    "ignore": ["README.org"],
+    "ignore": [
+      "README.org"
+    ],
     "pkg": "consult-projectile",
     "repo": "https://gitlab.com/OlMon/consult-projectile.git"
   },
   "duplicate-line": {
     "commit": "5abe4b81fa1618212938eb2e9b153975c34c11f1",
-    "ignore": ["README.md"],
+    "ignore": [
+      "README.md"
+    ],
     "pkg": "duplicate-line",
     "repo": "git@github.com:manateelazycat/duplicate-line.git"
   },
   "embark": {
     "commit": "2772ca0b35e8eb59724c31b5cb88ff802f21067a",
-    "ignore": [".gitignore", "LICENSE", "README.org"],
+    "ignore": [
+      ".gitignore",
+      "LICENSE",
+      "README.org"
+    ],
     "pkg": "embark",
     "repo": "git@github.com:oantolin/embark.git"
   },
   "hydra-posframe": {
     "commit": "343a269b52d6fb6e5ae6c09d91833ff4620490ec",
-    "ignore": [".github", ".gitignore", "screenshot", "LICENSE", "README.md"],
+    "ignore": [
+      ".github",
+      ".gitignore",
+      "screenshot",
+      "LICENSE",
+      "README.md"
+    ],
     "pkg": "hydra-posframe",
     "repo": "git@github.com:Ladicle/hydra-posframe.git"
   },
   "ivy-posframe": {
     "commit": "5d9420252ca855d6d206f1f8ef5993a6be3c618f",
-    "ignore": ["snapshots", "README.md"],
+    "ignore": [
+      "snapshots",
+      "README.md"
+    ],
     "pkg": "ivy-posframe",
     "repo": "git@github.com:tumashu/ivy-posframe.git"
   },
   "orderless": {
     "commit": "1ccf74ffdbb0dd34caa63022e92f947c09c49c86",
-    "ignore": ["images", ".gitignore", "LICENSE", "README.org"],
+    "ignore": [
+      "images",
+      ".gitignore",
+      "LICENSE",
+      "README.org"
+    ],
     "pkg": "orderless",
     "repo": "git@github.com:oantolin/orderless.git"
   },
@@ -111,25 +144,38 @@
   },
   "posframe": {
     "commit": "3b1dc400d286b0a4bd42e518bf3e7eedb49fd1e6",
-    "ignore": ["snapshots", ".gitignore", "README.org"],
+    "ignore": [
+      "snapshots",
+      ".gitignore",
+      "README.org"
+    ],
     "pkg": "posframe",
     "repo": "git@github.com:tumashu/posframe.git"
   },
   "thing-edit": {
     "commit": "1948ae5498e58233f782fa91db9fb49880c933ca",
-    "ignore": ["thing-edit.gif", "README.md"],
+    "ignore": [
+      "thing-edit.gif",
+      "README.md"
+    ],
     "pkg": "thing-edit",
     "repo": "git@github.com:manateelazycat/thing-edit.git"
   },
   "toggle-one-window": {
     "commit": "8ca741ca6be97c6049043aec6cec2e2bfbca5d19",
-    "ignore": ["README.md"],
+    "ignore": [
+      "README.md"
+    ],
     "pkg": "toggle-one-window",
     "repo": "git@github.com:manateelazycat/toggle-one-window.git"
   },
   "vertico": {
     "commit": "eedcb847869226701acaf9a36dce0a51d1b60862",
-    "ignore": ["LICENSE", "README.org", "screenshot.svg"],
+    "ignore": [
+      "LICENSE",
+      "README.org",
+      "screenshot.svg"
+    ],
     "pkg": "vertico",
     "repo": "git@github.com:minad/vertico.git"
   }

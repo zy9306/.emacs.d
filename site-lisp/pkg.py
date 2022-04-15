@@ -3,6 +3,7 @@
 import os
 import json
 import shutil
+import argparse
 import subprocess
 import sys
 from contextlib import contextmanager
@@ -12,23 +13,36 @@ from pathlib import Path
 pkg_file = "pkg.json"
 load_file = "load.el"
 
+parser = argparse.ArgumentParser()
+
+parser.add_argument("--add")
+parser.add_argument("--delete")
+parser.add_argument("--update")
+parser.add_argument("--commit")
+parser.add_argument("--exclude")
+parser.add_argument("--ignore")
+
+args = parser.parse_args()
+
 
 @contextmanager
-def chdir(path):
-    cwd = os.getcwd()
+def chdir(path, mkdir=False, cwd=None):
+    cwd_ = cwd or os.getcwd()
+    if mkdir:
+        Path(path).mkdir(parents=True, exist_ok=True)
     os.chdir(path)
     try:
         yield path
     finally:
-        os.chdir(cwd)
+        os.chdir(cwd_)
 
 
 def run_cmd(cmd_str, need_stdout=False):
-    kwargs = {}
+    kwargs = {"shell": True}
     if need_stdout:
         kwargs["stdout"] = subprocess.PIPE
 
-    rv = subprocess.run(cmd_str.split(" "), **kwargs)
+    rv = subprocess.run(cmd_str, **kwargs)
     if rv.returncode != 0:
         raise
 
@@ -114,15 +128,20 @@ def delete(pkg_info):
     write_load(pkg_info, delete=True)
 
 
-def get_pkg_info(pkg_name, pkg_repo, commit):
+def get_pkg_info(pkg_name, pkg_repo, commit, ignore=None):
     if pkg_name:
         with open(Path(pkg_file)) as f:
             pkg_map = json.load(f)
         if pkg_name not in pkg_map:
             raise Exception("PKG not found in pkg.json!")
+
         pkg_info = pkg_map[pkg_name]
         if commit:
-            pkg_info[commit] = commit
+            pkg_info["commit"] = commit
+
+        if ignore:
+            pkg_info["ignore"] = ignore.split(",")
+
         return pkg_info
 
     if pkg_repo:
@@ -137,42 +156,44 @@ def get_pkg_info(pkg_name, pkg_repo, commit):
         }
 
 
-def dispatch(argv):
-    action = argv.pop(0)
-    if action == "add":
-        repo = argv.pop(0)
-        commit = argv.pop(0) if argv else None
-        pkg_info = get_pkg_info(pkg_name=None, pkg_repo=repo, commit=commit)
-        fetch(pkg_info)
-        return
-
-    if action == "update":
-        pkg_name = argv.pop(0)
-        commit = argv.pop(0) if argv else None
+def dispatch():
+    if args.add:
         pkg_info = get_pkg_info(
-            pkg_name=pkg_name, pkg_repo=None, commit=commit
+            pkg_name=None,
+            pkg_repo=args.add,
+            commit=args.commit,
+            ignore=args.ignore,
         )
         fetch(pkg_info)
         return
 
-    if action == "delete":
-        pkg_name = argv.pop(0)
-        commit = argv.pop(0) if argv else None
+    elif args.delete:
         pkg_info = get_pkg_info(
-            pkg_name=pkg_name, pkg_repo=None, commit=commit
+            pkg_name=args.delete,
+            pkg_repo=None,
+            commit=args.commit,
+            ignore=args.ignore,
         )
         delete(pkg_info)
         return
 
-    raise Exception("No handle!")
+    elif args.update:
+        pkg_info = get_pkg_info(
+            pkg_name=args.update,
+            pkg_repo=None,
+            commit=args.commit,
+            ignore=args.ignore,
+        )
+        fetch(pkg_info)
+        return
+
+    else:
+        print("required add or delete or update")
+        return
 
 
 def main():
-    argv = sys.argv
-    argv.pop(0)
-    dispatch(argv)
-
-    print("Done!")
+    dispatch()
 
 
 if __name__ == "__main__":
