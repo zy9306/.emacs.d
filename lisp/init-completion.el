@@ -117,9 +117,12 @@
 (defun local/nox-result ()
   (ignore-errors (nox-completion-at-point)))
 
+(defun local/lsp-result ()
+  (ignore-errors (lsp-completion-at-point)))
+
 (defun lsp-citre-capf-function ()
   "A capf backend that tries lsp first, then Citre."
-  (let ((lsp-result (local/nox-result)))
+  (let ((lsp-result (local/lsp-result)))
     (if (and lsp-result
              (try-completion
               (buffer-substring (nth 0 lsp-result)
