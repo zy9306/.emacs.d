@@ -33,8 +33,12 @@
   (let ((choices '("pyright" "mspyls")))
     (setq nox-python-server (completing-read "Swith to:" choices))))
 
+;; (when (executable-find "pyright-langserver")
+;;   (add-hook 'python-mode-hook 'local/nox-ensure))
+
+
 (when (executable-find "pyright-langserver")
-  (add-hook 'python-mode-hook #'local/nox-ensure))
+  (add-hook 'python-mode-hook #'local/lsp-python))
 
 ;;; END NOX
 
