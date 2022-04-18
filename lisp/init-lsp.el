@@ -33,7 +33,7 @@
   (setq lsp-signature-render-documentation nil)
   (setq lsp-signature-doc-lines 2)
 
-  (setq lsp-keep-workspace-alive t)
+  (setq lsp-keep-workspace-alive nil)
 
   (define-key lsp-mode-map [remap xref-find-definitions] 'lsp-find-definition)
   (define-key lsp-mode-map [remap xref-find-references] 'lsp-find-references)
