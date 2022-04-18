@@ -64,9 +64,14 @@
 
 (set-default 'truncate-lines t)
 
-(when (version<= "26.0.50" emacs-version )
+(when (version<= "26.0.50" emacs-version)
   (setq display-line-numbers-type 'relative)
   (global-display-line-numbers-mode))
+
+
+;; version>=28
+(setq dired-kill-when-opening-new-dired-buffer t)
+
 
 ;; TODO: this don't work
 (setq show-paren-when-point-inside-paren t)
