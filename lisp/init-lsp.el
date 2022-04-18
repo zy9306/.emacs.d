@@ -24,6 +24,8 @@
   (setq lsp-ui-mode nil)
   (setq lsp-idle-delay 0.500)
 
+  (setq lsp-enable-file-watchers nil)
+
   (setq lsp-headerline-breadcrumb-enable nil)
 
   (setq lsp-auto-guess-root t)
