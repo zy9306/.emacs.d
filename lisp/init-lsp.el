@@ -29,7 +29,7 @@
   (setq lsp-auto-guess-root t)
   (setq lsp-enable-imenu nil)
 
-  (setq lsp-signature-auto-activate t)
+  (setq lsp-signature-auto-activate nil)
   (setq lsp-signature-render-documentation nil)
   (setq lsp-signature-doc-lines 2)
 
@@ -76,18 +76,18 @@
   (require 'lsp-mode)
   (lsp-register-custom-settings
    '(("gopls.usePlaceholders" lsp-go-use-placeholders t)
-     ("gopls.hoverKind" lsp-go-hover-kind)
+     ("gopls.hoverKind" lsp-go-hover-kind "NoDocumentation")
      ("gopls.buildFlags" lsp-go-build-flags)
-     ("gopls.env" lsp-go-env)
+     ("gopls.env" lsp-go-env nil)
      ("gopls.linkTarget" lsp-go-link-target)
      ("gopls.codelenses" lsp-go-codelenses)
      ("gopls.linksInHover" lsp-go-links-in-hover t)
-     ("gopls.gofumpt" lsp-go-use-gofumpt t)
+     ("gopls.gofumpt" lsp-go-use-gofumpt nil)
      ("gopls.local" lsp-go-goimports-local)
      ("gopls.directoryFilters" lsp-go-directory-filters)
-     ("gopls.analyses" lsp-go-analyses)
+     ("gopls.analyses" lsp-go-analyses nil)
      ("gopls.importShortcut" lsp-go-import-shortcut)
-     ("gopls.symbolMatcher" lsp-go-symbol-matcher)
+     ("gopls.symbolMatcher" lsp-go-symbol-matcher "FastFuzzy")
      ("gopls.symbolStyle" lsp-go-symbol-style)))
 
   (local/lsp-deferred))
