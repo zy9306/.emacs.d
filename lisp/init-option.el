@@ -50,7 +50,7 @@
 
 (set-default 'truncate-lines t)
 
-(setq message-truncate-lines t)
+(set-default 'message-truncate-lines t)
 
 (when (version<= "26.0.50" emacs-version)
   (setq display-line-numbers-type 'relative)
