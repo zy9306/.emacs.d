@@ -36,21 +36,7 @@
 (if (fboundp 'menu-bar-mode)
     (menu-bar-mode -1))
 
-
-
-;; 项目名 + 文件名
-(with-eval-after-load 'projectile
-  (require 'projectile)
-  (setq frame-title-format
-        '("miku@"(:eval (projectile-project-name)) ": "
-          (:eval (if (buffer-file-name)
-                     (abbreviate-file-name (buffer-file-name))
-                   "%b")))))
-
-
-
 (setq-default cursor-type 'box)  ;; box 方块
-
 
 (delete-selection-mode t)
 (electric-pair-mode t)
@@ -63,6 +49,8 @@
 ;; (global-hl-line-mode t)
 
 (set-default 'truncate-lines t)
+
+(setq message-truncate-lines t)
 
 (when (version<= "26.0.50" emacs-version)
   (setq display-line-numbers-type 'relative)
