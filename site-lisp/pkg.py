@@ -5,7 +5,6 @@ import json
 import shutil
 import argparse
 import subprocess
-import sys
 from contextlib import contextmanager
 from pathlib import Path
 
@@ -129,6 +128,7 @@ def delete(pkg_info):
 
 
 def get_pkg_info(pkg_name, pkg_repo, commit, ignore=None):
+    ignore = ignore.split(",") if ignore else []
     if pkg_name:
         with open(Path(pkg_file)) as f:
             pkg_map = json.load(f)
@@ -136,11 +136,9 @@ def get_pkg_info(pkg_name, pkg_repo, commit, ignore=None):
             raise Exception("PKG not found in pkg.json!")
 
         pkg_info = pkg_map[pkg_name]
+        pkg_info["ignore"] = ignore
         if commit:
             pkg_info["commit"] = commit
-
-        if ignore:
-            pkg_info["ignore"] = ignore.split(",")
 
         return pkg_info
 
@@ -153,6 +151,7 @@ def get_pkg_info(pkg_name, pkg_repo, commit, ignore=None):
             "pkg": pkg_name,
             "repo": pkg_repo,
             "commit": commit,
+            "ignore": ignore,
         }
 
 
