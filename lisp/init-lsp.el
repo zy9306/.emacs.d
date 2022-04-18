@@ -54,8 +54,6 @@
 (defun local/lsp-python ()
   (require 'lsp-pyright)
 
-  (setq lsp-python-ms-completion-add-brackets nil)
-
   (lsp-register-custom-settings
    `(("pyright.disableLanguageServices" lsp-pyright-disable-language-services t)
      ("pyright.disableOrganizeImports" lsp-pyright-disable-organize-imports t)
@@ -70,6 +68,27 @@
      ("python.analysis.extraPaths" lsp-pyright-extra-paths)
      ("python.pythonPath" lsp-pyright-locate-python)
      ("python.venvPath" (lambda () (or lsp-pyright-venv-path "")))))
+
+  (local/lsp-deferred))
+
+
+(defun local/lsp-go ()
+  (require 'lsp-mode)
+  (lsp-register-custom-settings
+   '(("gopls.usePlaceholders" lsp-go-use-placeholders t)
+     ("gopls.hoverKind" lsp-go-hover-kind)
+     ("gopls.buildFlags" lsp-go-build-flags)
+     ("gopls.env" lsp-go-env)
+     ("gopls.linkTarget" lsp-go-link-target)
+     ("gopls.codelenses" lsp-go-codelenses)
+     ("gopls.linksInHover" lsp-go-links-in-hover t)
+     ("gopls.gofumpt" lsp-go-use-gofumpt t)
+     ("gopls.local" lsp-go-goimports-local)
+     ("gopls.directoryFilters" lsp-go-directory-filters)
+     ("gopls.analyses" lsp-go-analyses)
+     ("gopls.importShortcut" lsp-go-import-shortcut)
+     ("gopls.symbolMatcher" lsp-go-symbol-matcher)
+     ("gopls.symbolStyle" lsp-go-symbol-style)))
 
   (local/lsp-deferred))
 
