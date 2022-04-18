@@ -70,7 +70,7 @@
 
 
 ;; version>=28
-(setq dired-kill-when-opening-new-dired-buffer t)
+(setq dired-kill-when-opening-new-dired-buffer nil)
 
 
 ;; TODO: this don't work
