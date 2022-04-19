@@ -1,10 +1,8 @@
-;;; -*- coding: utf-8; lexical-binding: t; -*-
-
-
+;;; option
 (with-eval-after-load 'company
   (setq company-idle-delay 0.2)
   (setq company-tooltip-idle-delay 0.5)
-  (setq company-minimum-prefix-length 1)
+  (setq company-minimum-prefix-length 2)
   (setq company-require-match nil)
   (setq company-dabbrev-downcase nil)  ;; 补全时不要忽略大小写
   (setq company-dabbrev-ignore-case nil)
@@ -25,19 +23,8 @@
 (local/after-init-hook 'company)
 
 
-;;; config backends
+;;; backends
 ;; https://manateelazycat.github.io/emacs/2021/06/30/company-multiple-backends.html
-
-;; (defun local/config-company-backends ()
-;;   (require 'company)
-;;   (setq company-backends
-;;         '((company-dabbrev
-;;            company-dabbrev-code
-;;            company-keywords
-;;            company-files
-;;            company-citre
-;;            company-capf))))
-
 (defun local/config-company-backends ()
   (require 'company)
   (setq company-backends
@@ -61,16 +48,12 @@
   (add-hook 'emacs-lisp-mode-hook
             (lambda ()
               (require 'company-elisp)
-              (push 'company-elisp company-backends)))
-  )
-
+              (push 'company-elisp company-backends))))
 
 (with-eval-after-load 'company (local/config-company-backends))
 
-
-;; 电脑性能的话不好不要加到 company-backends 里
+;; 机器性能的话不好不要加到 company-backends 里
 (global-set-key (kbd "M-<RET>") 'company-tabnine)
-
 
 
 ;;; citre
@@ -112,7 +95,6 @@
     (candidates (all-completions -arg (citre-capf--get-collection -arg)))
     (ignore-case (not citre-completion-case-sensitive))))
 
-
 ;; Put company-citre before company-capf if you don't use the following
 (defun local/nox-result ()
   (ignore-errors (nox-completion-at-point)))
@@ -137,9 +119,7 @@
 
 (add-hook 'citre-mode-hook #'enable-lsp-citre-capf-backend)
 
-
 (local/after-init-hook 'citre)
-
 
 
 (provide 'init-completion)
