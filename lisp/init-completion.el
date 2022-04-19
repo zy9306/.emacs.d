@@ -123,11 +123,11 @@
 (defun lsp-citre-capf-function ()
   "A capf backend that tries lsp first, then Citre."
   (let ((lsp-result (local/lsp-result)))
-    (if (and lsp-result
-             (try-completion
-              (buffer-substring (nth 0 lsp-result)
-                                (nth 1 lsp-result))
-              (nth 2 lsp-result)))
+    (if (ignore-errors (and lsp-result
+                            (try-completion
+                             (buffer-substring (nth 0 lsp-result)
+                                               (nth 1 lsp-result))
+                             (nth 2 lsp-result))))
         lsp-result
       (citre-completion-at-point))))
 
