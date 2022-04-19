@@ -1,4 +1,4 @@
-;; lsp
+;;; lsp
 (setenv "WORKON_HOME" "~/Envs")
 
 (add-hook 'pyvenv-post-activate-hooks
@@ -34,22 +34,27 @@
 
 
 ;;; utils
-(defun local/pytest-original-cmd ()
-  (interactive)
-  (setq pytest-global-name "py.test --no-cov")
-  (message pytest-global-name))
-
 (defun local/pytest-shanbay-flask ()
   (interactive)
-  (setenv "PROC_ENV" "flask")
-  (setq pytest-global-name "flask test --no-cov")
-  (message pytest-global-name))
+  (require 'pytest)
+  (require 'pytest)
+  (let* ((test-project-root (pytest-find-project-root))
+         (test-obj (pytest-py-testable))
+         (test-cmd (format "FLASK_ENV=testing PROC_ENV=flask flask test -s --no-cov %s" test-obj)))
+    (setq default-directory test-project-root)
+    (message test-cmd)
+    (async-shell-command test-cmd "*python-test-flask*")))
 
 (defun local/pytest-shanbay-sea ()
   (interactive)
-  (setenv "PROC_ENV" "sea")
-  (setq pytest-global-name "sea test --no-cov")
-  (message pytest-global-name))
+  (require 'pytest)
+  (require 'pytest)
+  (let* ((test-project-root (pytest-find-project-root))
+         (test-obj (pytest-py-testable))
+         (test-cmd (format "FLASK_ENV=testing PROC_ENV=sea sea test -s --no-cov %s" test-obj)))
+    (setq default-directory test-project-root)
+    (message test-cmd)
+    (async-shell-command test-cmd "*python-test-sea*")))
 
 (defun local/pdb-current-test ()
   (interactive)
