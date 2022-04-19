@@ -24,6 +24,9 @@
   (setq lsp-ui-mode nil)
   (setq lsp-idle-delay 0.500)
 
+  ;; use `local/config-company-backends'
+  (setq lsp-completion-provider :none)
+
   (setq lsp-enable-file-watchers nil)
 
   (setq lsp-headerline-breadcrumb-enable nil)
