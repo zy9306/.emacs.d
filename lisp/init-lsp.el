@@ -24,8 +24,9 @@
   (setq lsp-ui-mode nil)
   (setq lsp-idle-delay 0.500)
 
-  ;; use `local/config-company-backends'
-  ;; 只用 local/config-company-backends 结果排序会有问题，暂时禁用
+  ;; 启用 :capf 时会将 company-capf 插入到
+  ;; `local/config-company-backends' 设置的组的前面如果禁用则结果排序
+  ;; 会有问题，暂时禁用
   ;; (setq lsp-completion-provider :none)
 
   (setq lsp-enable-file-watchers nil)
