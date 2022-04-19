@@ -25,8 +25,8 @@
   (setq lsp-idle-delay 0.500)
 
   ;; 启用 :capf 时会将 company-capf 插入到
-  ;; `local/config-company-backends' 设置的组的前面如果禁用则结果排序
-  ;; 会有问题，暂时禁用
+  ;; `local/config-company-backends' 设置的组的前面，如果禁用则结果排
+  ;; 序会有问题，暂时禁用
   ;; (setq lsp-completion-provider :none)
 
   (setq lsp-enable-file-watchers nil)
@@ -50,6 +50,11 @@
   (setq lsp-enable-links nil)
   (setq lsp-enable-symbol-highlighting nil))
 
+(defun local/replace-lsp-completion-at-point ()
+  (setq-local completion-at-point-functions nil)
+  (add-hook 'completion-at-point-functions 'lsp-citre-capf-function nil t))
+
+(add-hook 'lsp-completion-mode-hook 'local/replace-lsp-completion-at-point)
 
 (defun local/lsp-deferred ()
   (lsp-deferred)

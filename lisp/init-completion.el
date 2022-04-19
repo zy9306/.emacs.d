@@ -114,10 +114,10 @@
       (citre-completion-at-point))))
 
 (defun enable-lsp-citre-capf-backend ()
-  "Enable the lsp + Citre capf backend in current buffer."
-  (add-hook 'completion-at-point-functions #'lsp-citre-capf-function nil t))
+  (setq-local completion-at-point-functions nil)
+  (add-hook 'completion-at-point-functions 'lsp-citre-capf-function nil t))
 
-(add-hook 'citre-mode-hook #'enable-lsp-citre-capf-backend)
+(add-hook 'citre-mode-hook 'enable-lsp-citre-capf-backend)
 
 (local/after-init-hook 'citre)
 
