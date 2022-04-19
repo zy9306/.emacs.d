@@ -25,7 +25,8 @@
   (setq lsp-idle-delay 0.500)
 
   ;; use `local/config-company-backends'
-  (setq lsp-completion-provider :none)
+  ;; 只用 local/config-company-backends 结果排序会有问题，暂时禁用
+  ;; (setq lsp-completion-provider :none)
 
   (setq lsp-enable-file-watchers nil)
 
@@ -78,7 +79,7 @@
 
 
 (defun local/lsp-go ()
-  (require 'lsp-mode)
+  (require 'lsp-go)
   (lsp-register-custom-settings
    '(("gopls.usePlaceholders" lsp-go-use-placeholders t)
      ("gopls.hoverKind" lsp-go-hover-kind "NoDocumentation")
