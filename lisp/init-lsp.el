@@ -33,7 +33,7 @@
 
   (setq lsp-signature-auto-activate nil)
   (setq lsp-signature-render-documentation nil)
-  (setq lsp-signature-doc-lines 2)
+  (setq lsp-signature-doc-lines 1)
 
   (setq lsp-keep-workspace-alive nil)
 
