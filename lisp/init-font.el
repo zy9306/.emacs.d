@@ -1,6 +1,3 @@
-;; -*- coding: utf-8; lexical-binding: t; -*-
-
-
 (setq
  local/font-size-daemonp 16
  local/font-size-linux 16
@@ -16,7 +13,7 @@
 ;; English Font
 (when *linux*
   (set-face-attribute 'default nil :font (format "Source Code Pro %d" local/font-size-linux))
-)
+  )
 (when *win*
   (set-face-attribute 'default nil :font (format "Source Code Pro %d" local/font-size-win))
 
@@ -26,7 +23,7 @@
 (when *mac*
   ;; mac dpi is too high, so enlarge font
   (set-face-attribute 'default nil :font (format "Source Code Pro %d" local/font-size-mac))
-)
+  )
 
 ;; CJK Font
 (when (display-graphic-p)
@@ -37,11 +34,11 @@
     (set-fontset-font (frame-parameter nil 'font)
                       charset (font-spec :family "FZKai-Z03")))
 
-    ;; C-u C-x = 查看当前选中的字符所用的字体
-    ;; 中英文等宽可调至1.2左右，1.0即为等高，等宽等高二选一
-    ;; 调整倍数使以下中文和英文长度相等（等宽）
-    ;; 你你你你你你你你你你你你你你你你你你你你
-    ;; aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  ;; C-u C-x = 查看当前选中的字符所用的字体
+  ;; 中英文等宽可调至1.2左右，1.0即为等高，等宽等高二选一
+  ;; 调整倍数使以下中文和英文长度相等（等宽）
+  ;; 你你你你你你你你你你你你你你你你你你你你
+  ;; aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
   (setq face-font-rescale-alist '(("FZKai-Z03" . 1.0))))
 
 
