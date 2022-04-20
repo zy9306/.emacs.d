@@ -5,7 +5,7 @@
  local/font-size-daemonp 16
  local/font-size-linux 16
  local/font-size-win 16
- local/font-size-mac 18
+ local/font-size-mac 16
  )
 
 
