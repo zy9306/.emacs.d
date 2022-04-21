@@ -66,12 +66,10 @@
 (defun local/lsp-python ()
   (require 'lsp-pyright)
 
-  (setq lsp-pyright-auto-import-completions nil)
-
   (lsp-register-custom-settings
    `(("pyright.disableLanguageServices" lsp-pyright-disable-language-services t)
      ("pyright.disableOrganizeImports" lsp-pyright-disable-organize-imports t)
-     ("python.analysis.autoImportCompletions" lsp-pyright-auto-import-completions nil)
+     ("python.analysis.autoImportCompletions" lsp-pyright-auto-import-completions t)
      ("python.analysis.typeshedPaths" lsp-pyright-typeshed-paths)
      ("python.analysis.stubPath" lsp-pyright-stub-path)
      ("python.analysis.useLibraryCodeForTypes" lsp-pyright-use-library-code-for-types t)
