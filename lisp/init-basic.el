@@ -17,18 +17,22 @@
 (local/after-init-hook 'smex)
 
 
-(with-eval-after-load 'undo-tree
-  ;; 28 自带了 undo-redo, 可以试试
-  ;; 也可以试试这个可视化包 https://github.com/casouri/vundo
-  (diminish 'undo-tree-mode)
-  ;; 不需要持久化
-  (setq undo-tree-auto-save-history nil)
-  (global-undo-tree-mode)
-  ;; also C-_
-  (global-set-key (kbd "C-/") 'undo-tree-undo)
-  ;; alse C-?
-  (global-set-key (kbd "M-_") 'undo-tree-redo))
-(local/after-init-hook 'undo-tree)
+(if (version<= "28.0" emacs-version)
+    (progn
+      (global-set-key (kbd "C-/") 'undo)
+      (global-set-key (kbd "M-_") 'undo-redo))
+  (progn
+    (with-eval-after-load 'undo-tree
+      ;; 也可以试试这个可视化包 https://github.com/casouri/vundo
+      (diminish 'undo-tree-mode)
+      ;; 不需要持久化
+      (setq undo-tree-auto-save-history nil)
+      (global-undo-tree-mode)
+      ;; also C-_
+      (global-set-key (kbd "C-/") 'undo-tree-undo)
+      ;; alse C-?
+      (global-set-key (kbd "M-_") 'undo-tree-redo))
+    (local/after-init-hook 'undo-tree)))
 
 
 ;; see also https://www.emacswiki.org/emacs/AutoSave `auto-save-visited-mode`
