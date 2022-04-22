@@ -166,4 +166,7 @@
   ("\"" emacs-surround))
 
 
+(global-set-key (kbd "M-\"") 'emacs-surround)
+(global-set-key (kbd "M-]") #'embrace-commander)
+
 (provide 'init-edit)

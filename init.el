@@ -46,7 +46,6 @@
 (local/load-package 'init-macro)
 (local/load-package 'init-snippet)
 (local/load-package 'init-folding)
-(local/load-package 'init-surround)
 (local/load-package 'init-hydra)
 (local/load-package 'init-restclient)
 ;; (local/load-package 'init-tabs)
