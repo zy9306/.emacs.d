@@ -130,7 +130,7 @@
   ("df" (lambda () (interactive) (local/defun "cut")))
   ("dp" (lambda () (interactive) (local/inside-pairs "cut")))
   ("dap" (lambda () (interactive) (local/outside-pairs "cut")))
-  ("di'" (lambda () (interactive) (local/inside-quotes "cut")))
+  ("d'" (lambda () (interactive) (local/inside-quotes "cut")))
   ("da'" (lambda () (interactive) (local/outside-quotes "cut")))
 
   ;; er delete
