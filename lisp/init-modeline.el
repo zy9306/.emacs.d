@@ -27,8 +27,6 @@
           "coding-system"
           "battery"
           "date")))
-(local/after-init-hook 'awesome-tray)
-
 
 
 ;;; spaceline
@@ -82,7 +80,11 @@
    'mode-line nil
    :background "#e7e7e7" :box '(:line-width 1 :color "grey75"))
   )
-;; (local/after-init-hook 'spaceline)
+
+
+(if (display-graphic-p)
+    (local/after-init-hook 'awesome-tray)
+  (local/after-init-hook 'spaceline))
 
 
 
