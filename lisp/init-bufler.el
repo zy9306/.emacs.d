@@ -1,22 +1,27 @@
 (global-set-key (kbd "C-x C-S-b") 'list-buffers)
 
-(defun local/bufler ()
+(defun local/toggle-bufler ()
   (interactive)
-  (bufler)
   (let ((buffer-window (get-buffer-window "*Bufler*")))
-    (set-window-parameter buffer-window 'no-delete-other-windows t)
-    (set-window-dedicated-p buffer-window t)
-    (window-preserve-size buffer-window t t)
-    (window-resize
-     buffer-window
-     (- 25 (window-size buffer-window t nil))
-     t t nil)))
+    (if buffer-window
+        (progn
+          (delete-window buffer-window)
+          (kill-buffer "*Bufler*"))
+      (progn
+        (bufler)
+        (set-window-parameter buffer-window 'no-delete-other-windows t)
+        (set-window-dedicated-p buffer-window t)
+        (window-preserve-size buffer-window t t)
+        (window-resize
+         buffer-window
+         (- 25 (window-size buffer-window t nil))
+         t t nil)))))
 
 (with-eval-after-load 'bufler
-  (global-set-key [remap list-buffers] 'local/bufler)
+  (global-set-key [remap list-buffers] 'local/toggle-bufler)
 
   (with-eval-after-load 'key-chord
-    (key-chord-define-global "BB" 'local/bufler))
+    (key-chord-define-global "BB" 'local/toggle-bufler))
 
   (bufler-define-buffer-command switch "Switch to buffer."
     (lambda (buffer)
