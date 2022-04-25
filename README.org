@@ -1,7 +1,55 @@
 #+OPTIONS: ^:{}
 #+OPTIONS: -:nil
 
-* 编译安装(Debian)
+* install by nix
+
+#+begin_src sh
+nix-env -iA nixpkgs.emacs
+
+nix-env -iA nixpkgs.emacs28NativeComp
+#+end_src
+
+
+* install by homebrew
+
+fix mac shortcut
+
+系统偏好设置->键盘->快捷键->App快捷键
+
+- 取消"显示帮助菜单"
+- 新建一个"表情与符号"快捷键覆盖掉默认的C-M-SPC
+
+(选所有应用程序，菜单标题直接写系统显示的标题，即"表情与符号")
+
+
+** emacs-plus
+
+https://github.com/d12frosted/homebrew-emacs-plus
+
+#+begin_src sh
+brew tap d12frosted/emacs-plus
+brew install emacs-plus@28 --with-dbus --with-x11 --with-xwidgets --with-imagemagick --with-native-comp
+
+brew link --overwrite --dry-run emacs-plus@28
+brew link --overwrite emacs-plus@28
+ln -s /usr/local/opt/emacs-plus@28/Emacs.app /Applications
+#+end_src
+
+
+** emacsmacport
+
+https://github.com/railwaycat/homebrew-emacsmacport
+
+#+begin_src sh
+brew tap railwaycat/emacsmacport
+
+brew install --cask emacs-mac
+
+# /Applications/Emacs.app/Contents/MacOS/Emacs
+#+end_src
+
+
+* compile in debian
 
 #+begin_quote
 https://mirrors.syringanetworks.net/gnu/emacs/
@@ -47,9 +95,8 @@ sudo ldconfig /usr/local/lib64
 
 至此，应该能正常编译了
 
-如果包管理有最新版，可以直接用包管理的
 
-* 一些可能的问题
+* post install
 
 .zshrc 或 .bashrc 需添加以下内容，否则通过终端打开无法输入中文
 #+begin_src shell
