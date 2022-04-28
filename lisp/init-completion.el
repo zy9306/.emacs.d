@@ -122,4 +122,25 @@
 (local/after-init-hook 'citre)
 
 
+;;; 禁用 lsp-pyright 自动导入，通过参数好像禁用不掉
+(defun company-transform-pyright (candidates)
+  (mapcar (lambda (c)
+            (let ((annotation
+                   (ignore-errors
+                     (company-capf--annotation c))))
+              (if (and
+                   annotation
+                   (string-prefix-p
+                    " Auto-import"
+                    (company-capf--annotation c)))
+                  (setq candidates (delete c candidates)))))
+          candidates)
+  candidates)
+
+
+(add-hook 'python-mode-hook
+          (lambda ()
+            (setq-local company-transformers '(delete-dups company-transform-pyright))))
+
+
 (provide 'init-completion)
