@@ -20,6 +20,7 @@ parser.add_argument("--update")
 parser.add_argument("--commit")
 parser.add_argument("--exclude")
 parser.add_argument("--ignore")
+parser.add_argument("--only_el", default=False, action="store_true")
 
 args = parser.parse_args()
 
@@ -88,6 +89,26 @@ def write_pkg(pkg_info, delete=False):
         json.dump(pkg_infos, f, indent=2, sort_keys=True)
 
 
+def rm_empty_dir(path):
+    path = Path(path)
+    items = [_ for _ in path.glob("**/*") if _.is_dir()]
+    items.sort(key=lambda item: -len(str(item)))
+    for item in items:
+        if not [_ for _ in item.glob("**/*")]:
+            print(f"remove {item}")
+            shutil.rmtree(item, ignore_errors=False)
+
+
+def rm_dir_or_file(path):
+    path = Path(path)
+    if not path.exists():
+        return
+    if path.is_dir():
+        shutil.rmtree(path, ignore_errors=True)
+    else:
+        os.remove(path)
+
+
 def fetch(pkg_info):
     pkg = pkg_info["pkg"]
     path = Path(pkg)
@@ -103,14 +124,19 @@ def fetch(pkg_info):
             run_cmd(f"git checkout {commit}")
         ignore = pkg_info.get("ignore")
         shutil.rmtree(".git", ignore_errors=True)
+        if pkg_info.get("only_el"):
+            for p in Path(".").glob("**/*"):
+                if p.is_dir():
+                    continue
+                if p.suffix == ".el":
+                    continue
+                print(f"remove {p}")
+                rm_dir_or_file(p)
+            rm_empty_dir(".")
+
         if ignore:
             for i in ignore:
-                tmp_path = Path(i)
-                if tmp_path.exists():
-                    if tmp_path.is_dir():
-                        shutil.rmtree(i, ignore_errors=True)
-                    else:
-                        os.remove(i)
+                rm_dir_or_file(i)
         else:
             pkg_info["ignore"] = []
 
@@ -127,7 +153,7 @@ def delete(pkg_info):
     write_load(pkg_info, delete=True)
 
 
-def get_pkg_info(pkg_name, pkg_repo, commit, ignore=None):
+def get_pkg_info(pkg_name, pkg_repo, commit, ignore=None, only_el=False):
     ignore = ignore.split(",") if ignore else []
     if pkg_name:
         with open(Path(pkg_file)) as f:
@@ -137,6 +163,7 @@ def get_pkg_info(pkg_name, pkg_repo, commit, ignore=None):
 
         pkg_info = pkg_map[pkg_name]
         pkg_info["ignore"] = ignore
+        pkg_info["only_el"] = only_el
         if commit:
             pkg_info["commit"] = commit
 
@@ -152,6 +179,7 @@ def get_pkg_info(pkg_name, pkg_repo, commit, ignore=None):
             "repo": pkg_repo,
             "commit": commit,
             "ignore": ignore,
+            "only_el": only_el,
         }
 
 
@@ -162,6 +190,7 @@ def dispatch():
             pkg_repo=args.add,
             commit=args.commit,
             ignore=args.ignore,
+            only_el=args.only_el
         )
         fetch(pkg_info)
         return
