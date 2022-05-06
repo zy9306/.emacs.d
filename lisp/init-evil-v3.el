@@ -1,7 +1,3 @@
-;;; -*- coding: utf-8; lexical-binding: t; -*-
-
-
-(require-package 'undo-fu)
 (require-package 'undo-tree)
 (require-package 'goto-chg)
 (require-package 'evil-surround)
@@ -22,11 +18,11 @@
 
   (modify-syntax-entry ?_ "w")
 
-  (evil-set-undo-system 'undo-fu)
+  (evil-set-undo-system 'undo-tree)
 
-  (setq evil-normal-state-cursor '(box "#39c5bb")
-        evil-insert-state-cursor '(box "#FB7299")
-        evil-visual-state-cursor '(box "#DB7093"))
+  ;; (setq evil-normal-state-cursor '(box "#39c5bb")
+  ;;       evil-insert-state-cursor '(box "#FB7299")
+  ;;       evil-visual-state-cursor '(box "#DB7093"))
 
   (general-imap "j"
     (general-key-dispatch 'self-insert-command
@@ -37,17 +33,6 @@
    :states '(normal visual)
    :keymaps 'override
    "U" 'string-inflection-all-cycle)
-
-  ;; (general-define-key
-  ;;  :states '(normal
-  ;;            motion)
-  ;;  "C-c" 'evil-normal-state)
-
-  ;; (general-define-key
-  ;;  :states '(visual
-  ;;            operator
-  ;;            insert)
-  ;;  "C-c" 'evil-normal-state)
 
   (local/evil-init)
   (local/setup-prefix)
@@ -68,7 +53,7 @@
 (defun local/setup-prefix ()
   (general-define-key
    :states '(normal motion visual)
-   :prefix ";"
+   :prefix "SPC"
    :keymaps 'override
 
    "X" (general-simulate-key "C-x")
@@ -90,6 +75,7 @@
    "as" 'ace-swap-window
 
    "s" 'save-buffer
+   "G" 'revert-buffer-no-confirm
 
    "." 'xref-find-definitions
    "," 'xref-pop-marker-stack
@@ -98,28 +84,26 @@
 
    "pf" 'projectile-find-file
    "pk" 'projectile-kill-buffers
-   "ps" 'projectile-ripgrep'
+   "ps" 'projectile-ripgrep
    "pp" 'projectile-switch-project
 
    "\"" 'imenu-list-smart-toggle
 
-   "i" 'swiper-isearch
-   ";" 'avy-goto-char-2
-   "'" 'avy-goto-char
-   "l" 'avy-goto-line
+   "B"  'local/toggle-bufler
+
+   "gs" 'swiper-isearch
+
+   "gg" 'avy-goto-char-2
+   "gc" 'avy-goto-char
+   "gl" 'avy-goto-line
 
    "e" 'er/expand-region
    "r" 'query-replace
    "R" 'query-replace-regexp
    "y" 'browse-kill-ring
 
-   "g" 'revert-buffer-no-confirm
-
-   "w" 'easy-kill  ;; w -> word, b -> fullfile, 0 -> filename, - -> dirname
-   "m" 'magit-blame
-   "vu" 'vc-revert
-
-   "\\" 'local/Illyasviel/body
+   ;; w -> word, b -> fullfile, 0 -> filename, - -> dirname
+   "w" 'easy-kill
 
    "hb" 'describe-bindings
    "hv" 'counsel-describe-variable
@@ -145,10 +129,6 @@
    :keymaps 'browse-kill-ring-mode-map
    "C-g" 'browse-kill-ring-quit
    "RET" 'browse-kill-ring-insert-and-quit
-   "a" 'browse-kill-ring-append-insert
-   "b" 'browse-kill-ring-prepend-insert
-   "d" 'browse-kill-ring-delete
-   "e" 'browse-kill-ring-edit
    "j" 'browse-kill-ring-forward
    "k" 'browse-kill-ring-previous
    "q" 'browse-kill-ring-quit

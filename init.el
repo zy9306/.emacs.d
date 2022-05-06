@@ -58,7 +58,7 @@
 
 (local/load-package 'init-modeline)
 
-;; (local/load-package 'init-evil-v3)
+(local/load-package 'init-evil-v3)
 
 ;; 自动检测编码，如果错误的将utf-8检测成gbk等中文编码，可能会导致lsp崩
 ;; 溃，编码默认为utf-8，如遇gbk等乱码，尝试C-x RET手动切换编码
