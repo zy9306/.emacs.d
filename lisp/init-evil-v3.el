@@ -18,7 +18,8 @@
 
   (modify-syntax-entry ?_ "w")
 
-  (evil-set-undo-system 'undo-tree)
+  (if (version<= "28.0" emacs-version)
+      (evil-set-undo-system 'undo-redo))
 
   ;; (setq evil-normal-state-cursor '(box "#39c5bb")
   ;;       evil-insert-state-cursor '(box "#FB7299")
