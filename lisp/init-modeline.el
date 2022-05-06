@@ -17,7 +17,8 @@
 
   ;; see awesome-tray-module-alist
   (setq awesome-tray-active-modules
-        '("location"
+        '("evil"
+          "location"
           "awesome-tab"
           "belong"
           "buffer-name"
