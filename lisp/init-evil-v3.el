@@ -69,11 +69,17 @@
    "3" 'split-window-right
    "0" 'delete-window
    "o" 'ace-window
+   "W" 'ace-swap-window
    "b" 'switch-to-buffer
    "k" 'kill-this-buffer
    "40" 'kill-buffer-and-window
    "4f" 'find-file-other-window
-   "as" 'ace-swap-window
+
+   "e" 'er/expand-region
+   "r" 'query-replace
+   "R" 'query-replace-regexp
+   "y" 'browse-kill-ring
+   "w" 'easy-kill
 
    "s" 'save-buffer
    "G" 'revert-buffer-no-confirm
@@ -88,28 +94,16 @@
    "ps" 'projectile-ripgrep
    "pp" 'projectile-switch-project
 
-   "\"" 'imenu-list-smart-toggle
-
-   "B"  'local/toggle-bufler
-
    "gs" 'swiper-isearch
-
-   "gg" 'avy-goto-char-2
+   "gi" 'imenu-list-smart-toggle
+   "gb" 'local/toggle-bufler
    "gc" 'avy-goto-char
+   "gg" 'avy-goto-char-2
    "gl" 'avy-goto-line
-
-   "e" 'er/expand-region
-   "r" 'query-replace
-   "R" 'query-replace-regexp
-   "y" 'browse-kill-ring
-
-   ;; w -> word, b -> fullfile, 0 -> filename, - -> dirname
-   "w" 'easy-kill
 
    "hb" 'describe-bindings
    "hv" 'counsel-describe-variable
    "hf" 'counsel-describe-function))
-
 
 (defun local/evil-surround ()
   (require 'evil-surround)
