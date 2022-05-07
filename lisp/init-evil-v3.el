@@ -4,6 +4,7 @@
 (require-package 'evil-matchit)
 (require-package 'evil-textobj-line)
 (require-package 'evil-multiedit)
+(require-package 'evil-mc)
 
 
 (setq evil-disable-insert-state-bindings t)
@@ -47,6 +48,7 @@
   (local/evil-matchit)
   (local/evil-textobj-line)
   (local/evil-multiedit)
+  (local/evil-mc)
   (local/evil-browse-kill-ring))
 
 
@@ -185,6 +187,26 @@
   (define-key evil-multiedit-mode-map (kbd "C-p") 'evil-multiedit-prev)
   (define-key evil-multiedit-mode-map (kbd "C-n") 'evil-multiedit-next)
   (define-key evil-multiedit-mode-map (kbd "C-p") 'evil-multiedit-prev))
+
+(defun local/evil-mc ()
+  ;; note: jj does not work properly, use ESC instead.
+  ;; maybe C-z use origin emacs mc is the best solutions.
+  (require 'evil-mc)
+  (global-evil-mc-mode 1)
+
+  (evil-define-key '(normal visual) 'global
+    "grm" #'evil-mc-make-all-cursors
+    "grU" #'evil-mc-undo-all-cursors
+    "grI" #'evil-mc-make-cursor-in-visual-selection-beg
+    "grA" #'evil-mc-make-cursor-in-visual-selection-end
+    "gru" #'evil-mc-undo-last-added-cursor
+    "grn" #'evil-mc-make-cursor-move-next-line
+    "grp" #'evil-mc-make-cursor-move-prev-line
+    "grj" #'evil-mc-make-and-goto-next-match
+    "grk" #'evil-mc-make-and-goto-prev-match)
+
+  (evil-define-key '(normal visual) evil-mc-key-map
+    (kbd "C-g") #'evil-mc-undo-all-cursors))
 
 (defun local/setup-org ()
   (general-define-key
