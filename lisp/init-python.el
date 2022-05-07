@@ -37,7 +37,6 @@
 (defun local/pytest-shanbay-flask ()
   (interactive)
   (require 'pytest)
-  (require 'pytest)
   (let* ((test-project-root (pytest-find-project-root))
          (test-obj (pytest-py-testable))
          (test-cmd (format "FLASK_ENV=testing PROC_ENV=flask flask test -s --no-cov %s" test-obj)))
@@ -47,7 +46,6 @@
 
 (defun local/pytest-shanbay-sea ()
   (interactive)
-  (require 'pytest)
   (require 'pytest)
   (let* ((test-project-root (pytest-find-project-root))
          (test-obj (pytest-py-testable))
