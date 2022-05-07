@@ -85,6 +85,7 @@
    "G" 'revert-buffer-no-confirm
 
    "." 'xref-find-definitions
+   "4." 'xref-find-definitions-other-window
    "," 'xref-pop-marker-stack
 
    "$" 'toggle-truncate-lines
