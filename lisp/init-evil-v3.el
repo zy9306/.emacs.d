@@ -39,6 +39,9 @@
   (local/evil-init)
   (local/setup-prefix)
   (local/setup-org)
+  (local/setup-xref)
+  (local/setup-imenu)
+  (local/setup-bufler)
 
   (local/evil-surround)
   (local/evil-matchit)
@@ -48,7 +51,6 @@
 
 
 (defun local/evil-init ()
-  (evil-set-initial-state 'imenu-list-major-mode 'emacs)
   (evil-set-initial-state 'ivy-occur-grep-mode 'emacs)
   (evil-set-initial-state 'ivy-occur-mode 'emacs))
 
@@ -132,6 +134,35 @@
    "q" 'browse-kill-ring-quit
    "r" 'browse-kill-ring-search-backward
    "s" 'browse-kill-ring-search-forward))
+
+(defun local/setup-xref ()
+  (general-define-key
+   :states '(normal visual)
+   :keymaps 'xref--xref-buffer-mode-map
+   "gj" 'xref-next-line
+   "gk" 'xref-prev-line
+   "q" 'quit-window
+   (kbd "RET") 'xref-goto-xref
+   (kbd "TAB") 'xref-quit-and-goto-xref))
+
+(defun local/setup-imenu ()
+  (general-define-key
+   :states '(normal visual)
+   :keymaps 'imenu-list-major-mode-map
+   "<mouse-1>" 'imenu-list-display-entry
+   (kbd "RET") 'imenu-list-goto-entry
+   "d" 'imenu-list-display-entry
+   "gr" 'imenu-list-refresh
+   "q" 'imenu-list-quit-window))
+
+(defun local/setup-bufler ()
+  (require 'bufler)
+  (general-define-key
+   :states '(normal visual)
+   :keymaps 'bufler-list-mode-map
+   (kbd "RET") 'bufler-list-buffer-switch
+   "K" 'bufler-list-buffer-kill
+   "q" 'quit-window))
 
 (defun local/evil-multiedit ()
   (require 'evil-multiedit)
