@@ -50,6 +50,7 @@
   (local/setup-imenu)
   (local/setup-bufler)
   (local/setup-ivy)
+  (local/setup-some-mode)
 
   (local/evil-surround)
   (local/evil-matchit)
@@ -300,6 +301,16 @@
    "gr" 'ivy-occur-revert-buffer
    "q" 'quit-window))
 
+(defun local/setup-some-mode ()
+  (general-define-key
+   :states '(normal visual motion)
+   :keymaps 'messages-buffer-mode-map
+   "q" 'quit-window)
+
+  (general-define-key
+   :states '(normal visual motion)
+   :keymaps 'help-mode-map
+   "q" 'quit-window))
 
 (local/after-init-hook 'evil)
 
