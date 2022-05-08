@@ -32,6 +32,9 @@
       :timeout 0.25
       "j" 'evil-normal-state))
 
+  (add-hook 'evil-insert-state-exit-hook #'save-buffer)
+  (add-hook 'evil-emacs-state-exit-hook #'save-buffer)
+
   (general-define-key
    :states '(normal visual)
    :keymaps 'override
