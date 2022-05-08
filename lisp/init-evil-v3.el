@@ -32,8 +32,8 @@
       :timeout 0.25
       "j" 'evil-normal-state))
 
-  (add-hook 'evil-insert-state-exit-hook #'save-buffer)
-  (add-hook 'evil-emacs-state-exit-hook #'save-buffer)
+  (add-hook 'evil-insert-state-exit-hook #'local/save-buffer-if-file-exists)
+  (add-hook 'evil-emacs-state-exit-hook #'local/save-buffer-if-file-exists)
 
   (evil-define-key 'normal 'global
     "*" #'symbol-overlay-jump-next
@@ -58,6 +58,11 @@
   (local/evil-mc)
   (local/evil-browse-kill-ring))
 
+
+(defun local/save-buffer-if-file-exists ()
+  (let ((filename (buffer-file-name (current-buffer))))
+    (if (and filename (file-exists-p filename))
+        (save-buffer))))
 
 (defun local/evil-init ()
   (evil-set-initial-state 'ivy-occur-grep-mode 'emacs)
