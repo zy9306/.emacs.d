@@ -197,23 +197,33 @@
 
 (defun local/evil-mc ()
   ;; note: jj does not work properly, use ESC instead.
-  ;; maybe C-z use origin emacs mc is the best solutions.
+  ;; maybe C-z use origin emacs mc is the best solution.
   (require 'evil-mc)
-  (global-evil-mc-mode 1)
 
-  (evil-define-key '(normal visual) 'global
-    "grm" #'evil-mc-make-all-cursors
-    "grU" #'evil-mc-undo-all-cursors
-    "grI" #'evil-mc-make-cursor-in-visual-selection-beg
-    "grA" #'evil-mc-make-cursor-in-visual-selection-end
-    "gru" #'evil-mc-undo-last-added-cursor
-    "C-n" #'evil-mc-make-and-goto-next-match
-    "C-p" #'evil-mc-make-and-goto-prev-match
-    "M-n" #'evil-mc-make-cursor-move-next-line
-    "M-p" #'evil-mc-make-cursor-move-prev-line)
+  (add-hook
+   'evil-mc-mode-hook
+   (lambda ()
+     (progn
+       (general-define-key
+        :states '(normal visual)
+        :keymaps 'override
+        (kbd "C-n") #'evil-mc-make-and-goto-next-match
+        (kbd "C-p") #'evil-mc-make-and-goto-prev-match
+        (kbd "M-n") #'evil-mc-make-cursor-move-next-line
+        (kbd "M-p") #'evil-mc-make-cursor-move-prev-line
+        "grm" #'evil-mc-make-all-cursors
+        "grq" #'evil-mc-undo-all-cursors
+        "grI" #'evil-mc-make-cursor-in-visual-selection-beg
+        "grA" #'evil-mc-make-cursor-in-visual-selection-end
+        "gru" #'evil-mc-undo-last-added-cursor)
 
-  (evil-define-key '(normal visual) evil-mc-key-map
-    (kbd "C-g") #'evil-mc-undo-all-cursors))
+       (general-define-key
+        :states '(normal visual)
+        :keymaps 'evil-mc-key-map
+        (kbd "C-g") #'evil-mc-undo-all-cursors)
+       )))
+
+  (global-evil-mc-mode 1))
 
 (defun local/setup-org ()
   (general-define-key
