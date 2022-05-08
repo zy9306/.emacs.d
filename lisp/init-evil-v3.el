@@ -44,12 +44,12 @@
    :keymaps 'override
    "U" 'string-inflection-all-cycle)
 
-  (local/evil-init)
   (local/setup-prefix)
   (local/setup-org)
   (local/setup-xref)
   (local/setup-imenu)
   (local/setup-bufler)
+  (local/setup-ivy)
 
   (local/evil-surround)
   (local/evil-matchit)
@@ -63,10 +63,6 @@
   (let ((filename (buffer-file-name (current-buffer))))
     (if (and filename (file-exists-p filename))
         (save-buffer))))
-
-(defun local/evil-init ()
-  (evil-set-initial-state 'ivy-occur-grep-mode 'emacs)
-  (evil-set-initial-state 'ivy-occur-mode 'emacs))
 
 
 (defun local/setup-prefix ()
@@ -101,6 +97,9 @@
 
    "s" 'save-buffer
    "G" 'revert-buffer-no-confirm
+
+   "gf" 'whitespace-cleanup
+   "gF" 'format-all-buffer
 
    "." 'xref-find-definitions
    "4." 'xref-find-definitions-other-window
@@ -243,6 +242,63 @@
    "O" 'org-insert-heading
    "M-o" 'org-insert-subheading
    "C-,"  'org-insert-structure-template))
+
+
+(defun local/setup-ivy ()
+  (evil-set-initial-state 'ivy-occur-mode 'normal)
+  (evil-set-initial-state 'ivy-occur-grep-mode 'normal)
+
+  (general-define-key
+   :states 'normal
+   :keymaps 'wgrep-mode-map
+   "ZQ" 'wgrep-abort-changes
+   "ZZ" 'wgrep-finish-edit)
+
+  (general-define-key
+   :states '(normal visual motion)
+   :keymaps 'ivy-occur-mode-map
+
+   [mouse-1] 'ivy-occur-click
+   (kbd "RET") 'ivy-occur-press-and-switch
+   "d" 'ivy-occur-delete-candidate
+   "j" 'ivy-occur-next-line
+   "k" 'ivy-occur-previous-line
+   "J" 'local/ivy-occur-next-and-press
+   "K" 'local/ivy-occur-previous-and-press
+
+   "gf" 'ivy-occur-press
+   "gd" 'ivy-occur-delete-candidate
+
+   "h" 'evil-backward-char
+   "l" 'evil-forward-char
+
+   "gr" 'ivy-occur-revert-buffer
+   "q" 'quit-window)
+
+  (general-define-key
+   :states '(normal visual motion)
+   :keymaps 'ivy-occur-grep-mode-map
+
+   [mouse-1] 'ivy-occur-click
+   (kbd "RET") 'ivy-occur-press-and-switch
+
+   (kbd "C-x C-") 'ivy-wgrep-change-to-wgrep-mode
+   "i" 'ivy-wgrep-change-to-wgrep-mode
+
+   "d" 'ivy-occur-delete-candidate
+   "j" 'ivy-occur-next-line
+   "k" 'ivy-occur-previous-line
+   "J" 'local/ivy-occur-next-and-press
+   "K" 'local/ivy-occur-previous-and-press
+
+   "gf" 'ivy-occur-press
+   "gd" 'ivy-occur-delete-candidate
+
+   "h" 'evil-backward-char
+   "l" 'evil-forward-char
+
+   "gr" 'ivy-occur-revert-buffer
+   "q" 'quit-window))
 
 
 (local/after-init-hook 'evil)
