@@ -302,15 +302,24 @@
    "q" 'quit-window))
 
 (defun local/setup-some-mode ()
+  ;; message
   (general-define-key
    :states '(normal visual motion)
    :keymaps 'messages-buffer-mode-map
    "q" 'quit-window)
 
+  ;; help
   (general-define-key
    :states '(normal visual motion)
    :keymaps 'help-mode-map
-   "q" 'quit-window))
+   "q" 'quit-window)
+
+  ;; dired
+  (with-eval-after-load 'dired-subtree
+    (general-define-key
+     :states '(normal visual motion)
+     :keymaps 'dired-mode-map
+     "TAB" 'dired-subtree-toggle)))
 
 (local/after-init-hook 'evil)
 
