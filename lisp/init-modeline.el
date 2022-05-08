@@ -83,10 +83,11 @@
   )
 
 
-(if (display-graphic-p)
-    (local/after-init-hook 'awesome-tray)
-  (local/after-init-hook 'spaceline))
+;; (if (display-graphic-p)
+;;     (local/after-init-hook 'awesome-tray)
+;;   (local/after-init-hook 'spaceline))
 
+(local/after-init-hook 'spaceline)
 
 
 (provide 'init-modeline)
