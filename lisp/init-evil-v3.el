@@ -35,6 +35,10 @@
   (add-hook 'evil-insert-state-exit-hook #'save-buffer)
   (add-hook 'evil-emacs-state-exit-hook #'save-buffer)
 
+  (evil-define-key 'normal 'global
+    "*" #'symbol-overlay-jump-next
+    "#" #'symbol-overlay-jump-prev)
+
   (general-define-key
    :states '(normal visual)
    :keymaps 'override
@@ -203,10 +207,10 @@
     "grI" #'evil-mc-make-cursor-in-visual-selection-beg
     "grA" #'evil-mc-make-cursor-in-visual-selection-end
     "gru" #'evil-mc-undo-last-added-cursor
-    "grn" #'evil-mc-make-cursor-move-next-line
-    "grp" #'evil-mc-make-cursor-move-prev-line
-    "grj" #'evil-mc-make-and-goto-next-match
-    "grk" #'evil-mc-make-and-goto-prev-match)
+    "C-n" #'evil-mc-make-and-goto-next-match
+    "C-p" #'evil-mc-make-and-goto-prev-match
+    "M-n" #'evil-mc-make-cursor-move-next-line
+    "M-p" #'evil-mc-make-cursor-move-prev-line)
 
   (evil-define-key '(normal visual) evil-mc-key-map
     (kbd "C-g") #'evil-mc-undo-all-cursors))
