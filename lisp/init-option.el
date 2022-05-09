@@ -48,7 +48,7 @@
 
 (show-paren-mode t)
 (column-number-mode t)
-;; (global-hl-line-mode t)
+(global-hl-line-mode t)
 
 (set-default 'truncate-lines t)
 
