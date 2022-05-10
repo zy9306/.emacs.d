@@ -24,6 +24,8 @@
 (local/load-package 'init-basic)
 (local/load-package 'init-utils)
 (local/load-package 'init-completion)
+;; TODO
+;; (local/load-package 'init-corfu)
 (local/load-package 'init-tabnine-capf)
 (local/load-package 'init-ivy)
 (local/load-package 'init-avy)

@@ -21,6 +21,14 @@
     :init
     (global-corfu-mode))
 
+  (with-eval-after-load 'corfu
+    (require 'cape)
+    (add-to-list 'completion-at-point-functions #'cape-file)
+    (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+    (add-to-list 'completion-at-point-functions #'cape-keyword)
+    (add-to-list 'completion-at-point-functions #'cape-abbrev)
+    (add-to-list 'completion-at-point-functions #'cape-symbol))
+
   (use-package orderless
     :init
     (setq completion-styles '(orderless basic))
