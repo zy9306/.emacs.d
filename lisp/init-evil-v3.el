@@ -23,9 +23,9 @@
   (if (version<= "28.0" emacs-version)
       (evil-set-undo-system 'undo-redo))
 
-  ;; (setq evil-normal-state-cursor '(box "#39c5bb")
-  ;;       evil-insert-state-cursor '(box "#FB7299")
-  ;;       evil-visual-state-cursor '(box "#DB7093"))
+  (setq evil-normal-state-cursor '(box "#39c5bb"))
+  (setq evil-insert-state-cursor '(box "#c295d7"))
+  (setq evil-visual-state-cursor '(box "#8776d8"))
 
   (general-imap "j"
     (general-key-dispatch 'self-insert-command
@@ -273,7 +273,7 @@
    "h" 'evil-backward-char
    "l" 'evil-forward-char
 
-   "gr" 'ivy-occur-revert-buffer
+   "gR" 'ivy-occur-revert-buffer
    "q" 'quit-window)
 
   (general-define-key
@@ -298,7 +298,7 @@
    "h" 'evil-backward-char
    "l" 'evil-forward-char
 
-   "gr" 'ivy-occur-revert-buffer
+   "gR" 'ivy-occur-revert-buffer
    "q" 'quit-window))
 
 (defun local/setup-some-mode ()
