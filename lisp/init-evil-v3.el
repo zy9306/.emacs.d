@@ -42,7 +42,8 @@
   (general-define-key
    :states '(normal visual)
    :keymaps 'override
-   "U" 'string-inflection-all-cycle)
+   "U" 'string-inflection-all-cycle
+   "TAB" 'indent-for-tab-command)
 
   (local/setup-prefix)
   (local/setup-org)
