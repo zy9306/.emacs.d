@@ -118,13 +118,9 @@
     "repo": "git@github.com:tumashu/ivy-posframe.git"
   },
   "orderless": {
-    "commit": "1ccf74ffdbb0dd34caa63022e92f947c09c49c86",
-    "ignore": [
-      "images",
-      ".gitignore",
-      "LICENSE",
-      "README.org"
-    ],
+    "commit": "75eeae21971d86b51a712ed8ecd6434463b2d866",
+    "ignore": [],
+    "only_el": true,
     "pkg": "orderless",
     "repo": "git@github.com:oantolin/orderless.git"
   },
