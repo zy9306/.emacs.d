@@ -1,11 +1,22 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 
-(require 'lsp-bridge)
-(require 'lsp-bridge-orderless)
-(require 'lsp-bridge-icon)
+(if (version<= emacs-version "28.1")
+    (defun length= (sequence length)
+      (equal (length sequence) length)))
 
-(when *unix*
-  (setq lsp-bridge-python-command "/usr/local/bin/python3"))
+(defun local/setup-lsp-bridge ()
+  (require 'lsp-bridge)
+  ;; (require 'lsp-bridge-orderless)
+  (require 'lsp-bridge-icon)
+
+  (with-eval-after-load 'company
+    (company-mode -1))
+
+  (when (or *mac* *unix*)
+    (setq lsp-bridge-python-command "/usr/local/bin/python3"))
+
+  (setq-local corfu-auto nil)
+  (lsp-bridge-mode 1))
 
 (dolist (hook (list
                'emacs-lisp-mode-hook
@@ -18,7 +29,7 @@
                'c-mode-hook
                'c++-mode-hook
                'java-mode-hook
-               'python-mode-hook
+               ;; 'python-mode-hook
                'ruby-mode-hook
                'rust-mode-hook
                'elixir-mode-hook
@@ -38,11 +49,7 @@
                'texinfo-mode-hook
                'bibtex-mode-hook
                ))
-  (add-hook hook (lambda ()
-                   (setq-local corfu-auto nil)
-                   (lsp-bridge-mode 1)
-                   )))
-
+  (add-hook hook (lambda () (local/setup-lsp-bridge))))
 
 ;;; fix python Path
 (defcustom lsp-bridge-current-python-command ""
@@ -56,8 +63,7 @@
           (lambda ()
             (progn
               (lsp-bridge-set-current-python-command)
-              (lsp-bridge-restart-process))
-            ))
+              (lsp-bridge-restart-process))))
 
 
 (provide 'init-lsp-bridge)
