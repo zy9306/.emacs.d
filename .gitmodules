@@ -10,3 +10,6 @@
 [submodule "elpa"]
 	path = elpa
 	url = git@github.com:zy9306/elpa.git
+[submodule "repo/lsp-bridge"]
+	path = repo/lsp-bridge
+	url = git@github.com:zy9306/lsp-bridge.git
