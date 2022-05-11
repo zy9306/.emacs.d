@@ -16,6 +16,7 @@
     (setq lsp-bridge-python-command "/usr/local/bin/python3"))
 
   (setq-local corfu-auto nil)
+  (setq-local corfu-auto-prefix 1)
   (lsp-bridge-mode 1))
 
 (dolist (hook (list

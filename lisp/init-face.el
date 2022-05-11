@@ -39,5 +39,9 @@
    'hl-line nil
    :background "pink"))
 
+(with-eval-after-load 'corfu
+  (set-face-attribute
+   'corfu-current nil
+   :background "#c295d7"))
 
 (provide 'init-face)
