@@ -4,6 +4,9 @@
 (require 'lsp-bridge-orderless)
 (require 'lsp-bridge-icon)
 
+(when *unix*
+  (setq lsp-bridge-python-command "/usr/local/bin/python3"))
+
 (dolist (hook (list
                'emacs-lisp-mode-hook
                ))
