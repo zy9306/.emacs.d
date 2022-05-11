@@ -1,1 +1,1 @@
-(push (expand-file-name "lsp-bridge" user-emacs-directory) load-path)
+(push (expand-file-name "repo/lsp-bridge" user-emacs-directory) load-path)

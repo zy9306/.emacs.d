@@ -43,6 +43,7 @@
 
 ;;; fix python Path
 (defcustom lsp-bridge-current-python-command ""
+  ""
   :type 'string)
 
 (defun lsp-bridge-set-current-python-command ()
