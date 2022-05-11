@@ -8,7 +8,7 @@
     (corfu-separator ?\s)
     (corfu-quit-at-boundary nil)
     (corfu-quit-no-match t)
-    (corfu-preview-current 'insert)
+    (corfu-preview-current nil)
     (corfu-preselect-first t)
     (corfu-on-exact-match nil)
     (corfu-echo-documentation nil)
