@@ -13,9 +13,8 @@
   (let ((choices '("pyright" "mspyls")))
     (setq nox-python-server (completing-read "Swith to:" choices))))
 
-(when (executable-find "pyright-langserver")
-  ;; (add-hook 'python-mode-hook 'local/nox-ensure)
-  (add-hook 'python-mode-hook 'local/lsp-python))
+;; (when (executable-find "pyright-langserver")
+;;   (add-hook 'python-mode-hook 'local/lsp-python))
 
 
 ;;; key
@@ -77,6 +76,7 @@
 
 (when (or *linux* *mac*)
   (defun local/setup-flycheck-for-py ()
+    (require 'flycheck)
     (add-to-list 'flycheck-disabled-checkers 'python-mypy)
     (let (
           (flake8 (executable-find "flake8"))

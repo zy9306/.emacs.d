@@ -1,56 +1,38 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 
-(if (version<= emacs-version "28.1")
-    (defun length= (sequence length)
-      (equal (length sequence) length)))
+(require 'lsp-bridge)
+(require 'lsp-bridge-icon)
 
-(defun local/setup-lsp-bridge ()
-  (require 'lsp-bridge)
-  ;; (require 'lsp-bridge-orderless)
-  (require 'lsp-bridge-icon)
+(when (or *mac* *unix*)
+  (setq-default lsp-bridge-python-command "/usr/local/bin/python3"))
 
-  (with-eval-after-load 'company
-    (company-mode -1))
+(add-hook
+ 'lsp-bridge-mode-hook
+ (lambda ()
+   (progn
+     (setq-local corfu-auto nil)
+     (setq-local corfu-auto-prefix 1)
 
-  (when (or *mac* *unix*)
-    (setq lsp-bridge-python-command "/usr/local/bin/python3"))
-
-  (setq-local corfu-auto nil)
-  (setq-local corfu-auto-prefix 1)
-  (lsp-bridge-mode 1))
+     (with-eval-after-load 'company
+       (company-mode -1)))))
 
 (dolist (hook (list
-               'emacs-lisp-mode-hook
-               ))
+               'emacs-lisp-mode-hook))
   (add-hook hook (lambda ()
-                   (setq-local corfu-auto t)
-                   )))
+                   (setq-local corfu-auto t))))
 
 (dolist (hook (list
-               'c-mode-hook
-               'c++-mode-hook
-               'java-mode-hook
-               ;; 'python-mode-hook
-               'ruby-mode-hook
+               'python-mode-hook
                'rust-mode-hook
-               'elixir-mode-hook
                'go-mode-hook
-               'haskell-mode-hook
-               'haskell-literate-mode-hook
-               'dart-mode-hook
-               'scala-mode-hook
                'typescript-mode-hook
                'js2-mode-hook
-               'js-mode-hook
-               'tuareg-mode-hook
-               'latex-mode-hook
-               'Tex-latex-mode-hook
-               'texmode-hook
-               'context-mode-hook
-               'texinfo-mode-hook
-               'bibtex-mode-hook
-               ))
-  (add-hook hook (lambda () (local/setup-lsp-bridge))))
+               'js-mode-hook))
+  (add-hook hook (lambda () (lsp-bridge-mode 1))))
+
+(define-key lsp-bridge-mode-map (kbd "M-.") 'lsp-bridge-find-def)
+(define-key lsp-bridge-mode-map (kbd "M-,") 'lsp-bridge-return-from-def)
+
 
 ;;; fix python Path
 (defcustom lsp-bridge-current-python-command ""
@@ -62,9 +44,8 @@
 
 (add-hook 'pyvenv-post-activate-hooks
           (lambda ()
-            (progn
               (lsp-bridge-set-current-python-command)
-              (lsp-bridge-restart-process))))
+              (lsp-bridge-restart-process)))
 
 
 (provide 'init-lsp-bridge)

@@ -5,8 +5,8 @@
 ;; (add-hook 'go-mode-hook #'local/nox-ensure)
 
 ;;; lsp
-(with-eval-after-load 'go-mode
-  (add-hook 'go-mode-hook 'local/lsp-go))
+;; (with-eval-after-load 'go-mode
+;;   (add-hook 'go-mode-hook 'local/lsp-go))
 
 
 ;;; FORMAT START
