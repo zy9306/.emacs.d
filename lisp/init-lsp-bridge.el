@@ -3,8 +3,20 @@
 (require 'lsp-bridge)
 (require 'lsp-bridge-icon)
 
+(require 'citre)
+
 (when (or *mac* *unix*)
   (setq-default lsp-bridge-python-command "/usr/local/bin/python3"))
+
+(defun lsp-bridge-capf-citre-capf-function ()
+  (let ((lsp-result (lsp-bridge-capf)))
+    (if (ignore-errors (and lsp-result
+                            (try-completion
+                             (buffer-substring (nth 0 lsp-result)
+                                               (nth 1 lsp-result))
+                             (nth 2 lsp-result))))
+        lsp-result
+      (citre-completion-at-point))))
 
 (add-hook
  'lsp-bridge-mode-hook
@@ -13,11 +25,8 @@
      (setq-local corfu-auto nil)
      (setq-local corfu-auto-prefix 1)
 
-     (require 'citre)
-     (if (member 'lsp-bridge-capf completion-at-point-functions)
-         (dolist (capf '(citre-completion-at-point lsp-bridge-capf))
-           (setq-local completion-at-point-functions (remove capf completion-at-point-functions))
-           (add-to-list 'completion-at-point-functions capf)))
+     (setq-local completion-at-point-functions nil)
+     (add-hook 'completion-at-point-functions 'lsp-bridge-capf-citre-capf-function nil t)
 
      (with-eval-after-load 'company
        (company-mode -1)))))
