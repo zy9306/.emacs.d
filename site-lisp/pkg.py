@@ -122,6 +122,9 @@ def fetch(pkg_info):
         commit = pkg_info.get("commit")
         if commit:
             run_cmd(f"git checkout {commit}")
+        else:
+            out = run_cmd("git rev-parse HEAD", True)
+            pkg_info["commit"] = out.split()[0]
         ignore = pkg_info.get("ignore")
         shutil.rmtree(".git", ignore_errors=True)
         if pkg_info.get("only_el"):
@@ -164,8 +167,7 @@ def get_pkg_info(pkg_name, pkg_repo, commit, ignore=None, only_el=False):
         pkg_info = pkg_map[pkg_name]
         pkg_info["ignore"] = ignore
         pkg_info["only_el"] = only_el
-        if commit:
-            pkg_info["commit"] = commit
+        pkg_info["commit"] = commit
 
         return pkg_info
 
@@ -211,6 +213,7 @@ def dispatch():
             pkg_repo=None,
             commit=args.commit,
             ignore=args.ignore,
+            only_el=args.only_el,
         )
         fetch(pkg_info)
         return
