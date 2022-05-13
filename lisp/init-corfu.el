@@ -27,6 +27,8 @@
     (require 'cape)
     (require 'cape-keyword)
 
+    (setq dabbrev-case-replace nil)
+
     (global-set-key (kbd "M-/") 'cape-dabbrev)
 
     (add-to-list 'completion-at-point-functions #'cape-file)
