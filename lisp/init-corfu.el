@@ -23,6 +23,10 @@
     :init
     (global-corfu-mode))
 
+  (use-package corfu-history
+    :config
+    (corfu-history-mode))
+
   (with-eval-after-load 'corfu
     (require 'cape)
     (require 'cape-keyword)
