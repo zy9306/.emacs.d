@@ -28,6 +28,7 @@
     (advice-add func :before 'my--push-point-to-xref-marker-stack)))
 
 
+
 ;;; company-backend
 (defun company-citre (-command &optional -arg &rest _ignored)
   (interactive (list 'interactive))
