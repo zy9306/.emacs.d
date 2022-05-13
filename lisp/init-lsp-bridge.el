@@ -13,6 +13,12 @@
      (setq-local corfu-auto nil)
      (setq-local corfu-auto-prefix 1)
 
+     (require 'citre)
+     (if (member 'lsp-bridge-capf completion-at-point-functions)
+         (dolist (capf '(citre-completion-at-point lsp-bridge-capf))
+           (setq-local completion-at-point-functions (remove capf completion-at-point-functions))
+           (add-to-list 'completion-at-point-functions capf)))
+
      (with-eval-after-load 'company
        (company-mode -1)))))
 
@@ -44,8 +50,8 @@
 
 (add-hook 'pyvenv-post-activate-hooks
           (lambda ()
-              (lsp-bridge-set-current-python-command)
-              (lsp-bridge-restart-process)))
+            (lsp-bridge-set-current-python-command)
+            (lsp-bridge-restart-process)))
 
 
 (provide 'init-lsp-bridge)

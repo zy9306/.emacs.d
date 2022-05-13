@@ -61,8 +61,8 @@
       (citre-completion-at-point))))
 
 (defun enable-lsp-citre-capf-backend ()
-  (setq-local completion-at-point-functions nil)
-  (add-hook 'completion-at-point-functions 'lsp-citre-capf-function nil t))
+  ;; (setq-local completion-at-point-functions nil)
+  (add-hook 'completion-at-point-functions 'citre-completion-at-point nil t))
 
 (add-hook 'citre-mode-hook 'enable-lsp-citre-capf-backend)
 
