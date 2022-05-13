@@ -1,3 +1,5 @@
+;;; -*- coding: utf-8; lexical-binding: t; -*-
+
 ;;; nox
 (setq nox-optimization-p nil)
 (setq nox-autoshutdown t)
@@ -58,8 +60,15 @@
 
 (defun local/lsp-deferred ()
   (lsp-deferred)
-  (local/config-company-backends))
+  (local/config-company-backends)
 
+  (add-hook 'citre-mode-hook
+            (lambda ()   (dolist (xref-backend '(nox-xref-backend))
+                           (if (member xref-backend xref-backend-functions)
+                               (progn
+                                 (setq xref-backend-functions (remove xref-backend xref-backend-functions))
+                                 (add-to-list 'xref-backend-functions xref-backend))))))
+  (add-hook 'completion-at-point-functions 'lsp-citre-capf-function nil t))
 
 
 ;;; client
@@ -105,4 +114,60 @@
   (local/lsp-deferred))
 
 
-(provide 'init-lsp)
+;;; citre
+(defun local/nox-result ()
+  (ignore-errors (nox-completion-at-point)))
+
+(defun local/lsp-result ()
+  (ignore-errors (lsp-completion-at-point)))
+
+(defun lsp-citre-capf-function ()
+  (let ((lsp-result (local/lsp-result)))
+    (if (ignore-errors (and lsp-result
+                            (try-completion
+                             (buffer-substring (nth 0 lsp-result)
+                                               (nth 1 lsp-result))
+                             (nth 2 lsp-result))))
+        lsp-result
+      (citre-completion-at-point))))
+
+
+;;; python
+(add-hook 'pyvenv-post-activate-hooks
+          (lambda ()
+            (setq nox-python-path (executable-find "python"))))
+
+(setq nox-python-server "pyright")
+(setq nox-python-server-dir (expand-file-name ".cache/lsp/mspyls/" user-emacs-directory))
+
+(defun local/pyls ()
+  (interactive)
+  (let ((choices '("pyright" "mspyls")))
+    (setq nox-python-server (completing-read "Swith to:" choices))))
+
+(when (executable-find "pyright-langserver")
+  (add-hook 'python-mode-hook 'local/lsp-python))
+
+
+;;; rust
+(add-hook 'rust-mode-hook #'local/nox-ensure)
+
+;; rust-analyzer 表现优于 rls，racer 是非 lsp 方案中较快的，但目前没有处于积极维护状态
+;; rustup component add rust-src 安装标准库源码，不手动安装的话，rust-analyzer 也会尝试自动下载
+;; https://github.com/rust-analyzer/rust-analyzer/releases 下载二进制
+(with-eval-after-load 'nox
+  (add-to-list 'nox-server-programs
+               `(rust-mode . ("rust-analyzer"))))
+
+
+;;; go
+;; NOX
+;; (add-hook 'go-mode-hook #'local/nox-ensure)
+
+;; lsp
+(with-eval-after-load 'go-mode
+  (add-hook 'go-mode-hook 'local/lsp-go))
+
+
+
+(provide 'init-lsp-deprecated)

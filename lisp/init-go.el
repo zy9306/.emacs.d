@@ -1,14 +1,6 @@
 (autoload 'go-mode "go-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
 
-;;; NOX
-;; (add-hook 'go-mode-hook #'local/nox-ensure)
-
-;;; lsp
-;; (with-eval-after-load 'go-mode
-;;   (add-hook 'go-mode-hook 'local/lsp-go))
-
-
 ;;; FORMAT START
 (defun local/go-mode-save-hooks ()
   (setq gofmt-show-errors 'echo)
@@ -16,7 +8,6 @@
   (add-hook 'before-save-hook 'gofmt-before-save))
 
 (add-hook 'go-mode-hook #'local/go-mode-save-hooks)
-
 
 (defun local/go-test-current-func ()
   (interactive)

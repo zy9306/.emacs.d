@@ -1,22 +1,6 @@
 ;;; lsp
 (setenv "WORKON_HOME" "~/Envs")
 
-(add-hook 'pyvenv-post-activate-hooks
-          (lambda ()
-            (setq nox-python-path (executable-find "python"))))
-
-(setq nox-python-server "pyright")
-(setq nox-python-server-dir (expand-file-name ".cache/lsp/mspyls/" user-emacs-directory))
-
-(defun local/pyls ()
-  (interactive)
-  (let ((choices '("pyright" "mspyls")))
-    (setq nox-python-server (completing-read "Swith to:" choices))))
-
-;; (when (executable-find "pyright-langserver")
-;;   (add-hook 'python-mode-hook 'local/lsp-python))
-
-
 ;;; key
 (add-hook 'python-mode-hook
           (lambda()
@@ -30,7 +14,6 @@
 
 (global-set-key (kbd "C-c C-y") 'yapfify-region)
 (global-set-key (kbd "C-c C-b") 'python-black-region)
-
 
 ;;; utils
 (defun local/pytest-shanbay-flask ()

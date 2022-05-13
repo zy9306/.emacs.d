@@ -23,7 +23,6 @@
 (local/load-package 'init-face)
 (local/load-package 'init-basic)
 (local/load-package 'init-utils)
-;; (local/load-package 'init-completion)
 (local/load-package 'init-citre)
 (local/load-package 'init-tabnine-capf)
 (local/load-package 'init-ivy)
@@ -32,14 +31,7 @@
 (local/load-package 'init-projectile)
 (local/load-package 'init-rg)
 (local/load-package 'init-gud)
-
-(local/load-package 'init-lsp)
-
-(local/load-package 'init-corfu)
-(local/load-package 'init-lsp-bridge)
-
 (local/load-package 'init-org)
-
 (local/load-package 'init-python)
 (local/load-package 'init-rust)
 (local/load-package 'init-web-mode)
@@ -61,6 +53,11 @@
 (local/load-package 'init-edit)
 
 (local/load-package 'init-modeline)
+
+;; (local/load-package 'init-completion)
+(local/load-package 'init-corfu)
+;; (local/load-package 'init-lsp-deprecated)
+(local/load-package 'init-lsp-bridge)
 
 (if (not (display-graphic-p))
   (local/load-package 'init-evil-v3))
