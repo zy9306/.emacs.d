@@ -5,6 +5,7 @@
     :custom
     (corfu-auto t)
     (corfu-auto-prefix 1)
+    (corfu-auto-delay 0.2)
     (corfu-separator ?\s)
     (corfu-quit-at-boundary nil)
     (corfu-quit-no-match t)
@@ -17,7 +18,8 @@
     (:map corfu-map
           ("RET" . corfu-insert)
           ("TAB" . corfu-next)
-          ("S-TAB" . corfu-previous))
+          ("S-TAB" . corfu-previous)
+          ("s-SPC" . corfu-insert-separator))
     :init
     (global-corfu-mode))
 
