@@ -23,6 +23,7 @@
 
   (with-eval-after-load 'corfu
     (require 'cape)
+    (require 'cape-keyword)
     (add-to-list 'completion-at-point-functions #'cape-file)
     (add-to-list 'completion-at-point-functions #'cape-dabbrev)
     (add-to-list 'completion-at-point-functions #'cape-keyword)
