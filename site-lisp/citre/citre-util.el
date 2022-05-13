@@ -68,7 +68,7 @@ which you want to use the tags file.
 
 If you work on a remote machine, this points to directory on the
 remote machine."
-  :type 'string
+  :type 'directory
   :group 'citre)
 
 (defcustom citre-tags-file-per-project-cache-dir "./.tags/"
@@ -79,7 +79,7 @@ the project, this directory is searched for a tags file.
 
 Tags files in it are named using the relative path to the
 directory in which you want to use the tags file."
-  :type 'string
+  :type 'directory
   :group 'citre)
 
 (defcustom citre-tags-file-alist nil
@@ -96,7 +96,7 @@ The global (default) value of this still works as a fallback for
 its buffer-local value.  So you can use `setq-default' to
 customize this for directories where it's inconvenient to have
 dir-local variables."
-  :type '(alist :key-type string :value-type string)
+  :type '(alist :key-type directory :value-type file)
   :group 'citre)
 
 ;;;###autoload
@@ -169,33 +169,6 @@ When TAGSFILE is nil, find it automatically."
 (defvar-local citre--tags-file nil
   "Buffer-local cache for tags file path.")
 
-(defun citre--up-directory (file)
-  "Return the directory up from FILE.
-No matter if FILE is a file or dir, return the dir contains
-it.
-
-If there's no directory up, return nil.  Also return nil if FILE
-is a local/remote user home dir."
-  (unless (string-match
-           (rx (or (seq bol (opt (seq alpha ":")) "/" eol)
-                   (seq bol
-                        ;; remote identifier
-                        (opt "/"
-                             ;; method
-                             (+ (or alnum "-")) ":"
-                             ;; user.  NOTE: (not (any ...)) seems to be the
-                             ;; only accepted form for Emacs 26.
-                             (+ (not (any "/" "|" ":" "\t")))
-                             ;; host
-                             (opt "@" (+ (or alnum "_" "." "%" "-"))) ":")
-                        ;; local filename
-                        (or (seq "/home/" (+ (not (any "/"))) "/" eol)
-                            (seq bol "~/" eol)))))
-           file)
-    (let* ((dirname (directory-file-name file))
-           (dir (file-name-directory dirname)))
-      dir)))
-
 ;;;;;; By `citre-tags-file-alist'
 
 (defun citre--find-tags-by-tags-file-alist (dir project alist)
@@ -223,7 +196,7 @@ against PROJECT, an absolute path."
 ;;;;;; By `citre-tags-file-global/per-project-cache-dir'
 
 (defun citre--path-to-cache-tags-file-name (path)
-  "Convert PATH to the non-directory part a tagsfile name.
+  "Encode PATH into a tagsfile name and return it.
 PATH is canonical or relative to the project root.  It's where
 you want to use the tags file.  The returned name can be used in
 `citre-tags-file-global-cache-dir' or
@@ -233,7 +206,7 @@ you want to use the tags file.  The returned name can be used in
     ;; Check if it's a Windows path.  We don't use `system-type' as the user
     ;; may work on a remote Windows machine (people really do this?)
     (when (string-match "^[[:alpha:]]:" (file-local-name path))
-      ;; We remote the colon after the disk symbol, or Emacs will think
+      ;; We remove the colon after the disk symbol, or Emacs will think
       ;; "d:!project!path" is absolute and refuse to expand it against the
       ;; cache dir.
       (setq path (concat (or (file-remote-p path) "")
@@ -248,11 +221,11 @@ you want to use the tags file.  The returned name can be used in
 (defun citre-tags-file-in-global-cache (dir)
   "Return the tags file name of DIR in global cache dir.
 DIR is absolute.  The full path of the tags file is returned."
-  (concat
-   (or (file-remote-p default-directory) "")
-   (expand-file-name
-    (citre--path-to-cache-tags-file-name (file-local-name (file-truename dir)))
-    citre-tags-file-global-cache-dir)))
+  (expand-file-name
+   (citre--path-to-cache-tags-file-name (file-local-name (file-truename dir)))
+   ;; TODO: We may want to put this in a function.
+   (concat (or (file-remote-p default-directory) "")
+           citre-tags-file-global-cache-dir)))
 
 (defun citre-tags-file-in-per-project-cache (dir &optional project)
   "Return the tags file name of DIR in per-project cache dir.
@@ -334,7 +307,7 @@ root dir."
                   (and citre-tags-files
                        (citre--find-tags-in-dir current-dir))))
         (unless tagsfile
-          (setq current-dir (citre--up-directory current-dir))))
+          (setq current-dir (citre-directory-of current-dir))))
       (when tagsfile
         (setq tagsfile (file-truename tagsfile))
         (puthash tagsfile current-dir
@@ -502,16 +475,22 @@ recording the beginning/end positions of the symbol."
   (or (citre-get-marked-symbol)
       (citre-get-symbol-at-point)))
 
-(defun citre-get-symbol ()
+(defun citre-get-symbol (&optional tagsfile)
   "Get the symbol at point.
 Set `citre-get-symbol-function-alist' to control the behavior of
 this function for different languages.  `citre-file-path' and
 `citre-tags-file' properties are attached to the symbol string so
-filters/sorters can make use of them."
+filters/sorters can make use of them.
+
+When TAGSFILE is non-nil, write it (rather than the tags file
+associated with current buffer) to the `citre-tags-file' property
+in the returned string.  This is needed when getting
+definitions/completions of the returned symbol from a specified
+tags file."
   (let ((sym (funcall (or (citre--get-value-in-language-alist :get-symbol)
                           #'citre-get-symbol-default))))
     (citre-put-property sym 'file-path (buffer-file-name))
-    (citre-put-property sym 'tags-file (citre-tags-file-path))
+    (citre-put-property sym 'tags-file (or tagsfile (citre-tags-file-path)))
     sym))
 
 ;;;;; APIs: Auto-completion related
@@ -546,7 +525,7 @@ case sensitivity is controlled by
 
 The returned value is a list of tags.  Nil is returned when the
 completion can't be done."
-  (when-let* ((symbol (or symbol (citre-get-symbol)))
+  (when-let* ((symbol (or symbol (citre-get-symbol tagsfile)))
               (tagsfile (or tagsfile (citre-tags-file-path)))
               (match (if substr-completion 'substr 'prefix)))
     (citre-get-tags tagsfile symbol match
@@ -592,7 +571,7 @@ find it automatically.
 
 The result is a list of tags.  Nil is returned when no definition
 is found."
-  (let ((symbol (or symbol (citre-get-symbol)))
+  (let ((symbol (or symbol (citre-get-symbol tagsfile)))
         (tagsfile (or tagsfile (citre-tags-file-path)
                       (user-error "Can't find tags file for current buffer"))))
     (unless symbol

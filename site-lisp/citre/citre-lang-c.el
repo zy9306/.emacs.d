@@ -61,7 +61,7 @@
                (save-excursion
                  (goto-char (car bounds))
                  (looking-back
-                  (rx "#include"
+                  (rx "#" (* space) "include"
                       (* space) (or "<" "\""))
                   (line-beginning-position))))
       (let* ((full-symbol (buffer-substring-no-properties
@@ -105,7 +105,7 @@
       (save-excursion
         (goto-char (car bounds))
         (when (looking-back (rx symbol-start
-                                (group (or "struct" "union" "enum"))
+                                (group (or "struct" "union" "enum" "goto"))
                                 (+ space))
                             (line-beginning-position))
           (setq syntax (intern (match-string 1)))))
@@ -167,6 +167,14 @@
        ('function
         (citre-core-sorter
          (citre-sorter-arg-put-kinds-above '("function" "macro"))))
+       ('goto
+        (citre-core-sorter (citre-sorter-arg-put-kinds-above '("label"))
+                           ;; Several languages defines "label" kind, and we
+                           ;; should put labels in C above others.  We do this
+                           ;; for C++ too as ctags considers header files to be
+                           ;; C++ source files.
+                           `(filter ,(citre-core-filter-lang "C") +)
+                           `(filter ,(citre-core-filter-lang "C++") +)))
        ((and (or 'struct 'union 'enum)
              keyword)
         ;; If a symbol comes after keywords "struct", "union", or "enum",
@@ -228,6 +236,8 @@
        ('function
         (citre-core-sorter
          (citre-sorter-arg-put-kinds-above '("function" "member"))))
+       ('goto
+        (citre-core-sorter (citre-sorter-arg-put-kinds-above '("label"))))
        ((and (or 'struct 'union 'enum)
              keyword)
         ;; See the comment in `citre-lang-c-definition-sorter'.

@@ -56,14 +56,15 @@ effect."
   "The name or path of the ctags program.
 Citre requires ctags program provided by Universal Ctags.  Set
 this if ctags is not in your PATH, or its name is not \"ctags\""
-  :type 'string
+  :type 'file
   :group 'citre)
 
 (defcustom citre-edit-cmd-buf-default-cmd
   "ctags
 -o
 %TAGSFILE%
---languages=[add languages here]
+;; programming languages to be scanned
+--languages=C,C++
 --kinds-all=*
 --fields=*
 --extras=*

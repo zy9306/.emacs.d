@@ -36,19 +36,11 @@
     "repo": "git@github.com:minad/cape.git"
   },
   "citre": {
-    "commit": "641f2f7f69de2c0f4f055efe55b3ecd899a60b24",
+    "commit": "87e2cbf3b2ae6d59ec919a2dcb38e56ccfa5ec14",
     "ignore": [
-      ".github",
-      "docs",
-      "img",
-      "scripts",
-      "tests",
-      ".gitignore",
-      "CHANGELOG.md",
-      "LICENSE",
-      "Makefile",
-      "README.md"
+      "tests"
     ],
+    "only_el": true,
     "pkg": "citre",
     "repo": "git@github.com:universal-ctags/citre.git"
   },
