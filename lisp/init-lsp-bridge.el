@@ -56,6 +56,7 @@
   (add-hook hook (lambda () (lsp-bridge-mode 1))))
 
 (define-key lsp-bridge-mode-map (kbd "M-.") 'lsp-bridge-find-def)
+(define-key lsp-bridge-mode-map (kbd "C-x 4 .") 'lsp-bridge-find-def-other-window)
 (define-key lsp-bridge-mode-map (kbd "M-,") 'lsp-bridge-return-from-def)
 
 
