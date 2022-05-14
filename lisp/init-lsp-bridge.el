@@ -25,8 +25,16 @@
      (setq-local corfu-auto nil)
      (setq-local corfu-auto-prefix 1)
 
-     (setq-local completion-at-point-functions nil)
-     (add-hook 'completion-at-point-functions 'lsp-bridge-capf-citre-capf-function nil t)
+     (setq-local completion-at-point-functions
+                 (list
+                  (cape-capf-buster
+                   (cape-super-capf
+                    #'lsp-bridge-capf-citre-capf-function
+                    ;; coast too much cpu.
+                    ;; #'tabnine-completion-at-point
+                    #'cape-file
+                    #'cape-dabbrev)
+                   'equal)))
 
      (with-eval-after-load 'company
        (company-mode -1)))))
