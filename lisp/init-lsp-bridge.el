@@ -5,6 +5,8 @@
 
 (require 'citre)
 
+(setq lsp-bridge-enable-auto-import nil)
+
 (when (or *mac* *unix*)
   (setq-default lsp-bridge-python-command "/usr/local/bin/python3"))
 
