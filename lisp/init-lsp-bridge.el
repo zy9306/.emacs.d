@@ -1,8 +1,22 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 
+;;; lsp server install
+;; py
+;; npm install -g pyright
+
+;; ts,js
+;; npm install -g typescript-language-server typescript
+
+;; go
+;; go install golang.org/x/tools/gopls@latest
+
+;; rust
+;; curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
+;; chmod +x ~/.local/bin/rust-analyzer
+;; rustup component add rust-src
+
 (require 'lsp-bridge)
 (require 'lsp-bridge-icon)
-
 (require 'citre)
 
 (setq lsp-bridge-enable-auto-import nil)
@@ -13,6 +27,15 @@
 (when (or *mac* *unix*)
   (setq-default lsp-bridge-python-command "/usr/local/bin/python3"))
 
+(global-lsp-bridge-mode)
+
+(define-key lsp-bridge-mode-map (kbd "M-.") 'lsp-bridge-find-def)
+(define-key lsp-bridge-mode-map (kbd "C-x 4 .") 'lsp-bridge-find-def-other-window)
+(define-key lsp-bridge-mode-map (kbd "M-,") 'lsp-bridge-return-from-def)
+(define-key lsp-bridge-mode-map (kbd "C-c l d") 'lsp-bridge-lookup-documentation)
+(define-key lsp-bridge-mode-map (kbd "C-c l R") 'lsp-bridge-restart-process)
+
+;;; setup capf
 (defun lsp-bridge-capf-citre-capf-function ()
   (let ((lsp-result (lsp-bridge-capf)))
     (if (ignore-errors (and lsp-result
@@ -35,43 +58,9 @@
                   ;; #'tabnine-completion-at-point
                   #'cape-file
                   #'cape-dabbrev)
-                 'equal)))
+                 'equal)))))
 
-   (with-eval-after-load 'company
-     (company-mode -1))))
-
-(dolist (hook (list
-               'emacs-lisp-mode-hook))
-  (add-hook hook (lambda ()
-                   (setq-local corfu-auto t))))
-
-;; npm install -g pyright
-;; npm install -g typescript-language-server typescript
-;; go install golang.org/x/tools/gopls@latest
-;; rust
-;; curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
-;; chmod +x ~/.local/bin/rust-analyzer
-;; rustup component add rust-src
-
-(dolist (hook (list
-               'python-mode-hook
-               'rust-mode-hook
-               'go-mode-hook
-               'typescript-mode-hook
-               'js2-mode-hook
-               'js-mode-hook))
-  (add-hook hook (lambda ()
-                   (setq-local corfu-auto nil)
-                   (lsp-bridge-mode 1))))
-
-(define-key lsp-bridge-mode-map (kbd "M-.") 'lsp-bridge-find-def)
-(define-key lsp-bridge-mode-map (kbd "C-x 4 .") 'lsp-bridge-find-def-other-window)
-(define-key lsp-bridge-mode-map (kbd "M-,") 'lsp-bridge-return-from-def)
-(define-key lsp-bridge-mode-map (kbd "C-c l d") 'lsp-bridge-lookup-documentation)
-(define-key lsp-bridge-mode-map (kbd "C-c l R") 'lsp-bridge-restart-process)
-
-
-;;; fix python Path
+;;; workaround for python Path
 (defcustom lsp-bridge-current-python-command ""
   ""
   :type 'string)
