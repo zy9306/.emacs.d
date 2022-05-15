@@ -32,7 +32,10 @@
 (define-key lsp-bridge-mode-map (kbd "M-.") 'lsp-bridge-find-def)
 (define-key lsp-bridge-mode-map (kbd "C-x 4 .") 'lsp-bridge-find-def-other-window)
 (define-key lsp-bridge-mode-map (kbd "M-,") 'lsp-bridge-return-from-def)
-(define-key lsp-bridge-mode-map (kbd "C-c l d") 'lsp-bridge-lookup-documentation)
+(define-key lsp-bridge-mode-map (kbd "C-c l h") 'lsp-bridge-lookup-documentation)
+(define-key lsp-bridge-mode-map (kbd "C-c l i") 'lsp-bridge-find-impl)
+(define-key lsp-bridge-mode-map (kbd "C-c l 4 i") 'lsp-bridge-find-impl-other-window)
+(define-key lsp-bridge-mode-map (kbd "C-c l r") 'lsp-bridge-rename)
 (define-key lsp-bridge-mode-map (kbd "C-c l R") 'lsp-bridge-restart-process)
 
 ;;; setup capf
