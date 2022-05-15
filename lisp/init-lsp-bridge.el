@@ -26,23 +26,19 @@
 (add-hook
  'lsp-bridge-mode-hook
  (lambda ()
-   (progn
-     (setq-local corfu-auto nil)
-     (setq-local corfu-auto-prefix 1)
+   (setq-local completion-at-point-functions
+               (list
+                (cape-capf-buster
+                 (cape-super-capf
+                  #'lsp-bridge-capf-citre-capf-function
+                  ;; Need good cpu.
+                  ;; #'tabnine-completion-at-point
+                  #'cape-file
+                  #'cape-dabbrev)
+                 'equal)))
 
-     (setq-local completion-at-point-functions
-                 (list
-                  (cape-capf-buster
-                   (cape-super-capf
-                    #'lsp-bridge-capf-citre-capf-function
-                    ;; Need good cpu.
-                    ;; #'tabnine-completion-at-point
-                    #'cape-file
-                    #'cape-dabbrev)
-                   'equal)))
-
-     (with-eval-after-load 'company
-       (company-mode -1)))))
+   (with-eval-after-load 'company
+     (company-mode -1))))
 
 (dolist (hook (list
                'emacs-lisp-mode-hook))
@@ -66,7 +62,6 @@
                'js-mode-hook))
   (add-hook hook (lambda ()
                    (setq-local corfu-auto nil)
-                   (setq-local corfu-auto-prefix 1)
                    (lsp-bridge-mode 1))))
 
 (define-key lsp-bridge-mode-map (kbd "M-.") 'lsp-bridge-find-def)
