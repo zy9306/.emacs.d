@@ -7,6 +7,9 @@
 
 (setq lsp-bridge-enable-auto-import nil)
 
+(add-to-list 'lsp-bridge-lang-server-extension-list
+             '(("json") . "javascript"))
+
 (when (or *mac* *unix*)
   (setq-default lsp-bridge-python-command "/usr/local/bin/python3"))
 
@@ -46,6 +49,8 @@
   (add-hook hook (lambda ()
                    (setq-local corfu-auto t))))
 
+;; npm install -g pyright
+;; npm install -g typescript-language-server typescript
 (dolist (hook (list
                'python-mode-hook
                'rust-mode-hook
