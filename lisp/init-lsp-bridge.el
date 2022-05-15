@@ -35,7 +35,7 @@
                   (cape-capf-buster
                    (cape-super-capf
                     #'lsp-bridge-capf-citre-capf-function
-                    ;; coast too much cpu.
+                    ;; Need good cpu.
                     ;; #'tabnine-completion-at-point
                     #'cape-file
                     #'cape-dabbrev)
@@ -51,6 +51,12 @@
 
 ;; npm install -g pyright
 ;; npm install -g typescript-language-server typescript
+;; go install golang.org/x/tools/gopls@latest
+;; rust
+;; curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
+;; chmod +x ~/.local/bin/rust-analyzer
+;; rustup component add rust-src
+
 (dolist (hook (list
                'python-mode-hook
                'rust-mode-hook
@@ -58,11 +64,16 @@
                'typescript-mode-hook
                'js2-mode-hook
                'js-mode-hook))
-  (add-hook hook (lambda () (lsp-bridge-mode 1))))
+  (add-hook hook (lambda ()
+                   (setq-local corfu-auto nil)
+                   (setq-local corfu-auto-prefix 1)
+                   (lsp-bridge-mode 1))))
 
 (define-key lsp-bridge-mode-map (kbd "M-.") 'lsp-bridge-find-def)
 (define-key lsp-bridge-mode-map (kbd "C-x 4 .") 'lsp-bridge-find-def-other-window)
 (define-key lsp-bridge-mode-map (kbd "M-,") 'lsp-bridge-return-from-def)
+(define-key lsp-bridge-mode-map (kbd "C-c l d") 'lsp-bridge-lookup-documentation)
+(define-key lsp-bridge-mode-map (kbd "C-c l R") 'lsp-bridge-restart-process)
 
 
 ;;; fix python Path
