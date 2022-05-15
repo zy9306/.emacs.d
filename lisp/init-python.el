@@ -57,18 +57,16 @@
     (message relative-test-obj)
     (kill-new relative-test-obj)))
 
-(when (or *linux* *mac*)
-  (defun local/setup-flycheck-for-py ()
-    (require 'flycheck)
-    (add-to-list 'flycheck-disabled-checkers 'python-mypy)
-    (let (
-          (flake8 (executable-find "flake8"))
-          )
-      (when flake8
-        (flycheck-select-checker 'python-flake8))
-      ))
+(defun local/setup-flycheck-for-py ()
+  (require 'flycheck)
+  (dolist (checker (list
+                    'python-mypy
+                    'python-pycompile
+                    'python-pyright
+                    'python-pylint
+                    ))
+    (add-to-list 'flycheck-disabled-checkers checker)))
 
-  (add-hook 'python-mode-hook #'local/setup-flycheck-for-py))
-
+(add-hook 'python-mode-hook #'local/setup-flycheck-for-py)
 
 (provide 'init-python)
