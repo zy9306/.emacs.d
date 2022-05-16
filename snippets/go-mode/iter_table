@@ -1,0 +1,34 @@
+# -*- mode:snippet -*-
+# name: iter_table
+# key: iter_table
+# --
+db := app.EntExt.DB()
+cursor, err := db.QueryContext(ctx, "SELECT MIN(id) as min_id, MAX(id) as max_id from ${1:tableName}")
+if err != nil {
+    return err
+}
+idRange := struct {
+    MinID uint64 \`json:"min_id"\`
+    MaxID uint64 \`json:"max_id"\`
+}{}
+cursor.Next()
+if err := cursor.Scan(&idRange.MinID, &idRange.MaxID); err != nil {
+    return err
+}
+
+chunkSize := uint64(1000)
+minID := idRange.MinID
+maxID := idRange.MaxID
+startID := minID
+
+for startID <= maxID {
+    objs, err := app.EntClient.${2:model}.Query().Where($1.IDGTE(startID), $1.IDLT(startID+chunkSize)).All(ctx)
+    if err != nil {
+        return err
+    }
+
+    for _, obj := range objs {
+        // do something
+    }
+    startID += chunkSize
+}
