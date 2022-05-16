@@ -1,0 +1,10 @@
+# -*- mode:snippet -*-
+# name: mock_http_get_csv
+# key: mock_http_get_csv
+# --
+mockStr := "${1:str}"
+mockBody := io.NopCloser(bytes.NewReader([]byte(mockStr)))
+${2:Func} = func(url string) (*http.Response, error) {
+    res := &http.Response{Body: mockBody}
+    return res, nil
+}
