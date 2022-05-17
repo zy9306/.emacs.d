@@ -1,0 +1,6 @@
+# -*- mode:snippet -*-
+# name: assert_call_args
+# key: assert_call_args
+# group: assert
+# --
+${1:mock_func}.call_args.args

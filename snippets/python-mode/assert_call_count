@@ -1,0 +1,6 @@
+# -*- mode:snippet -*-
+# name: assert_call_count
+# key: assert_call_count
+# group: assert
+# --
+assert ${1:mock_func}.call_count == ${2:0}
