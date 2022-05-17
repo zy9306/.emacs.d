@@ -1,0 +1,11 @@
+# -*- mode:snippet -*-
+# name: csv_from_url
+# key: csv_from_url
+# group: csv
+# --
+r = requests.get(${1:url})
+r.encoding = "utf-8"
+file = io.StringIO(r.text)
+csv_reader = csv.reader(file)
+# or
+# csv_reader = csv.DictReader(file)

@@ -1,0 +1,9 @@
+# -*- mode:snippet -*-
+# name: list_chunk
+# key: list_chunk
+# group: list
+# --
+for i, data in enumerate(
+    (${1:list_}[i : i + ${2:chunk_size}] for i in range(0, len($1), $2))
+):
+    pass

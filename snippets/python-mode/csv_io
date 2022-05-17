@@ -1,0 +1,12 @@
+# -*- mode:snippet -*-
+# name: csv_io
+# key: csv_io
+# group: csv
+# --
+def get_fake_csv_data(column_name, ${1:rows}):
+    string_io = io.StringIO()
+    csv_writer = csv.writer(string_io)
+    csv_writer.writerow(column_name)
+    for row in $1:
+        csv_writer.writerow(row)
+    return string_io.getvalue()
