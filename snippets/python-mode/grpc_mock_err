@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: grpc_mock_err
+# key: grpc_mock_err
+# --
+mock_err = grpc.RpcError
+
+def mock_not_found_code(self):
+    return grpc.StatusCode.NOT_FOUND
+
+mock_err.code = mock_not_found_code
+${1:mock_func}.side_effect = mock_err

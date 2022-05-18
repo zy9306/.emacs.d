@@ -22,7 +22,11 @@ maxID := idRange.MaxID
 startID := minID
 
 for startID <= maxID {
-    objs, err := app.EntClient.${2:model}.Query().Where($1.IDGTE(startID), $1.IDLT(startID+chunkSize)).All(ctx)
+    endID := startID + chunkSize
+    if endID >= maxID {
+       endID = maxID + 1
+    }
+    objs, err := app.EntClient.${2:model}.Query().Where($1.IDGTE(startID), $1.IDLT(endID)).All(ctx)
     if err != nil {
         return err
     }

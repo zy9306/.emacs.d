@@ -1,0 +1,25 @@
+# -*- mode: snippet -*-
+# name: iter_table
+# key: iter_table
+# --
+import peewee as pw
+
+id_range = ${1:Model}.select(
+    pw.fn.MIN($1.id).alias("min_id"),
+    pw.fn.MAX($1.id).alias("max_id"),
+).get()
+
+min_id = id_range.min_id
+max_id = id_range.max_id
+start_id = min_id
+chunk_size = 5000
+
+while start_id <= max_id:
+    end_id = min(max_id + 1, start_id + chunk_size)
+    objs = $1.select().where(
+        $1.id >= start_id, $1.id < end_id
+    )
+    for obj in objs:
+        pass
+
+    start_id += chunk_size

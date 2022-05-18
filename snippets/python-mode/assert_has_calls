@@ -1,9 +1,0 @@
-# -*- mode:snippet -*-
-# name: assert_has_calls
-# key: assert_has_calls
-# group: assert
-# --
-calls = [
-    mock.call(${1:args}),
-]
-${2:mock_func}.assert_has_calls(calls, any_order=True)

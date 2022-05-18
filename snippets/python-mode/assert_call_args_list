@@ -1,0 +1,9 @@
+# -*- mode:snippet -*-
+# name: assert_call_args_list
+# key: assert_call_args_list
+# group: assert
+# --
+calls = [
+    mock.call(${1:args}),
+]
+assert ${2:mock_func}.call_args_list == calls
