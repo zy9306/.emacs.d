@@ -16,10 +16,10 @@
     (corfu-scroll-margin 5)
     :bind
     (:map corfu-map
-          ("RET" . corfu-insert)
-          ("TAB" . corfu-next)
-          ("S-TAB" . corfu-previous)
-          ("s-SPC" . corfu-insert-separator))
+          ([return] . corfu-insert)
+          ([tab] . corfu-next)
+          ([backtab] . corfu-previous)
+          ("M-SPC" . corfu-insert-separator))
     :config
     (global-corfu-mode))
 
