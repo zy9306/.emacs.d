@@ -17,7 +17,8 @@
 (local/after-init-hook 'smex)
 
 
-(if (version<= "28.0" emacs-version)
+;; 自带的使用上有点问题，先继续用 undo-tree
+(if (and nil (version<= "28.0" emacs-version))
     (progn
       (global-set-key (kbd "C-/") 'undo)
       (global-set-key (kbd "M-_") 'undo-redo))
