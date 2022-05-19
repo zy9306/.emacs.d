@@ -1,7 +1,5 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 
-(require 'corfu)
-
 (defun local/setup-corfu ()
   (use-package corfu
     :custom
@@ -22,7 +20,7 @@
           ("TAB" . corfu-next)
           ("S-TAB" . corfu-previous)
           ("s-SPC" . corfu-insert-separator))
-    :init
+    :config
     (global-corfu-mode))
 
   (use-package corfu-history
