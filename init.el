@@ -56,6 +56,7 @@
 
 ;; (local/load-package 'init-company)
 (local/load-package 'init-corfu)
+
 ;; (local/load-package 'init-lsp-deprecated)
 (local/load-package 'init-lsp-bridge)
 

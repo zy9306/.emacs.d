@@ -45,16 +45,15 @@
 (define-key lsp-bridge-mode-map (kbd "C-c l r") 'lsp-bridge-rename)
 (define-key lsp-bridge-mode-map (kbd "C-c l R") 'lsp-bridge-restart-process)
 
-;;; setup capf
-(defun lsp-bridge-capf-citre-capf-function ()
-  (let ((lsp-result (lsp-bridge-capf)))
-    (if (ignore-errors (and lsp-result
-                            (try-completion
-                             (buffer-substring (nth 0 lsp-result)
-                                               (nth 1 lsp-result))
-                             (nth 2 lsp-result))))
-        lsp-result
-      (citre-completion-at-point))))
+;; (defun lsp-bridge-capf-citre-capf-function ()
+;;   (let ((lsp-result (lsp-bridge-capf)))
+;;     (if (ignore-errors (and lsp-result
+;;                             (try-completion
+;;                              (buffer-substring (nth 0 lsp-result)
+;;                                                (nth 1 lsp-result))
+;;                              (nth 2 lsp-result))))
+;;         lsp-result
+;;       (citre-completion-at-point))))
 
 (add-hook
  'lsp-bridge-mode-hook
@@ -66,7 +65,6 @@
                       (cape-capf-buster
                        (cape-super-capf
                         #'lsp-bridge-capf
-                        ;; #'lsp-bridge-capf-citre-capf-function
                         ;; Need good cpu.
                         ;; #'tabnine-completion-at-point
                         #'cape-file

@@ -1,13 +1,15 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 
+(require 'corfu)
+
 (defun local/setup-corfu ()
   (use-package corfu
     :custom
     (corfu-auto t)
     (corfu-auto-prefix 1)
     (corfu-auto-delay 0.2)
-    (corfu-separator ?\s)
-    (corfu-quit-at-boundary nil)
+    ;; (corfu-separator ?\s) ;; uncomment to use space for orderless fuzzy
+    ;; (corfu-quit-at-boundary nil) ;; uncomment to use orderless fuzzy
     (corfu-quit-no-match t)
     (corfu-preview-current nil)
     (corfu-preselect-first t)
@@ -60,11 +62,7 @@
     (corfu-mode 1)))
 
 
-(with-eval-after-load 'corfu
-  (local/setup-corfu))
-
-
-(local/after-init-hook 'corfu)
+(local/setup-corfu)
 
 
 (provide 'init-corfu)
