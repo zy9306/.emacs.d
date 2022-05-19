@@ -21,6 +21,13 @@
 
 (setq lsp-bridge-enable-auto-import nil)
 
+(setq lsp-bridge-corfu t)
+
+(if lsp-bridge-corfu
+    (setq lsp-bridge-completion-provider 'corfu)
+  (setq lsp-bridge-completion-provider 'company))
+
+
 (add-to-list 'lsp-bridge-lang-server-extension-list
              '(("json") . "javascript"))
 
@@ -52,16 +59,26 @@
 (add-hook
  'lsp-bridge-mode-hook
  (lambda ()
-   (setq-local completion-at-point-functions
-               (list
-                (cape-capf-buster
-                 (cape-super-capf
-                  #'lsp-bridge-capf-citre-capf-function
-                  ;; Need good cpu.
-                  ;; #'tabnine-completion-at-point
-                  #'cape-file
-                  #'cape-dabbrev)
-                 'equal)))))
+   (if lsp-bridge-corfu
+       (progn
+         (setq-local completion-at-point-functions
+                     (list
+                      (cape-capf-buster
+                       (cape-super-capf
+                        #'lsp-bridge-capf
+                        ;; #'lsp-bridge-capf-citre-capf-function
+                        ;; Need good cpu.
+                        ;; #'tabnine-completion-at-point
+                        #'cape-file
+                        #'cape-dabbrev)
+                       'equal))))
+     (progn
+       (require 'init-company)
+       (require 'company)
+       (require 'company-box)
+       (company-box-mode 1)
+       )
+     )))
 
 ;;; workaround for python Path
 (defcustom lsp-bridge-current-python-command ""

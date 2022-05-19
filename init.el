@@ -54,7 +54,7 @@
 
 (local/load-package 'init-modeline)
 
-;; (local/load-package 'init-completion)
+;; (local/load-package 'init-company)
 (local/load-package 'init-corfu)
 ;; (local/load-package 'init-lsp-deprecated)
 (local/load-package 'init-lsp-bridge)

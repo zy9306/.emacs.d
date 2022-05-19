@@ -20,6 +20,7 @@
 
   (global-company-mode))
 
+
 (local/after-init-hook 'company)
 
 
@@ -77,4 +78,4 @@
             (setq-local company-transformers '(delete-dups company-transform-pyright))))
 
 
-(provide 'init-completion)
+(provide 'init-company)
