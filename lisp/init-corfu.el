@@ -26,6 +26,10 @@
     :config
     (corfu-history-mode))
 
+  (use-package corfu-indexed
+    :config
+    (corfu-indexed-mode))
+
   (with-eval-after-load 'corfu
     (require 'cape)
     (require 'cape-keyword)
