@@ -18,8 +18,7 @@
     (:map corfu-map
           ([return] . corfu-insert)
           ([tab] . corfu-next)
-          ([backtab] . corfu-previous)
-          ("M-SPC" . corfu-insert-separator))
+          ([backtab] . corfu-previous))
     :config
     (global-corfu-mode))
 
@@ -41,11 +40,11 @@
     (add-to-list 'completion-at-point-functions #'cape-abbrev)
     (add-to-list 'completion-at-point-functions #'cape-symbol))
 
-  (use-package orderless
-    :init
-    (setq completion-styles '(orderless basic))
-    (setq completion-category-defaults nil)
-    (setq completion-category-overrides '((file (styles . (partial-completion))))))
+  ;; (use-package orderless
+  ;;   :init
+  ;;   (setq completion-styles '(orderless basic))
+  ;;   (setq completion-category-defaults nil)
+  ;;   (setq completion-category-overrides '((file (styles . (partial-completion))))))
 
   (add-hook 'minibuffer-setup-hook #'corfu-enable-in-minibuffer)
 
