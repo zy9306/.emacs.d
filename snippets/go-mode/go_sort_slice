@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: go_sort_slice
+# key: go_sort_slice
+# --
+sort.Slice(${1:slice}, func(i, j int) bool {
+    return $1[i] < $1[j]
+})
