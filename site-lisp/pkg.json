@@ -29,7 +29,7 @@
     "repo": "git@github.com:gilbertw1/better-jumper.git"
   },
   "cape": {
-    "commit": "e72edf2d6357beb64798ef1894cc807190f80901",
+    "commit": "0a490abfbf89a24ceb148bdb8afbbd8823a2a201",
     "ignore": [],
     "only_el": true,
     "pkg": "cape",
@@ -64,7 +64,7 @@
     "repo": "https://gitlab.com/OlMon/consult-projectile.git"
   },
   "corfu": {
-    "commit": "b4004a14a2ada1f3cbd7c21df99e6607572a0bb3",
+    "commit": "1481b67871e6ab8b143017de2fd8151cd65f24e7",
     "ignore": [],
     "only_el": true,
     "pkg": "corfu",

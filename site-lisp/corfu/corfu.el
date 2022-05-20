@@ -5,7 +5,7 @@
 ;; Author: Daniel Mendler <mail@daniel-mendler.de>
 ;; Maintainer: Daniel Mendler <mail@daniel-mendler.de>
 ;; Created: 2021
-;; Version: 0.23
+;; Version: 0.24
 ;; Package-Requires: ((emacs "27.1"))
 ;; Homepage: https://github.com/minad/corfu
 
@@ -186,8 +186,7 @@ The completion backend can override this with
   '((((class color) (min-colors 88) (background dark)) :background "#191a1b")
     (((class color) (min-colors 88) (background light)) :background "#f0f0f0")
     (t :background "gray"))
-  "Default face used for the popup, in particular the background
-  and foreground color.")
+  "Default face, foreground and background colors used for the popup.")
 
 (defface corfu-current
   '((((class color) (min-colors 88) (background dark))
@@ -366,14 +365,6 @@ The completion backend can override this with
     map)
   "Ignore all mouse clicks.")
 
-(defun corfu--popup-redirect-focus ()
-  "Redirect focus from popup."
-  (when (and (frame-live-p corfu--frame) (eq (selected-frame) corfu--frame))
-    ;; I don't understand what I am doing...
-    ;; Why is this even necessary? The frame is marked with no-accept-focus!!!
-    (redirect-frame-focus corfu--frame (frame-parent corfu--frame))
-    (x-focus-frame (frame-parent corfu--frame))))
-
 (defun corfu--make-buffer (content)
   "Create corfu buffer with CONTENT."
   (let ((fr face-remapping-alist)
@@ -423,13 +414,14 @@ The completion backend can override this with
          (y (if (> (+ yb (* corfu-count ch) ch ch) (frame-pixel-height))
                 (- yb height ch 1)
               yb))
-         (buffer (corfu--make-buffer content)))
+         (buffer (corfu--make-buffer content))
+         (parent (window-frame)))
     (unless (and (frame-live-p corfu--frame)
-                 (eq (frame-parent corfu--frame) (window-frame)))
+                 (eq (frame-parent corfu--frame) parent))
       (when corfu--frame (delete-frame corfu--frame))
       (setq corfu--frame (make-frame
-                          `((parent-frame . ,(window-frame))
-                            (minibuffer . ,(minibuffer-window (window-frame)))
+                          `((parent-frame . ,parent)
+                            (minibuffer . ,(minibuffer-window parent))
                             ;; Set `internal-border-width' for Emacs 27
                             (internal-border-width . ,border)
                             ,@corfu--frame-parameters))))
@@ -461,7 +453,8 @@ The completion backend can override this with
       ;; display content.
       (set-frame-position corfu--frame x y)
       (redisplay 'force)
-      (make-frame-visible corfu--frame))))
+      (make-frame-visible corfu--frame))
+    (redirect-frame-focus corfu--frame parent)))
 
 (defun corfu--popup-show (pos off width lines &optional curr lo bar)
   "Show LINES as popup at POS - OFF.
@@ -1086,62 +1079,63 @@ Quit if no candidate is selected."
   (accept-change-group corfu--change-group)
   (mapc #'kill-local-variable corfu--state-vars))
 
-(defun corfu--in-region (beg end table &optional pred)
-  "Corfu completion in region function.
-See `completion-in-region' for the arguments BEG, END, TABLE, PRED."
+(defun corfu--in-region (&rest args)
+  "Corfu completion in region function called with ARGS."
+  ;; XXX We can get an endless loop when `completion-in-region-function' is set
+  ;; globally to `corfu--in-region'. This should never happen.
+  (apply (if (display-graphic-p) #'corfu--in-region-1
+           (default-value 'completion-in-region-function))
+         args))
+
+(defun corfu--in-region-1 (beg end table &optional pred)
+  "Complete in region, see `completion-in-region' for BEG, END, TABLE, PRED."
   (barf-if-buffer-read-only)
-  (if (not (display-graphic-p))
-      ;; XXX Warning this can result in an endless loop when
-      ;; `completion-in-region-function' is set *globally* to
-      ;; `corfu--in-region'. This should never happen.
-      (funcall (default-value 'completion-in-region-function) beg end table pred)
-    ;; Restart the completion. This can happen for example if C-M-/
-    ;; (`dabbrev-completion') is pressed while the Corfu popup is already open.
-    (when completion-in-region-mode (corfu-quit))
-    (let* ((pt (max 0 (- (point) beg)))
-           (str (buffer-substring-no-properties beg end))
-           (before (substring str 0 pt))
-           (metadata (completion-metadata before table pred))
-           (exit (plist-get completion-extra-properties :exit-function))
-           (threshold (completion--cycle-threshold metadata))
-           (completion-in-region-mode-predicate
-            (or completion-in-region-mode-predicate (lambda () t))))
-      (pcase (completion-try-completion str table pred pt metadata)
-        ('nil (corfu--message "No match") nil)
-        ('t
-         (goto-char end)
-         (corfu--message "Sole match")
-         (when exit (funcall exit str 'finished))
-         t)
-        (`(,newstr . ,newpt)
-         (pcase-let ((`(,base ,candidates ,total . ,_)
-                      (corfu--recompute-candidates str pt table pred)))
-           (unless (markerp beg) (setq beg (copy-marker beg)))
-           (setq end (copy-marker end t)
-                 completion-in-region--data (list beg end table pred))
-           (unless (equal str newstr)
-             ;; bug#55205: completion--replace removes properties!
-             (completion--replace beg end (concat newstr)))
-           (goto-char (+ beg newpt))
-           (if (= total 1)
-               ;; If completion is finished and cannot be further completed,
-               ;; return 'finished. Otherwise setup the Corfu popup.
-               (cond
-                ((consp (completion-try-completion
-                         newstr table pred newpt
-                         (completion-metadata newstr table pred)))
-                 (corfu--setup))
-                (exit (funcall exit newstr 'finished)))
-             (if (or (= total 0) (not threshold)
-                     (and (not (eq threshold t)) (< threshold total)))
-                 (corfu--setup)
-               (corfu--cycle-candidates total candidates (+ (length base) beg) end)
-               ;; Do not show Corfu when "trivially" cycling, i.e.,
-               ;; when the completion is finished after the candidate.
-               (unless (equal (completion-boundaries (car candidates) table pred "")
-                              '(0 . 0))
-                 (corfu--setup)))))
-         t)))))
+  ;; Restart the completion. This can happen for example if C-M-/
+  ;; (`dabbrev-completion') is pressed while the Corfu popup is already open.
+  (when completion-in-region-mode (corfu-quit))
+  (let* ((pt (max 0 (- (point) beg)))
+         (str (buffer-substring-no-properties beg end))
+         (before (substring str 0 pt))
+         (metadata (completion-metadata before table pred))
+         (exit (plist-get completion-extra-properties :exit-function))
+         (threshold (completion--cycle-threshold metadata))
+         (completion-in-region-mode-predicate
+          (or completion-in-region-mode-predicate (lambda () t))))
+    (pcase (completion-try-completion str table pred pt metadata)
+      ('nil (corfu--message "No match") nil)
+      ('t (goto-char end)
+          (corfu--message "Sole match")
+          (when exit (funcall exit str 'finished))
+          t)
+      (`(,newstr . ,newpt)
+       (pcase-let ((`(,base ,candidates ,total . ,_)
+                    (corfu--recompute-candidates str pt table pred)))
+         (unless (markerp beg) (setq beg (copy-marker beg)))
+         (setq end (copy-marker end t)
+               completion-in-region--data (list beg end table pred))
+         (unless (equal str newstr)
+           ;; bug#55205: completion--replace removes properties!
+           (completion--replace beg end (concat newstr)))
+         (goto-char (+ beg newpt))
+         (if (= total 1)
+             ;; If completion is finished and cannot be further completed,
+             ;; return 'finished. Otherwise setup the Corfu popup.
+             (cond
+              ((consp (completion-try-completion
+                       newstr table pred newpt
+                       (completion-metadata newstr table pred)))
+               (corfu--setup))
+              (exit (funcall exit newstr 'finished)))
+           (if (or (= total 0) (not threshold)
+                   (and (not (eq threshold t)) (< threshold total)))
+               (corfu--setup)
+             (corfu--cycle-candidates total candidates (+ (length base) beg) end)
+             ;; Do not show Corfu when "trivially" cycling, i.e.,
+             ;; when the completion is finished after the candidate.
+             (unless (equal (completion-boundaries (car candidates) table pred "")
+                            '(0 . 0))
+               (corfu--setup)))))
+       t))))
 
 (defun corfu--message (&rest msg)
   "Show completion MSG."
@@ -1215,9 +1209,7 @@ Auto completion is only performed if the tick did not change."
     ;; advice is active *globally*.
     (advice-add #'completion--capf-wrapper :around #'corfu--capf-wrapper-advice)
     (advice-add #'eldoc-display-message-no-interference-p :before-while #'corfu--allow-eldoc)
-    ;;; XXX HACK install redirect focus hook
-    (add-function :after after-focus-change-function #'corfu--popup-redirect-focus)
-    (when corfu-auto (add-hook 'post-command-hook #'corfu--auto-post-command nil 'local))
+    (and corfu-auto (add-hook 'post-command-hook #'corfu--auto-post-command nil 'local))
     (setq-local completion-in-region-function #'corfu--in-region))
    (t
     (remove-hook 'post-command-hook #'corfu--auto-post-command 'local)
