@@ -7,6 +7,8 @@
   (require 'citre-config)
 
   (setq-default citre-enable-imenu-integration nil)
+  (setq citre-use-project-root-when-creating-tags t)
+  (setq citre-prompt-language-for-ctags-command t)
 
   (add-hook 'completion-at-point-functions 'citre-completion-at-point nil t)
 
