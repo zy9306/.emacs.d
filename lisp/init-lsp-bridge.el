@@ -1,82 +1,58 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 
-;;; lsp server install
-;; py
-;; npm install -g pyright
+(use-package lsp-bridge-ui
+  :config
+  (global-lsp-bridge-ui-mode))
 
-;; ts,js
-;; npm install -g typescript-language-server typescript
+(use-package lsp-bridge-ui-history
+  :config
+  (lsp-bridge-ui-history-mode t))
 
-;; go
-;; go install golang.org/x/tools/gopls@latest
+(use-package lsp-bridge
+  :bind (:map lsp-bridge-mode-map
+              ("M-." . lsp-bridge-find-def)
+              ("C-x 4 ." . lsp-bridge-find-def-other-window)
+              ("M-," . lsp-bridge-return-from-def)
+              ("C-c l h" . lsp-bridge-lookup-documentation)
+              ("C-c l i" . lsp-bridge-find-impl)
+              ("C-c l 4 i" . lsp-bridge-find-impl-other-window)
+              ("C-c l r" . lsp-bridge-rename)
+              ("C-c l R" . lsp-bridge-restart-process))
+  :config
+  (setq lsp-bridge-enable-auto-import nil)
 
-;; rust
-;; curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
-;; chmod +x ~/.local/bin/rust-analyzer
-;; rustup component add rust-src
+  (when (or *mac* *unix*)
+    (setq-default lsp-bridge-python-command "/usr/local/bin/python3"))
 
-(require 'lsp-bridge)
-(require 'lsp-bridge-icon)
-(require 'citre)
+  (add-to-list 'lsp-bridge-lang-server-extension-list
+               '(("json") . "javascript"))
 
-(setq lsp-bridge-enable-auto-import nil)
+  (dolist (hook lsp-bridge-default-mode-hooks)
+    (add-hook hook (lambda ()
+                     (setq-local lsp-bridge-ui-auto nil)
+                     (lsp-bridge-mode 1)
+                     (lsp-bridge-mix-multi-backends)
+                     )))
 
-(setq lsp-bridge-corfu t)
+  (dolist (hook (list
+                 'emacs-lisp-mode-hook
+                 ))
+    (add-hook hook (lambda ()
+                     (setq-local lsp-bridge-ui-auto t)))))
 
-(if lsp-bridge-corfu
-    (setq lsp-bridge-completion-provider 'corfu)
-  (setq lsp-bridge-completion-provider 'company))
-
-
-(add-to-list 'lsp-bridge-lang-server-extension-list
-             '(("json") . "javascript"))
-
-(when (or *mac* *unix*)
-  (setq-default lsp-bridge-python-command "/usr/local/bin/python3"))
-
-(global-lsp-bridge-mode)
-
-(define-key lsp-bridge-mode-map (kbd "M-.") 'lsp-bridge-find-def)
-(define-key lsp-bridge-mode-map (kbd "C-x 4 .") 'lsp-bridge-find-def-other-window)
-(define-key lsp-bridge-mode-map (kbd "M-,") 'lsp-bridge-return-from-def)
-(define-key lsp-bridge-mode-map (kbd "C-c l h") 'lsp-bridge-lookup-documentation)
-(define-key lsp-bridge-mode-map (kbd "C-c l i") 'lsp-bridge-find-impl)
-(define-key lsp-bridge-mode-map (kbd "C-c l 4 i") 'lsp-bridge-find-impl-other-window)
-(define-key lsp-bridge-mode-map (kbd "C-c l r") 'lsp-bridge-rename)
-(define-key lsp-bridge-mode-map (kbd "C-c l R") 'lsp-bridge-restart-process)
-
-;; (defun lsp-bridge-capf-citre-capf-function ()
-;;   (let ((lsp-result (lsp-bridge-capf)))
-;;     (if (ignore-errors (and lsp-result
-;;                             (try-completion
-;;                              (buffer-substring (nth 0 lsp-result)
-;;                                                (nth 1 lsp-result))
-;;                              (nth 2 lsp-result))))
-;;         lsp-result
-;;       (citre-completion-at-point))))
-
-(add-hook
- 'lsp-bridge-mode-hook
- (lambda ()
-   (if lsp-bridge-corfu
-       (progn
-         (setq-local completion-at-point-functions
-                     (list
-                      (cape-capf-buster
-                       (cape-super-capf
-                        #'lsp-bridge-capf
-                        ;; Need good cpu.
-                        ;; #'tabnine-completion-at-point
-                        #'cape-file
-                        #'cape-dabbrev)
-                       'equal))))
-     (progn
-       (require 'init-company)
-       (require 'company)
-       (require 'company-box)
-       (company-box-mode 1)
-       )
-     )))
+(defun lsp-bridge-mix-multi-backends ()
+  (setq-local completion-category-defaults nil)
+  (setq-local completion-at-point-functions
+              (list
+               (cape-capf-buster
+                (cape-super-capf
+                 #'lsp-bridge-capf
+                 ;; need a good cpu.
+                 ;; #'tabnine-completion-at-point
+                 #'cape-file
+                 #'cape-dabbrev
+                 )
+                'equal))))
 
 ;;; workaround for python Path
 (defcustom lsp-bridge-current-python-command ""
@@ -91,5 +67,19 @@
             (lsp-bridge-set-current-python-command)
             (lsp-bridge-restart-process)))
 
+;;; lsp server install
+;; py
+;; npm install -g pyright
+
+;; ts,js
+;; npm install -g typescript-language-server typescript
+
+;; go
+;; go install golang.org/x/tools/gopls@latest
+
+;; rust
+;; curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
+;; chmod +x ~/.local/bin/rust-analyzer
+;; rustup component add rust-src
 
 (provide 'init-lsp-bridge)

@@ -44,4 +44,9 @@
    'corfu-current nil
    :background "#c295d7"))
 
+(with-eval-after-load 'lsp-bridge-ui
+  (set-face-attribute
+   'lsp-bridge-ui-current nil
+   :background "#c295d7"))
+
 (provide 'init-face)
