@@ -1,6 +1,11 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 
 (use-package lsp-bridge-ui
+  :bind
+  (:map lsp-bridge-ui-map
+        ([return] . lsp-bridge-ui-insert)
+        ([tab] . lsp-bridge-ui-next)
+        ([backtab] . lsp-bridge-ui-previous))
   :config
   (global-lsp-bridge-ui-mode))
 
@@ -9,15 +14,17 @@
   (lsp-bridge-ui-history-mode t))
 
 (use-package lsp-bridge
-  :bind (:map lsp-bridge-mode-map
-              ("M-." . lsp-bridge-find-def)
-              ("C-x 4 ." . lsp-bridge-find-def-other-window)
-              ("M-," . lsp-bridge-return-from-def)
-              ("C-c l h" . lsp-bridge-lookup-documentation)
-              ("C-c l i" . lsp-bridge-find-impl)
-              ("C-c l 4 i" . lsp-bridge-find-impl-other-window)
-              ("C-c l r" . lsp-bridge-rename)
-              ("C-c l R" . lsp-bridge-restart-process))
+  :bind
+  (:map lsp-bridge-mode-map
+        ("M-." . lsp-bridge-find-def)
+        ("C-x 4 ." . lsp-bridge-find-def-other-window)
+        ("M-," . lsp-bridge-return-from-def)
+        ("C-c l h" . lsp-bridge-lookup-documentation)
+        ("C-c l i" . lsp-bridge-find-impl)
+        ("C-c l 4 i" . lsp-bridge-find-impl-other-window)
+        ("C-c l r" . lsp-bridge-rename)
+        ("C-c l R" . lsp-bridge-restart-process))
+
   :config
   (setq lsp-bridge-enable-auto-import nil)
 
