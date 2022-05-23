@@ -1,17 +1,6 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 
-(use-package lsp-bridge-ui
-  :bind
-  (:map lsp-bridge-ui-map
-        ([return] . lsp-bridge-ui-insert)
-        ([tab] . lsp-bridge-ui-next)
-        ([backtab] . lsp-bridge-ui-previous))
-  :config
-  (global-lsp-bridge-ui-mode))
-
-(use-package lsp-bridge-ui-history
-  :config
-  (lsp-bridge-ui-history-mode t))
+(use-package lsp-bridge-icon)
 
 (use-package lsp-bridge
   :bind
@@ -25,9 +14,11 @@
         ("C-c l r" . lsp-bridge-rename)
         ("C-c l R" . lsp-bridge-restart-process))
 
-  :config
-  (setq lsp-bridge-enable-auto-import nil)
+  :custom
+  (lsp-bridge-completion-provider 'corfu)
+  (lsp-bridge-enable-auto-import nil)
 
+  :config
   (when (or *mac* *unix*)
     (setq-default lsp-bridge-python-command "/usr/local/bin/python3"))
 
@@ -36,16 +27,9 @@
 
   (dolist (hook lsp-bridge-default-mode-hooks)
     (add-hook hook (lambda ()
-                     (setq-local lsp-bridge-ui-auto nil)
                      (lsp-bridge-mode 1)
                      (lsp-bridge-mix-multi-backends)
-                     )))
-
-  (dolist (hook (list
-                 'emacs-lisp-mode-hook
-                 ))
-    (add-hook hook (lambda ()
-                     (setq-local lsp-bridge-ui-auto t)))))
+                     ))))
 
 (defun lsp-bridge-mix-multi-backends ()
   (setq-local completion-category-defaults nil)

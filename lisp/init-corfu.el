@@ -30,6 +30,8 @@
     :config
     (corfu-indexed-mode))
 
+  (use-package corfu-info)
+
   (use-package cape
     :init
     (setq dabbrev-case-replace nil)
