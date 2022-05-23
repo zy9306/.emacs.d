@@ -25,6 +25,10 @@
   (add-to-list 'lsp-bridge-lang-server-extension-list
                '(("json") . "javascript"))
 
+  (add-hook 'lsp-bridge-mode-hook
+            (lambda ()
+              (setq-local corfu-auto-prefix 1)))
+
   (dolist (hook lsp-bridge-default-mode-hooks)
     (add-hook hook (lambda ()
                      (lsp-bridge-mode 1)

@@ -6,8 +6,6 @@
     (corfu-auto t)
     (corfu-auto-prefix 1)
     (corfu-auto-delay 0.2)
-    ;; (corfu-separator ?\s) ;; uncomment to use space for orderless fuzzy
-    ;; (corfu-quit-at-boundary nil) ;; uncomment to use orderless fuzzy
     (corfu-quit-no-match t)
     (corfu-preview-current nil)
     (corfu-preselect-first t)
@@ -16,6 +14,8 @@
     (corfu-scroll-margin 5)
     :bind
     (:map corfu-map
+          ;; use default corfu-separator and corfu-quit-at-boundary
+          ("M-SPC" . corfu-insert-separator)
           ([return] . corfu-insert)
           ([tab] . corfu-next)
           ([backtab] . corfu-previous))
@@ -53,11 +53,11 @@
     :custom
     (dabbrev-ignored-buffer-regexps '("\\.\\(?:pdf\\|jpe?g\\|png\\)\\'"))))
 
-;; (use-package orderless
-;;   :init
-;;   (setq completion-styles '(orderless basic))
-;;   (setq completion-category-defaults nil)
-;;   (setq completion-category-overrides '((file (styles . (partial-completion))))))
+(use-package orderless
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-defaults nil)
+  (completion-category-overrides '((file (styles . (partial-completion))))))
 
 (add-hook 'minibuffer-setup-hook #'corfu-enable-in-minibuffer)
 
