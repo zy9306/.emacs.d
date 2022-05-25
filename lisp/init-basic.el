@@ -283,7 +283,6 @@
 (add-hook 'sh-mode-hook 'shfmt-on-save-mode)
 
 ;; npm install -g prettier
-(add-hook 'yaml-mode-hook (lambda () (prettier-mode -1)))
 (with-eval-after-load 'prettier
   (delete 'python prettier-enabled-parsers)
   (delete 'sh prettier-enabled-parsers))

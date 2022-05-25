@@ -8,7 +8,7 @@
     (corfu-auto-delay 0.2)
     (corfu-quit-no-match t)
     (corfu-preview-current nil)
-    (corfu-preselect-first t)
+    (corfu-preselect-first nil)
     (corfu-on-exact-match nil)
     (corfu-echo-documentation nil)
     (corfu-scroll-margin 5)
@@ -40,6 +40,23 @@
     (require 'cape-keyword)
 
     (global-set-key (kbd "M-/") 'cape-dabbrev)
+
+    (dolist (hook '(yaml-mode-hook
+                    text-mode-hook
+                    ))
+      (add-hook hook
+                (lambda ()
+                  (setq-local completion-at-point-functions
+                              (list
+                               (cape-capf-buster
+                                (cape-super-capf
+                                 #'cape-file
+                                 #'cape-dabbrev
+                                 #'cape-keyword
+                                 #'cape-abbrev
+                                 #'cape-symbol
+                                 )
+                                'equal))))))
 
     (add-to-list 'completion-at-point-functions #'cape-file)
     (add-to-list 'completion-at-point-functions #'cape-dabbrev)

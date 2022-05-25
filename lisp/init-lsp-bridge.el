@@ -40,7 +40,6 @@
                  #'lsp-bridge-capf
                  ;; need a good cpu.
                  ;; #'tabnine-completion-at-point
-                 #'cape-file
                  #'cape-dabbrev
                  )
                 'equal))))
