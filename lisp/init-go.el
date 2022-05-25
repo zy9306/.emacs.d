@@ -1,6 +1,19 @@
 (autoload 'go-mode "go-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
 
+
+;; setup flycheck
+(defun local/setup-flycheck-for-go ()
+  (require 'flycheck)
+  (dolist (checker (list
+                    'go-vet
+                    'go-golint
+                    ))
+    (add-to-list 'flycheck-disabled-checkers checker)))
+
+(add-hook 'go-mode-hook #'local/setup-flycheck-for-go)
+
+
 ;;; FORMAT START
 (defun local/go-mode-save-hooks ()
   (setq gofmt-show-errors 'echo)
