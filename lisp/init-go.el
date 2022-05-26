@@ -8,6 +8,7 @@
   (dolist (checker (list
                     'go-vet
                     'go-golint
+                    'go-gofmt
                     ))
     (add-to-list 'flycheck-disabled-checkers checker)))
 
