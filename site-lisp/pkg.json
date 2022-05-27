@@ -145,12 +145,9 @@
     "repo": "git@github.com:kaushalmodi/ox-hugo.git"
   },
   "posframe": {
-    "commit": "3b1dc400d286b0a4bd42e518bf3e7eedb49fd1e6",
-    "ignore": [
-      "snapshots",
-      ".gitignore",
-      "README.org"
-    ],
+    "commit": "c91d4d53fa479ceb604071008ce0a901770eff57",
+    "ignore": [],
+    "only_el": true,
     "pkg": "posframe",
     "repo": "git@github.com:tumashu/posframe.git"
   },
