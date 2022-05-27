@@ -169,4 +169,38 @@
 (global-set-key (kbd "M-\"") 'emacs-surround)
 (global-set-key (kbd "M-]") #'embrace-commander)
 
+
+(with-eval-after-load 'tree-sitter
+  (require 'grammatical-edit)
+
+  (dolist (hook (list
+                 'c-mode-common-hook
+                 'c-mode-hook
+                 'c++-mode-hook
+                 'java-mode-hook
+                 'haskell-mode-hook
+                 'maxima-mode-hook
+                 'ielm-mode-hook
+                 'sh-mode-hook
+                 'makefile-gmake-mode-hook
+                 'php-mode-hook
+                 'python-mode-hook
+                 'js-mode-hook
+                 'go-mode-hook
+                 'qml-mode-hook
+                 'jade-mode-hook
+                 'css-mode-hook
+                 'ruby-mode-hook
+                 'coffee-mode-hook
+                 'rust-mode-hook
+                 'qmake-mode-hook
+                 'lua-mode-hook
+                 'swift-mode-hook
+                 'minibuffer-inactive-mode-hook
+                 ))
+    (add-hook hook (lambda () (grammatical-edit-mode 1))))
+
+  (define-key grammatical-edit-mode-map (kbd "C-k") 'grammatical-edit-kill))
+
+
 (provide 'init-edit)

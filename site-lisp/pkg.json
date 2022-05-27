@@ -88,6 +88,13 @@
     "pkg": "embark",
     "repo": "git@github.com:oantolin/embark.git"
   },
+  "grammatical-edit": {
+    "commit": "05eee604709d39bad8f20fbff50e08d8fa3300a3",
+    "ignore": [],
+    "only_el": true,
+    "pkg": "grammatical-edit",
+    "repo": "git@github.com:manateelazycat/grammatical-edit.git"
+  },
   "hydra-posframe": {
     "commit": "343a269b52d6fb6e5ae6c09d91833ff4620490ec",
     "ignore": [
