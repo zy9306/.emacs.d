@@ -17,6 +17,7 @@
   :custom
   (lsp-bridge-completion-provider 'corfu)
   (lsp-bridge-enable-auto-import nil)
+  (lsp-bridge-disable-backup nil)
 
   :config
   (when (or *mac* *unix*)
