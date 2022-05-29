@@ -18,6 +18,8 @@
   (lsp-bridge-completion-provider 'corfu)
   (lsp-bridge-enable-auto-import nil)
   (lsp-bridge-disable-backup nil)
+  ;; request diagnostics every x seconds
+  (lsp-bridge-diagnostics-fetch-idle 5)
 
   :config
   (when (or *mac* *unix*)
