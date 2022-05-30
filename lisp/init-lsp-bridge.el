@@ -20,6 +20,7 @@
   (lsp-bridge-disable-backup nil)
   ;; request diagnostics every x seconds
   (lsp-bridge-diagnostics-fetch-idle 5)
+  (lsp-bridge-enable-candidate-documentation nil)
 
   :config
   (when (or *mac* *unix*)
