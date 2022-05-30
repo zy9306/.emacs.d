@@ -70,6 +70,13 @@
     "pkg": "corfu",
     "repo": "git@github.com:minad/corfu.git"
   },
+  "corfu-doc": {
+    "commit": "d7d7c27703cdbe8b42497b300e82706c6edce96e",
+    "ignore": [],
+    "only_el": true,
+    "pkg": "corfu-doc",
+    "repo": "git@github.com:galeo/corfu-doc.git"
+  },
   "duplicate-line": {
     "commit": "5abe4b81fa1618212938eb2e9b153975c34c11f1",
     "ignore": [

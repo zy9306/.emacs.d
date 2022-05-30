@@ -6,6 +6,7 @@
 (push (expand-file-name "site-lisp/consult" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/consult-projectile" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/corfu" user-emacs-directory) load-path)
+(push (expand-file-name "site-lisp/corfu-doc" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/corfu/extensions" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/duplicate-line" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/embark" user-emacs-directory) load-path)
