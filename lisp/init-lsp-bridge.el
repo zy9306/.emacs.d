@@ -18,6 +18,8 @@
   (lsp-bridge-completion-provider 'corfu)
   (lsp-bridge-enable-auto-import nil)
   (lsp-bridge-disable-backup nil)
+  ;; disable diagnostics
+  (lsp-bridge-enable-diagnostics nil)
   ;; request diagnostics every x seconds
   (lsp-bridge-diagnostics-fetch-idle 5)
   (lsp-bridge-enable-candidate-doc-preview nil)
