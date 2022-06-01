@@ -34,6 +34,12 @@
            :select nil
            :ignore t)
 
+          ("*VC-history*"
+           :regexp nil
+           :inhibit-window-quit t
+           :select t
+           :other t)
+
           ;; the last rule
           ("\\*.*\\*"
            :regexp t
