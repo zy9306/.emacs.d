@@ -1,0 +1,24 @@
+# -*- mode: snippet -*-
+# name: es_update_add_array_element
+# key: es_update_add_array_element
+# group: es
+# --
+# POST {index}/_update_by_query
+{
+  "script": {
+    "source": "if (!ctx._source.book_ids.contains(params.book_id)) { ctx._source.book_ids.add(params.book_id) }",
+    "lang": "painless",
+    "params": {
+      "book_id": 1
+    }
+  },
+  "query": {
+    "bool": {
+      "filter": {
+        "terms": {
+          "_id": [1]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+# -*- mode: snippet -*-
+# name: es_update_rm_array_element
+# key: es_update_rm_array_element
+# group: es
+# --
+# POST {index}/_update_by_query
+{
+  "script": {
+    "source": "for (int i=ctx._source.book_ids.length-1; i>=0; i--) { if (ctx._source.book_ids[i] == params.book_id) { ctx._source.book_ids.remove(i); } }",
+    "lang": "painless",
+    "params": {
+      "book_id": 1
+    }
+  },
+  "query": {
+    "bool": {
+      "must": [{ "match": { "book_ids": 1 } }],
+      "filter": {
+        "terms": {
+          "_id": [2, 3]
+        }
+      }
+    }
+  }
+}

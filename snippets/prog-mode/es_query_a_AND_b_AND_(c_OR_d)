@@ -1,0 +1,31 @@
+# -*- mode: snippet -*-
+# name: es_query_a_AND_b_AND_(c_OR_d)
+# key: es_query_a_AND_b_AND_(c_OR_d)
+# group: es
+# --
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": { "A": 1 }
+        },
+        {
+          "term": { "B": 1 }
+        },
+        {
+          "bool": {
+            "should": [
+              {
+                "term": { "C": "中文" }
+              },
+              {
+                "terms": { "D": [1, 2, 3] }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

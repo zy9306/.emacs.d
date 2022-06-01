@@ -1,0 +1,59 @@
+# -*- mode: snippet -*-
+# name: es_query_bool
+# key: es_query_bool
+# group: es
+# --
+
+# GET {index}/_search
+# name 是 xxx 且 range 不在 0-9，且须匹配 should 中的一项，再筛选出
+# tags 为 production 的，最后按 weight 倒排
+
+# 应该可以用 es_query_a_AND_b_AND_(c_OR_d) 的方式简化
+
+# term 和 match 的区别
+
+# term
+# term query does not analyze the search term
+# Avoid using the term query for text fields.
+
+# match
+# The provided text is analyzed before matching.
+
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": { "name": "xxx" }
+        }
+      ],
+      "should": [
+        { "term": { "tags": "aaa" } },
+        { "term": { "tags": "bbb" } }
+      ],
+      "must_not": {
+        "range": {
+          "hour": { "gte": 0, "lte": 9 }
+        }
+      },
+      "filter": {
+        "term": { "tags": "production" }
+      },
+      "minimum_should_match": 1,
+    }
+  },
+  "sort": [{ "weight": "desc" }]
+}
+
+# {
+#   "query": {
+#     "bool": {
+#       "must": [
+#         { "match": { "word": "flow" } },
+#         { "match": { "book_ids": 1003 } }
+#       ],
+#       "should": [{ "match": { "word.standard": "flow" } }]
+#     }
+#   },
+#   "sort": [{ "weight": "desc" }]
+# }

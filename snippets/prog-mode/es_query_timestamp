@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: es_query_timestamp
+# key: es_query_timestamp
+# group: es
+# --
+{
+  "query": {
+    "range": {
+      "@timestamp": {
+        "gte": "2022-01-01T00:00:00.000000+08:00",
+        "lt": "2022-01-01T23:59:59.999999+08:00"
+      }
+    }
+  }
+}
