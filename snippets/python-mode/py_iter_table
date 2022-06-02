@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name: iter_table
-# key: iter_table
+# name: py_iter_table
+# key: py_iter_table
 # --
 import peewee as pw
 

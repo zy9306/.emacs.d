@@ -1,6 +1,6 @@
 # -*- mode:snippet -*-
-# name: list_chunk
-# key: list_chunk
+# name: py_list_chunk
+# key: py_list_chunk
 # group: list
 # --
 for i, data in enumerate(

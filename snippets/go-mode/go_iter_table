@@ -1,6 +1,6 @@
 # -*- mode:snippet -*-
-# name: iter_table
-# key: iter_table
+# name: go_iter_table
+# key: go_iter_table
 # --
 db := app.EntExt.DB()
 cursor, err := db.QueryContext(ctx, "SELECT MIN(id) as min_id, MAX(id) as max_id from ${1:tableName}")

@@ -1,6 +1,6 @@
 # -*- mode:snippet -*-
-# name: http_get_csv
-# key: http_get_csv
+# name: go_http_get_csv
+# key: go_http_get_csv
 # --
 resp, err := ${1:HTTPGeterFunc}(${2:url})
 if err != nil {

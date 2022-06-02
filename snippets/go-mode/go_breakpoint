@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name: breakpoint
-# key: breakpoint
+# name: go_breakpoint
+# key: go_breakpoint
 # --
 runtime.Breakpoint()
 // go to test dir, run `dlv test`

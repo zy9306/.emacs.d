@@ -1,6 +1,6 @@
 # -*- mode:snippet -*-
-# name: assert_call_args_list
-# key: assert_call_args_list
+# name: py_assert_call_args_list
+# key: py_assert_call_args_list
 # group: assert
 # --
 calls = [

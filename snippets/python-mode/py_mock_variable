@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: mock_variable
-# key: mock_variable
+# name: py_mock_variable
+# key: py_mock_variable
 # --
 mock.patch("${1:path.to.variable}", ${2:new_value})

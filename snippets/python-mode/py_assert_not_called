@@ -1,6 +1,6 @@
 # -*- mode:snippet -*-
-# name: assert_not_called
-# key: assert_not_called
+# name: py_assert_not_called
+# key: py_assert_not_called
 # group: assert
 # --
 ${1:mock_func}.assert_not_called()

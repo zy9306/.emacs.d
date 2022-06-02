@@ -1,6 +1,6 @@
 # -*- mode:snippet -*-
-# name: assert_called_once
-# key: assert_called_once
+# name: py_assert_called_once
+# key: py_assert_called_once
 # group: assert
 # --
 ${1:mock_func}.assert_called_once()

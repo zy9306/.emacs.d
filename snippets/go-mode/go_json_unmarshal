@@ -1,6 +1,6 @@
 # -*- mode:snippet -*-
-# name: json_unmarshal
-# key: json_unmarshal
+# name: go_json_unmarshal
+# key: go_json_unmarshal
 # --
 ${1:variableName} := ${2:dataStruct}{}
 err := json.Unmarshal([]byte(*${3:stringValue}), &$1)

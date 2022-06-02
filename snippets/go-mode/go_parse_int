@@ -1,6 +1,6 @@
 # -*- mode:snippet -*-
-# name: parse_int
-# key: parse_int
+# name: go_parse_int
+# key: go_parse_int
 # --
 v, err := strconv.ParseInt(s, 10, 64)
 if err != nil {

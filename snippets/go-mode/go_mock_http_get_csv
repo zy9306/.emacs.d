@@ -1,6 +1,6 @@
 # -*- mode:snippet -*-
-# name: mock_http_get_csv
-# key: mock_http_get_csv
+# name: go_mock_http_get_csv
+# key: go_mock_http_get_csv
 # --
 mockStr := "${1:str}"
 mockBody := io.NopCloser(bytes.NewReader([]byte(mockStr)))

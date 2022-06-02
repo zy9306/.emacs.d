@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name: grpc_mock_err
-# key: grpc_mock_err
+# name: py_grpc_mock_err
+# key: py_grpc_mock_err
 # --
 mock_err = grpc.RpcError
 
