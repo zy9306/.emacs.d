@@ -10,7 +10,8 @@
 
 # 应该可以用 es_query_a_AND_b_AND_(c_OR_d) 的方式简化
 
-# term 和 match 的区别
+# term, match and match_phrase
+# https://stackoverflow.com/questions/26001002/elasticsearch-difference-between-term-match-phrase-and-query-string
 
 # term
 # term query does not analyze the search term
@@ -18,6 +19,9 @@
 
 # match
 # The provided text is analyzed before matching.
+
+# match_phrase
+# 必须按顺序连续匹配
 
 {
   "query": {
