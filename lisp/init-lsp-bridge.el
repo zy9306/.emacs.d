@@ -1,54 +1,38 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 
-(use-package lsp-bridge-icon)
+(require 'lsp-bridge)
 
-(use-package lsp-bridge
-  :bind
-  (:map lsp-bridge-mode-map
-        ("M-." . lsp-bridge-find-def)
-        ("C-x 4 ." . lsp-bridge-find-def-other-window)
-        ("M-," . lsp-bridge-return-from-def)
-        ("C-c l h" . lsp-bridge-lookup-documentation)
-        ("C-c l i" . lsp-bridge-find-impl)
-        ("C-c l 4 i" . lsp-bridge-find-impl-other-window)
-        ("C-c l r" . lsp-bridge-rename)
-        ("C-c l R" . lsp-bridge-restart-process))
+(setq lsp-bridge-enable-auto-import nil)
+(setq lsp-bridge-disable-backup nil)
+(setq lsp-bridge-enable-diagnostics nil)
+(setq lsp-bridge-diagnostics-fetch-idle 5)
+(setq acm-enable-doc nil)
+(setq acm-enable-dabbrev t)
+(setq acm-dabbrev-min-length 2)
+(setq acm-menu-candidate-limit 50)
 
-  :custom
-  (lsp-bridge-completion-provider 'corfu)
-  (lsp-bridge-enable-auto-import nil)
-  (lsp-bridge-disable-backup nil)
-  ;; disable diagnostics
-  (lsp-bridge-enable-diagnostics nil)
-  ;; request diagnostics every x seconds
-  (lsp-bridge-diagnostics-fetch-idle 5)
-  (lsp-bridge-enable-candidate-doc-preview nil)
+(if (image-type-available-p 'svg)
+    (setq acm-enable-icon t)
+  (setq acm-enable-icon nil))
 
-  :config
-  (when (or *mac* *unix*)
-    (setq-default lsp-bridge-python-command "/usr/local/bin/python3"))
+(when (or *mac* *unix*)
+  (setq-default lsp-bridge-python-command "/usr/local/bin/python3"))
 
-  (add-to-list 'lsp-bridge-lang-server-extension-list
-               '(("json") . "javascript"))
+(add-to-list 'lsp-bridge-lang-server-extension-list
+             '(("json") . "javascript"))
 
-  (dolist (hook lsp-bridge-default-mode-hooks)
-    (add-hook hook (lambda ()
-                     (lsp-bridge-mode 1)
-                     (lsp-bridge-mix-multi-backends)
-                     ))))
+(add-hook 'lsp-bridge-mode-hook (lambda () (corfu-mode -1)))
+(global-lsp-bridge-mode)
 
-(defun lsp-bridge-mix-multi-backends ()
-  (setq-local completion-category-defaults nil)
-  (setq-local completion-at-point-functions
-              (list
-               (cape-capf-buster
-                (cape-super-capf
-                 #'lsp-bridge-capf
-                 ;; need a good cpu.
-                 ;; #'tabnine-completion-at-point
-                 #'cape-dabbrev
-                 )
-                'equal))))
+(define-key lsp-bridge-mode-map (kbd "M-.") #'lsp-bridge-find-def)
+(define-key lsp-bridge-mode-map (kbd "C-x 4 .") #'lsp-bridge-find-def-other-window)
+(define-key lsp-bridge-mode-map (kbd "M-,") #'lsp-bridge-return-from-def)
+(define-key lsp-bridge-mode-map (kbd "C-c l h") #'lsp-bridge-lookup-documentation)
+(define-key lsp-bridge-mode-map (kbd "C-c l i") #'lsp-bridge-find-impl)
+(define-key lsp-bridge-mode-map (kbd "C-c l 4 i") #'lsp-bridge-find-impl-other-window)
+(define-key lsp-bridge-mode-map (kbd "C-c l r") #'lsp-bridge-rename)
+(define-key lsp-bridge-mode-map (kbd "C-c l R") #'lsp-bridge-restart-process)
+
 
 ;;; workaround for python Path
 (defcustom lsp-bridge-current-python-command ""
