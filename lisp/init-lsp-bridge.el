@@ -10,6 +10,7 @@
 (setq acm-enable-dabbrev t)
 (setq acm-dabbrev-min-length 2)
 (setq acm-menu-candidate-limit 50)
+(setq acm-candidate-match-function 'orderless-flex)
 
 (if (image-type-available-p 'svg)
     (setq acm-enable-icon t)
