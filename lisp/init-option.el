@@ -101,6 +101,8 @@
 (setq kept-old-versions 0)
 (setq kept-new-versions 20)
 
+(setq create-lockfiles nil)
+
 (defun local/backup-on-save ()
   (let ((buffer-backed-up nil))
     (if (<= (buffer-size) (* 1 1024 1024))  ;; 1 MB
@@ -124,10 +126,10 @@
   (dir-locals-set-directory-class (file-truename dir) 'read-only))
 
 ;; revert settings
-;; (auto-revert-mode t)
-;; TODO profiler测试发现比较耗cpu,暂时禁用
-;; (global-auto-revert-mode t)
-;; (setq auto-revert-check-vc-info t)
+;; profiler 测试发现比较耗 cpu
+(auto-revert-mode t)
+(global-auto-revert-mode t)
+(setq auto-revert-check-vc-info t)
 
 
 ;; buildin command keybinding
