@@ -6,6 +6,7 @@
 (setq lsp-bridge-disable-backup nil)
 (setq lsp-bridge-enable-diagnostics nil)
 (setq lsp-bridge-diagnostics-fetch-idle 5)
+(setq lsp-bridge-enable-signature-help t)
 (setq acm-enable-doc nil)
 (setq acm-enable-dabbrev t)
 (setq acm-dabbrev-min-length 2)
