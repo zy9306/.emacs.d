@@ -127,9 +127,8 @@
 
 ;; revert settings
 ;; profiler 测试发现比较耗 cpu
-(auto-revert-mode t)
-(global-auto-revert-mode t)
 (setq auto-revert-check-vc-info t)
+(add-hook 'prog-mode (lambda () (auto-revert-mode 1)))
 
 
 ;; buildin command keybinding
