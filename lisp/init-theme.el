@@ -19,20 +19,32 @@
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t)
 
-  (if local/light-theme
-      (load-theme 'doom-one-light t)
-    (load-theme 'doom-one t))
+  ;; doom-one-light
+  (setq local/light-theme 'doom-solarized-light)
+  (setq local/dark-theme 'doom-one)
+
+  (if local/is-light-theme
+      (load-theme local/light-theme t)
+    (load-theme local/dark-theme t))
 
   (if (display-graphic-p)
       (local/doom-themes-ext-treemacs)))
 
 (local/doom-themes)
 
+(set-face-attribute
+ 'cursor nil
+ :background "#39c5bb")
 
-(when local/light-theme
+(when (and local/is-light-theme (eq local/light-theme 'doom-solarized-light))
   (set-face-attribute
-   'cursor nil
-   :background "#39c5bb")
+   'mode-line nil
+   :box '(:line-width 1 :color "grey75")))
+
+(when (and local/is-light-theme (eq local/light-theme 'doom-one-light))
+  (set-face-attribute
+   'mode-line nil
+   :background "#e7e7e7" :box '(:line-width 1 :color "grey75"))
 
   (set-face-attribute
    'region nil

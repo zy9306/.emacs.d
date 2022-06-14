@@ -75,12 +75,7 @@
 
     (setq-default mode-line-format '("%e" (:eval (spaceline-ml-main)))))
 
-  (spaceline-spacemacs-theme)
-
-  (when local/light-theme
-    (set-face-attribute
-     'mode-line nil
-     :background "#e7e7e7" :box '(:line-width 1 :color "grey75"))))
+  (spaceline-spacemacs-theme))
 
 
 ;; (if (display-graphic-p)
