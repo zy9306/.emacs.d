@@ -2,7 +2,7 @@
 
 ;; Copy from https://github.com/nashamri/spacemacs-theme/blob/master/spacemacs-common.el
 
-(require 'init-face-common)
+(require 'init-color)
 
 (setq local/org-agenda-height nil)
 (setq local/org-highlight t)
