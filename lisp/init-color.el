@@ -7,10 +7,14 @@
    (display-graphic-p)
    (= (tty-display-color-cells) 16777216)))
 
-(setq local/variant 'light)
+(setq local/light-theme nil)
+
+(if local/light-theme
+    (setq local/variant 'light)
+  (setq local/variant 'dark))
 
 (setq
-;; generic
+ ;; generic
  local-color/act1          (if (eq local/variant 'dark) (if (true-color-p) "#222226" "#121212") (if (true-color-p) "#e7e5eb" "#d7dfff"))
  local-color/act2          (if (eq local/variant 'dark) (if (true-color-p) "#5d4d7a" "#444444") (if (true-color-p) "#d3d3e7" "#afafd7"))
  local-color/base          (if (eq local/variant 'dark) (if (true-color-p) "#b2b2b2" "#b2b2b2") (if (true-color-p) "#655370" "#5f5f87"))
@@ -73,4 +77,4 @@
  local-color/yellow        (if (eq local/variant 'dark) (if (true-color-p) "#b1951d" "#875f00") (if (true-color-p) "#b1951d" "#875f00"))
  local-color/yellow-bg     (if (eq local/variant 'dark) (if (true-color-p) "#32322c" "#262626") (if (true-color-p) "#f6f1e1" "#ffffff")))
 
-(provide 'init-face-common)
+(provide 'init-color)

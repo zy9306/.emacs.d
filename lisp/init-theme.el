@@ -1,4 +1,4 @@
-;; -*- coding: utf-8; lexical-binding: t; -*-
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 
 (defun local/doom-themes-ext-treemacs ()
   (require 'doom-themes-ext-treemacs)
@@ -18,13 +18,64 @@
 
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t)
-  (load-theme 'doom-one-light t)
+
+  (if local/light-theme
+      (load-theme 'doom-one-light t)
+    (load-theme 'doom-one t))
 
   (if (display-graphic-p)
       (local/doom-themes-ext-treemacs)))
 
 (local/doom-themes)
 
+
+(when local/light-theme
+  (set-face-attribute
+   'cursor nil
+   :background "#39c5bb")
+
+  (set-face-attribute
+   'region nil
+   :background "#d8d8d8"
+   :extend t)
+
+  (set-face-attribute
+   'fringe nil
+   :background "grey95")
+
+  (with-eval-after-load 'easy-kill
+    (set-face-attribute
+     'easy-kill-selection nil
+     :inherit 'region))
+
+  (with-eval-after-load 'symbol-overlay
+    (if (display-graphic-p)
+        (set-face-attribute
+         'symbol-overlay-default-face nil
+         :background "darkseagreen2"))
+    (set-face-attribute
+     'symbol-overlay-default-face nil
+     :background "pink"))
+
+  (with-eval-after-load 'eglot
+    (set-face-attribute
+     'eglot-highlight-symbol-face nil
+     :inherit 'normal))
+
+  (with-eval-after-load 'hl-line-mode
+    (set-face-attribute
+     'hl-line nil
+     :background "pink"))
+
+  (with-eval-after-load 'corfu
+    (set-face-attribute
+     'corfu-current nil
+     :background "#c295d7"))
+
+  (with-eval-after-load 'lsp-bridge-ui
+    (set-face-attribute
+     'lsp-bridge-ui-current nil
+     :background "#c295d7")))
 
 
 (provide 'init-theme)
