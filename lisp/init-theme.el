@@ -36,10 +36,19 @@
  'cursor nil
  :background "#39c5bb")
 
+(set-face-attribute
+   'mode-line nil
+   :box '(:line-width 1 :color "grey75"))
+
 (when (and local/is-light-theme (eq local/light-theme 'doom-solarized-light))
   (set-face-attribute
-   'mode-line nil
-   :box '(:line-width 1 :color "grey75")))
+   'font-lock-variable-name-face nil
+   :foreground "#247c73")
+
+  (set-face-attribute
+   'font-lock-string-face nil
+   :foreground "#cc99cc")
+)
 
 (when (and local/is-light-theme (eq local/light-theme 'doom-one-light))
   (set-face-attribute
