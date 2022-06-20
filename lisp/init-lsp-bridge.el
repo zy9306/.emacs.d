@@ -8,6 +8,10 @@
 (setq lsp-bridge-diagnostics-fetch-idle 5)
 (setq lsp-bridge-enable-signature-help t)
 
+(dolist (hook '(text-mode-hook
+                yaml-mode-hook))
+  (add-hook hook (lambda () (setq-local lsp-bridge-enable-signature-help nil))))
+
 (setq acm-backend-lsp-enable-auto-import t)
 (setq acm-enable-doc nil)
 (setq acm-enable-dabbrev t)
