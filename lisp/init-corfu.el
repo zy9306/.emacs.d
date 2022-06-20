@@ -8,7 +8,7 @@
     (corfu-auto-delay 0.2)
     (corfu-quit-no-match t)
     (corfu-preview-current nil)
-    (corfu-preselect-first nil)
+    (corfu-preselect-first t)
     (corfu-on-exact-match nil)
     (corfu-echo-documentation nil)
     (corfu-scroll-margin 5)

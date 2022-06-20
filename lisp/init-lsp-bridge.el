@@ -29,7 +29,9 @@
 (add-to-list 'lsp-bridge-lang-server-extension-list
              '(("json") . "javascript"))
 
-(add-hook 'lsp-bridge-mode-hook (lambda () (corfu-mode -1)))
+(add-to-list 'lsp-bridge-completion-stop-commands "corfu-insert")
+(add-hook 'lsp-bridge-mode-hook (lambda () (setq corfu-auto nil)))
+
 (global-lsp-bridge-mode)
 
 (define-key lsp-bridge-mode-map (kbd "M-.") #'lsp-bridge-find-def)
