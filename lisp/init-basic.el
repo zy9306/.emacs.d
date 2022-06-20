@@ -63,8 +63,11 @@
   (setq imenu-list-size 0.3)
   (setq imenu-max-item-length 120)
   (setq imenu-list-focus-after-activation t))
+
+(with-eval-after-load 'key-chord
+  (key-chord-define-global "II" #'imenu-list-smart-toggle))
+
 (local/after-init-hook 'imenu-list)
-(global-set-key (kbd "C-x \"") #'imenu-list-smart-toggle)
 
 
 (when (or *linux* *mac*)
