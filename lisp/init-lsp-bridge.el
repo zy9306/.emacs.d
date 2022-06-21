@@ -32,6 +32,24 @@
 (add-to-list 'lsp-bridge-completion-stop-commands "corfu-insert")
 (add-hook 'lsp-bridge-mode-hook (lambda () (setq corfu-auto nil)))
 
+(setq lsp-bridge-default-mode-hooks
+      '(c++-mode-hook
+        c-mode-hook
+        css-mode-hook
+        dart-mode-hook
+        elixir-mode-hook
+        go-mode-hook
+        js-mode-hook
+        js2-mode-hook
+        lua-mode-hook
+        python-mode-hook
+        rjsx-mode-hook
+        ruby-mode-hook
+        rust-mode-hook
+        rustic-mode-hook
+        typescript-mode-hook
+        typescript-tsx-mode-hook))
+
 (global-lsp-bridge-mode)
 
 (define-key lsp-bridge-mode-map (kbd "M-.") #'lsp-bridge-find-def)
