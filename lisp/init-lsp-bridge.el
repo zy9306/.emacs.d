@@ -30,7 +30,10 @@
 (add-to-list 'lsp-bridge-lang-server-extension-list
              '(("json") . "javascript"))
 
-(add-to-list 'lsp-bridge-completion-stop-commands "corfu-insert")
+(dolist (item '("dabbrev-completion"
+                "corfu-insert"))
+  (add-to-list 'lsp-bridge-completion-stop-commands item))
+
 (add-hook 'lsp-bridge-mode-hook (lambda () (setq corfu-auto nil)))
 
 (setq lsp-bridge-default-mode-hooks
