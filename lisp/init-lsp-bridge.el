@@ -18,6 +18,7 @@
 (setq acm-dabbrev-min-length 2)
 (setq acm-menu-candidate-limit 50)
 (setq acm-candidate-match-function 'orderless-flex)
+(setq acm-enable-search-words nil)
 
 (if (image-type-available-p 'svg)
     (setq acm-enable-icon t)
