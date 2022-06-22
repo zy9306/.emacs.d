@@ -34,7 +34,7 @@
                 "corfu-insert"))
   (add-to-list 'lsp-bridge-completion-stop-commands item))
 
-(add-hook 'lsp-bridge-mode-hook (lambda () (setq corfu-auto nil)))
+(add-hook 'lsp-bridge-mode-hook (lambda () (setq-local corfu-auto nil)))
 
 (setq lsp-bridge-default-mode-hooks
       '(c++-mode-hook
