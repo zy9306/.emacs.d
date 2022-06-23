@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: json_dumps_without_spaces
+# key: json_dumps_without_spaces
+# --
+json_dumps_without_spaces = partial(json.dumps, ensure_ascii=False, separators=(",", ":"))
