@@ -200,7 +200,13 @@
                  ))
     (add-hook hook (lambda () (grammatical-edit-mode 1))))
 
+  (define-key grammatical-edit-mode-map (kbd "M-[") 'local/grammatical-edit-jump-up)
   (define-key grammatical-edit-mode-map (kbd "C-k") 'grammatical-edit-kill))
+
+(defun local/grammatical-edit-jump-up ()
+  (interactive)
+  (xref--push-markers)
+  (grammatical-edit-jump-up))
 
 
 (provide 'init-edit)
