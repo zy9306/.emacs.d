@@ -215,13 +215,16 @@
 (add-hook 'after-init-hook 'local/setup-terminal)
 
 
-(with-eval-after-load 'better-jumper
-  (better-jumper-mode +1)
-  (global-set-key (kbd "M-*") 'better-jumper-set-jump)
-  (global-set-key (kbd "M-<left>") 'better-jumper-jump-backward)
-  (global-set-key (kbd "M-<right>") 'better-jumper-jump-forward))
-(local/after-init-hook 'better-jumper)
+;; (with-eval-after-load 'better-jumper
+;;   (better-jumper-mode +1)
+;;   (global-set-key (kbd "M-*") 'better-jumper-set-jump)
+;;   (global-set-key (kbd "M-<left>") 'better-jumper-jump-backward)
+;;   (global-set-key (kbd "M-<right>") 'better-jumper-jump-forward))
+;; (local/after-init-hook 'better-jumper)
 
+(with-eval-after-load 'xref
+  (global-set-key (kbd "M-<left>") 'xref-go-back)
+  (global-set-key (kbd "M-<right>") 'xref-go-forward))
 
 
 (global-set-key (kbd "C-c C-u") 'string-inflection-all-cycle)
