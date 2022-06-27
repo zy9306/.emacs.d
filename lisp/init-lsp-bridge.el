@@ -16,7 +16,7 @@
 (setq acm-enable-doc nil)
 (setq acm-enable-dabbrev t)
 (setq acm-dabbrev-min-length 2)
-(setq acm-menu-candidate-limit 50)
+(setq acm-backend-lsp-candidate-max-length 50)
 (setq acm-candidate-match-function 'orderless-flex)
 (setq acm-enable-search-words nil)
 
