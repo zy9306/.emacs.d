@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name: echo_bind_body
-# key: echo_bind_body
+# name: go_echo_bind_body
+# key: go_echo_bind_body
 # --
 func echoBindBody(c echo.Context, i interface{}) error {
 	if c.Request().Body == nil {
