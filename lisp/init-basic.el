@@ -36,6 +36,9 @@
     (local/after-init-hook 'undo-tree)))
 
 
+(add-hook 'after-init-hook (lambda () (require 'vundo)))
+
+
 ;; see also https://www.emacswiki.org/emacs/AutoSave `auto-save-visited-mode`
 (with-eval-after-load 'real-auto-save
   (diminish 'real-auto-save-mode)

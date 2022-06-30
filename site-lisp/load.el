@@ -21,3 +21,4 @@
 (push (expand-file-name "site-lisp/thing-edit" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/toggle-one-window" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/vertico" user-emacs-directory) load-path)
+(push (expand-file-name "site-lisp/vundo" user-emacs-directory) load-path)

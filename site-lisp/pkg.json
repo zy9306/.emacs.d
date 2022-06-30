@@ -202,5 +202,12 @@
     ],
     "pkg": "vertico",
     "repo": "git@github.com:minad/vertico.git"
+  },
+  "vundo": {
+    "commit": "9692bde8e2f1c2826871edb5588bbe3892527e63",
+    "ignore": [],
+    "only_el": true,
+    "pkg": "vundo",
+    "repo": "git@github.com:casouri/vundo.git"
   }
 }
