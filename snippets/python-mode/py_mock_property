@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: py_mock_property
+# key: py_mock_property
+# --
+mock.patch("${1:path.to.property}", new_callable=mock.PropertyMock, return_value=${2:new_value})
