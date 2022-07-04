@@ -1,0 +1,20 @@
+# -*- mode: snippet -*-
+# name: go_chunk_slice
+# key: go_chunk_slice
+# --
+
+chunkSize := ${1:chunkSize}
+start := 0
+total := len(${2:slice})
+
+for start < total {
+    end := start + chunkSize
+    if end > total {
+        end = total
+    }
+
+    tmp := $2[start:end]
+    // to something
+
+    start += chunkSize
+}
