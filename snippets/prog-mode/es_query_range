@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: es_query_range
+# key: es_query_range
+# group: es
+# --
+
+{
+  "query": {
+    "range": {
+      "DURATION": {
+        "gte": 600,
+        "lte": 2000
+      }
+    }
+  }
+}
