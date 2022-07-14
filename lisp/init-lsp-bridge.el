@@ -72,10 +72,11 @@
          (custom-dir (expand-file-name ".cache/lsp-bridge/pyright" user-emacs-directory))
          (custom-config (expand-file-name "pyright.json" custom-dir))
          (default-config (json-read-file (expand-file-name "repo/lsp-bridge/langserver/pyright.json" user-emacs-directory)))
-         (settings (plist-get default-config :settings))
-         )
+         (settings (plist-get default-config :settings)))
 
     (plist-put settings :pythonPath (executable-find "python"))
+
+    (plist-put settings :python.analysis (plist-put (plist-get settings :python.analysis) :autoImportCompletions json-false))
 
     (make-directory (file-name-directory custom-config) t)
 
