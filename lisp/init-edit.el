@@ -209,4 +209,26 @@
   (grammatical-edit-jump-up))
 
 
+;;; puni
+(require-package 'puni)
+
+(puni-global-mode)
+
+(dolist (hook '(term-mode-hook
+                minibuffer-inactive-mode-hook))
+  (add-hook hook #'puni-disable-puni-mode))
+
+(defun local/puni-kill-line ()
+  (interactive)
+  (let ((bounds (puni-bounds-of-list-around-point)))
+    (if (eq (car bounds) (cdr bounds))
+        (when-let ((sexp-bounds (puni-bounds-of-sexp-around-point)))
+          (puni-delete-region (car sexp-bounds) (cdr sexp-bounds) 'kill))
+      (if (eq (point) (cdr bounds))
+          (puni-backward-kill-line)
+        (puni-kill-line)))))
+
+(define-key puni-mode-map (kbd "C-k") 'local/puni-kill-line)
+
+
 (provide 'init-edit)
