@@ -13,6 +13,7 @@
         ivy-wgrep-change-to-wgrep-mode
         kill-region
         mark-sexp
+        org-beginning-of-line
         org-self-insert-command
         org-yank
         puni-backward-delete-char
