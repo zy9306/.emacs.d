@@ -15,6 +15,7 @@
         mark-sexp
         org-self-insert-command
         org-yank
+        puni-backward-delete-char
         string-inflection-all-cycle
         string-inflection-python-style-cycle
         wgrep-finish-edit
