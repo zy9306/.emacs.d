@@ -12,7 +12,7 @@
                 yaml-mode-hook))
   (add-hook hook (lambda () (setq-local lsp-bridge-enable-signature-help nil))))
 
-(setq acm-backend-lsp-enable-auto-import t)
+(setq acm-backend-lsp-enable-auto-import nil)
 (setq acm-enable-doc nil)
 (setq acm-enable-dabbrev t)
 (setq acm-dabbrev-min-length 2)
