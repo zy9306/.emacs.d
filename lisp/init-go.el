@@ -48,14 +48,6 @@
             (setq go-test-buffer-name "*go-test*")
             (setq go-test-command (concat "go" " test -- -test.run='^$' -test.bench=" current-bench-name))))
 
-          (let ((go-test-buffer (get-buffer go-test-buffer-name)))
-            (when go-test-buffer
-              (let (
-                    (window (get-buffer-window go-test-buffer))
-                    )
-                (kill-buffer go-test-buffer)
-                (delete-window window)
-                )))
           ;; or use start-process
           (async-shell-command go-test-command go-test-buffer-name))
       (error "Not in function"))))
