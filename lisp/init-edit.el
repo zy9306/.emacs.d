@@ -230,5 +230,8 @@
 
 (define-key puni-mode-map (kbd "C-k") 'local/puni-kill-line)
 
+(define-key puni-mode-map (kbd "C-d") nil)
+(define-key puni-mode-map (kbd "C-S-k") nil)
+
 
 (provide 'init-edit)
