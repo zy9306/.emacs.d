@@ -67,7 +67,7 @@
 
 
 ;;; python virtual env
-(defun local/lsp-bridge-get-lang-server-by-project (project-path filepath)
+(defun local/lsp-bridge-get-single-lang-server-by-project (project-path filepath)
   (let* ((json-object-type 'plist)
          (custom-dir (expand-file-name ".cache/lsp-bridge/pyright" user-emacs-directory))
          (custom-config (expand-file-name "pyright.json" custom-dir))
@@ -85,7 +85,7 @@
 
     custom-config))
 
-(add-hook 'python-mode-hook (lambda () (setq-local lsp-bridge-get-lang-server-by-project 'local/lsp-bridge-get-lang-server-by-project)))
+(add-hook 'python-mode-hook (lambda () (setq-local lsp-bridge-get-single-lang-server-by-project 'local/lsp-bridge-get-single-lang-server-by-project)))
 
 (add-hook 'pyvenv-post-activate-hooks
           (lambda ()
