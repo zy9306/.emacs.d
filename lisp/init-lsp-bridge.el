@@ -27,7 +27,7 @@
 (when (or *mac* *unix*)
   (setq-default lsp-bridge-python-command "/usr/local/bin/python3"))
 
-(add-to-list 'lsp-bridge-lang-server-extension-list
+(add-to-list 'lsp-bridge-single-lang-server-extension-list
              '(("json") . "javascript"))
 
 (dolist (item '("dabbrev-completion"
