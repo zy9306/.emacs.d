@@ -114,6 +114,8 @@
   (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio")))
 
   (define-key eglot-mode-map (kbd "C-c l h") #'eldoc-box-eglot-help-at-point)
+  (define-key eglot-mode-map (kbd "C-c l r") #'eglot-rename)
+  (define-key eglot-mode-map (kbd "C-c l a") #'eglot-code-actions)
 
   (add-hook 'eldoc-box-buffer-hook (lambda () (unless truncate-lines (toggle-truncate-lines))))
   )
