@@ -42,7 +42,7 @@
         css-mode-hook
         dart-mode-hook
         elixir-mode-hook
-        go-mode-hook
+        ;; go-mode-hook
         js-mode-hook
         js2-mode-hook
         lua-mode-hook
@@ -90,6 +90,22 @@
 (add-hook 'pyvenv-post-activate-hooks
           (lambda ()
             (lsp-bridge-restart-process)))
+
+
+;;; eglot
+(require 'eglot)
+(require 'eldoc-box)
+
+(add-hook 'eglot-managed-mode-hook (lambda () (flymake-mode -1)))
+(add-hook 'eglot-managed-mode-hook (lambda () (eldoc-mode -1)))
+
+(add-hook 'eldoc-box-buffer-hook (lambda () (unless truncate-lines (toggle-truncate-lines))))
+
+(add-to-list 'eglot-server-programs '(go-mode . ("gopls" "-remote=auto")))
+
+(add-hook 'go-mode-hook 'eglot-ensure)
+
+(define-key eglot-mode-map (kbd "C-c l h") #'eldoc-box-eglot-help-at-point)
 
 
 ;;; lsp server install
