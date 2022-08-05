@@ -46,7 +46,7 @@
         js-mode-hook
         js2-mode-hook
         lua-mode-hook
-        python-mode-hook
+        ;; python-mode-hook
         rjsx-mode-hook
         ruby-mode-hook
         rust-mode-hook
@@ -102,8 +102,10 @@
 (add-hook 'eldoc-box-buffer-hook (lambda () (unless truncate-lines (toggle-truncate-lines))))
 
 (add-to-list 'eglot-server-programs '(go-mode . ("gopls" "-remote=auto")))
+(add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio")))
 
 (add-hook 'go-mode-hook 'eglot-ensure)
+(add-hook 'python-mode-hook 'eglot-ensure)
 
 (define-key eglot-mode-map (kbd "C-c l h") #'eldoc-box-eglot-help-at-point)
 
