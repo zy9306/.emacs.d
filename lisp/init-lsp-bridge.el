@@ -96,18 +96,27 @@
 (require 'eglot)
 (require 'eldoc-box)
 
-(add-hook 'eglot-managed-mode-hook (lambda () (flymake-mode -1)))
-(add-hook 'eglot-managed-mode-hook (lambda () (eldoc-mode -1)))
-
-(add-hook 'eldoc-box-buffer-hook (lambda () (unless truncate-lines (toggle-truncate-lines))))
-
-(add-to-list 'eglot-server-programs '(go-mode . ("gopls" "-remote=auto")))
-(add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio")))
-
 (add-hook 'go-mode-hook 'eglot-ensure)
 (add-hook 'python-mode-hook 'eglot-ensure)
 
-(define-key eglot-mode-map (kbd "C-c l h") #'eldoc-box-eglot-help-at-point)
+(add-hook 'eglot-managed-mode-hook #'local/setup-eglot)
+
+(defun local/setup-eglot ()
+  (eldoc-mode -1)
+  (flymake-mode -1)
+
+  (local/setup-capf)
+
+  (setq completion-category-overrides '((eglot (styles orderless))))
+  (setq-local completion-category-defaults nil)
+
+  (add-to-list 'eglot-server-programs '(go-mode . ("gopls" "-remote=auto")))
+  (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio")))
+
+  (define-key eglot-mode-map (kbd "C-c l h") #'eldoc-box-eglot-help-at-point)
+
+  (add-hook 'eldoc-box-buffer-hook (lambda () (unless truncate-lines (toggle-truncate-lines))))
+  )
 
 (defun local/lsp-result ()
   (ignore-errors (eglot-completion-at-point)))
@@ -125,8 +134,6 @@
 (defun local/setup-capf ()
   (setq-local completion-at-point-functions nil)
   (add-hook 'completion-at-point-functions 'lsp-with-citre-capf nil t))
-
-(add-hook 'eglot-managed-mode-hook (lambda () (local/setup-capf)))
 
 
 ;;; lsp server install
