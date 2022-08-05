@@ -107,6 +107,25 @@
 
 (define-key eglot-mode-map (kbd "C-c l h") #'eldoc-box-eglot-help-at-point)
 
+(defun local/lsp-result ()
+  (ignore-errors (eglot-completion-at-point)))
+
+(defun lsp-with-citre-capf ()
+  (let ((lsp-result (local/lsp-result)))
+    (if (ignore-errors (and lsp-result
+                            (try-completion
+                             (buffer-substring (nth 0 lsp-result)
+                                               (nth 1 lsp-result))
+                             (nth 2 lsp-result))))
+        lsp-result
+      (citre-completion-at-point))))
+
+(defun local/setup-capf ()
+  (setq-local completion-at-point-functions nil)
+  (add-hook 'completion-at-point-functions 'lsp-with-citre-capf nil t))
+
+(add-hook 'eglot-managed-mode-hook (lambda () (local/setup-capf)))
+
 
 ;;; lsp server install
 ;; py
