@@ -214,8 +214,6 @@
 (puni-global-mode)
 
 (dolist (hook '(term-mode-hook
-                ivy-occur-mode-hook
-                rg-mode-hook
                 minibuffer-mode-hook
                 minibuffer-inactive-mode-hook))
   (add-hook hook #'puni-disable-puni-mode))
