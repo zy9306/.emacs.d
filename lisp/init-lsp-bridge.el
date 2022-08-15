@@ -102,7 +102,9 @@
 (add-hook 'eglot-managed-mode-hook #'local/setup-eglot)
 
 (defun local/setup-eglot ()
-  (eldoc-mode -1)
+  ;; (eldoc-mode -1)
+  (setq-local eldoc-echo-area-use-multiline-p 1)
+
   (flymake-mode -1)
 
   (local/setup-capf)
