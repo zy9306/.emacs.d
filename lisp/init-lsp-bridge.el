@@ -96,6 +96,8 @@
 (require 'eglot)
 (require 'eldoc-box)
 
+(setq eglot-stay-out-of '(imenu))
+
 (add-hook 'go-mode-hook 'eglot-ensure)
 (add-hook 'python-mode-hook 'eglot-ensure)
 
