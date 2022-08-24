@@ -9,6 +9,7 @@
   :defer t
   :init
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  (global-set-key (kbd "C-x 0") 'ace-delete-window)
   (global-set-key (kbd "C-x o") 'ace-window))
 
 (defun local/switch-to-last-window ()
