@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: py_mock_requests_get
+# key: py_mock_requests_get
+# --
+fake_response = type("Response", tuple(), dict(text="", encoding=None))
+mock_requests_get.return_value = fake_response
