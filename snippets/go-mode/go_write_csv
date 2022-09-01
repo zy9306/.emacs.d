@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: go_write_csv
+# key: go_write_csv
+# --
+func WriteCSV(fields [][]string) (string, error) {
+	pattern := "*.csv"
+	tmpFile, err := os.CreateTemp(os.TempDir(), pattern)
+	if err != nil {
+		return "", err
+	}
+	defer tmpFile.Close()
+	csvw := csv.NewWriter(tmpFile)
+	err = csvw.WriteAll(fields)
+	return tmpFile.Name(), err
+}
