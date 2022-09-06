@@ -19,6 +19,7 @@
         puni-backward-delete-char
         string-inflection-all-cycle
         string-inflection-python-style-cycle
+        wdired--self-insert
         wgrep-finish-edit
         yaml-electric-backspace
         yaml-electric-bar-and-angle
