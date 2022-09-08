@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: py_iter_table_2
+# key: py_iter_table_2
+# --
+import peewee as pw
+
+start_id = 0
+limit = 5000
+
+while True:
+    objs = $1.select().where($1.id >= start_id).limit(limit)
+
+    if len(objs) == 0:
+       break
+
+    start_id = objs[-1].id
+
+    # Do something.
