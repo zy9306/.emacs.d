@@ -1,0 +1,27 @@
+# -*- mode:snippet -*-
+# name: go_iter_table_2
+# key: go_iter_table_2
+# --
+limit := 5000
+startID := uint64(0)
+for {
+    objs, err := app.EntClient.${1:ModelName}.Query().
+        Where(${2:ReplaceMe}.IDGT(startID), $2.UserID(userID)).
+        Order(entschema.Asc($2.FieldID)).
+        Limit(limit).
+        All(ctx)
+    if err != nil {
+        return nil, err
+    }
+
+    l := len(objs)
+    if l == 0 {
+        break
+    } else {
+        startID = objs[l-1].ID
+    }
+
+    for _, obj := range objs {
+        // Do something
+    }
+}
