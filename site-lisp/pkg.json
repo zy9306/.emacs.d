@@ -28,13 +28,6 @@
     "pkg": "better-jumper",
     "repo": "git@github.com:gilbertw1/better-jumper.git"
   },
-  "cape": {
-    "commit": "0a490abfbf89a24ceb148bdb8afbbd8823a2a201",
-    "ignore": [],
-    "only_el": true,
-    "pkg": "cape",
-    "repo": "git@github.com:minad/cape.git"
-  },
   "citre": {
     "commit": "87e2cbf3b2ae6d59ec919a2dcb38e56ccfa5ec14",
     "ignore": [
@@ -62,20 +55,6 @@
     ],
     "pkg": "consult-projectile",
     "repo": "https://gitlab.com/OlMon/consult-projectile.git"
-  },
-  "corfu": {
-    "commit": "1481b67871e6ab8b143017de2fd8151cd65f24e7",
-    "ignore": [],
-    "only_el": true,
-    "pkg": "corfu",
-    "repo": "git@github.com:minad/corfu.git"
-  },
-  "corfu-doc": {
-    "commit": "d7d7c27703cdbe8b42497b300e82706c6edce96e",
-    "ignore": [],
-    "only_el": true,
-    "pkg": "corfu-doc",
-    "repo": "git@github.com:galeo/corfu-doc.git"
   },
   "duplicate-line": {
     "commit": "5abe4b81fa1618212938eb2e9b153975c34c11f1",
