@@ -102,6 +102,13 @@
     "pkg": "ivy-posframe",
     "repo": "git@github.com:tumashu/ivy-posframe.git"
   },
+  "lazy-load": {
+    "commit": "cd9819069c8d25cf34a844ba151c261387aeaa01",
+    "ignore": [],
+    "only_el": true,
+    "pkg": "lazy-load",
+    "repo": "git@github.com:manateelazycat/lazy-load.git"
+  },
   "orderless": {
     "commit": "75eeae21971d86b51a712ed8ecd6434463b2d866",
     "ignore": [],

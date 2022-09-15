@@ -1,10 +1,13 @@
 ;; only need projectile-ripgrep
+(lazy-load-global-keys
+ '(("C-S-S" . projectile-ripgrep))
+   "projectile")
+
 (with-eval-after-load 'projectile
-  (require 'projectile)
   (require 'counsel-projectile)
-  (setq counsel-projectile-rg-initial-input '(ivy-thing-at-point))
-  (global-set-key (kbd "C-S-S") 'projectile-ripgrep))
-(local/load-package 'projectile)
+  (counsel-projectile-mode)
+  (define-key projectile-mode-map (kbd "C-c p") 'nil)
+  (setq counsel-projectile-rg-initial-input '(ivy-thing-at-point)))
 
 (defun local/get-project-name ()
   ;; (projectile-project-name)
