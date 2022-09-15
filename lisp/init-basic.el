@@ -145,13 +145,15 @@
 (local/after-init-hook 'rainbow-delimiters)
 
 
+(lazy-load-global-keys
+ '(("C-x g" . magit-status))
+ "magit")
 (with-eval-after-load 'magit
   (define-key magit-hunk-section-map (kbd "RET") 'magit-diff-visit-file-other-window)
   (define-key magit-file-section-map (kbd "RET") 'magit-diff-visit-file-other-window)
   (global-set-key (kbd "C-x g") 'magit-status)
   (global-set-key (kbd "C-x M-g") 'magit-dispatch)
   (global-set-key (kbd "C-c M-g") 'magit-file-dispatch))
-(local/after-init-hook 'magit)
 
 
 (with-eval-after-load 'browse-kill-ring
