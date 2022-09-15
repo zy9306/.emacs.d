@@ -5,9 +5,6 @@
 (require-package 'paradox)
 (add-hook 'after-init-hook 'paradox-enable)
 
-(require-package 'quelpa)
-(setq quelpa-update-melpa-p nil)
-
 (require-package 'swiper)
 (require-package 'ivy)
 (require-package 'counsel)
