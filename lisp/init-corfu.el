@@ -1,5 +1,9 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 
+(require-package 'corfu)
+(require-package 'corfu-doc)
+(require-package 'cape)
+
 (defun local/setup-corfu ()
   (use-package corfu
     :custom

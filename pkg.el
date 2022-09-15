@@ -11,7 +11,6 @@
 (require-package 'swiper)
 (require-package 'ivy)
 (require-package 'counsel)
-(require-package 'company)
 (require-package 'projectile)
 (require-package 'counsel-projectile)
 
@@ -20,6 +19,7 @@
 (require-package 'avy)
 (require-package 'browse-kill-ring)
 (require-package 'bufler)
+(require-package 'company)
 (require-package 'company-flx)
 (require-package 'company-fuzzy)
 (require-package 'company-prescient)
