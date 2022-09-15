@@ -27,7 +27,7 @@
 (local/load-package 'init-ivy)
 (local/load-package 'init-avy)
 (local/load-package 'init-window)
-(local/load-package 'init-projectile)
+(local/load-package 'init-project)
 (local/load-package 'init-rg)
 (local/load-package 'init-gud)
 (local/load-package 'init-org)
