@@ -26,7 +26,9 @@
   ;; recentf 显示相对路径，而不是只显示文件名
   (setq ivy-virtual-abbreviate 'abbreviate)
 
-  (setcdr (assoc 'counsel-M-x ivy-initial-inputs-alist) "")
+  ;; TODO this will be overwrite
+  ;; (setcdr (assoc 'counsel-M-x ivy-initial-inputs-alist) "")
+  (setq ivy-initial-inputs-alist nil)
   (setq counsel-search-engine 'google)
 
   ;; swiper-isearch 弹出高度设为 1，使其更接近 isearch
