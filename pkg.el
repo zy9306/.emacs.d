@@ -76,6 +76,7 @@
 (require-package 'rainbow-delimiters)
 (require-package 'real-auto-save)
 (require-package 'recentf)
+(require-package 'request)
 (require-package 'restclient)
 (require-package 'rg)
 (require-package 'selectrum)

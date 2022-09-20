@@ -7,6 +7,8 @@
   (require 'ivy-hydra)
   (require 'wgrep)
 
+  (setq counsel-search-engine 'google)
+
   (ivy-mode)
   (diminish 'ivy-mode)
   (counsel-mode)

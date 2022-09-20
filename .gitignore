@@ -27,3 +27,4 @@ quelpa/
 tree-sitter/src
 site-lisp/fuz.el/target/*
 *.elc
+request/
