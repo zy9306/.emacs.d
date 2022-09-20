@@ -7,9 +7,6 @@
   (require 'ivy-hydra)
   (require 'wgrep)
 
-  (setcdr (assoc 'counsel-M-x ivy-initial-inputs-alist) "")
-  (setq counsel-search-engine 'google)
-
   (ivy-mode)
   (diminish 'ivy-mode)
   (counsel-mode)
@@ -28,6 +25,9 @@
   (setq ivy-height 10)
   ;; recentf 显示相对路径，而不是只显示文件名
   (setq ivy-virtual-abbreviate 'abbreviate)
+
+  (setcdr (assoc 'counsel-M-x ivy-initial-inputs-alist) "")
+  (setq counsel-search-engine 'google)
 
   ;; swiper-isearch 弹出高度设为 1，使其更接近 isearch
   (add-to-list 'ivy-height-alist '(swiper-isearch . 1))
