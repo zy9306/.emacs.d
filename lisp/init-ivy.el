@@ -7,6 +7,7 @@
   (require 'ivy-hydra)
   (require 'wgrep)
 
+  (setcdr (assoc 'counsel-M-x ivy-initial-inputs-alist) "")
   (setq counsel-search-engine 'google)
 
   (ivy-mode)
