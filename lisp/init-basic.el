@@ -229,6 +229,7 @@
 
 (with-eval-after-load 'xref
   (setq xref-marker-ring-length 100)
+  (setq xref-search-program 'ripgrep)
   (global-set-key (kbd "M-<left>") 'xref-go-back)
   (global-set-key (kbd "M-<right>") 'xref-go-forward))
 
