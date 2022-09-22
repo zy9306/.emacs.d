@@ -23,6 +23,7 @@
         wgrep-finish-edit
         yaml-electric-backspace
         yaml-electric-bar-and-angle
+        yaml-electric-dash-and-dot
         ))
 
 (setq mc/cmds-to-run-once
