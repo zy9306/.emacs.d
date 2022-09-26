@@ -122,6 +122,7 @@
   (define-key eglot-mode-map (kbd "C-c l h") #'eldoc-box-eglot-help-at-point)
   (define-key eglot-mode-map (kbd "C-c l r") #'eglot-rename)
   (define-key eglot-mode-map (kbd "C-c l a") #'eglot-code-actions)
+  (define-key eglot-mode-map (kbd "C-c l i") #'eglot-find-implementation)
 
   (add-hook 'eldoc-box-buffer-hook (lambda () (unless truncate-lines (toggle-truncate-lines))))
   )
