@@ -96,11 +96,27 @@
 (require 'eglot)
 (require 'eldoc-box)
 
-(setq eglot-stay-out-of '(imenu))
-
+;; hook
 (add-hook 'go-mode-hook 'eglot-ensure)
 (add-hook 'python-mode-hook 'eglot-ensure)
 
+;; eldoc-box
+(add-hook 'eldoc-box-buffer-hook (lambda () (unless truncate-lines (toggle-truncate-lines))))
+
+;; disable lsp imenu
+(setq eglot-stay-out-of '(imenu))
+
+;; custom lsp command
+(add-to-list 'eglot-server-programs '(go-mode . ("gopls" "-remote=auto")))
+(add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio")))
+
+;; key binding
+(define-key eglot-mode-map (kbd "C-c l h") #'eldoc-box-eglot-help-at-point)
+(define-key eglot-mode-map (kbd "C-c l r") #'eglot-rename)
+(define-key eglot-mode-map (kbd "C-c l a") #'eglot-code-actions)
+(define-key eglot-mode-map (kbd "C-c l i") #'eglot-find-implementation)
+
+;; after eglot start
 (add-hook 'eglot-managed-mode-hook #'local/setup-eglot)
 
 (defun local/setup-eglot ()
@@ -114,17 +130,7 @@
   (local/setup-xref)
 
   (setq completion-category-overrides '((eglot (styles orderless))))
-  (setq-local completion-category-defaults nil)
-
-  (add-to-list 'eglot-server-programs '(go-mode . ("gopls" "-remote=auto")))
-  (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio")))
-
-  (define-key eglot-mode-map (kbd "C-c l h") #'eldoc-box-eglot-help-at-point)
-  (define-key eglot-mode-map (kbd "C-c l r") #'eglot-rename)
-  (define-key eglot-mode-map (kbd "C-c l a") #'eglot-code-actions)
-  (define-key eglot-mode-map (kbd "C-c l i") #'eglot-find-implementation)
-
-  (add-hook 'eldoc-box-buffer-hook (lambda () (unless truncate-lines (toggle-truncate-lines))))
+  (setq-local completion-category-defaults nil)  
   )
 
 (defun local/lsp-result ()
