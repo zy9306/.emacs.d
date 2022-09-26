@@ -167,4 +167,4 @@
 ;; chmod +x ~/.local/bin/rust-analyzer
 ;; rustup component add rust-src
 
-(provide 'init-lsp-bridge)
+(provide 'init-lsp)

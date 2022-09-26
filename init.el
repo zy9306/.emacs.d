@@ -59,7 +59,7 @@
 (local/load-package 'init-corfu)
 
 ;; (local/load-package 'init-lsp-deprecated)
-(local/load-package 'init-lsp-bridge)
+(local/load-package 'init-lsp)
 
 (if (not (display-graphic-p))
   (local/load-package 'init-evil-v3))
