@@ -1,35 +1,3 @@
-;;; awesome-tray
-(with-eval-after-load 'awesome-tray
-  (require 'awesome-tray)
-
-  (defun local/buffer-file-coding-system ()
-    (format "%s" buffer-file-coding-system))
-
-  (defface local/buffer-file-coding-system-face
-    '((t (:italic t)))
-    "awesome-tray coding-system face."
-    :group 'awesome-tray)
-
-  (add-to-list 'awesome-tray-module-alist
-               '("coding-system" . (local/buffer-file-coding-system local/buffer-file-coding-system-face)))
-
-  (awesome-tray-mode 1)
-
-  ;; see awesome-tray-module-alist
-  (setq awesome-tray-active-modules
-        '("evil"
-          "location"
-          "awesome-tab"
-          "belong"
-          "buffer-name"
-          "buffer-read-only"
-          "mode-name"
-          "git"
-          "coding-system"
-          "battery"
-          "date")))
-
-
 ;;; spaceline
 (with-eval-after-load 'spaceline
   (setq spaceline-minor-modes-p nil)
@@ -76,11 +44,6 @@
     (setq-default mode-line-format '("%e" (:eval (spaceline-ml-main)))))
 
   (spaceline-spacemacs-theme))
-
-
-;; (if (display-graphic-p)
-;;     (local/after-init-hook 'awesome-tray)
-;;   (local/after-init-hook 'spaceline))
 
 
 (local/after-init-hook 'spaceline)
