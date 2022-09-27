@@ -1,95 +1,95 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 
-(require 'lsp-bridge)
+(with-eval-after-load 'lsp-bridge
+  (setq lsp-bridge-disable-backup nil)
+  (setq lsp-bridge-enable-diagnostics nil)
+  (setq lsp-bridge-diagnostics-fetch-idle 5)
+  (setq lsp-bridge-enable-signature-help t)
 
+  (dolist (hook '(text-mode-hook
+                  yaml-mode-hook))
+    (add-hook hook (lambda () (setq-local lsp-bridge-enable-signature-help nil))))
 
-(setq lsp-bridge-disable-backup nil)
-(setq lsp-bridge-enable-diagnostics nil)
-(setq lsp-bridge-diagnostics-fetch-idle 5)
-(setq lsp-bridge-enable-signature-help t)
+  (setq acm-backend-lsp-enable-auto-import nil)
+  (setq acm-enable-doc nil)
+  (setq acm-enable-dabbrev t)
+  (setq acm-dabbrev-min-length 2)
+  (setq acm-backend-lsp-candidate-max-length 50)
+  (setq acm-candidate-match-function 'orderless-flex)
+  (setq acm-enable-search-words nil)
 
-(dolist (hook '(text-mode-hook
-                yaml-mode-hook))
-  (add-hook hook (lambda () (setq-local lsp-bridge-enable-signature-help nil))))
+  (if (image-type-available-p 'svg)
+      (setq acm-enable-icon t)
+    (setq acm-enable-icon nil))
 
-(setq acm-backend-lsp-enable-auto-import nil)
-(setq acm-enable-doc nil)
-(setq acm-enable-dabbrev t)
-(setq acm-dabbrev-min-length 2)
-(setq acm-backend-lsp-candidate-max-length 50)
-(setq acm-candidate-match-function 'orderless-flex)
-(setq acm-enable-search-words nil)
+  (when (or *mac* *unix*)
+    (setq-default lsp-bridge-python-command "/usr/local/bin/python3"))
 
-(if (image-type-available-p 'svg)
-    (setq acm-enable-icon t)
-  (setq acm-enable-icon nil))
+  (add-to-list 'lsp-bridge-single-lang-server-extension-list
+               '(("json") . "javascript"))
 
-(when (or *mac* *unix*)
-  (setq-default lsp-bridge-python-command "/usr/local/bin/python3"))
+  (dolist (item '("dabbrev-completion"
+                  "corfu-insert"))
+    (add-to-list 'lsp-bridge-completion-stop-commands item))
 
-(add-to-list 'lsp-bridge-single-lang-server-extension-list
-             '(("json") . "javascript"))
+  (add-hook 'lsp-bridge-mode-hook (lambda () (setq-local corfu-auto nil)))
 
-(dolist (item '("dabbrev-completion"
-                "corfu-insert"))
-  (add-to-list 'lsp-bridge-completion-stop-commands item))
+  (setq lsp-bridge-default-mode-hooks
+        '(c++-mode-hook
+          c-mode-hook
+          css-mode-hook
+          dart-mode-hook
+          elixir-mode-hook
+          ;; go-mode-hook
+          js-mode-hook
+          js2-mode-hook
+          lua-mode-hook
+          ;; python-mode-hook
+          rjsx-mode-hook
+          ruby-mode-hook
+          rust-mode-hook
+          rustic-mode-hook
+          typescript-mode-hook
+          typescript-tsx-mode-hook))
 
-(add-hook 'lsp-bridge-mode-hook (lambda () (setq-local corfu-auto nil)))
+  (global-lsp-bridge-mode)
 
-(setq lsp-bridge-default-mode-hooks
-      '(c++-mode-hook
-        c-mode-hook
-        css-mode-hook
-        dart-mode-hook
-        elixir-mode-hook
-        ;; go-mode-hook
-        js-mode-hook
-        js2-mode-hook
-        lua-mode-hook
-        ;; python-mode-hook
-        rjsx-mode-hook
-        ruby-mode-hook
-        rust-mode-hook
-        rustic-mode-hook
-        typescript-mode-hook
-        typescript-tsx-mode-hook))
-
-(global-lsp-bridge-mode)
-
-(define-key lsp-bridge-mode-map (kbd "M-.") #'lsp-bridge-find-def)
-(define-key lsp-bridge-mode-map (kbd "C-x 4 .") #'lsp-bridge-find-def-other-window)
-(define-key lsp-bridge-mode-map (kbd "M-,") #'lsp-bridge-return-from-def)
-(define-key lsp-bridge-mode-map (kbd "C-c l h") #'lsp-bridge-lookup-documentation)
-(define-key lsp-bridge-mode-map (kbd "C-c l i") #'lsp-bridge-find-impl)
-(define-key lsp-bridge-mode-map (kbd "C-c l 4 i") #'lsp-bridge-find-impl-other-window)
-(define-key lsp-bridge-mode-map (kbd "C-c l r") #'lsp-bridge-rename)
-(define-key lsp-bridge-mode-map (kbd "C-c l R") #'lsp-bridge-restart-process)
-
+  (define-key lsp-bridge-mode-map (kbd "M-.") #'lsp-bridge-find-def)
+  (define-key lsp-bridge-mode-map (kbd "C-x 4 .") #'lsp-bridge-find-def-other-window)
+  (define-key lsp-bridge-mode-map (kbd "M-,") #'lsp-bridge-return-from-def)
+  (define-key lsp-bridge-mode-map (kbd "C-c l h") #'lsp-bridge-lookup-documentation)
+  (define-key lsp-bridge-mode-map (kbd "C-c l i") #'lsp-bridge-find-impl)
+  (define-key lsp-bridge-mode-map (kbd "C-c l 4 i") #'lsp-bridge-find-impl-other-window)
+  (define-key lsp-bridge-mode-map (kbd "C-c l r") #'lsp-bridge-rename)
+  (define-key lsp-bridge-mode-map (kbd "C-c l R") #'lsp-bridge-restart-process)
 
 ;;; python virtual env
-;; (defun local/lsp-bridge-get-single-lang-server-by-project (project-path filepath)
-;;   (let* ((json-object-type 'plist)
-;;          (custom-dir (expand-file-name ".cache/lsp-bridge/pyright" user-emacs-directory))
-;;          (custom-config (expand-file-name "pyright.json" custom-dir))
-;;          (default-config (json-read-file (expand-file-name "repo/lsp-bridge/langserver/pyright.json" user-emacs-directory)))
-;;          (settings (plist-get default-config :settings)))
+  ;; (defun local/lsp-bridge-get-single-lang-server-by-project (project-path filepath)
+  ;;   (let* ((json-object-type 'plist)
+  ;;          (custom-dir (expand-file-name ".cache/lsp-bridge/pyright" user-emacs-directory))
+  ;;          (custom-config (expand-file-name "pyright.json" custom-dir))
+  ;;          (default-config (json-read-file (expand-file-name "repo/lsp-bridge/langserver/pyright.json" user-emacs-directory)))
+  ;;          (settings (plist-get default-config :settings)))
 
-;;     (plist-put settings :pythonPath (executable-find "python"))
+  ;;     (plist-put settings :pythonPath (executable-find "python"))
 
-;;     (plist-put settings :python.analysis (plist-put (plist-get settings :python.analysis) :autoImportCompletions json-false))
+  ;;     (plist-put settings :python.analysis (plist-put (plist-get settings :python.analysis) :autoImportCompletions json-false))
 
-;;     (make-directory (file-name-directory custom-config) t)
+  ;;     (make-directory (file-name-directory custom-config) t)
 
-;;     (with-temp-file custom-config
-;;       (insert (json-encode default-config)))
+  ;;     (with-temp-file custom-config
+  ;;       (insert (json-encode default-config)))
 
-;;     custom-config))
+  ;;     custom-config))
 
-;; (add-hook 'python-mode-hook (lambda () (setq-local lsp-bridge-get-single-lang-server-by-project 'local/lsp-bridge-get-single-lang-server-by-project)))
+  ;; (add-hook 'python-mode-hook (lambda () (setq-local lsp-bridge-get-single-lang-server-by-project 'local/lsp-bridge-get-single-lang-server-by-project)))
 
-;; (add-hook 'pyvenv-post-activate-hooks
-;;           (lambda ()
-;;             (lsp-bridge-restart-process)))
+  ;; (add-hook 'pyvenv-post-activate-hooks
+  ;;           (lambda ()
+  ;;             (lsp-bridge-restart-process)))
+  )
+
+(local/after-init-hook 'lsp-bridge)
 
 
 ;;; eglot
@@ -130,7 +130,7 @@
   (local/setup-xref)
 
   (setq completion-category-overrides '((eglot (styles orderless))))
-  (setq-local completion-category-defaults nil)  
+  (setq-local completion-category-defaults nil)
   )
 
 (defun local/lsp-result ()
