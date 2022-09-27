@@ -61,6 +61,8 @@
 ;; (local/load-package 'init-lsp-deprecated)
 (local/load-package 'init-lsp)
 
+(local/load-package 'init-translate)
+
 (if (not (display-graphic-p))
   (local/load-package 'init-evil-v3))
 
