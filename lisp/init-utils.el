@@ -115,4 +115,11 @@
 ;; (add-hook 'post-command-hook #'local/show-current-function-post-command)
 
 
+(defun query-replace-no-case ()
+  (interactive)
+  (let ((case-replace nil)
+        (case-fold-search nil))
+    (call-interactively 'anzu-query-replace)))
+
+
 (provide 'init-utils)
