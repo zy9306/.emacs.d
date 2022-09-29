@@ -292,6 +292,7 @@
 
 
 ;;; format
+(setq sh-basic-offset 2)
 (setq shfmt-arguments (list "-i" "2"))
 (add-hook 'sh-mode-hook 'shfmt-on-save-mode)
 
