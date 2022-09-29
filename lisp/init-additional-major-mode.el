@@ -39,7 +39,23 @@
 
 (use-package json-mode
   :defer t
-  :mode "\\.json\\'")
+  :mode "\\.json\\'"
+  :config
+  ;; https://github.com/joshwnj/json-mode/issues/72
+  (setq-default json-mode-syntax-table
+                (let ((st (make-syntax-table)))
+                  ;; Objects
+                  (modify-syntax-entry ?\{ "(}" st)
+                  (modify-syntax-entry ?\} "){" st)
+                  ;; Arrays
+                  (modify-syntax-entry ?\[ "(]" st)
+                  (modify-syntax-entry ?\] ")[" st)
+                  ;; Strings
+                  (modify-syntax-entry ?\" "\"" st)
+                  ;; Comments
+                  (modify-syntax-entry ?\n ">" st)
+                  st))
+  )
 
 
 (use-package nix-mode
