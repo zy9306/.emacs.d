@@ -295,6 +295,7 @@
 (setq sh-basic-offset 2)
 (setq shfmt-arguments (list "-i" "2"))
 (add-hook 'sh-mode-hook 'shfmt-on-save-mode)
+(add-hook 'json-mode-hook (lambda () (electric-indent-local-mode -1)))
 
 ;; npm install -g prettier
 (with-eval-after-load 'prettier
