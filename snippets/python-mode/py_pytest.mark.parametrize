@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: py_pytest.mark.parametrize
+# key: py_pytest.mark.parametrize
+# --
+
+# https://docs.pytest.org/en/7.1.x/example/parametrize.html
