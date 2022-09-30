@@ -127,8 +127,6 @@
 
   (local/setup-capf)
 
-  (local/setup-xref)
-
   (setq completion-category-overrides '((eglot (styles orderless))))
   (setq-local completion-category-defaults nil)
   )
@@ -146,13 +144,14 @@
         lsp-result
       (citre-completion-at-point))))
 
-(defun local/setup-xref ()
-  (add-hook 'citre-mode-hook
-            (lambda () (dolist (xref-backend '(eglot-xref-backend))
-                         (if (member xref-backend xref-backend-functions)
-                             (progn
-                               (setq xref-backend-functions (remove xref-backend xref-backend-functions))
-                               (add-to-list 'xref-backend-functions xref-backend)))))))
+;; no need when citre-enable-xref-integration is nil
+;; (defun local/setup-xref ()
+;;   (add-hook 'citre-mode-hook
+;;             (lambda () (dolist (xref-backend '(eglot-xref-backend))
+;;                          (if (member xref-backend xref-backend-functions)
+;;                              (progn
+;;                                (setq xref-backend-functions (remove xref-backend xref-backend-functions))
+;;                                (add-to-list 'xref-backend-functions xref-backend)))))))
 
 (defun local/setup-capf ()
   (setq-local completion-at-point-functions nil)

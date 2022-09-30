@@ -8,6 +8,7 @@
 
   (setq-default citre-enable-capf-integration nil)
   (setq-default citre-enable-imenu-integration nil)
+  (setq-default citre-enable-xref-integration nil)
   (setq citre-use-project-root-when-creating-tags t)
   (setq citre-prompt-language-for-ctags-command t)
 
@@ -26,6 +27,11 @@
                   citre-jump))
     (advice-add func :before 'my--push-point-to-xref-marker-stack)))
 
+(defun citre-jump+ ()
+  (interactive)
+  (condition-case _
+      (call-interactively #'xref-find-definitions)
+    (error (citre-jump))))
 
 ;;; company-backend
 (defun company-citre (-command &optional -arg &rest _ignored)
@@ -38,12 +44,6 @@
     (annotation (citre-capf--get-annotation -arg))
     (candidates (all-completions -arg (citre-capf--get-collection -arg)))
     (ignore-case (not citre-completion-case-sensitive))))
-
-(defun citre-jump+ ()
-  (interactive)
-  (condition-case _
-      (call-interactively #'xref-find-definitions)
-    (error (citre-jump))))
 
 (local/after-init-hook 'citre)
 
