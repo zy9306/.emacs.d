@@ -27,6 +27,7 @@
                   citre-jump))
     (advice-add func :before 'my--push-point-to-xref-marker-stack)))
 
+;; https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-ctags.el#L57
 (defun citre-jump+ ()
   (interactive)
   (condition-case _
