@@ -8,7 +8,6 @@
 
   (setq-default citre-enable-capf-integration nil)
   (setq-default citre-enable-imenu-integration nil)
-  (setq-default citre-enable-xref-integration nil)
   (setq citre-use-project-root-when-creating-tags t)
   (setq citre-prompt-language-for-ctags-command t)
 
