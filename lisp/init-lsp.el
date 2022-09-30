@@ -128,6 +128,8 @@
 
   (local/setup-capf)
 
+  (local/setup-xref)
+
   (setq completion-category-overrides '((eglot (styles orderless))))
   (setq-local completion-category-defaults nil)
   )
