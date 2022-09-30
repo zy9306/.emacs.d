@@ -1,7 +1,7 @@
 ;; only need projectile-ripgrep
 (lazy-load-global-keys
  '(("C-S-S" . projectile-ripgrep))
-   "projectile")
+ "projectile")
 
 (with-eval-after-load 'projectile
   (require 'counsel-projectile)
@@ -11,9 +11,10 @@
 
 (defun local/get-project-name ()
   ;; (projectile-project-name)
-  (file-name-nondirectory
-   (directory-file-name
-    (project-root (project-current)))))
+  (ignore-errors
+    (file-name-nondirectory
+     (directory-file-name
+      (project-root (project-current))))))
 
 (with-eval-after-load 'project
   (define-key ctl-x-map "p" 'nil)
