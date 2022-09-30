@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: go_readcloser_to_string
+# key: go_readcloser_to_string
+# --
+b, err := io.ReadAll(r)
+// check errors
+// string(b)
+
+// or
+// buf := new(strings.Builder)
+// n, err := io.Copy(buf, r)
+// // check errors
+// // buf.String()
