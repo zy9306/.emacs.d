@@ -16,8 +16,6 @@
   (defun my--push-point-to-xref-marker-stack (&rest r)
     (xref-push-marker-stack (point-marker)))
 
-  (define-key citre-mode-map (kbd "M-.") #'citre-jump+)
-
   (dolist (func '(find-function
                   counsel-imenu
                   projectile-grep
