@@ -16,6 +16,8 @@
   (defun my--push-point-to-xref-marker-stack (&rest r)
     (xref-push-marker-stack (point-marker)))
 
+  (define-key citre-mode-map (kbd "M-.") #'citre-jump+)
+
   (dolist (func '(find-function
                   counsel-imenu
                   projectile-grep
@@ -36,6 +38,12 @@
     (annotation (citre-capf--get-annotation -arg))
     (candidates (all-completions -arg (citre-capf--get-collection -arg)))
     (ignore-case (not citre-completion-case-sensitive))))
+
+(defun citre-jump+ ()
+  (interactive)
+  (condition-case _
+      (call-interactively #'xref-find-definitions)
+    (error (citre-jump))))
 
 (local/after-init-hook 'citre)
 
