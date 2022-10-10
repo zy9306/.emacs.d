@@ -14,6 +14,7 @@
 (require-package 'anzu)
 (require-package 'auto-virtualenv)
 (require-package 'avy)
+(require-package 'bm)
 (require-package 'browse-kill-ring)
 (require-package 'bufler)
 (require-package 'company)

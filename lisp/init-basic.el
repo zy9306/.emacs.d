@@ -227,6 +227,19 @@
 ;;   (global-set-key (kbd "M-<right>") 'better-jumper-jump-forward))
 ;; (local/after-init-hook 'better-jumper)
 
+
+;; bm
+(setq bm-highlight-style 'bm-highlight-only-fringe)
+(setq bm-in-lifo-order t)
+(global-set-key (kbd "C-x m") 'bm-toggle)
+(global-set-key (kbd "M-<up>") 'bm-previous)
+(global-set-key (kbd "M-<down>") 'bm-next)
+
+(autoload 'bm-toggle   "bm" "Toggle bookmark in current buffer." t)
+(autoload 'bm-next     "bm" "Goto bookmark."                     t)
+(autoload 'bm-previous "bm" "Goto previous bookmark."            t)
+
+
 (with-eval-after-load 'xref
   (setq xref-marker-ring-length 100)
   (setq xref-search-program 'ripgrep)
