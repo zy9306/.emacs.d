@@ -231,7 +231,17 @@
 ;; bm
 (setq bm-highlight-style 'bm-highlight-only-fringe)
 (setq bm-in-lifo-order t)
-(global-set-key (kbd "C-x m") 'bm-toggle)
+
+(defun local/bm-toggle (x)
+  (interactive "P")
+  (cond
+   ((equal x nil)
+    (call-interactively 'bm-toggle))
+   ((equal x '(4))
+    (call-interactively 'bm-remove-all-current-buffer))
+   (t (message "nothing to do."))))
+
+(global-set-key (kbd "C-x m") 'local/bm-toggle)
 (global-set-key (kbd "M-<up>") 'bm-previous)
 (global-set-key (kbd "M-<down>") 'bm-next)
 
