@@ -217,8 +217,10 @@
 
 (defun edit/copy-line ()
   (interactive)
-  (thing-copy-line))
+  (call-interactively 'thing-copy-line))
 
+
+(global-set-key (kbd "M-d") 'edit/word-delete)
 
 (global-set-key (kbd "M-\"") 'emacs-surround)
 (global-set-key (kbd "M-]") #'embrace-commander)
