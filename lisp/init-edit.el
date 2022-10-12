@@ -40,6 +40,19 @@
     (if (string= kill-conditional "copy")
         (goto-char cur_point))))
 
+(defun local/inside-pairs-cut ()
+  (interactive)
+  (local/inside-pairs "cut"))
+
+(defun local/inside-pairs-copy ()
+  (interactive)
+  (local/inside-pairs "copy"))
+
+(defun local/inside-pairs-delete ()
+  (interactive)
+  (local/inside-pairs "delete"))
+
+
 (defun local/outside-pairs (kill-conditional)
   (save-excursion)
   (let ((cur_point (point))
@@ -51,6 +64,19 @@
     (local/thing-edit-internal start end kill-conditional)
     (if (string= kill-conditional "copy")
         (goto-char cur_point))))
+
+(defun local/outside-pairs-cut ()
+  (interactive)
+  (local/outside-pairs "cut"))
+
+(defun local/outside-pairs-copy ()
+  (interactive)
+  (local/outside-pairs "copy"))
+
+(defun local/outside-pairs-delete ()
+  (interactive)
+  (local/outside-pairs "delete"))
+
 
 (defun local/inside-quotes (kill-conditional)
   (save-excursion)
@@ -64,6 +90,19 @@
     (if (string= kill-conditional "copy")
         (goto-char cur_point))))
 
+(defun local/inside-quotes-cut ()
+  (interactive)
+  (local/inside-quotes "cut"))
+
+(defun local/inside-quotes-copy ()
+  (interactive)
+  (local/inside-quotes "copy"))
+
+(defun local/inside-quotes-delete ()
+  (interactive)
+  (local/inside-quotes "delete"))
+
+
 (defun local/outside-quotes (kill-conditional)
   (save-excursion)
   (let ((cur_point (point))
@@ -75,6 +114,19 @@
     (local/thing-edit-internal start end kill-conditional)
     (if (string= kill-conditional "copy")
         (goto-char cur_point))))
+
+(defun local/outside-quotes-cut ()
+  (interactive)
+  (local/outside-quotes "cut"))
+
+(defun local/outside-quotes-copy ()
+  (interactive)
+  (local/outside-quotes "copy"))
+
+(defun local/outside-quotes-delete ()
+  (interactive)
+  (local/outside-quotes "delete"))
+
 
 (defun local/word (kill-conditional)
   (save-excursion)
@@ -88,6 +140,19 @@
     (if (string= kill-conditional "copy")
         (goto-char cur_point))))
 
+(defun local/word-cut ()
+  (interactive)
+  (local/word "cut"))
+
+(defun local/word-copy ()
+  (interactive)
+  (local/word "copy"))
+
+(defun local/word-delete ()
+  (interactive)
+  (local/word "delete"))
+
+
 (defun local/symbol (kill-conditional)
   (save-excursion)
   (let ((cur_point (point))
@@ -99,6 +164,19 @@
     (local/thing-edit-internal start end kill-conditional)
     (if (string= kill-conditional "copy")
         (goto-char cur_point))))
+
+(defun local/symbol-cut ()
+  (interactive)
+  (local/symbol "cut"))
+
+(defun local/symbol-copy ()
+  (interactive)
+  (local/symbol "copy"))
+
+(defun local/symbol-delete ()
+  (interactive)
+  (local/symbol "delete"))
+
 
 (defun local/defun (kill-conditional)
   (save-excursion)
@@ -112,58 +190,34 @@
     (if (string= kill-conditional "copy")
         (goto-char cur_point))))
 
-(global-unset-key (kbd "C-\\"))
+(defun local/defun-cut ()
+  (interactive)
+  (local/defun "cut"))
 
-(defhydra hydra-awesome-tab (global-map "C-\\" :exit t)
-  ;; er copy
-  ("yw" (lambda () (interactive) (local/word "copy")))
-  ("ys" (lambda () (interactive) (local/symbol "copy")))
-  ("yf" (lambda () (interactive) (local/defun "copy")))
-  ("yp" (lambda () (interactive) (local/inside-pairs "copy")))
-  ("yap" (lambda () (interactive) (local/outside-pairs "copy")))
-  ("y'" (lambda () (interactive) (local/inside-quotes "copy")))
-  ("ya'" (lambda () (interactive) (local/outside-quotes "copy")))
+(defun local/defun-copy ()
+  (interactive)
+  (local/defun "copy"))
 
-  ;; er cut
-  ("dw" (lambda () (interactive) (local/word "cut")))
-  ("ds" (lambda () (interactive) (local/symbol "cut")))
-  ("df" (lambda () (interactive) (local/defun "cut")))
-  ("dp" (lambda () (interactive) (local/inside-pairs "cut")))
-  ("dap" (lambda () (interactive) (local/outside-pairs "cut")))
-  ("d'" (lambda () (interactive) (local/inside-quotes "cut")))
-  ("da'" (lambda () (interactive) (local/outside-quotes "cut")))
+(defun local/defun-delete ()
+  (interactive)
+  (local/defun "delete"))
 
-  ;; er delete
-  ("Dw" (lambda () (interactive) (local/word "delete")))
-  ("Ds" (lambda () (interactive) (local/symbol "delete")))
-  ("Df" (lambda () (interactive) (local/defun "delete")))
-  ("Dp" (lambda () (interactive) (local/inside-pairs "delete")))
-  ("Dap" (lambda () (interactive) (local/outside-pairs "delete")))
-  ("D'" (lambda () (interactive) (local/inside-quotes "delete")))
-  ("Da'" (lambda () (interactive) (local/outside-quotes "delete")))
 
-  ;; thing at point
-  ("yy" thing-copy-line)
-  ("yA" thing-copy-to-line-beginning)
-  ("yE" thing-copy-to-line-end)
+(defun local/replace-word ()
+  (interactive)
+  (thing-replace-word))
 
-  ("dd" thing-cut-line)
-  ("dA" thing-cut-to-line-beginning)
-  ("dE" thing-cut-to-line-end)
+(defun local/replace-parentheses ()
+  (interactive)
+  (thing-replace-parentheses))
 
-  ("rw" thing-replace-word)
-  ("rp" thing-replace-parentheses)
-  ("rs" thing-replace-symbol)
+(defun local/replace-symbol ()
+  (interactive)
+  (thing-replace-symbol))
 
-  ;; duplicate-line
-  ("pp" duplicate-line-or-region-above :exit nil)
-  ("nn" duplicate-line-or-region-below :exit nil)
-  ("PP" duplicate-line-above-comment :exit nil)
-  ("NN" duplicate-line-below-comment :exit nil)
-
-  ;; surround
-  ("'" embrace-commander)
-  ("\"" emacs-surround))
+(defun local/copy-line ()
+  (interactive)
+  (thing-copy-line))
 
 
 (global-set-key (kbd "M-\"") 'emacs-surround)
