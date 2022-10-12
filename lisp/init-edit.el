@@ -2,7 +2,7 @@
 (require 'emacs-surround)
 (require 'duplicate-line)
 
-(defun local/thing-edit-internal (object-beg object-end &optional kill-conditional)
+(defun edit/thing-edit-internal (object-beg object-end &optional kill-conditional)
   (interactive)
   (let ((pulse-iterations 1)
         (pulse-delay thing-edit-flash-line-delay))
@@ -28,7 +28,7 @@
           (t
            (message "Nothing to do.")))))
 
-(defun local/inside-pairs (kill-conditional)
+(defun edit/inside-pairs (kill-conditional)
   (save-excursion)
   (let ((cur_point (point))
         (start)
@@ -36,24 +36,24 @@
     (er/mark-inside-pairs)
     (setq start (region-beginning))
     (setq end (region-end))
-    (local/thing-edit-internal start end kill-conditional)
+    (edit/thing-edit-internal start end kill-conditional)
     (if (string= kill-conditional "copy")
         (goto-char cur_point))))
 
-(defun local/inside-pairs-cut ()
+(defun edit/inside-pairs-cut ()
   (interactive)
-  (local/inside-pairs "cut"))
+  (edit/inside-pairs "cut"))
 
-(defun local/inside-pairs-copy ()
+(defun edit/inside-pairs-copy ()
   (interactive)
-  (local/inside-pairs "copy"))
+  (edit/inside-pairs "copy"))
 
-(defun local/inside-pairs-delete ()
+(defun edit/inside-pairs-delete ()
   (interactive)
-  (local/inside-pairs "delete"))
+  (edit/inside-pairs "delete"))
 
 
-(defun local/outside-pairs (kill-conditional)
+(defun edit/outside-pairs (kill-conditional)
   (save-excursion)
   (let ((cur_point (point))
         (start)
@@ -61,24 +61,24 @@
     (er/mark-outside-pairs)
     (setq start (region-beginning))
     (setq end (region-end))
-    (local/thing-edit-internal start end kill-conditional)
+    (edit/thing-edit-internal start end kill-conditional)
     (if (string= kill-conditional "copy")
         (goto-char cur_point))))
 
-(defun local/outside-pairs-cut ()
+(defun edit/outside-pairs-cut ()
   (interactive)
-  (local/outside-pairs "cut"))
+  (edit/outside-pairs "cut"))
 
-(defun local/outside-pairs-copy ()
+(defun edit/outside-pairs-copy ()
   (interactive)
-  (local/outside-pairs "copy"))
+  (edit/outside-pairs "copy"))
 
-(defun local/outside-pairs-delete ()
+(defun edit/outside-pairs-delete ()
   (interactive)
-  (local/outside-pairs "delete"))
+  (edit/outside-pairs "delete"))
 
 
-(defun local/inside-quotes (kill-conditional)
+(defun edit/inside-quotes (kill-conditional)
   (save-excursion)
   (let ((cur_point (point))
         (start)
@@ -86,24 +86,24 @@
     (er/mark-inside-quotes)
     (setq start (region-beginning))
     (setq end (region-end))
-    (local/thing-edit-internal start end kill-conditional)
+    (edit/thing-edit-internal start end kill-conditional)
     (if (string= kill-conditional "copy")
         (goto-char cur_point))))
 
-(defun local/inside-quotes-cut ()
+(defun edit/inside-quotes-cut ()
   (interactive)
-  (local/inside-quotes "cut"))
+  (edit/inside-quotes "cut"))
 
-(defun local/inside-quotes-copy ()
+(defun edit/inside-quotes-copy ()
   (interactive)
-  (local/inside-quotes "copy"))
+  (edit/inside-quotes "copy"))
 
-(defun local/inside-quotes-delete ()
+(defun edit/inside-quotes-delete ()
   (interactive)
-  (local/inside-quotes "delete"))
+  (edit/inside-quotes "delete"))
 
 
-(defun local/outside-quotes (kill-conditional)
+(defun edit/outside-quotes (kill-conditional)
   (save-excursion)
   (let ((cur_point (point))
         (start)
@@ -111,24 +111,24 @@
     (er/mark-outside-quotes)
     (setq start (region-beginning))
     (setq end (region-end))
-    (local/thing-edit-internal start end kill-conditional)
+    (edit/thing-edit-internal start end kill-conditional)
     (if (string= kill-conditional "copy")
         (goto-char cur_point))))
 
-(defun local/outside-quotes-cut ()
+(defun edit/outside-quotes-cut ()
   (interactive)
-  (local/outside-quotes "cut"))
+  (edit/outside-quotes "cut"))
 
-(defun local/outside-quotes-copy ()
+(defun edit/outside-quotes-copy ()
   (interactive)
-  (local/outside-quotes "copy"))
+  (edit/outside-quotes "copy"))
 
-(defun local/outside-quotes-delete ()
+(defun edit/outside-quotes-delete ()
   (interactive)
-  (local/outside-quotes "delete"))
+  (edit/outside-quotes "delete"))
 
 
-(defun local/word (kill-conditional)
+(defun edit/word (kill-conditional)
   (save-excursion)
   (let ((cur_point (point))
         (start)
@@ -136,24 +136,24 @@
     (er/mark-word)
     (setq start (region-beginning))
     (setq end (region-end))
-    (local/thing-edit-internal start end kill-conditional)
+    (edit/thing-edit-internal start end kill-conditional)
     (if (string= kill-conditional "copy")
         (goto-char cur_point))))
 
-(defun local/word-cut ()
+(defun edit/word-cut ()
   (interactive)
-  (local/word "cut"))
+  (edit/word "cut"))
 
-(defun local/word-copy ()
+(defun edit/word-copy ()
   (interactive)
-  (local/word "copy"))
+  (edit/word "copy"))
 
-(defun local/word-delete ()
+(defun edit/word-delete ()
   (interactive)
-  (local/word "delete"))
+  (edit/word "delete"))
 
 
-(defun local/symbol (kill-conditional)
+(defun edit/symbol (kill-conditional)
   (save-excursion)
   (let ((cur_point (point))
         (start)
@@ -161,24 +161,24 @@
     (er/mark-symbol)
     (setq start (region-beginning))
     (setq end (region-end))
-    (local/thing-edit-internal start end kill-conditional)
+    (edit/thing-edit-internal start end kill-conditional)
     (if (string= kill-conditional "copy")
         (goto-char cur_point))))
 
-(defun local/symbol-cut ()
+(defun edit/symbol-cut ()
   (interactive)
-  (local/symbol "cut"))
+  (edit/symbol "cut"))
 
-(defun local/symbol-copy ()
+(defun edit/symbol-copy ()
   (interactive)
-  (local/symbol "copy"))
+  (edit/symbol "copy"))
 
-(defun local/symbol-delete ()
+(defun edit/symbol-delete ()
   (interactive)
-  (local/symbol "delete"))
+  (edit/symbol "delete"))
 
 
-(defun local/defun (kill-conditional)
+(defun edit/defun (kill-conditional)
   (save-excursion)
   (let ((cur_point (point))
         (start)
@@ -186,36 +186,36 @@
     (er/mark-defun)
     (setq start (region-beginning))
     (setq end (region-end))
-    (local/thing-edit-internal start end kill-conditional)
+    (edit/thing-edit-internal start end kill-conditional)
     (if (string= kill-conditional "copy")
         (goto-char cur_point))))
 
-(defun local/defun-cut ()
+(defun edit/defun-cut ()
   (interactive)
-  (local/defun "cut"))
+  (edit/defun "cut"))
 
-(defun local/defun-copy ()
+(defun edit/defun-copy ()
   (interactive)
-  (local/defun "copy"))
+  (edit/defun "copy"))
 
-(defun local/defun-delete ()
+(defun edit/defun-delete ()
   (interactive)
-  (local/defun "delete"))
+  (edit/defun "delete"))
 
 
-(defun local/replace-word ()
+(defun edit/replace-word ()
   (interactive)
   (thing-replace-word))
 
-(defun local/replace-parentheses ()
+(defun edit/replace-parentheses ()
   (interactive)
   (thing-replace-parentheses))
 
-(defun local/replace-symbol ()
+(defun edit/replace-symbol ()
   (interactive)
   (thing-replace-symbol))
 
-(defun local/copy-line ()
+(defun edit/copy-line ()
   (interactive)
   (thing-copy-line))
 
@@ -272,7 +272,7 @@
                 minibuffer-inactive-mode-hook))
   (add-hook hook #'puni-disable-puni-mode))
 
-(defun local/puni-kill-line ()
+(defun edit/puni-kill-line ()
   (interactive)
   (let ((bounds (puni-bounds-of-list-around-point)))
     (if (eq (car bounds) (cdr bounds))
@@ -282,7 +282,7 @@
           (puni-backward-kill-line)
         (puni-kill-line)))))
 
-(define-key puni-mode-map (kbd "C-k") 'local/puni-kill-line)
+(define-key puni-mode-map (kbd "C-k") 'edit/puni-kill-line)
 
 (define-key puni-mode-map (kbd "C-d") nil)
 (define-key puni-mode-map (kbd "C-S-k") nil)
