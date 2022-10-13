@@ -315,7 +315,11 @@
 (global-set-key (kbd "M-]") #'embrace-commander)
 
 (with-eval-after-load 'smartparens
+  ;; 直接覆盖掉 sp--indent-region 避免 C-k 等操作后自动缩进
+  ;; 也可以自定义 sp-no-reindent-after-kill-modes
+  (defun sp--indent-region (start end &optional column))
   (smartparens-global-strict-mode))
+
 (local/after-init-hook 'smartparens)
 
 
