@@ -314,8 +314,9 @@
 (global-set-key (kbd "M-\"") 'emacs-surround)
 (global-set-key (kbd "M-]") #'embrace-commander)
 
-(require 'smartparens)
-(smartparens-global-strict-mode)
+(with-eval-after-load 'smartparens
+  (smartparens-global-strict-mode))
+(local/after-init-hook 'smartparens)
 
 
 (provide 'init-edit)
