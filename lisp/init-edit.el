@@ -219,8 +219,36 @@
   (interactive)
   (call-interactively 'thing-copy-line))
 
-
 (global-set-key (kbd "M-d") 'edit/word-delete)
+
+(global-unset-key (kbd "M-s"))
+(defhydra hydra-edit (global-map "M-s" :exit t)
+  ("wc" edit/word-copy)
+  ("wd" edit/word-delete)
+  ("wx" edit/word-cut)
+  ("wr" edit/replace-word)
+
+  ("qc" edit/inside-quotes-copy)
+  ("qd" edit/inside-quotes-delete)
+  ("qx" edit/inside-quotes-cut)
+
+  ("Qc" edit/outside-quotes-copy)
+  ("Qd" edit/outside-quotes-delete)
+  ("Qx" edit/outside-quotes-cut)
+
+  ("pc" edit/inside-pairs-copy)
+  ("pd" edit/inside-pairs-delete)
+  ("px" edit/inside-pairs-cut)
+
+  ("pc" edit/outside-pairs-copy)
+  ("pd" edit/outside-pairs-delete)
+  ("px" edit/outside-pairs-cut)
+
+  ("pp" duplicate-line-or-region-above :exit nil)
+  ("nn" duplicate-line-or-region-below :exit nil)
+  ("PP" duplicate-line-above-comment :exit nil)
+  ("NN" duplicate-line-below-comment :exit nil)
+  )
 
 (global-set-key (kbd "M-\"") 'emacs-surround)
 (global-set-key (kbd "M-]") #'embrace-commander)
@@ -287,6 +315,7 @@
 (define-key puni-mode-map (kbd "C-k") 'edit/puni-kill-line)
 
 (define-key puni-mode-map (kbd "C-d") nil)
+(define-key puni-mode-map (kbd "M-d") nil)
 (define-key puni-mode-map (kbd "C-S-k") nil)
 
 
