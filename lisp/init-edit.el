@@ -52,6 +52,12 @@
   (interactive)
   (edit/inside-pairs "delete"))
 
+(defun edit/inside-pairs-replace ()
+  (interactive)
+  (save-excursion
+    (edit/inside-pairs-delete)
+    (yank)))
+
 
 (defun edit/outside-pairs (kill-conditional)
   (save-excursion)
@@ -76,6 +82,12 @@
 (defun edit/outside-pairs-delete ()
   (interactive)
   (edit/outside-pairs "delete"))
+
+(defun edit/outside-pairs-replace ()
+  (interactive)
+  (save-excursion
+    (edit/outside-pairs-delete)
+    (yank)))
 
 
 (defun edit/inside-quotes (kill-conditional)
@@ -102,6 +114,12 @@
   (interactive)
   (edit/inside-quotes "delete"))
 
+(defun edit/inside-quotes-replace ()
+  (interactive)
+  (save-excursion
+    (edit/inside-quotes-delete)
+    (yank)))
+
 
 (defun edit/outside-quotes (kill-conditional)
   (save-excursion)
@@ -126,6 +144,12 @@
 (defun edit/outside-quotes-delete ()
   (interactive)
   (edit/outside-quotes "delete"))
+
+(defun edit/outside-quotes-replace ()
+  (interactive)
+  (save-excursion
+    (edit/outside-quotes-delete)
+    (yank)))
 
 
 (defun edit/word (kill-conditional)
@@ -152,6 +176,11 @@
   (interactive)
   (edit/word "delete"))
 
+(defun edit/word-replace ()
+  (interactive)
+  (save-excursion
+    (edit/word-delete)
+    (yank)))
 
 (defun edit/symbol (kill-conditional)
   (save-excursion)
@@ -177,6 +206,11 @@
   (interactive)
   (edit/symbol "delete"))
 
+(defun edit/symbol-replace ()
+  (interactive)
+  (save-excursion
+    (edit/symbol-delete)
+    (yank)))
 
 (defun edit/defun (kill-conditional)
   (save-excursion)
@@ -202,23 +236,6 @@
   (interactive)
   (edit/defun "delete"))
 
-
-(defun edit/replace-word ()
-  (interactive)
-  (thing-replace-word))
-
-(defun edit/replace-parentheses ()
-  (interactive)
-  (thing-replace-parentheses))
-
-(defun edit/replace-symbol ()
-  (interactive)
-  (thing-replace-symbol))
-
-(defun edit/copy-line ()
-  (interactive)
-  (call-interactively 'thing-copy-line))
-
 (global-set-key (kbd "M-d") 'edit/word-delete)
 
 (global-unset-key (kbd "M-s"))
@@ -226,23 +243,27 @@
   ("wc" edit/word-copy)
   ("wd" edit/word-delete)
   ("wx" edit/word-cut)
-  ("wr" edit/replace-word)
+  ("wr" edit/word-replace)
 
   ("qc" edit/inside-quotes-copy)
   ("qd" edit/inside-quotes-delete)
   ("qx" edit/inside-quotes-cut)
+  ("qr" edit/inside-quotes-replace)
 
   ("Qc" edit/outside-quotes-copy)
   ("Qd" edit/outside-quotes-delete)
   ("Qx" edit/outside-quotes-cut)
+  ("Qr" edit/outside-quotes-replace)
 
   ("pc" edit/inside-pairs-copy)
   ("pd" edit/inside-pairs-delete)
   ("px" edit/inside-pairs-cut)
+  ("pr" edit/inside-pairs-replace)
 
   ("Pc" edit/outside-pairs-copy)
   ("Pd" edit/outside-pairs-delete)
   ("Px" edit/outside-pairs-cut)
+  ("Pr" edit/outside-pairs-replace)
 
   ("pp" duplicate-line-or-region-above :exit nil)
   ("nn" duplicate-line-or-region-below :exit nil)
