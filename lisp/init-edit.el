@@ -300,6 +300,11 @@
   ("fd" edit/defun-delete)
   ("fx" edit/defun-cut)
 
+  ("aa" avy-goto-char-2)
+  ("al" avy-goto-line)
+  ("ari" avy-copy-region)
+  ("arc" avy-kill-ring-save-region)
+
   ("pp" duplicate-line-or-region-above :exit nil)
   ("nn" duplicate-line-or-region-below :exit nil)
   ("PP" duplicate-line-above-comment :exit nil)
