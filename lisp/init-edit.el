@@ -296,6 +296,10 @@
   ("ld" edit/inner-line-delete)
   ("lx" edit/inner-line-cut)
 
+  ("fc" edit/defun-copy)
+  ("fd" edit/defun-delete)
+  ("fx" edit/defun-cut)
+
   ("pp" duplicate-line-or-region-above :exit nil)
   ("nn" duplicate-line-or-region-below :exit nil)
   ("PP" duplicate-line-above-comment :exit nil)
