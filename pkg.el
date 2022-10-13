@@ -84,6 +84,7 @@
 (require-package 'selectrum-prescient)
 (require-package 'shfmt)
 (require-package 'smex)
+(require-package 'smartparens)
 (require-package 'string-inflection)
 (require-package 'symbol-overlay)
 (require-package 'tide)

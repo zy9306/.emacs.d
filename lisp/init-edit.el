@@ -314,70 +314,8 @@
 (global-set-key (kbd "M-\"") 'emacs-surround)
 (global-set-key (kbd "M-]") #'embrace-commander)
 
-
-(with-eval-after-load 'tree-sitter
-  (require 'grammatical-edit)
-
-  (dolist (hook (list
-                 'c-mode-common-hook
-                 'c-mode-hook
-                 'c++-mode-hook
-                 'java-mode-hook
-                 'haskell-mode-hook
-                 'maxima-mode-hook
-                 'ielm-mode-hook
-                 'sh-mode-hook
-                 'makefile-gmake-mode-hook
-                 'php-mode-hook
-                 'python-mode-hook
-                 'js-mode-hook
-                 'go-mode-hook
-                 'qml-mode-hook
-                 'jade-mode-hook
-                 'css-mode-hook
-                 'ruby-mode-hook
-                 'coffee-mode-hook
-                 'rust-mode-hook
-                 'qmake-mode-hook
-                 'lua-mode-hook
-                 'swift-mode-hook
-                 'minibuffer-inactive-mode-hook
-                 ))
-    (add-hook hook (lambda () (grammatical-edit-mode 1))))
-
-  (define-key grammatical-edit-mode-map (kbd "M-[") 'local/grammatical-edit-jump-up))
-
-(defun local/grammatical-edit-jump-up ()
-  (interactive)
-  (xref--push-markers)
-  (grammatical-edit-jump-up))
-
-
-;;; puni
-(require-package 'puni)
-
-(puni-global-mode)
-
-(dolist (hook '(term-mode-hook
-                minibuffer-mode-hook
-                minibuffer-inactive-mode-hook))
-  (add-hook hook #'puni-disable-puni-mode))
-
-(defun edit/puni-kill-line ()
-  (interactive)
-  (let ((bounds (puni-bounds-of-list-around-point)))
-    (if (eq (car bounds) (cdr bounds))
-        (when-let ((sexp-bounds (puni-bounds-of-sexp-around-point)))
-          (puni-delete-region (car sexp-bounds) (cdr sexp-bounds) 'kill))
-      (if (eq (point) (cdr bounds))
-          (puni-backward-kill-line)
-        (puni-kill-line)))))
-
-(define-key puni-mode-map (kbd "C-k") 'edit/puni-kill-line)
-
-(define-key puni-mode-map (kbd "C-d") nil)
-(define-key puni-mode-map (kbd "M-d") nil)
-(define-key puni-mode-map (kbd "C-S-k") nil)
+(require 'smartparens)
+(smartparens-global-strict-mode)
 
 
 (provide 'init-edit)
