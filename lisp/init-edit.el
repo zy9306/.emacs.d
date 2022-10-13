@@ -240,9 +240,9 @@
   ("pd" edit/inside-pairs-delete)
   ("px" edit/inside-pairs-cut)
 
-  ("pc" edit/outside-pairs-copy)
-  ("pd" edit/outside-pairs-delete)
-  ("px" edit/outside-pairs-cut)
+  ("Pc" edit/outside-pairs-copy)
+  ("Pd" edit/outside-pairs-delete)
+  ("Px" edit/outside-pairs-cut)
 
   ("pp" duplicate-line-or-region-above :exit nil)
   ("nn" duplicate-line-or-region-below :exit nil)
