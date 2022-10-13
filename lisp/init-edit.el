@@ -236,6 +236,33 @@
   (interactive)
   (edit/defun "delete"))
 
+
+(defun edit/inner-line (kill-conditional)
+  (save-excursion
+    (let ((cur_point (point))
+          (start)
+          (end))
+      (back-to-indentation)
+      (setq start (point))
+      (end-of-line)
+      (setq end (point))
+      (edit/thing-edit-internal start end kill-conditional)
+      (if (string= kill-conditional "copy")
+          (goto-char cur_point)))))
+
+(defun edit/inner-line-copy ()
+  (interactive)
+  (edit/inner-line "copy"))
+
+(defun edit/inner-line-delete ()
+  (interactive)
+  (edit/inner-line "delete"))
+
+(defun edit/inner-line-cut ()
+  (interactive)
+  (edit/inner-line "cut"))
+
+
 (global-set-key (kbd "M-d") 'edit/word-delete)
 
 (global-unset-key (kbd "M-s"))
@@ -264,6 +291,10 @@
   ("Pd" edit/outside-pairs-delete)
   ("Px" edit/outside-pairs-cut)
   ("Pr" edit/outside-pairs-replace)
+
+  ("lc" edit/inner-line-copy)
+  ("ld" edit/inner-line-delete)
+  ("lx" edit/inner-line-cut)
 
   ("pp" duplicate-line-or-region-above :exit nil)
   ("nn" duplicate-line-or-region-below :exit nil)
