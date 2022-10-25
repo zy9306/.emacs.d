@@ -27,7 +27,7 @@
   (defun my-rg-buffer-name ()
     (let ((p (project-current)))
       (if p
-          (format "rg %s" (abbreviate-file-name (cdr p)))
+          (format "rg %s" (nth 2 (project-current)))
         "rg")))
 
   (defun rg-occur-hide-lines-not-matching (search-text)
