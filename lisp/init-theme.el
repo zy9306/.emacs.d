@@ -37,8 +37,8 @@
  :background "#39c5bb")
 
 (set-face-attribute
-   'mode-line nil
-   :box '(:line-width 1 :color "grey75"))
+ 'mode-line nil
+ :box '(:line-width 1 :color "grey75"))
 
 (when (and local/is-light-theme (eq local/light-theme 'doom-solarized-light))
   (with-eval-after-load 'imenu
@@ -53,7 +53,7 @@
   (set-face-attribute
    'font-lock-string-face nil
    :foreground "#cc99cc")
-)
+  )
 
 (when (and local/is-light-theme (eq local/light-theme 'doom-one-light))
   (set-face-attribute
