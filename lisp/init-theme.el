@@ -41,10 +41,10 @@
  :box '(:line-width 1 :color "grey75"))
 
 (when (and local/is-light-theme (eq local/light-theme 'doom-solarized-light))
-  (with-eval-after-load 'imenu
+  (with-eval-after-load 'imenu-list
     (set-face-attribute
      'imenu-list-entry-face-1 nil
-     :background "black"))
+     :foreground "black"))
 
   (set-face-attribute
    'font-lock-variable-name-face nil
