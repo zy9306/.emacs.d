@@ -44,7 +44,7 @@
   (with-eval-after-load 'imenu-list
     (set-face-attribute
      'imenu-list-entry-face-1 nil
-     :foreground "black"))
+     :foreground "gray31"))
 
   (set-face-attribute
    'font-lock-variable-name-face nil
