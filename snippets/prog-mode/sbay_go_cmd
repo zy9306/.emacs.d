@@ -1,0 +1,41 @@
+# -*- mode: snippet -*-
+# name: sbay_go_cmd
+# key: sbay_go_cmd
+# group: sbay
+# --
+func CommandFunc(cmd *cobra.Command, args []string) error {
+	env, err := cmd.Flags().GetString("env")
+	if err != nil {
+		return err
+	}
+	root, err := cmd.Flags().GetString("root")
+	if err != nil {
+		return err
+	}
+
+	param, err := cmd.Flags().GetString("param")
+	if err != nil {
+		return err
+	}
+
+	bapp, err := gobay.CreateApp(root, env, app.Extensions())
+	if err != nil {
+		return err
+	}
+	if env != "testing" {
+		defer bapp.Close()
+		app.InitExts(bapp)
+		models.InitCaches()
+	}
+
+	return nil
+}
+
+func init() {
+	cmd := &cobra.Command{
+		Use:  "command",
+		RunE: CommandFunc,
+	}
+	cmd.Flags().String("param", "", "")
+	rootCmd.AddCommand(cmd)
+}
