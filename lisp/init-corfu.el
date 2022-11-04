@@ -24,6 +24,7 @@
           ([tab] . corfu-next)
           ([backtab] . corfu-previous))
     :config
+    (add-hook 'gud-mode-hook (lambda () (setq-local corfu-auto nil)))
     (global-corfu-mode))
 
   (use-package corfu-history
