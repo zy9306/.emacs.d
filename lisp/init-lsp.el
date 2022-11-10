@@ -3,6 +3,7 @@
 (with-eval-after-load 'lsp-bridge
   (setq lsp-bridge-disable-backup nil)
   (setq lsp-bridge-enable-diagnostics nil)
+  (setq lsp-bridge-enable-auto-format-code nil)
   (setq lsp-bridge-diagnostics-fetch-idle 5)
   (setq lsp-bridge-enable-signature-help t)
 
@@ -12,11 +13,13 @@
 
   (setq acm-backend-lsp-enable-auto-import nil)
   (setq acm-enable-doc nil)
+  (setq acm-enable-tabnine nil)
+  (setq acm-enable-citre nil)
   (setq acm-enable-dabbrev t)
+  (setq acm-enable-search-words nil)
   (setq acm-dabbrev-min-length 2)
   (setq acm-backend-lsp-candidate-max-length 50)
   (setq acm-candidate-match-function 'orderless-flex)
-  (setq acm-enable-search-words nil)
 
   (if (image-type-available-p 'svg)
       (setq acm-enable-icon t)
@@ -25,34 +28,17 @@
   (when (or *mac* *unix*)
     (setq-default lsp-bridge-python-command "/usr/local/bin/python3"))
 
-  (add-to-list 'lsp-bridge-single-lang-server-extension-list
-               '(("json") . "javascript"))
-
   (dolist (item '("dabbrev-completion"
                   "corfu-insert"))
     (add-to-list 'lsp-bridge-completion-stop-commands item))
 
   (add-hook 'lsp-bridge-mode-hook (lambda () (setq-local corfu-auto nil)))
 
-  (setq lsp-bridge-default-mode-hooks
-        '(c++-mode-hook
-          c-mode-hook
-          css-mode-hook
-          dart-mode-hook
-          elixir-mode-hook
-          ;; go-mode-hook
-          js-mode-hook
-          js2-mode-hook
-          lua-mode-hook
-          ;; python-mode-hook
-          rjsx-mode-hook
-          ruby-mode-hook
-          rust-mode-hook
-          rustic-mode-hook
-          typescript-mode-hook
-          typescript-tsx-mode-hook))
+  (add-to-list 'lsp-bridge-single-lang-server-extension-list
+               '(("json") . "javascript"))
 
-  (global-lsp-bridge-mode)
+  (dolist (hook '(go-mode-hook python-mode-hook))
+    (add-hook hook (lambda () (lsp-bridge-mode 1))))
 
   (define-key lsp-bridge-mode-map (kbd "M-.") #'lsp-bridge-find-def)
   (define-key lsp-bridge-mode-map (kbd "C-x 4 .") #'lsp-bridge-find-def-other-window)
@@ -61,33 +47,8 @@
   (define-key lsp-bridge-mode-map (kbd "C-c l i") #'lsp-bridge-find-impl)
   (define-key lsp-bridge-mode-map (kbd "C-c l 4 i") #'lsp-bridge-find-impl-other-window)
   (define-key lsp-bridge-mode-map (kbd "C-c l r") #'lsp-bridge-rename)
-  (define-key lsp-bridge-mode-map (kbd "C-c l R") #'lsp-bridge-restart-process)
-
-;;; python virtual env
-  ;; (defun local/lsp-bridge-get-single-lang-server-by-project (project-path filepath)
-  ;;   (let* ((json-object-type 'plist)
-  ;;          (custom-dir (expand-file-name ".cache/lsp-bridge/pyright" user-emacs-directory))
-  ;;          (custom-config (expand-file-name "pyright.json" custom-dir))
-  ;;          (default-config (json-read-file (expand-file-name "repo/lsp-bridge/langserver/pyright.json" user-emacs-directory)))
-  ;;          (settings (plist-get default-config :settings)))
-
-  ;;     (plist-put settings :pythonPath (executable-find "python"))
-
-  ;;     (plist-put settings :python.analysis (plist-put (plist-get settings :python.analysis) :autoImportCompletions json-false))
-
-  ;;     (make-directory (file-name-directory custom-config) t)
-
-  ;;     (with-temp-file custom-config
-  ;;       (insert (json-encode default-config)))
-
-  ;;     custom-config))
-
-  ;; (add-hook 'python-mode-hook (lambda () (setq-local lsp-bridge-get-single-lang-server-by-project 'local/lsp-bridge-get-single-lang-server-by-project)))
-
-  ;; (add-hook 'pyvenv-post-activate-hooks
-  ;;           (lambda ()
-  ;;             (lsp-bridge-restart-process)))
-  )
+  (define-key lsp-bridge-mode-map (kbd "C-c l a") #'lsp-bridge-code-action)
+  (define-key lsp-bridge-mode-map (kbd "C-c l R") #'lsp-bridge-restart-process))
 
 (local/after-init-hook 'lsp-bridge)
 
@@ -97,8 +58,8 @@
 (require 'eldoc-box)
 
 ;; hook
-(add-hook 'go-mode-hook 'eglot-ensure)
-(add-hook 'python-mode-hook 'eglot-ensure)
+;; (add-hook 'go-mode-hook 'eglot-ensure)
+;; (add-hook 'python-mode-hook 'eglot-ensure)
 
 ;; eldoc-box
 (add-hook 'eldoc-box-buffer-hook (lambda () (unless truncate-lines (toggle-truncate-lines))))
