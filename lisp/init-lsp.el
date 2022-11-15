@@ -37,7 +37,7 @@
   (add-to-list 'lsp-bridge-single-lang-server-extension-list
                '(("json") . "javascript"))
 
-  (dolist (hook '(go-mode-hook python-mode-hook))
+  (dolist (hook '(go-mode-hook python-mode-hook js-mode-hook rust-mode-hook typescript-mode-hook))
     (add-hook hook (lambda () (lsp-bridge-mode 1))))
 
   (define-key lsp-bridge-mode-map (kbd "M-.") #'lsp-bridge-find-def)
