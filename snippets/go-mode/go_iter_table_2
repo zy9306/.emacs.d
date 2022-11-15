@@ -6,7 +6,7 @@ limit := 5000
 startID := uint64(0)
 for {
     objs, err := app.EntClient.${1:ModelName}.Query().
-        Where(${2:ReplaceMe}.IDGT(startID), $2.UserID(userID)).
+        Where(${2:ReplaceMe}.IDGTE(startID), $2.UserID(userID)).
         Order(entschema.Asc($2.FieldID)).
         Limit(limit).
         All(ctx)
@@ -18,7 +18,7 @@ for {
     if l == 0 {
         break
     } else {
-        startID = objs[l-1].ID
+        startID = objs[l-1].ID + 1
     }
 
     for _, obj := range objs {
