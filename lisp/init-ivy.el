@@ -115,18 +115,20 @@
   (define-key ivy-occur-grep-mode-map (kbd "p") #'local/ivy-occur-previous-and-press)
   (define-key ivy-occur-grep-mode-map (kbd "n") #'local/ivy-occur-next-and-press))
 
-(defun local/ivy-switch-buffer (regex-list)
-  (let ((ivy-ignore-buffers regex-list))
-    (ivy-switch-buffer)))
+(with-eval-after-load 'ivy
+  (defun local/ivy-switch-buffer (regex-list)
+    (let ((ivy-ignore-buffers regex-list))
+      (ivy-switch-buffer)))
 
-(defun local/ivy-switch-buffer-ignore-star-buffers ()
-  (interactive)
-  (local/ivy-switch-buffer (append ivy-ignore-buffers `("^\*"))))
+  (defun local/ivy-switch-buffer-ignore-star-buffers ()
+    (interactive)
+    (local/ivy-switch-buffer (append ivy-ignore-buffers `("^\*"))))
 
-(global-set-key (kbd "C-<tab>") 'local/ivy-switch-buffer-ignore-star-buffers)
+  (global-set-key (kbd "C-<tab>") 'local/ivy-switch-buffer-ignore-star-buffers)
 
-(define-key ivy-minibuffer-map (kbd "C-<tab>") 'next-line)
-(define-key ivy-minibuffer-map (kbd "C-S-<tab>") 'previous-line)
+  (define-key ivy-minibuffer-map (kbd "C-<tab>") 'next-line)
+  (define-key ivy-minibuffer-map (kbd "C-S-<tab>") 'previous-line)
+  )
 
 
 (provide 'init-ivy)
