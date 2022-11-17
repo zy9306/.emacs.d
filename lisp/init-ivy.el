@@ -126,8 +126,8 @@
 
   (global-set-key (kbd "C-<tab>") 'local/ivy-switch-buffer-ignore-star-buffers)
 
-  (define-key ivy-minibuffer-map (kbd "C-<tab>") 'next-line)
-  (define-key ivy-minibuffer-map (kbd "C-S-<tab>") 'previous-line)
+  (define-key ivy-switch-buffer-map (kbd "C-<tab>") 'next-line)
+  (define-key ivy-switch-buffer-map (kbd "C-S-<tab>") 'previous-line)
   )
 
 
