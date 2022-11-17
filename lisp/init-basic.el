@@ -325,5 +325,8 @@
   (delete 'sh prettier-enabled-parsers))
 
 
+(global-set-key (kbd "<mouse-2>") 'yank)
+(global-set-key (kbd "<mouse-3>") 'kill-ring-save)
+
 
 (provide 'init-basic)

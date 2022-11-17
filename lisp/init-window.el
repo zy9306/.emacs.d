@@ -98,7 +98,7 @@
 
 
 ;;; other keybinding
-(global-set-key (kbd "<mouse-2>") 'kill-buffer-and-window)
+;; (global-set-key (kbd "<mouse-2>") 'kill-buffer-and-window)
 
 (global-set-key (kbd "C-S-h") 'windmove-left)
 (global-set-key (kbd "C-S-j") 'windmove-down)
