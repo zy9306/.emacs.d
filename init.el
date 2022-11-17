@@ -47,7 +47,6 @@
 (local/load-package 'init-restclient)
 (local/load-package 'init-mark)
 (local/load-package 'init-bufler)
-(local/load-package 'init-ctrl-tab)
 
 (local/load-package 'init-tree-sitter)
 
