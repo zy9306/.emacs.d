@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: openapi_path
+# key: openapi_path
+# --
+${1:path}:
+  ${2:get}:
+    tags:
+      - ${3:tagName}
+    summary: ${4:summary}
+    operationId: ${5:operationId}
+    parameters:
+    responses:

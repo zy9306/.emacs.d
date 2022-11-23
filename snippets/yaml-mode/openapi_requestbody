@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: openapi_requestbody
+# key: openapi_requestbody
+# --
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          ${1:TODO}:
+            type: ${2:T}

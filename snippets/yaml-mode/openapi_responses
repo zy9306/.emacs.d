@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: openapi_responses
+# key: openapi_responses
+# --
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            ${1:TODO}:
+              type: ${2:T}

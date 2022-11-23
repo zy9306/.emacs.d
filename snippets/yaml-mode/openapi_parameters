@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: openapi_parameters
+# key: openapi_parameters
+# --
+parameters:
+  - name: ${1:name}
+    in: ${2:query}
+    required: ${3:false}
+    description: ${4:TODO}
+    schema:
+      type: ${5:T}
