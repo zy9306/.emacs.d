@@ -117,6 +117,13 @@
     "pkg": "ox-hugo",
     "repo": "git@github.com:kaushalmodi/ox-hugo.git"
   },
+  "pasteex-mode": {
+    "commit": "6f416682cfe27fe9203df4d5ba347c370b21b467",
+    "ignore": [],
+    "only_el": true,
+    "pkg": "pasteex-mode",
+    "repo": "git@github.com:dnxbjyj/pasteex-mode.git"
+  },
   "posframe": {
     "commit": "c91d4d53fa479ceb604071008ce0a901770eff57",
     "ignore": [],
