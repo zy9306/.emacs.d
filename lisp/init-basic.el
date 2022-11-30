@@ -329,4 +329,13 @@
 (global-set-key (kbd "<mouse-3>") 'kill-ring-save)
 
 
+;;; pasteex-mode
+(with-eval-after-load 'markdown-mode
+  (require 'pasteex-mode)
+  (define-key markdown-mode-map (kbd "C-x p i") #'pasteex-image)
+  (define-key markdown-mode-map (kbd "C-x p d") #'pasteex-delete-img-link-and-file-at-line)
+  )
+
+
+
 (provide 'init-basic)
