@@ -82,6 +82,13 @@
     "pkg": "lazy-load",
     "repo": "git@github.com:manateelazycat/lazy-load.git"
   },
+  "markmacro": {
+    "commit": "b4b0c261e4a0c64981557a895884cfd6fe555048",
+    "ignore": [],
+    "only_el": true,
+    "pkg": "markmacro",
+    "repo": "git@github.com:manateelazycat/markmacro.git"
+  },
   "orderless": {
     "commit": "75eeae21971d86b51a712ed8ecd6434463b2d866",
     "ignore": [],
