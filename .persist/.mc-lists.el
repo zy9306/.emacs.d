@@ -14,6 +14,7 @@
         kill-region
         mark-sexp
         org-beginning-of-line
+        org-end-of-line
         org-self-insert-command
         org-yank
         puni-backward-delete-char
