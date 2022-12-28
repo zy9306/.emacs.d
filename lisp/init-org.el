@@ -6,7 +6,8 @@
   (require 'init-org-face)
 
   (require 'init-org-list)
-  (add-hook 'org-mode-hook 'local/org-list-prettify-mode)
+  ;; 会导致 src 块里的 - 也被转换，有时间修一下
+  ;; (add-hook 'org-mode-hook 'local/org-list-prettify-mode)
 
   ;; https://github.com/tonyaldon/org-bars
   (require 'org-bars)
@@ -50,7 +51,7 @@
 
 ;; 默认收起所有代码块，shift + tab也不展开
 ;; org-show-block-all展开所有代码块
-(add-hook 'org-mode-hook 'org-hide-block-all)
+;; (add-hook 'org-mode-hook 'org-hide-block-all)
 
 ;; 导出时不要执行代码块
 (setq org-export-babel-evaluate nil)
@@ -196,7 +197,8 @@
   (setq-local local/org-blocks-toggle-flag (not local/org-blocks-toggle-flag)))
 
 (with-eval-after-load 'org
-  (add-hook 'org-mode-hook 'local/org-toggle-blocks)
+  ;; 暂时禁用
+  ;; (add-hook 'org-mode-hook 'local/org-toggle-blocks)
   (define-key org-mode-map (kbd "C-c t") 'local/org-toggle-blocks))
 
 
