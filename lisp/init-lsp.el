@@ -37,7 +37,7 @@
   (add-to-list 'lsp-bridge-single-lang-server-extension-list
                '(("json") . "javascript"))
 
-  (dolist (hook '(python-mode-hook js-mode-hook rust-mode-hook typescript-mode-hook))
+  (dolist (hook '())
     (add-hook hook (lambda () (lsp-bridge-mode 1))))
 
   (define-key lsp-bridge-mode-map (kbd "M-.") #'lsp-bridge-find-def)
@@ -58,8 +58,16 @@
 (require 'eldoc-box)
 
 ;; hook
-(add-hook 'go-mode-hook 'eglot-ensure)
-;; (add-hook 'python-mode-hook 'eglot-ensure)
+(dolist
+    (hook
+     '(
+       python-mode-hook
+       rust-mode-hook
+       go-mode-hook
+       js-mode-hook
+       typescript-mode-hook
+       ))
+  (add-hook hook (lambda () (eglot-ensure))))
 
 ;; eldoc-box
 (add-hook 'eldoc-box-buffer-hook (lambda () (unless truncate-lines (toggle-truncate-lines))))
@@ -76,6 +84,7 @@
 (define-key eglot-mode-map (kbd "C-c l r") #'eglot-rename)
 (define-key eglot-mode-map (kbd "C-c l a") #'eglot-code-actions)
 (define-key eglot-mode-map (kbd "C-c l i") #'eglot-find-implementation)
+(define-key eglot-mode-map (kbd "C-c l R") #'eglot-reconnect)
 
 ;; 动态语言增加 ctag
 (with-eval-after-load 'python
