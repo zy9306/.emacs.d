@@ -27,9 +27,15 @@
          (markdown-mode . toc-org-mode)))
 
 
+;; 始终启用缩进
+;; 和 org-modern 冲突了
+;; (add-hook 'org-mode-hook 'org-indent-mode)
+
 ;; https://orgmode.org/manual/Dynamic-Headline-Numbering.html
 ;; 如果用 hook，#+startup: nonum 可能会不起作用
 (setq org-startup-numerated t)
+
+(setq org-fontify-quote-and-verse-blocks t)
 
 ;; 打开文件时收起所有结点
 (setq org-startup-folded t)
@@ -56,9 +62,6 @@
 
 ;; [[link]] 显示方括号
 (setq org-link-descriptive nil)
-
-;; 始终启用缩进
-(add-hook 'org-mode-hook 'org-indent-mode)
 
 (add-hook 'org-mode-hook #'(lambda () (display-line-numbers-mode -1)))
 
