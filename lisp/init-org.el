@@ -11,8 +11,9 @@
   ;; (add-hook 'org-mode-hook 'local/org-list-prettify-mode)
 
   ;; https://github.com/tonyaldon/org-bars
-  (require 'org-bars)
-  (add-hook 'org-mode-hook #'org-bars-mode)
+  ;; 和 org-modern 一起用会闪烁
+  ;; (require 'org-bars)
+  ;; (add-hook 'org-mode-hook #'org-bars-mode)
 
   ;; https://github.com/minad/org-modern
   (require 'org-modern)
