@@ -2,6 +2,8 @@
 
 (setq gts-translate-list '(("en" "zh")))
 
+(setq gts-posframe-pop-render-timeout 300)
+
 (setq gts-default-translator
       (gts-translator
        :picker (gts-prompt-picker)
