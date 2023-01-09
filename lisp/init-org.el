@@ -5,7 +5,8 @@
   ;; face
   (require 'init-org-face)
 
-  (require 'init-org-list)
+  ;; 应该不需要了，可以删掉
+  ;; (require 'init-org-list)
   ;; 会导致 src 块里的 - 也被转换，有时间修一下
   ;; (add-hook 'org-mode-hook 'local/org-list-prettify-mode)
 
@@ -15,6 +16,7 @@
 
   ;; https://github.com/minad/org-modern
   (require 'org-modern)
+  (setq org-modern-keyword nil)
   (add-hook 'org-mode-hook #'org-modern-mode)
   )
 
