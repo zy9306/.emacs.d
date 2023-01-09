@@ -66,6 +66,7 @@
 (require-package 'multiple-cursors)
 (require-package 'nix-mode)
 (require-package 'org-download)
+(require-package 'org-modern)
 (require-package 'powerline)
 (require-package 'prescient)
 (require-package 'prettier)

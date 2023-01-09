@@ -11,7 +11,17 @@
 
   ;; https://github.com/tonyaldon/org-bars
   (require 'org-bars)
-  (add-hook 'org-mode-hook #'org-bars-mode))
+  (add-hook 'org-mode-hook #'org-bars-mode)
+
+  ;; https://github.com/minad/org-modern
+  (require 'org-modern)
+  (add-hook 'org-mode-hook #'org-modern-mode)
+  )
+
+(use-package toc-org
+  :defer t
+  :hook ((org-mode . toc-org-mode)
+         (markdown-mode . toc-org-mode)))
 
 
 ;; https://orgmode.org/manual/Dynamic-Headline-Numbering.html
@@ -49,16 +59,13 @@
 
 (add-hook 'org-mode-hook #'(lambda () (display-line-numbers-mode -1)))
 
-;; 默认收起所有代码块，shift + tab也不展开
-;; org-show-block-all展开所有代码块
-;; (add-hook 'org-mode-hook 'org-hide-block-all)
-
 ;; 导出时不要执行代码块
 (setq org-export-babel-evaluate nil)
 
-;; like C-j
-(with-eval-after-load 'org
-  (define-key org-mode-map (kbd "<RET>") 'org-return-indent))
+(setq org-pretty-entities t)
+
+;; 显示时间格式为 2019-01-25 Fri 14:55
+(setq system-time-locale "C")
 
 (setq org-todo-keywords
       '((sequence "TODO(t)" "CONTINUE(c)" "DONE(d)")))
@@ -68,13 +75,10 @@
         ("CONTINUE" . "pink")
         ("DONE" . "purple")))
 
-;; 显示时间格式为 2019-01-25 Fri 14:55
-(setq system-time-locale "C")
 
-(use-package toc-org
-  :defer t
-  :hook ((org-mode . toc-org-mode)
-         (markdown-mode . toc-org-mode)))
+;; like C-j
+(with-eval-after-load 'org
+  (define-key org-mode-map (kbd "<RET>") 'org-return-indent))
 
 
 ;;; BABEL
@@ -187,6 +191,11 @@
 
 
 ;;; HIDE SRC BLOCK
+
+;; 默认收起所有代码块，shift + tab也不展开
+;; org-show-block-all展开所有代码块
+;; (add-hook 'org-mode-hook 'org-hide-block-all)
+
 (defvar local/org-blocks-toggle-flag nil)
 
 (defun local/org-toggle-blocks ()
@@ -200,7 +209,6 @@
   ;; 暂时禁用
   ;; (add-hook 'org-mode-hook 'local/org-toggle-blocks)
   (define-key org-mode-map (kbd "C-c t") 'local/org-toggle-blocks))
-
 
 
 ;;; HUGO
