@@ -7,6 +7,7 @@
   (require 'counsel-projectile)
   (counsel-projectile-mode)
   (define-key projectile-mode-map (kbd "C-c p") 'nil)
+  (remove-hook 'project-find-functions #'project-projectile)
   (setq counsel-projectile-rg-initial-input '(ivy-thing-at-point)))
 
 (defun local/get-project-name ()
@@ -19,6 +20,8 @@
 (with-eval-after-load 'project
   (define-key ctl-x-map "p" 'nil)
   (define-key mode-specific-map "p" project-prefix-map)
+
+  (remove-hook 'project-find-functions #'project-projectile)
 
   (setq frame-title-format
         '("miku@"(:eval (local/get-project-name)) ": "
