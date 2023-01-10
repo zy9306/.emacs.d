@@ -166,7 +166,7 @@ def get_pkg_info(pkg_name, pkg_repo, commit, ignore=None, only_el=False):
 
         pkg_info = pkg_map[pkg_name]
         pkg_info["ignore"] = ignore
-        pkg_info["only_el"] = only_el
+        pkg_info["only_el"] = pkg_info["only_el"]
         pkg_info["commit"] = commit
 
         return pkg_info

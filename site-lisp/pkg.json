@@ -132,7 +132,7 @@
     "repo": "git@github.com:dnxbjyj/pasteex-mode.git"
   },
   "posframe": {
-    "commit": "c91d4d53fa479ceb604071008ce0a901770eff57",
+    "commit": "aa88860a16e28a311f81e18f1d9ed2e7d9e33991",
     "ignore": [],
     "only_el": true,
     "pkg": "posframe",
