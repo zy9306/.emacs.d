@@ -159,6 +159,7 @@
 (with-eval-after-load 'browse-kill-ring
   (setq browse-kill-ring-highlight-current-entry t)
   (setq browse-kill-ring-highlight-inserted-item t)
+  (setq browse-kill-ring-maximum-display-length 99)
   (setq browse-kill-ring-show-preview t))
 (local/after-init-hook 'browse-kill-ring)
 
