@@ -1,22 +1,38 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 
-
-;; enable y/n answers
-(fset 'yes-or-no-p 'y-or-n-p)
-
 (setq gc-cons-percentage 0.1)
+;; 100mb
+(setq gc-cons-threshold (* 100 1024 1024))
+
+(when (boundp 'read-process-output-max)
+  (setq read-process-output-max (* 1024 1024)))
 
 ;; 设置 emacs-lisp 的限制
 (setq max-lisp-eval-depth 10000)
 (setq max-specpdl-size 10000)
 
-;; https://emacs-lsp.github.io/lsp-mode/page/performance/
-(setq gc-cons-threshold (* 100 1024 1024)) ;; 100mb
 
-;; read-process-output-max is only available on recent
-;; development builds of Emacs 27 and above
-(when (boundp 'read-process-output-max)
-  (setq read-process-output-max (* 1024 1024)))
+(setq original-y-or-n-p 'y-or-n-p)
+(defalias 'original-y-or-n-p (symbol-function 'y-or-n-p))
+(defun default-yes-sometimes (prompt)
+  "automatically say y when buffer name match following string"
+  (if (or
+       (string-match "has a running process" prompt)
+       (string-match "does not exist; create" prompt)
+       (string-match "modified; kill anyway" prompt)
+       (string-match "Delete buffer using" prompt)
+       (string-match "Kill buffer of" prompt)
+       (string-match "still connected.  Kill it?" prompt)
+       (string-match "Shutdown the client's kernel" prompt)
+       (string-match "kill them and exit anyway" prompt)
+       (string-match "Revert buffer from file" prompt)
+       (string-match "Kill Dired buffer of" prompt)
+       (string-match "delete buffer using" prompt)
+       (string-match "Kill all pass entry" prompt))
+      t
+    (original-y-or-n-p prompt)))
+(defalias 'yes-or-no-p 'default-yes-sometimes)
+(defalias 'y-or-n-p 'default-yes-sometimes)
 
 ;; don't ask me "Active processes exist; kill them and exit anyway?"
 (setq-default confirm-kill-processes nil)
