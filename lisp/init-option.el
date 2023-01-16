@@ -6,6 +6,10 @@
 
 (setq gc-cons-percentage 0.1)
 
+;; 设置 emacs-lisp 的限制
+(setq max-lisp-eval-depth 10000)
+(setq max-specpdl-size 10000)
+
 ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
 (setq gc-cons-threshold (* 100 1024 1024)) ;; 100mb
 
