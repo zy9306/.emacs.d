@@ -19,6 +19,8 @@
   (require 'org-modern)
   (setq org-modern-keyword nil)
   (add-hook 'org-mode-hook #'org-modern-mode)
+
+  (require 'ox-hugo)
   )
 
 (use-package toc-org
