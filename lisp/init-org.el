@@ -21,6 +21,7 @@
   (add-hook 'org-mode-hook #'org-modern-mode)
 
   (require 'ox-hugo)
+  (require 'org-hugo-auto-export-mode)
   )
 
 (use-package toc-org
