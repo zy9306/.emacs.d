@@ -34,6 +34,9 @@
 ;; 和 org-modern 冲突了
 ;; (add-hook 'org-mode-hook 'org-indent-mode)
 
+;; 调整内联图片的显示大小
+(setq org-image-actual-width 600)
+
 ;; https://orgmode.org/manual/Dynamic-Headline-Numbering.html
 ;; 如果用 hook，#+startup: nonum 可能会不起作用
 (setq org-startup-numerated t)
