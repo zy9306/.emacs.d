@@ -62,6 +62,8 @@
 
 (local/load-package 'init-translate)
 
+(local/load-package 'init-web-browser)
+
 (if (not (display-graphic-p))
   (local/load-package 'init-evil-v3))
 
