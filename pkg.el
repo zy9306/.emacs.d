@@ -4,6 +4,8 @@
 
 (require-package 'paradox)
 (add-hook 'after-init-hook 'paradox-enable)
+(with-eval-after-load 'paradox
+  (setq paradox-github-token nil))
 
 (require-package 'swiper)
 (require-package 'ivy)

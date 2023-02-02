@@ -37,6 +37,8 @@
 ;; don't ask me "Active processes exist; kill them and exit anyway?"
 (setq-default confirm-kill-processes nil)
 
+(setq warning-suppress-types '((comp)))
+
 ;; register
 (setq register-preview-delay 0)
 
