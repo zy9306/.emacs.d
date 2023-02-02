@@ -27,6 +27,7 @@
 (local/load-package 'init-citre)
 (local/load-package 'init-tabnine-capf)
 (local/load-package 'init-ivy)
+(local/load-package 'init-posframe)
 (local/load-package 'init-avy)
 (local/load-package 'init-window)
 (local/load-package 'init-project)
