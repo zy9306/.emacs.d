@@ -8,7 +8,7 @@ start_id = 0
 limit = 5000
 
 while True:
-    objs = $1.select().where($1.id >= start_id).limit(limit)
+    objs = $1.select().where($1.id > start_id).limit(limit)
 
     if len(objs) == 0:
        break
