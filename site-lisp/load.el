@@ -4,6 +4,7 @@
 (push (expand-file-name "site-lisp/consult-projectile" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/corfu/extensions" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/duplicate-line" user-emacs-directory) load-path)
+(push (expand-file-name "site-lisp/easy-kill-extras.el" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/embark" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/hydra-posframe" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/ivy-posframe" user-emacs-directory) load-path)

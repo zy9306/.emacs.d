@@ -258,6 +258,27 @@
   (global-set-key (kbd "M-<right>") 'xref-go-forward))
 
 
+;;; easy-kill
+(global-set-key [remap kill-ring-save] 'easy-kill)
+(with-eval-after-load 'easy-kill
+  (require 'extra-things)
+  (add-to-list 'easy-kill-alist '(?W  WORD " ") t)
+  (add-to-list 'easy-kill-alist '(?\' squoted-string "") t)
+  (add-to-list 'easy-kill-alist '(?\" dquoted-string "") t)
+  (add-to-list 'easy-kill-alist '(?\` bquoted-string "") t)
+  (add-to-list 'easy-kill-alist '(?q  quoted-string "") t)
+  (add-to-list 'easy-kill-alist '(?Q  quoted-string-universal "") t)
+  (add-to-list 'easy-kill-alist '(?\) parentheses-pair-content "\n") t)
+  (add-to-list 'easy-kill-alist '(?\( parentheses-pair "\n") t)
+  (add-to-list 'easy-kill-alist '(?\] brackets-pair-content "\n") t)
+  (add-to-list 'easy-kill-alist '(?\[ brackets-pair "\n") t)
+  (add-to-list 'easy-kill-alist '(?}  curlies-pair-content "\n") t)
+  (add-to-list 'easy-kill-alist '(?{  curlies-pair "\n") t)
+  (add-to-list 'easy-kill-alist '(?>  angles-pair-content "\n") t)
+  (add-to-list 'easy-kill-alist '(?<  angles-pair "\n") t))
+;;; easy-kill end
+
+;;; string-inflection
 (global-set-key (kbd "C-c C-u") 'string-inflection-all-cycle)
 (add-hook 'ruby-mode-hook
           (lambda ()
@@ -271,7 +292,7 @@
 (add-hook 'protobuf-mode-hook
           (lambda ()
             (local-set-key (kbd "C-c C-u") 'string-inflection-all-cycle)))
-(global-set-key [remap kill-ring-save] 'easy-kill)
+;;; string-inflection end
 
 
 (global-unset-key (kbd "C-x C-b"))
