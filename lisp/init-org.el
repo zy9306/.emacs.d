@@ -1,29 +1,39 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 
-;; HOOK
+;;; hook
 (with-eval-after-load 'org
-  ;; face
-  ;; (require 'init-org-face)
-
-  ;; https://github.com/tonyaldon/org-bars
-  ;; 和 org-modern 一起用会闪烁
+  ;; https://github.com/tonyaldon/org-bars和 org-modern 一起用会闪烁
   ;; (require 'org-bars)
   ;; (add-hook 'org-mode-hook #'org-bars-mode)
 
-  ;; https://github.com/minad/org-modern
   (require 'org-modern)
   (setq org-modern-keyword nil)
   (add-hook 'org-mode-hook #'org-modern-mode)
 
   (require 'ox-hugo)
-  (require 'org-hugo-auto-export-mode)
-  )
+  (require 'org-hugo-auto-export-mode))
 
+;;; org-download
+(with-eval-after-load 'org
+  (require 'org-download)
+
+  ;; 默认 0，会以一级标题建子文件夹，好处是利于分类，坏处是如果改了标题，路径就不对了
+  (setq-default org-download-heading-lvl nil)
+
+  (let ((dir (format "%s/Tsukihi/image/bed" local/cloud-dir)))
+    (setq-default org-download-image-dir dir))
+
+  (put 'org-download-image-dir 'safe-local-variable #'stringp))
+
+;;; hugo
+(with-eval-after-load 'ox
+  (require 'ox-hugo))
+
+;;; toc
 (use-package toc-org
   :defer t
   :hook ((org-mode . toc-org-mode)
          (markdown-mode . toc-org-mode)))
-
 
 ;; 始终启用缩进
 ;; 和 org-modern 冲突了
@@ -32,7 +42,6 @@
 ;; 调整内联图片的显示大小
 (setq org-image-actual-width 600)
 
-;; https://orgmode.org/manual/Dynamic-Headline-Numbering.html
 ;; 如果用 hook，#+startup: nonum 可能会不起作用
 (setq org-startup-numerated t)
 
@@ -54,6 +63,7 @@
 
 ;; show all the character like * / etc...
 (setq org-hide-emphasis-markers nil)
+
 ;; show all level marks *
 (setq org-hide-leading-stars nil)
 (setq org-indent-mode-turns-on-hiding-stars nil)
@@ -82,11 +92,9 @@
         ("CONTINUE" . "pink")
         ("DONE" . "purple")))
 
-
-;; like C-j
+;; make RET like C-j
 (with-eval-after-load 'org
   (define-key org-mode-map (kbd "<RET>") 'org-return-indent))
-
 
 ;;; BABEL
 ;; https://orgmode.org/manual/Results-of-Evaluation.html
@@ -107,8 +115,7 @@
         org-babel-default-header-args:python '((:results . "output") (:session . "py"))
         org-babel-default-header-args:emacs-lisp '((:results . "output") (:session . "elisp"))))
 
-
-;;; CAPTURE
+;;; capture
 (when *win*
   (setq local/cloud-dir
         (expand-file-name
@@ -136,22 +143,6 @@
   (lambda () (interactive) (org-capture nil "t")))
 (define-key global-map (kbd "C-c c c")
   (lambda () (interactive) (org-capture nil "c")))
-
-
-;;; ORG-DOWNLOAD
-;; https://github.com/abo-abo/org-download/tree/master
-(with-eval-after-load 'org
-  (require 'org-download)
-
-  ;; 默认 0，会以一级标题建子文件夹，好处是利于分类，坏处是如果改了标
-  ;; 题，路径就不对了
-  (setq-default org-download-heading-lvl nil)
-
-  (let ((dir (format "%s/Tsukihi/image/bed" local/cloud-dir)))
-    (setq-default org-download-image-dir dir))
-
-  (put 'org-download-image-dir 'safe-local-variable #'stringp))
-
 
 ;;; FORMATTER START
 (require 'cl-lib)
@@ -216,11 +207,6 @@
   ;; 暂时禁用
   ;; (add-hook 'org-mode-hook 'local/org-toggle-blocks)
   (define-key org-mode-map (kbd "C-c t") 'local/org-toggle-blocks))
-
-
-;;; HUGO
-(with-eval-after-load 'ox
-  (require 'ox-hugo))
 
 
 (provide 'init-org)
