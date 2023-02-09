@@ -17,6 +17,15 @@
 (local/after-init-hook 'smex)
 
 
+(use-package goggles
+  :hook ((prog-mode
+          text-mode
+          yaml-mode)
+         . goggles-mode)
+  :config
+  (setq-default goggles-pulse t))
+
+
 ;; 自带的使用上有点问题，先继续用 undo-tree
 (if (and nil (version<= "28.0" emacs-version))
     (progn

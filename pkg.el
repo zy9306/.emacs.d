@@ -47,6 +47,7 @@
 (require-package 'go-dlv)
 (require-package 'go-mode)
 (require-package 'golden-ratio)
+(require-package 'goggles)
 (require-package 'goto-chg)
 (require-package 'highlight-indent-guides)
 (require-package 'hydra)
