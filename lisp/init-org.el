@@ -3,12 +3,7 @@
 ;; HOOK
 (with-eval-after-load 'org
   ;; face
-  (require 'init-org-face)
-
-  ;; 应该不需要了，可以删掉
-  ;; (require 'init-org-list)
-  ;; 会导致 src 块里的 - 也被转换，有时间修一下
-  ;; (add-hook 'org-mode-hook 'local/org-list-prettify-mode)
+  ;; (require 'init-org-face)
 
   ;; https://github.com/tonyaldon/org-bars
   ;; 和 org-modern 一起用会闪烁
