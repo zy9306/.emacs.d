@@ -26,6 +26,11 @@
   (setq-default goggles-pulse t))
 
 
+;;; fill-column-indicator
+(setq-default fill-column 100)
+(global-display-fill-column-indicator-mode)
+
+
 ;; 自带的使用上有点问题，先继续用 undo-tree
 (if (and nil (version<= "28.0" emacs-version))
     (progn
