@@ -52,6 +52,7 @@
 
 (local/after-init-hook 'lsp-bridge)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; eglot
 (require 'eglot)
@@ -66,6 +67,7 @@
        go-mode-hook
        js-mode-hook
        typescript-mode-hook
+       ruby-mode-hook
        ))
   (add-hook hook (lambda () (eglot-ensure))))
 
@@ -147,5 +149,9 @@
 ;; curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
 ;; chmod +x ~/.local/bin/rust-analyzer
 ;; rustup component add rust-src
+
+;; ruby
+;; gem install solargraph
+
 
 (provide 'init-lsp)
