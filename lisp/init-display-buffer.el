@@ -39,6 +39,12 @@
            :select t
            :other t)
 
+          ("\\*ivy-occur.*\\*"
+           :regexp t
+           :select t
+           :align below
+           :size 0.33)
+
           ;; the last rule
           ;; ("\\*.*\\*"
           ;;  :regexp t
