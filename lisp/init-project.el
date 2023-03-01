@@ -1,7 +1,9 @@
 ;; only need projectile-ripgrep
-(lazy-load-global-keys
- '(("C-S-S" . projectile-ripgrep))
- "projectile")
+
+(use-package projectile
+  :commands (projectile-ripgrep)
+  :bind (("C-S-S" . projectile-ripgrep)
+         ))
 
 (with-eval-after-load 'projectile
   (require 'counsel-projectile)
@@ -11,7 +13,6 @@
   (setq counsel-projectile-rg-initial-input '(ivy-thing-at-point)))
 
 (defun local/get-project-name ()
-  ;; (projectile-project-name)
   (ignore-errors
     (file-name-nondirectory
      (directory-file-name
@@ -29,5 +30,27 @@
                      (abbreviate-file-name (buffer-file-name))
                    "%b")))))
 (local/load-package 'project)
+
+
+;;; treemacs
+(with-eval-after-load 'treemacs
+  ;; 默认在最后使用的 window 中打开文件
+  (treemacs-define-RET-action 'file-node-open   #'treemacs-visit-node-in-most-recently-used-window)
+  (treemacs-define-RET-action 'file-node-closed #'treemacs-visit-node-in-most-recently-used-window)
+
+  (treemacs-define-doubleclick-action 'file-node-open   #'treemacs-visit-node-in-most-recently-used-window)
+  (treemacs-define-doubleclick-action 'file-node-closed #'treemacs-visit-node-in-most-recently-used-window)
+
+  (setq treemacs-width 20)
+
+  (treemacs-follow-mode -1)
+
+  (add-hook 'treemacs-mode-hook #'(lambda () (display-line-numbers-mode -1))))
+
+(use-package treemacs
+  :commands (treemacs treemacs-find-file)
+  :bind (([f9] . treemacs)
+         ([f8] . treemacs-find-file)))
+
 
 (provide 'init-project)

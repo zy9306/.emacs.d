@@ -4,7 +4,6 @@
   :ensure t
   :defer t
   :init
-  ;; (setq shackle-default-rule '(:same t))
   (setq shackle-rules
         '(("*Buffer List*"
            :regexp nil
@@ -41,11 +40,12 @@
            :other t)
 
           ;; the last rule
-          ("\\*.*\\*"
-           :regexp t
-           :select t
-           :align below
-           :size 0.33)))
+          ;; ("\\*.*\\*"
+          ;;  :regexp t
+          ;;  :select t
+          ;;  :align below
+          ;;  :size 0.33)
+          ))
 
   (add-hook 'after-init-hook (lambda () (shackle-mode 1))))
 
