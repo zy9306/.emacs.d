@@ -175,6 +175,7 @@
 (let ((undo-tree-history-dir (expand-file-name "undo-tree-history" local/persist-dir)))
   (setq undo-tree-history-directory-alist `((".*" . ,undo-tree-history-dir))))
 
+(setq save-place-file (expand-file-name ".cache/places" user-emacs-directory))
 
 (defun local/modify-syntax-entry ()
   (modify-syntax-entry ?_ "w"))
