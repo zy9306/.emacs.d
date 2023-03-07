@@ -17,6 +17,9 @@
 (local/after-init-hook 'smex)
 
 
+(add-hook 'after-init-hook (lambda () (save-place-mode)))
+
+
 (use-package goggles
   :hook ((prog-mode
           text-mode
