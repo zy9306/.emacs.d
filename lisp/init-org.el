@@ -71,8 +71,8 @@
 ;; 在有子树的结点上执行 C-k 时，提示是否删除子树
 (setq org-ctrl-k-protect-subtree t)
 
-;; [[link]] 显示方括号
-(setq org-link-descriptive nil)
+;; [[link]]
+(setq org-link-descriptive t)
 
 (add-hook 'org-mode-hook #'(lambda () (display-line-numbers-mode -1)))
 
