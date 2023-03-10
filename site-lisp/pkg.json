@@ -43,6 +43,17 @@
     "pkg": "consult-projectile",
     "repo": "https://gitlab.com/OlMon/consult-projectile.git"
   },
+  "copilot.el": {
+    "commit": "bc91709ff2402b4e4c370b262af67ea199c297f3",
+    "ignore": [
+      ".github",
+      "assets",
+      "readme.md"
+    ],
+    "only_el": false,
+    "pkg": "copilot.el",
+    "repo": "git@github.com:zerolfx/copilot.el.git"
+  },
   "duplicate-line": {
     "commit": "5abe4b81fa1618212938eb2e9b153975c34c11f1",
     "ignore": [

@@ -3,6 +3,7 @@
 (push (expand-file-name "site-lisp/codeium.el" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/consult" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/consult-projectile" user-emacs-directory) load-path)
+(push (expand-file-name "site-lisp/copilot.el" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/corfu/extensions" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/duplicate-line" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/easy-kill-extras.el" user-emacs-directory) load-path)
