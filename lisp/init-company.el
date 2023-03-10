@@ -13,7 +13,7 @@
 
   :bind
   (
-   ("M-<RET>" . company-tabnine)
+   ("M-<RET>" . local/company-tabnine)
 
    :map company-mode-map
    ("M-/" . company-complete)
@@ -29,8 +29,21 @@
   :config
   (add-to-list 'company-transformers #'delete-dups))
 
+(use-package company-box
+  :custom
+  (company-box-scrollbar nil)
+  (company-box-doc-enable nil)
+  (company-box-icons-alist 'company-box-icons-images)
+
+  :hook (company-mode . company-box-mode))
+
 (add-hook 'after-init-hook 'global-company-mode)
 (add-hook 'global-company-mode-hook #'local/config-company-backends)
+
+(defun local/company-tabnine (command &optional arg &rest ignored)
+  (interactive (list 'interactive))
+  (company-abort)
+  (company-tabnine command arg ignored))
 
 
 ;;; misc ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
