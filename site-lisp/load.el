@@ -1,5 +1,6 @@
 (push (expand-file-name "site-lisp/better-jumper" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/citre" user-emacs-directory) load-path)
+(push (expand-file-name "site-lisp/codeium.el" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/consult" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/consult-projectile" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/corfu/extensions" user-emacs-directory) load-path)

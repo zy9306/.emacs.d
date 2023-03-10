@@ -1,31 +1,40 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 
-(require 'company)
+(use-package company
+  :defer 0.1
+  :custom
+  (company-idle-delay 0.2)
+  (company-tooltip-idle-delay 0.5)
+  (company-minimum-prefix-length 1)
+  (company-require-match nil)
+  (company-dabbrev-downcase nil)
+  (company-dabbrev-ignore-case nil)
+  (company-show-numbers t)
 
-(defun local/setup-company ()
-  (setq company-idle-delay 0.2)
-  (setq company-tooltip-idle-delay 0.5)
-  (setq company-minimum-prefix-length 1)
-  (setq company-require-match nil)
-  (setq company-dabbrev-downcase nil)  ;; 补全时不要忽略大小写
-  (setq company-dabbrev-ignore-case nil)
-  (setq company-show-numbers t)
+  :bind
+  (
+   ("M-<RET>" . company-tabnine)
 
-  (define-key company-mode-map (kbd "M-/") 'company-complete)
-  (define-key company-active-map (kbd "M-/") 'company-other-backend)
-  (define-key company-active-map (kbd "C-n") 'company-select-next)
-  (define-key company-active-map (kbd "C-p") 'company-select-previous)
-  (define-key company-active-map (kbd "M-v") 'company-previous-page)
-  (define-key company-active-map (kbd "C-v") 'company-next-page)
+   :map company-mode-map
+   ("M-/" . company-complete)
 
-  ;; Remove duplicate candidate.
-  (add-to-list 'company-transformers #'delete-dups)
+   :map company-active-map
+   ("M-/" . company-other-backend)
+   ("C-n" . company-select-next)
+   ("C-p" . company-select-previous)
+   ("M-v" . company-previous-page)
+   ("C-v" . company-next-page)
+   )
 
-  (global-company-mode))
+  :config
+  (add-to-list 'company-transformers #'delete-dups))
+
+(add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'global-company-mode-hook #'local/config-company-backends)
 
 
-;;; backends
-;; https://manateelazycat.github.io/emacs/2021/06/30/company-multiple-backends.html
+;;; misc ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defun local/config-company-backends ()
   (require 'company)
   (setq company-backends
@@ -33,7 +42,6 @@
           (company-keywords company-files company-dabbrev company-dabbrev-code company-capf)
           ))
 
-  ;; Add yasnippet support for all company backends.
   (defvar company-mode/enable-yas t
     "Enable yasnippet for all backends.")
 
@@ -45,17 +53,12 @@
 
   (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
 
-  ;; Add `company-elisp' backend for elisp.
   (add-hook 'emacs-lisp-mode-hook
             (lambda ()
               (require 'company-elisp)
               (push 'company-elisp company-backends))))
 
-;; 机器性能的话不好不要加到 company-backends 里
-(global-set-key (kbd "M-<RET>") 'company-tabnine)
 
-
-;;; 禁用 pyright 自动导入，通过参数好像禁用不掉
 (defun company-transform-pyright (candidates)
   (mapcar (lambda (c)
             (let ((annotation
@@ -70,16 +73,9 @@
           candidates)
   candidates)
 
-
 (add-hook 'python-mode-hook
           (lambda ()
             (setq-local company-transformers '(delete-dups company-transform-pyright))))
-
-
-;;; init
-(with-eval-after-load 'company (local/config-company-backends))
-
-(local/setup-company)
 
 
 (provide 'init-company)

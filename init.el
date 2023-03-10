@@ -55,10 +55,13 @@
 
 (local/load-package 'init-modeline)
 
-;; (local/load-package 'init-company)
-(local/load-package 'init-corfu)
+(local/load-package 'init-codeium)
+(local/load-package 'init-company)
+
+;; (local/load-package 'init-corfu)
 
 ;; (local/load-package 'init-lsp-deprecated)
+;; (local/load-package 'init-lsp-bridge)
 (local/load-package 'init-lsp)
 
 (local/load-package 'init-translate)
