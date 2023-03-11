@@ -30,3 +30,4 @@ site-lisp/fuz.el/target/*
 *.elc
 request/
 codeium/
+.venv

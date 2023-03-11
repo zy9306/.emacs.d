@@ -23,8 +23,7 @@
       (setq acm-enable-icon t)
     (setq acm-enable-icon nil))
 
-  (when (or *mac* *unix*)
-    (setq-default lsp-bridge-python-command "/usr/local/bin/python3"))
+  (setq-default lsp-bridge-python-command *python*)
 
   (dolist (item '("dabbrev-completion"
                   "corfu-insert"))
