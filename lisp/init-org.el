@@ -29,6 +29,9 @@
 (with-eval-after-load 'ox
   (require 'ox-hugo))
 
+(with-eval-after-load 'org
+  (require 'ox-gfm))
+
 ;;; toc
 (use-package toc-org
   :defer t
