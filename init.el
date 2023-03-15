@@ -56,6 +56,7 @@
 (local/load-package 'init-modeline)
 
 (local/load-package 'init-codeium)
+(local/load-package 'init-copilot)
 (local/load-package 'init-company)
 
 ;; (local/load-package 'init-corfu)
