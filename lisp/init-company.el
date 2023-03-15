@@ -16,7 +16,7 @@
    ("M-<RET>" . local/company-tabnine)
 
    :map company-mode-map
-   ("M-/" . company-complete)
+   ("M-/" . local/company-complete)
 
    :map company-active-map
    ("M-/" . company-other-backend)
@@ -44,6 +44,14 @@
   (interactive (list 'interactive))
   (company-abort)
   (company-tabnine command arg ignored))
+
+
+(defun local/company-complete ()
+  (interactive)
+  (company-abort)
+  (setq-local company-backends
+              '((company-files company-dabbrev company-dabbrev-code)))
+  (company-complete))
 
 
 ;;; misc ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
