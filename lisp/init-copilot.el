@@ -1,6 +1,8 @@
 (use-package copilot
   :hook
   (prog-mode . copilot-mode)
+  (yaml-mode . copilot-mode)
+  (go-mode . copilot-mode)
 
   :custom
   (copilot-idle-delay 0.5)

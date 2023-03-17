@@ -31,3 +31,4 @@ site-lisp/fuz.el/target/*
 request/
 codeium/
 .venv
+__pycache__

@@ -70,7 +70,8 @@
 (local/load-package 'init-web-browser)
 
 (if (not (display-graphic-p))
-  (local/load-package 'init-evil-v3))
+    (local/load-package 'init-evil-v3))
+
 
 ;; 自动检测编码，如果错误的将utf-8检测成gbk等中文编码，可能会导致lsp崩
 ;; 溃，编码默认为utf-8，如遇gbk等乱码，尝试C-x RET手动切换编码
@@ -80,6 +81,11 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
   (load custom-file))
+
+
+;;; site-lisp config
+(load-file (expand-file-name "site-lisp/config.el" user-emacs-directory))
+
 
 ;; set desktop
 (let ((desktop-dir (expand-file-name ".persist" user-emacs-directory)))
