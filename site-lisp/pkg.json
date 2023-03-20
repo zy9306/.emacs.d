@@ -79,6 +79,16 @@
     "pkg": "embark",
     "repo": "git@github.com:oantolin/embark.git"
   },
+  "gptel": {
+    "commit": "4f3ca234545a3643eb3bed2baf55645463b6f728",
+    "ignore": [],
+    "only": [
+      "el"
+    ],
+    "only_el": false,
+    "pkg": "gptel",
+    "repo": "git@github.com:karthink/gptel.git"
+  },
   "hydra-posframe": {
     "commit": "343a269b52d6fb6e5ae6c09d91833ff4620490ec",
     "ignore": [

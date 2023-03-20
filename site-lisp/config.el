@@ -1,0 +1,1 @@
+(load-file (expand-file-name "site-lisp/config/init-gptel.el" user-emacs-directory))

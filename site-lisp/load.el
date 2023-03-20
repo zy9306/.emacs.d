@@ -8,6 +8,7 @@
 (push (expand-file-name "site-lisp/duplicate-line" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/easy-kill-extras.el" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/embark" user-emacs-directory) load-path)
+(push (expand-file-name "site-lisp/gptel" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/hydra-posframe" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/ivy-posframe" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/lazy-load" user-emacs-directory) load-path)
