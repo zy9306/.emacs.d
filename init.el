@@ -1,4 +1,4 @@
-;; -*- coding: utf-8; lexical-binding: t; -*-
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 
 (setq debug-on-error t)
 
@@ -72,12 +72,14 @@
 (if (not (display-graphic-p))
     (local/load-package 'init-evil-v3))
 
+(local/load-package 'init-proxy)
 
+;;; unicad
 ;; 自动检测编码，如果错误的将utf-8检测成gbk等中文编码，可能会导致lsp崩
 ;; 溃，编码默认为utf-8，如遇gbk等乱码，尝试C-x RET手动切换编码
 ;; (local/load-package 'unicad)
 
-;; 将 custom-set-variables 和 custom-set-faces 移到单独的文件
+;;; custom.el
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
   (load custom-file))
@@ -87,12 +89,12 @@
 (load-file (expand-file-name "site-lisp/config.el" user-emacs-directory))
 
 
-;; set desktop
+;;; set desktop
 (let ((desktop-dir (expand-file-name ".persist" user-emacs-directory)))
   (setq desktop-dirname desktop-dir)
   (setq desktop-path `(,desktop-dir)))
 
-;; close debug when finally load
+;;; close debug when finally load
 (setq debug-on-error nil)
 
 (message "init time: %s" (emacs-init-time))
