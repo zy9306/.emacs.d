@@ -8,6 +8,16 @@
     "pkg": "better-jumper",
     "repo": "git@github.com:gilbertw1/better-jumper.git"
   },
+  "chatgpt-shell": {
+    "commit": "54b066bc4407834dca670dd8306f7a607d8b1638",
+    "ignore": [],
+    "only": [
+      "el"
+    ],
+    "only_el": false,
+    "pkg": "chatgpt-shell",
+    "repo": "git@github.com:xenodium/chatgpt-shell.git"
+  },
   "citre": {
     "commit": "87e2cbf3b2ae6d59ec919a2dcb38e56ccfa5ec14",
     "ignore": [
