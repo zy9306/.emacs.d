@@ -170,7 +170,7 @@ def fetch(pkg_info):
         shutil.rmtree(".git", ignore_errors=True)
 
         ignore = pkg_info.get("ignore")
-        only_set = {f".{item}" for item in pkg_info.get("only")}
+        only_set = {f".{item}" for item in pkg_info.get("only", [])}
         if pkg_info.get("only_el"):
             only_set.add(".el")
 
@@ -209,7 +209,8 @@ def get_pkg_info(pkg_name, pkg_repo, commit, ignore=None, only_el=False, only=No
             raise Exception("PKG not found in pkg.json!")
 
         pkg_info = pkg_map[pkg_name]
-        pkg_info["ignore"] = ignore
+        pkg_info["ignore"] = sorted(set(ignore + pkg_info["ignore"]))
+        pkg_info["only"] = sorted(set(only + pkg_info.get("only", [])))
         pkg_info["only_el"] = pkg_info["only_el"]
         pkg_info["commit"] = commit
 
