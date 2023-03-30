@@ -54,12 +54,13 @@
     "repo": "https://gitlab.com/OlMon/consult-projectile.git"
   },
   "copilot.el": {
-    "commit": "bc91709ff2402b4e4c370b262af67ea199c297f3",
+    "commit": "e11847ab0c3b183a1e53fbc1ac587de82912b9cf",
     "ignore": [
       ".github",
       "assets",
       "readme.md"
     ],
+    "only": [],
     "only_el": false,
     "pkg": "copilot.el",
     "repo": "git@github.com:zerolfx/copilot.el.git"
