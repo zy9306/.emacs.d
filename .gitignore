@@ -30,5 +30,6 @@ site-lisp/fuz.el/target/*
 *.elc
 request/
 codeium/
+chatgpt/
 .venv
 __pycache__

@@ -9,7 +9,7 @@
     "repo": "git@github.com:gilbertw1/better-jumper.git"
   },
   "chatgpt-shell": {
-    "commit": "54b066bc4407834dca670dd8306f7a607d8b1638",
+    "commit": "4b812342f3f1849612aef346becb49bbaaf03e66",
     "ignore": [],
     "only": [
       "el"
