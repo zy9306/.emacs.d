@@ -31,5 +31,6 @@ site-lisp/fuz.el/target/*
 request/
 codeium/
 chatgpt/
+dall-e/
 .venv
 __pycache__
