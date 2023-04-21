@@ -80,6 +80,16 @@
     "pkg": "easy-kill-extras.el",
     "repo": "git@github.com:knu/easy-kill-extras.el.git"
   },
+  "emacs-prisma-mode": {
+    "commit": "f7744a995e84b8cf51265930ce18f6a6b26dade7",
+    "ignore": [],
+    "only": [
+      "el"
+    ],
+    "only_el": false,
+    "pkg": "emacs-prisma-mode",
+    "repo": "git@github.com:pimeys/emacs-prisma-mode.git"
+  },
   "embark": {
     "commit": "2772ca0b35e8eb59724c31b5cb88ff802f21067a",
     "ignore": [
