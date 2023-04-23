@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: org-meta
+# key: org-meta
+# --
+# -*- mode: Org; buffer-read-only: nil; org-download-image-dir: "img"-*-
+
+#+TITLE: known-issues
+#+AUTHOR: zy
+#+TOC: headlines 2
+#+OPTIONS: ^:{}
+#+OPTIONS: -:nil
+#+OPTIONS: num:3
+#+STARTUP: showblocks
+#+STARTUP: show1level
