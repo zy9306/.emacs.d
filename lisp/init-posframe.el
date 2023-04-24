@@ -6,7 +6,7 @@
   (setq ivy-posframe-border-width 5
         ivy-posframe-parameters
         '(
-          (alpha . 10) ; not work
+          (alpha . 90) ;; emacs29 works
           (left-fringe . 8)
           (right-fringe . 8)
           )
