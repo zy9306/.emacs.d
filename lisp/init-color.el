@@ -7,7 +7,7 @@
    (display-graphic-p)
    (= (tty-display-color-cells) 16777216)))
 
-(setq local/is-light-theme t)
+(setq local/is-light-theme nil)
 
 (if local/is-light-theme
     (setq local/variant 'light)
