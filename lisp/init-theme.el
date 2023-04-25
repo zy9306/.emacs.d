@@ -33,7 +33,7 @@
 (defun local/nano ()
   (require 'nano-theme)
   (load-theme 'nano t)
-  (nano-light))
+  (nano-dark))
 
 (defun local/nano-modeline ()
   (require 'nano-modeline)
@@ -42,20 +42,22 @@
 
 (defun local/speceline ()
   (require 'spaceline)
+
   (if (and local/is-light-theme (eq local/light-theme 'doom-one-light))
       (set-face-attribute
        'mode-line nil
        :background "#e7e7e7" :box '(:line-width 1 :color "grey75"))
+
     (set-face-attribute
      'mode-line nil
      :box '(:line-width 1 :color "grey75"))))
 
+;;; theme
 ;; (local/doom-themes)
-
-;; (local/speceline)
-
 (local/nano)
 
+;;; modeline
+;; (local/speceline)
 ;; (local/nano-modeline)
 
 
