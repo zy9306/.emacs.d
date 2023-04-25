@@ -3,14 +3,15 @@
 
 (with-eval-after-load 'posframe
   (require 'ivy-posframe)
-  (setq ivy-posframe-border-width 5
-        ivy-posframe-parameters
-        '(
-          (alpha . 90) ;; emacs29 works
-          (left-fringe . 8)
-          (right-fringe . 8)
-          )
-        )
+  ;; (setq ivy-posframe-border-width 1)
+  (setq
+   ivy-posframe-parameters
+   '(
+     (alpha . 90) ;; emacs29 works
+     (left-fringe . 8)
+     (right-fringe . 8)
+     )
+   )
   (setq ivy-posframe-display-functions-alist
         '((swiper          . ivy-display-function-fallback)
           (swiper-isearch  . ivy-display-function-fallback)
