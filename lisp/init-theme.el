@@ -37,6 +37,20 @@
         (set-face-attribute
          'symbol-overlay-default-face nil
          :background "darkseagreen2")))
+
+  (with-eval-after-load 'which-func
+    (set-face-attribute
+     'which-func nil
+     :inherit font-lock-function-name-face
+     :foreground "#FFFFFF"
+     :weight 'normal))
+
+  (with-eval-after-load 'eglot
+    (set-face-attribute
+     'eglot-mode-line nil
+     :inherit font-lock-constant-face
+     :foreground "#FFFFFF"
+     :weight 'normal))
   )
 
 (defun local/nano-modeline ()
