@@ -1,5 +1,60 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 
+(setq local/theme nil)
+
+(defun local/doom-themes ()
+  (require 'doom-themes)
+
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t)
+
+  (if local/is-light-theme
+      ;; doom-solarized-light or doom-one-light
+      (setq local/theme 'doom-one-light)
+    (setq local/theme 'doom-one))
+
+  (load-theme local/theme t)
+  (if (display-graphic-p)
+      (local/doom-themes-ext-treemacs)))
+
+(defun local/nano ()
+  (require 'nano-theme)
+
+  (load-theme 'nano t)
+
+  (setq local/theme 'nano-theme)
+  (if local/is-light-theme
+      (nano-light)
+    (nano-dark))
+
+  (set-face-attribute
+   'region nil
+   :background "#E6E6E6"
+   :extend t)
+
+  (with-eval-after-load 'symbol-overlay
+    (if (display-graphic-p)
+        (set-face-attribute
+         'symbol-overlay-default-face nil
+         :background "darkseagreen2")))
+  )
+
+(defun local/nano-modeline ()
+  (require 'nano-modeline)
+  (setq nano-modeline-position 'bottom)
+  (nano-modeline-mode))
+
+(defun local/speceline ()
+  (require 'spaceline)
+  (if (and local/is-light-theme (eq local/theme 'doom-one-light))
+      (set-face-attribute
+       'mode-line nil
+       :background "#e7e7e7" :box '(:line-width 1 :color "grey75"))
+
+    (set-face-attribute
+     'mode-line nil
+     :box '(:line-width 1 :color "grey75"))))
+
 (defun local/doom-themes-ext-treemacs ()
   (require 'doom-themes-ext-treemacs)
   (require 'all-the-icons) ;; depends on memoize
@@ -13,44 +68,9 @@
     ;; doom-themes 会把 treemacs 的 mode-line 隐藏掉，改成需要显示
     (remove-hook 'treemacs-mode-hook #'doom-themes-hide-modeline)))
 
-(defun local/doom-themes ()
-  (require 'doom-themes)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-  (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t)
-
-  ;; doom-one-light
-  (setq local/light-theme 'doom-solarized-light)
-  (setq local/dark-theme 'doom-one)
-
-  (if local/is-light-theme
-      (load-theme local/light-theme t)
-    (load-theme local/dark-theme t))
-
-  (if (display-graphic-p)
-      (local/doom-themes-ext-treemacs)))
-
-(defun local/nano ()
-  (require 'nano-theme)
-  (load-theme 'nano t)
-  (nano-dark))
-
-(defun local/nano-modeline ()
-  (require 'nano-modeline)
-  (setq nano-modeline-position 'bottom)
-  (nano-modeline-mode))
-
-(defun local/speceline ()
-  (require 'spaceline)
-
-  (if (and local/is-light-theme (eq local/light-theme 'doom-one-light))
-      (set-face-attribute
-       'mode-line nil
-       :background "#e7e7e7" :box '(:line-width 1 :color "grey75"))
-
-    (set-face-attribute
-     'mode-line nil
-     :box '(:line-width 1 :color "grey75"))))
+(setq local/is-light-theme t)
 
 ;;; theme
 ;; (local/doom-themes)
@@ -60,12 +80,15 @@
 ;; (local/speceline)
 ;; (local/nano-modeline)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (set-face-attribute
  'cursor nil
  :background "#39c5bb")
 
-(when (and local/is-light-theme (eq local/light-theme 'doom-solarized-light))
+
+;;; doom-solarized-light overwrites
+(when (and local/is-light-theme (eq local/theme 'doom-solarized-light))
   (with-eval-after-load 'imenu-list
     (set-face-attribute
      'imenu-list-entry-face-1 nil
@@ -80,7 +103,8 @@
    :foreground "#cc99cc")
   )
 
-(when (and local/is-light-theme (eq local/light-theme 'doom-one-light))
+;;; doom-one-light overwrites
+(when (and local/is-light-theme (eq local/theme 'doom-one-light))
   (set-face-attribute
    'region nil
    :background "#d8d8d8"

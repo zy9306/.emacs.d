@@ -3,7 +3,7 @@
 
 (with-eval-after-load 'posframe
   (require 'ivy-posframe)
-  ;; (setq ivy-posframe-border-width 1)
+  (setq ivy-posframe-border-width 1)
   (setq
    ivy-posframe-parameters
    '(

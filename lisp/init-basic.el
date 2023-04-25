@@ -97,6 +97,9 @@
     (global-flycheck-mode))
   (local/after-init-hook 'flycheck))
 
+(with-eval-after-load 'flymake
+  (define-key flymake-mode-map (kbd "C-c ! p") 'flymake-show-project-diagnostics)
+  (define-key flymake-mode-map (kbd "C-c ! b") 'flymake-show-buffer-diagnostics))
 
 (with-eval-after-load 'diff-hl
   (global-diff-hl-mode)
