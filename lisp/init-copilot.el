@@ -1,4 +1,5 @@
 (use-package copilot
+  :diminish copilot-mode
   :hook
   (prog-mode . copilot-mode)
   (yaml-mode . copilot-mode)

@@ -15,6 +15,8 @@
 (push (expand-file-name "site-lisp/ivy-posframe" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/lazy-load" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/markmacro" user-emacs-directory) load-path)
+(push (expand-file-name "site-lisp/nano-modeline" user-emacs-directory) load-path)
+(push (expand-file-name "site-lisp/nano-theme" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/orderless" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/org-bars" user-emacs-directory) load-path)
 (push (expand-file-name "site-lisp/ox-hugo" user-emacs-directory) load-path)

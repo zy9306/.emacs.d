@@ -18,7 +18,8 @@
           (complete-symbol . ivy-posframe-display-at-point)
           (counsel-M-x     . ivy-posframe-display-at-frame-center)
           (t               . ivy-posframe-display-at-frame-center)))
-  (ivy-posframe-mode 1))
+  (ivy-posframe-mode 1)
+  (diminish 'ivy-posframe-mode))
 
 (local/after-init-hook 'posframe)
 

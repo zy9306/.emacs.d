@@ -1,6 +1,7 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 
 (use-package company
+  :diminish company-mode
   :defer 0.1
   :custom
   (company-idle-delay 0.2)
@@ -30,6 +31,7 @@
   (add-to-list 'company-transformers #'delete-dups))
 
 (use-package company-box
+  :diminish company-box-mode
   :custom
   (company-box-scrollbar nil)
   (company-box-doc-enable nil)

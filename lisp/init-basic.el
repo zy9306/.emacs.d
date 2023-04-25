@@ -21,6 +21,7 @@
 
 
 (use-package goggles
+  :diminish goggles-mode
   :hook ((prog-mode
           text-mode
           yaml-mode)

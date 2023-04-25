@@ -46,7 +46,4 @@
   (spaceline-spacemacs-theme))
 
 
-(local/after-init-hook 'spaceline)
-
-
 (provide 'init-modeline)

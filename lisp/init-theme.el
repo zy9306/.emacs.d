@@ -30,15 +30,38 @@
   (if (display-graphic-p)
       (local/doom-themes-ext-treemacs)))
 
-(local/doom-themes)
+(defun local/nano ()
+  (require 'nano-theme)
+  (load-theme 'nano t)
+  (nano-light))
+
+(defun local/nano-modeline ()
+  (require 'nano-modeline)
+  (setq nano-modeline-position 'bottom)
+  (nano-modeline-mode))
+
+(defun local/speceline ()
+  (require 'spaceline)
+  (if (and local/is-light-theme (eq local/light-theme 'doom-one-light))
+      (set-face-attribute
+       'mode-line nil
+       :background "#e7e7e7" :box '(:line-width 1 :color "grey75"))
+    (set-face-attribute
+     'mode-line nil
+     :box '(:line-width 1 :color "grey75"))))
+
+;; (local/doom-themes)
+
+;; (local/speceline)
+
+(local/nano)
+
+;; (local/nano-modeline)
+
 
 (set-face-attribute
  'cursor nil
  :background "#39c5bb")
-
-(set-face-attribute
- 'mode-line nil
- :box '(:line-width 1 :color "grey75"))
 
 (when (and local/is-light-theme (eq local/light-theme 'doom-solarized-light))
   (with-eval-after-load 'imenu-list
@@ -56,10 +79,6 @@
   )
 
 (when (and local/is-light-theme (eq local/light-theme 'doom-one-light))
-  (set-face-attribute
-   'mode-line nil
-   :background "#e7e7e7" :box '(:line-width 1 :color "grey75"))
-
   (set-face-attribute
    'region nil
    :background "#d8d8d8"

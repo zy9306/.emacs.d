@@ -1,6 +1,7 @@
 ;; only need projectile-ripgrep
 
 (use-package projectile
+  :diminish projectile-mode
   :commands (projectile-ripgrep)
   :bind (("C-S-S" . projectile-ripgrep)
          ))

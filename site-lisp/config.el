@@ -2,3 +2,5 @@
 (load-file (expand-file-name "site-lisp/config/init-copilot.el.el" user-emacs-directory))
 (load-file (expand-file-name "site-lisp/config/init-emacs-prisma-mode.el" user-emacs-directory))
 (load-file (expand-file-name "site-lisp/config/init-gptel.el" user-emacs-directory))
+(load-file (expand-file-name "site-lisp/config/init-nano-modeline.el" user-emacs-directory))
+(load-file (expand-file-name "site-lisp/config/init-nano-theme.el" user-emacs-directory))

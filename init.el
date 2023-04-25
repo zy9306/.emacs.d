@@ -21,6 +21,7 @@
 (local/load-package 'init-option)
 (local/load-package 'init-font)
 (local/load-package 'init-color)
+(local/load-package 'init-modeline)
 (local/load-package 'init-theme)
 (local/load-package 'init-basic)
 (local/load-package 'init-utils)
@@ -52,8 +53,6 @@
 (local/load-package 'init-tree-sitter)
 
 (local/load-package 'init-edit)
-
-(local/load-package 'init-modeline)
 
 (local/load-package 'init-codeium)
 (local/load-package 'init-copilot)

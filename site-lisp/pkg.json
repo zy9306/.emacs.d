@@ -143,6 +143,26 @@
     "pkg": "markmacro",
     "repo": "git@github.com:manateelazycat/markmacro.git"
   },
+  "nano-modeline": {
+    "commit": "b8795c14ada38736fdc0288e388ac6b950b22ce9",
+    "ignore": [],
+    "only": [
+      "el"
+    ],
+    "only_el": false,
+    "pkg": "nano-modeline",
+    "repo": "git@github.com:rougier/nano-modeline.git"
+  },
+  "nano-theme": {
+    "commit": "9d64dc167883835a6dc3a6d286c98dbbf7e95a96",
+    "ignore": [],
+    "only": [
+      "el"
+    ],
+    "only_el": false,
+    "pkg": "nano-theme",
+    "repo": "git@github.com:rougier/nano-theme.git"
+  },
   "orderless": {
     "commit": "75eeae21971d86b51a712ed8ecd6434463b2d866",
     "ignore": [],
