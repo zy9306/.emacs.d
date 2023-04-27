@@ -215,7 +215,9 @@
 (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode)))
 
 (with-eval-after-load 'diredfl
-  (diredfl-global-mode))
+  (if (not (eq local/theme 'nano-theme))
+      (diredfl-global-mode)
+    ))
 
 (local/after-init-hook 'dired-subtree)
 (local/after-init-hook 'diredfl)
