@@ -11,10 +11,10 @@
   :bind
   (
    :map copilot-completion-map
-   ("C-f" . copilot-accept-completion)
    ("<right>" . copilot-accept-completion)
-   ;; ("C-n" . copilot-next-completion)
-   ;; ("C-p" . copilot-previous-completion)
+   ("M-f" . copilot-accept-completion-by-word)
+   ("M-n" . copilot-next-completion)
+   ("M-p" . copilot-previous-completion)
    ))
 
 (with-eval-after-load 'company
