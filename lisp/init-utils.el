@@ -92,26 +92,27 @@
 
 
 ;;; which-function
-(defun local/which-function ()
-  (interactive)
-  (require 'which-func)
-  (let ((current-function (which-function)))
-    (if current-function
-        (message (which-function)))))
-(add-hook 'after-init-hook (lambda () (which-function-mode)))
+;; use breadcrumb instead
+;; (defun local/which-function ()
+;;   (interactive)
+;;   (require 'which-func)
+;;   (let ((current-function (which-function)))
+;;     (if current-function
+;;         (message (which-function)))))
+;; (add-hook 'after-init-hook (lambda () (which-function-mode)))
 
 
 ;;; show function signature
 ;; 鼠标点击或光标移动时调用 local/which-function 显示当前函数信息，有性能问题
-(defvar local/last-point-position 0)
-(make-variable-buffer-local 'local/last-point-position)
-(defun local/show-current-function-post-command ()
-  (let ((current-position (point)))
-    (if (not (equal current-position local/last-point-position))
-        (local/which-function)
-      (if (eq this-command 'mouse-set-point)
-          (local/which-function)))
-    (setq local/last-point-position current-position)))
+;; (defvar local/last-point-position 0)
+;; (make-variable-buffer-local 'local/last-point-position)
+;; (defun local/show-current-function-post-command ()
+;;   (let ((current-position (point)))
+;;     (if (not (equal current-position local/last-point-position))
+;;         (local/which-function)
+;;       (if (eq this-command 'mouse-set-point)
+;;           (local/which-function)))
+;;     (setq local/last-point-position current-position)))
 ;; (add-hook 'post-command-hook #'local/show-current-function-post-command)
 
 

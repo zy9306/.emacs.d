@@ -8,6 +8,16 @@
     "pkg": "better-jumper",
     "repo": "git@github.com:gilbertw1/better-jumper.git"
   },
+  "breadcrumb": {
+    "commit": "cda39e32f0d61de3ee471ecc5b1b1aa91214ab52",
+    "ignore": [],
+    "only": [
+      "el"
+    ],
+    "only_el": false,
+    "pkg": "breadcrumb",
+    "repo": "git@github.com:joaotavora/breadcrumb.git"
+  },
   "chatgpt-shell": {
     "commit": "4b812342f3f1849612aef346becb49bbaaf03e66",
     "ignore": [],
