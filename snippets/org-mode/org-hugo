@@ -1,0 +1,22 @@
+# -*- mode: snippet -*-
+# name: org-hugo
+# key: org-hugo
+# --
+# -*- mode: Org; buffer-read-only: nil; org-download-image-dir: "img"-*-
+
+#+TITLE: ${1:title}
+#+DATE: ${2:date}
+#+AUTHOR: zy
+
+#+OPTIONS: ^:{}
+#+OPTIONS: -:nil
+# #+OPTIONS: num:3
+#+STARTUP: hideblocks
+#+STARTUP: show1levels
+
+# #+TOC: headlines 1
+
+#+HUGO_BASE_DIR: ../../
+#+HUGO_SECTION: ${3:tech/b}
+#+HUGO_TAGS: ${4:tag}
+#+HUGO_DRAFT: false

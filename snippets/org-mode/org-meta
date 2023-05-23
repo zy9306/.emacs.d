@@ -6,9 +6,8 @@
 
 #+TITLE: known-issues
 #+AUTHOR: zy
-#+TOC: headlines 2
+#+TOC: headlines 1
 #+OPTIONS: ^:{}
 #+OPTIONS: -:nil
-#+OPTIONS: num:3
 #+STARTUP: showblocks
 #+STARTUP: show1level
