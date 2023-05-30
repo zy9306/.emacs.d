@@ -250,6 +250,16 @@
     "pkg": "toggle-one-window",
     "repo": "git@github.com:manateelazycat/toggle-one-window.git"
   },
+  "ts-fold": {
+    "commit": "7667a376449174714574c18f179f8d604860f138",
+    "ignore": [],
+    "only": [
+      "el"
+    ],
+    "only_el": false,
+    "pkg": "ts-fold",
+    "repo": "git@github.com:emacs-tree-sitter/ts-fold.git"
+  },
   "vertico": {
     "commit": "eedcb847869226701acaf9a36dce0a51d1b60862",
     "ignore": [
