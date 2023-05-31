@@ -1,4 +1,5 @@
 (use-package ts-fold
+  :diminish ts-fold-mode
   :init
   (add-hook 'after-init-hook 'global-ts-fold-mode)
   :config
