@@ -77,7 +77,7 @@
 ;; [[link]]
 (setq org-link-descriptive t)
 
-(add-hook 'org-mode-hook #'(lambda () (display-line-numbers-mode -1)))
+;; (add-hook 'org-mode-hook #'(lambda () (display-line-numbers-mode -1)))
 
 ;; 导出时不要执行代码块
 (setq org-export-babel-evaluate nil)
