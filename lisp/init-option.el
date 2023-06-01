@@ -12,6 +12,9 @@
 (setq max-specpdl-size 10000)
 
 
+(setq mouse-drag-copy-region t)
+
+
 (setq original-y-or-n-p 'y-or-n-p)
 (defalias 'original-y-or-n-p (symbol-function 'y-or-n-p))
 (defun default-yes-sometimes (prompt)
