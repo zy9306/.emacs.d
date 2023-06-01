@@ -12,7 +12,8 @@
 #+OPTIONS: -:nil
 # #+OPTIONS: num:3
 #+STARTUP: hideblocks
-#+STARTUP: show1levels
+#+STARTUP: show1level
+# #+STARTUP: show2levels
 
 # #+TOC: headlines 1
 
