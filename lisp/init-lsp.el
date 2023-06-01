@@ -27,8 +27,13 @@
 (define-key eglot-mode-map (kbd "C-c l h") #'eldoc-box-eglot-help-at-point)
 (define-key eglot-mode-map (kbd "C-c l r") #'eglot-rename)
 (define-key eglot-mode-map (kbd "C-c l a") #'eglot-code-actions)
+(define-key eglot-mode-map (kbd "C-c l f") #'eglot-format-buffer)
+(define-key eglot-mode-map (kbd "C-c l d") #'eglot-find-typeDefinition)
 (define-key eglot-mode-map (kbd "C-c l i") #'eglot-find-implementation)
 (define-key eglot-mode-map (kbd "C-c l R") #'eglot-reconnect)
+
+(with-eval-after-load 'js-mode
+  (define-key js-mode-map (kbd "M-.") #'eglot-find-typeDefinition))
 
 (with-eval-after-load 'python
   (define-key python-mode-map (kbd "M-.") #'citre-jump+))
