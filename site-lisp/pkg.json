@@ -250,6 +250,16 @@
     "pkg": "toggle-one-window",
     "repo": "git@github.com:manateelazycat/toggle-one-window.git"
   },
+  "topsy.el": {
+    "commit": "86d4234e4a0e9d2f5bf0f1114ea9893da48e77d1",
+    "ignore": [],
+    "only": [
+      "el"
+    ],
+    "only_el": false,
+    "pkg": "topsy.el",
+    "repo": "git@github.com:alphapapa/topsy.el.git"
+  },
   "ts-fold": {
     "commit": "7667a376449174714574c18f179f8d604860f138",
     "ignore": [],

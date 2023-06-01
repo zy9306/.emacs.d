@@ -5,4 +5,5 @@
 (load-file (expand-file-name "site-lisp/config/init-gptel.el" user-emacs-directory))
 (load-file (expand-file-name "site-lisp/config/init-nano-modeline.el" user-emacs-directory))
 (load-file (expand-file-name "site-lisp/config/init-nano-theme.el" user-emacs-directory))
+(load-file (expand-file-name "site-lisp/config/init-topsy.el.el" user-emacs-directory))
 (load-file (expand-file-name "site-lisp/config/init-ts-fold.el" user-emacs-directory))
