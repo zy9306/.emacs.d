@@ -45,6 +45,11 @@
            :align below
            :size 0.33)
 
+          ("\\*.*\\*"
+           :regexp t
+           :inhibit-window-quit t
+           :select t)
+
           ;; the last rule
           ;; ("\\*.*\\*"
           ;;  :regexp t
