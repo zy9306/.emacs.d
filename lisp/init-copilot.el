@@ -15,7 +15,14 @@
    ("M-f" . copilot-accept-completion-by-word)
    ("M-n" . copilot-next-completion)
    ("M-p" . copilot-previous-completion)
-   ))
+   )
+
+  :config
+  (set-face-attribute
+   'copilot-overlay-face nil
+   :foreground "#bf616a"
+   )
+  )
 
 (with-eval-after-load 'company
   ;; disable inline previews
