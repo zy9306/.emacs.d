@@ -12,6 +12,6 @@
 		          ("," . "M-")))
     (add-to-list 'devil-translations item))
 
-  (dolist (item (list ", f" ", b" ", n" ", p" "%k >" "%k <"))
+  (dolist (item (list ", f" ", b" ", n" ", p" ", _" "%k >" "%k <" "%k _"))
     (add-to-list 'devil-repeatable-keys item))
   )
