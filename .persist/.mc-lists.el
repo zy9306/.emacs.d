@@ -29,5 +29,6 @@
 
 (setq mc/cmds-to-run-once
       '(
+        devil
         mouse-set-region
         ))

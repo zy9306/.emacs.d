@@ -68,8 +68,8 @@
 
 (local/load-package 'init-web-browser)
 
-(if (not (display-graphic-p))
-    (local/load-package 'init-evil-v3))
+;; (if (not (display-graphic-p))
+;;     (local/load-package 'init-evil-v3))
 
 (local/load-package 'init-proxy)
 

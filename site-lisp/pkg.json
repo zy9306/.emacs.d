@@ -75,6 +75,16 @@
     "pkg": "copilot.el",
     "repo": "git@github.com:zerolfx/copilot.el.git"
   },
+  "devil": {
+    "commit": "e9d2024b695b14a318f74f08774548292021fb69",
+    "ignore": [],
+    "only": [
+      "el"
+    ],
+    "only_el": false,
+    "pkg": "devil",
+    "repo": "git@github.com:susam/devil.git"
+  },
   "duplicate-line": {
     "commit": "5abe4b81fa1618212938eb2e9b153975c34c11f1",
     "ignore": [
