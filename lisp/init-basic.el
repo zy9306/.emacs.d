@@ -31,8 +31,8 @@
 
 
 ;;; fill-column-indicator
-(setq-default fill-column 100)
-(global-display-fill-column-indicator-mode)
+;; (setq-default fill-column 100)
+;; (global-display-fill-column-indicator-mode)
 
 
 ;; 自带的使用上有点问题，先继续用 undo-tree
