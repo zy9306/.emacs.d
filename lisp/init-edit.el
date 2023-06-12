@@ -262,6 +262,13 @@
   (interactive)
   (edit/inner-line "cut"))
 
+(defun edit/whole-line-delete ()
+  (interactive)
+  (let ((cur_point (point)))
+    (back-to-indentation)
+    (delete-line)
+    (goto-char cur_point)))
+
 
 (global-set-key (kbd "M-d") 'edit/word-delete)
 
@@ -295,6 +302,7 @@
   ("lc" edit/inner-line-copy)
   ("ld" edit/inner-line-delete)
   ("lx" edit/inner-line-cut)
+  ("lD" edit/whole-line-delete)
 
   ("fc" edit/defun-copy)
   ("fd" edit/defun-delete)
