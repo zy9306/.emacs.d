@@ -45,17 +45,16 @@
            :align below
            :size 0.33)
 
+          ("\\*Org Src.*\\*"
+           :regexp t
+           :select t
+           :same t)
+
           ("\\*.*\\*"
            :regexp t
-           :inhibit-window-quit t
-           :select t)
-
-          ;; the last rule
-          ;; ("\\*.*\\*"
-          ;;  :regexp t
-          ;;  :select t
-          ;;  :align below
-          ;;  :size 0.33)
+           :select t
+           :align below
+           :size 0.33)
           ))
 
   (add-hook 'after-init-hook (lambda () (shackle-mode 1))))
