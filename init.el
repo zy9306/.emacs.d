@@ -73,6 +73,8 @@
 
 (local/load-package 'init-proxy)
 
+(local/load-package 'init-easy-nav)
+
 ;;; unicad
 ;; 自动检测编码，如果错误的将utf-8检测成gbk等中文编码，可能会导致lsp崩
 ;; 溃，编码默认为utf-8，如遇gbk等乱码，尝试C-x RET手动切换编码
