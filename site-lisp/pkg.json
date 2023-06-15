@@ -76,7 +76,7 @@
     "repo": "git@github.com:zerolfx/copilot.el.git"
   },
   "devil": {
-    "commit": "e9d2024b695b14a318f74f08774548292021fb69",
+    "commit": "31a4a084d9d8affb62e53de31d5eae00f772a06a",
     "ignore": [],
     "only": [
       "el"
