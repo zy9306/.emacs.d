@@ -8,3 +8,4 @@
 (load-file (expand-file-name "site-lisp/config/init-nano-theme.el" user-emacs-directory))
 (load-file (expand-file-name "site-lisp/config/init-topsy.el.el" user-emacs-directory))
 (load-file (expand-file-name "site-lisp/config/init-ts-fold.el" user-emacs-directory))
+(load-file (expand-file-name "site-lisp/config/init-wrap-region.el.el" user-emacs-directory))

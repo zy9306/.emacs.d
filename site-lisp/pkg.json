@@ -296,5 +296,15 @@
     "only_el": true,
     "pkg": "vundo",
     "repo": "git@github.com:casouri/vundo.git"
+  },
+  "wrap-region.el": {
+    "commit": "fbae9b0f106187af19823f1a6260b5c68b7252e6",
+    "ignore": [],
+    "only": [
+      "el"
+    ],
+    "only_el": false,
+    "pkg": "wrap-region.el",
+    "repo": "git@github.com:rejeep/wrap-region.el.git"
   }
 }
