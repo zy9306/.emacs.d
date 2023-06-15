@@ -60,9 +60,9 @@
 
 ;; (local/load-package 'init-corfu)
 
-;; (local/load-package 'init-lsp-deprecated)
 ;; (local/load-package 'init-lsp-bridge)
-(local/load-package 'init-lsp)
+(local/load-package 'init-lsp-mode)
+;; (local/load-package 'init-eglot)
 
 (local/load-package 'init-translate)
 
