@@ -21,3 +21,5 @@
 #+HUGO_SECTION: ${3:tech/b}
 #+HUGO_TAGS: ${4:tag}
 #+HUGO_DRAFT: false
+
+#+hugo_custom_front_matter: :toc true
