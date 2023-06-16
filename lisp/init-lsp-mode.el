@@ -18,7 +18,6 @@
   (lsp-signature-doc-lines 1)
   (lsp-keep-workspace-alive nil)
   (lsp-enable-folding nil)
-  (lsp-diagnostics-provider :none)
   (lsp-enable-links nil)
   (lsp-enable-symbol-highlighting nil)
 
@@ -53,6 +52,7 @@
 
 
 ;;; client
+;; for ruff-lsp diagnostics: /usr/local/bin/python3.10 -m pip install ruff-lsp
 (defun local/lsp-python ()
   (require 'lsp-pyright)
   (local/lsp-deferred))

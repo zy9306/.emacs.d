@@ -97,6 +97,7 @@ See URL `http://pypi.python.org/pypi/ruff'."
 
   (add-to-list 'flycheck-checkers 'python-ruff))
 
-(add-hook 'python-mode-hook #'local/setup-flycheck-for-py)
+;; use ruff-lsp instead
+;; (add-hook 'python-mode-hook #'local/setup-flycheck-for-py)
 
 (provide 'init-python)
