@@ -163,4 +163,10 @@
      :background "#c295d7")))
 
 
+(with-eval-after-load 'iedit
+  (set-face-attribute
+   'iedit-occurrence nil
+   :inherit 'symbol-overlay-face-4))
+
+
 (provide 'init-theme)
