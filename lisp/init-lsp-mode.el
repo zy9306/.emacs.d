@@ -55,6 +55,7 @@
 ;; for ruff-lsp diagnostics: /usr/local/bin/python3.10 -m pip install ruff-lsp
 (defun local/lsp-python ()
   (require 'lsp-pyright)
+  (setq lsp-pyright-typechecking-mode "off")
   (local/lsp-deferred))
 
 
