@@ -18,7 +18,7 @@
 # #+TOC: headlines 1
 
 #+HUGO_BASE_DIR: ../../
-#+HUGO_SECTION: ${3:tech/b}
+#+HUGO_SECTION: ${3:seniorious}
 #+HUGO_TAGS: ${4:tag}
 #+HUGO_DRAFT: false
 
