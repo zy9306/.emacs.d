@@ -149,6 +149,11 @@
 (add-hook 'after-init-hook #'local/config-ace-isearch)
 
 
+(use-package iedit
+  :commands (iedit-mode)
+  :bind (("C-c i" . iedit-mode)))
+
+
 ;; To yank from the kill-rings of every cursor use yank-rectangle, normally found at C-x r y
 (local/after-init-hook 'multiple-cursors)
 
