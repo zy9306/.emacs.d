@@ -19,6 +19,11 @@
 
 (add-hook 'after-init-hook (lambda () (save-place-mode)))
 
+(use-package subword
+  :hook (after-init . global-subword-mode))
+
+(use-package so-long
+  :hook (after-init . global-so-long-mode))
 
 (use-package goggles
   :diminish goggles-mode
