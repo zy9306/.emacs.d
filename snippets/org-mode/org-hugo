@@ -23,3 +23,5 @@
 #+HUGO_DRAFT: false
 
 #+hugo_custom_front_matter: :toc true
+
+#+hugo_locale: zh
