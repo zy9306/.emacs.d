@@ -72,5 +72,10 @@
   (add-hook 'go-mode-hook 'local/lsp-go))
 
 
+(add-hook 'js-mode-hook 'local/lsp-deferred)
+
+(with-eval-after-load 'js
+  (define-key js-mode-map (kbd "M-.") #'lsp-find-type-definition))
+
 
 (provide 'init-lsp-mode)
