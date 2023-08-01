@@ -16,6 +16,8 @@
 
 (setq xref-history-storage 'xref-window-local-history)
 
+(add-hook 'after-init-hook 'pixel-scroll-precision-mode)
+
 
 (setq original-y-or-n-p 'y-or-n-p)
 (defalias 'original-y-or-n-p (symbol-function 'y-or-n-p))
