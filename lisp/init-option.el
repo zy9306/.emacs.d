@@ -14,6 +14,8 @@
 
 (setq mouse-drag-copy-region t)
 
+(setq xref-history-storage 'xref-window-local-history)
+
 
 (setq original-y-or-n-p 'y-or-n-p)
 (defalias 'original-y-or-n-p (symbol-function 'y-or-n-p))
