@@ -29,6 +29,14 @@
 (with-eval-after-load 'ox
   (require 'ox-hugo))
 
+(defun local/org-hugo-export-to-md ()
+  (interactive)
+  (save-excursion
+    (let ((cur_point (point)))
+      (beginning-of-buffer)
+      (org-hugo-export-to-md)
+      (goto-char cur_point))))
+
 (with-eval-after-load 'org
   (require 'ox-gfm))
 
@@ -143,9 +151,9 @@
           )))
 
 (define-key global-map (kbd "C-c c t")
-  (lambda () (interactive) (org-capture nil "t")))
+            (lambda () (interactive) (org-capture nil "t")))
 (define-key global-map (kbd "C-c c c")
-  (lambda () (interactive) (org-capture nil "c")))
+            (lambda () (interactive) (org-capture nil "c")))
 
 ;;; FORMATTER START
 (require 'cl-lib)
@@ -182,10 +190,10 @@
   (interactive "P")
   (save-excursion
     (org-save-outline-visibility t
-      (org-cycle '(64))
-      (goto-char (point-min))
-      (while (re-search-forward org-heading-regexp nil t)
-        (org-format-heading-blank-lines))))
+                                 (org-cycle '(64))
+                                 (goto-char (point-min))
+                                 (while (re-search-forward org-heading-regexp nil t)
+                                   (org-format-heading-blank-lines))))
   (save-buffer)
   (revert-buffer-no-confirm))
 ;;; FORMATTER END
