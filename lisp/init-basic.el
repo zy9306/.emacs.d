@@ -171,6 +171,16 @@
 (local/after-init-hook 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 
+(use-package selected
+  :commands selected-minor-mode
+  :bind (:map selected-keymap
+              ("q" . selected-off)
+              ("d" . delete-region)
+              ("x" . kill-region)
+              ("c" . kill-ring-save)
+              ("y" . yank)))
+(add-hook 'after-init-hook 'selected-global-mode)
+
 
 (with-eval-after-load 'rainbow-delimiters
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
