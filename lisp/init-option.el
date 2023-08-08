@@ -12,7 +12,7 @@
 (setq max-specpdl-size 10000)
 
 
-(setq mouse-drag-copy-region t)
+;; (setq mouse-drag-copy-region t)
 
 (setq xref-history-storage 'xref-window-local-history)
 
