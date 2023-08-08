@@ -2,10 +2,11 @@
 (load-file (expand-file-name "theme/load.el" user-emacs-directory))
 (load-file (expand-file-name "repo/load.el" user-emacs-directory))
 
-(require-package 'paradox)
-(add-hook 'after-init-hook 'paradox-enable)
+(use-package paradox
+  :defer 10)
 (with-eval-after-load 'paradox
-  (setq paradox-github-token nil))
+  (setq paradox-github-token nil)
+  (paradox-enable))
 
 (require-package 'swiper)
 (require-package 'ivy)

@@ -5,6 +5,8 @@
 (setq dap-auto-configure-mode nil)
 
 (use-package lsp-mode
+  :defer 5
+  :commands lsp-deferred
   :custom
   (lsp-log-io nil)
   (lsp-idle-delay 0.500)
@@ -24,32 +26,29 @@
   :config
   (define-key lsp-mode-map [remap xref-find-definitions] 'lsp-find-definition)
   (define-key lsp-mode-map [remap xref-find-references] 'lsp-find-references)
+  (add-hook 'lsp-completion-mode-hook 'local/replace-lsp-completion-at-point))
 
-  (defun local/replace-lsp-completion-at-point ()
-    (setq-local completion-at-point-functions nil)
-    (add-hook 'completion-at-point-functions 'lsp-citre-capf-function nil t))
+(defun local/lsp-deferred ()
+  (lsp-deferred)
+  (local/config-company-backends)
+  (add-hook 'completion-at-point-functions 'lsp-citre-capf-function nil t))
 
-  (add-hook 'lsp-completion-mode-hook 'local/replace-lsp-completion-at-point)
+(defun local/replace-lsp-completion-at-point ()
+  (setq-local completion-at-point-functions nil)
+  (add-hook 'completion-at-point-functions 'lsp-citre-capf-function nil t))
 
-  (defun local/lsp-deferred ()
-    (lsp-deferred)
-    (local/config-company-backends)
-    (add-hook 'completion-at-point-functions 'lsp-citre-capf-function nil t))
+(defun local/lsp-result ()
+  (ignore-errors (lsp-completion-at-point)))
 
-  (defun local/lsp-result ()
-    (ignore-errors (lsp-completion-at-point)))
-
-  (defun lsp-citre-capf-function ()
-    (let ((lsp-result (local/lsp-result)))
-      (if (ignore-errors (and lsp-result
-                              (try-completion
-                               (buffer-substring (nth 0 lsp-result)
-                                                 (nth 1 lsp-result))
-                               (nth 2 lsp-result))))
-          lsp-result
-        (citre-completion-at-point))))
-  )
-
+(defun lsp-citre-capf-function ()
+  (let ((lsp-result (local/lsp-result)))
+    (if (ignore-errors (and lsp-result
+                            (try-completion
+                             (buffer-substring (nth 0 lsp-result)
+                                               (nth 1 lsp-result))
+                             (nth 2 lsp-result))))
+        lsp-result
+      (citre-completion-at-point))))
 
 ;;; client
 ;; for ruff-lsp diagnostics: /usr/local/bin/python3.10 -m pip install ruff-lsp

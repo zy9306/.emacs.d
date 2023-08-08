@@ -27,12 +27,15 @@
 
 
 (when (file-directory-p (expand-file-name "tree-sitter/src/" user-emacs-directory))
-  (require 'tree-sitter)
-  (require 'tree-sitter-langs)
-
-  (global-tree-sitter-mode)
-  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
-  (diminish 'tree-sitter-mode)
+  (use-package tree-sitter
+    :defer 2)
+  (use-package tree-sitter-langs
+    :defer 2
+    :after (tree-sitter))
+  (with-eval-after-load 'tree-sitter
+    (global-tree-sitter-mode)
+    (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
+    (diminish 'tree-sitter-mode))
   )
 
 

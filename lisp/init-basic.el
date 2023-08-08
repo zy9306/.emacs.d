@@ -7,20 +7,19 @@
   (setq prescient-save-file (concat "~/.emacs.d/.persist/" "prescient-save.el"))
   (prescient-persist-mode 1))
 
+(use-package exec-path-from-shell
+  :defer 3)
 (with-eval-after-load 'exec-path-from-shell
   (setq exec-path-from-shell-arguments nil)
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
-(local/after-init-hook 'exec-path-from-shell)
 
-
-(local/after-init-hook 'smex)
-
+(use-package smex :defer 3)
 
 (add-hook 'after-init-hook (lambda () (save-place-mode)))
 
-(use-package subword
-  :hook (after-init . global-subword-mode))
+;; (use-package subword
+;;   :hook (after-init . global-subword-mode))
 
 (use-package so-long
   :hook (after-init . global-so-long-mode))
@@ -59,11 +58,11 @@
       (global-set-key (kbd "M-_") 'undo-tree-redo))
     (local/after-init-hook 'undo-tree)))
 
+(use-package vundo
+  :defer 10)
 
-(add-hook 'after-init-hook (lambda () (require 'vundo)))
-
-
-;; see also https://www.emacswiki.org/emacs/AutoSave `auto-save-visited-mode`
+(use-package real-auto-save
+  :defer 10)
 (with-eval-after-load 'real-auto-save
   (diminish 'real-auto-save-mode)
   (setq real-auto-save-interval 30)
@@ -74,16 +73,16 @@
                   conf-mode-hook
                   elisp-mode-hook))
     (add-hook hook 'real-auto-save-mode)))
-(local/after-init-hook 'real-auto-save)
 
-
+(use-package which-key
+  :defer 5)
 (with-eval-after-load 'which-key
   (diminish 'which-key-mode)
   (which-key-setup-side-window-bottom)
   (which-key-mode))
-(local/after-init-hook 'which-key)
 
-
+(use-package imenu-list
+  :defer 10)
 (with-eval-after-load 'imenu-list
   (setq imenu-list-auto-resize nil)
   (setq imenu-list-position 'right)
@@ -93,9 +92,6 @@
 
 (with-eval-after-load 'key-chord
   (key-chord-define-global "II" #'imenu-list-smart-toggle))
-
-(local/after-init-hook 'imenu-list)
-
 
 (when (or *linux* *mac*)
   (with-eval-after-load 'flycheck
@@ -107,14 +103,16 @@
   (define-key flymake-mode-map (kbd "C-c ! p") 'flymake-show-project-diagnostics)
   (define-key flymake-mode-map (kbd "C-c ! b") 'flymake-show-buffer-diagnostics))
 
+(use-package diff-hl
+  :defer 10)
 (with-eval-after-load 'diff-hl
   (global-diff-hl-mode)
   (diff-hl-margin-mode)
   (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
   (add-hook 'after-revert-hook 'diff-hl-reset-reference-rev))
-(local/after-init-hook 'diff-hl)
 
-
+(use-package symbol-overlay
+  :defer 3)
 (with-eval-after-load 'symbol-overlay
   (diminish 'symbol-overlay-mode)
   (dolist (hook '(prog-mode-hook
@@ -131,17 +129,13 @@
   (define-key symbol-overlay-mode-map (kbd "M-n") 'symbol-overlay-jump-next)
   (define-key symbol-overlay-mode-map (kbd "M-p") 'symbol-overlay-jump-prev))
 
-(local/after-init-hook 'symbol-overlay)
-
-
+(use-package anzu
+  :defer 5)
 (with-eval-after-load 'anzu
-  ;; 实时显示搜索及替换结果
   (setq anzu-mode-lighter "")
   (global-anzu-mode)
   (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
   (global-set-key [remap query-replace] 'anzu-query-replace))
-(local/after-init-hook 'anzu)
-
 
 (defun local/config-ace-isearch()
   (require 'ace-isearch)
@@ -153,22 +147,19 @@
   (setq ace-isearch-input-length 99))
 (add-hook 'after-init-hook #'local/config-ace-isearch)
 
-
 (use-package iedit
   :commands (iedit-mode)
   :bind (("C-c i" . iedit-mode)))
 
-
-;; To yank from the kill-rings of every cursor use yank-rectangle, normally found at C-x r y
-(local/after-init-hook 'multiple-cursors)
-
+;; C-x r y for yank-rectangle
+(use-package multiple-cursors :defer 5)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
-
-(local/after-init-hook 'expand-region)
+(use-package expand-region
+  :commands (er/expand-region))
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 (use-package selected
@@ -182,29 +173,26 @@
 (add-hook 'after-init-hook 'selected-global-mode)
 
 
+(use-package rainbow-delimiters :defer 5)
 (with-eval-after-load 'rainbow-delimiters
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
-(local/after-init-hook 'rainbow-delimiters)
 
-
-(lazy-load-global-keys
- '(("C-x g" . magit-status))
- "magit")
+(use-package magit
+  :commands (magit-status magit-dispatch magit-file-dispatch))
 (with-eval-after-load 'magit
   (define-key magit-hunk-section-map (kbd "RET") 'magit-diff-visit-file-other-window)
-  (define-key magit-file-section-map (kbd "RET") 'magit-diff-visit-file-other-window)
-  (global-set-key (kbd "C-x g") 'magit-status)
-  (global-set-key (kbd "C-x M-g") 'magit-dispatch)
-  (global-set-key (kbd "C-c M-g") 'magit-file-dispatch))
+  (define-key magit-file-section-map (kbd "RET") 'magit-diff-visit-file-other-window))
+(global-set-key (kbd "C-x g") #'magit-status)
+(global-set-key (kbd "C-x M-g") #'magit-dispatch)
+(global-set-key (kbd "C-c M-g") #'magit-file-dispatch)
 
-
+(use-package browse-kill-ring
+  :commands browse-kill-ring)
 (with-eval-after-load 'browse-kill-ring
   (setq browse-kill-ring-highlight-current-entry t)
   (setq browse-kill-ring-highlight-inserted-item t)
   (setq browse-kill-ring-maximum-display-length 99)
   (setq browse-kill-ring-show-preview t))
-(local/after-init-hook 'browse-kill-ring)
-
 (global-set-key (kbd "M-y") 'browse-kill-ring)
 
 
@@ -216,12 +204,14 @@
 (local/after-init-hook 'recentf)
 
 
-(local/after-init-hook 'goto-chg)
+(use-package goto-last-change
+  :commands (goto-last-change goto-last-change-reverse))
 (global-set-key (kbd "C-,") 'goto-last-change)
 (global-set-key (kbd "C-.") 'goto-last-change-reverse)
 
 
-(local/after-init-hook 'move-text)
+(use-package move-text
+  :commands (move-text-up move-text-down))
 (global-set-key (kbd "M-P") 'move-text-up)
 (global-set-key (kbd "M-N") 'move-text-down)
 
@@ -249,9 +239,10 @@
 (global-set-key (kbd "C-c C-l") 'highlight-indent-guides-mode)
 
 
+(use-package golden-ratio
+  :commands golden-ratio)
 (with-eval-after-load 'golden-ratio
   (global-set-key (kbd "M--") 'golden-ratio))
-(local/after-init-hook 'golden-ratio)
 
 
 (defun local/setup-terminal ()

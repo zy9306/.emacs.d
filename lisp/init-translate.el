@@ -1,14 +1,15 @@
-(require 'go-translate)
+(use-package go-translate
+  :defer 10)
 
-(setq gts-translate-list '(("en" "zh")))
+(with-eval-after-load 'go-translate
+  (setq gts-translate-list '(("en" "zh")))
 
-(setq gts-posframe-pop-render-timeout 300)
+  (setq gts-posframe-pop-render-timeout 300)
 
-(setq gts-default-translator
-      (gts-translator
-       :picker (gts-prompt-picker)
-       :engines (list (gts-google-engine) (gts-bing-engine))
-       :render (gts-posframe-pop-render :backcolor "#f2e6ce" :forecolor "#333333")))
-
+  (setq gts-default-translator
+        (gts-translator
+         :picker (gts-prompt-picker)
+         :engines (list (gts-google-engine) (gts-bing-engine))
+         :render (gts-posframe-pop-render :backcolor "#f2e6ce" :forecolor "#333333"))))
 
 (provide 'init-translate)
