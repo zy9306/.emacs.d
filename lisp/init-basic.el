@@ -90,8 +90,8 @@
   (setq imenu-max-item-length 120)
   (setq imenu-list-focus-after-activation t))
 
-(with-eval-after-load 'key-chord
-  (key-chord-define-global "II" #'imenu-list-smart-toggle))
+;; (with-eval-after-load 'key-chord
+;;   (key-chord-define-global "II" #'imenu-list-smart-toggle))
 
 (when (or *linux* *mac*)
   (with-eval-after-load 'flycheck

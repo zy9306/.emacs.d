@@ -5,8 +5,7 @@
 (setq dap-auto-configure-mode nil)
 
 (use-package lsp-mode
-  :defer 5
-  :commands lsp-deferred
+  ;; :defer 5
   :custom
   (lsp-log-io nil)
   (lsp-idle-delay 0.500)
@@ -57,21 +56,16 @@
   (setq lsp-pyright-typechecking-mode "off")
   (local/lsp-deferred))
 
-
 (defun local/lsp-go ()
   (require 'lsp-go)
   (local/lsp-deferred))
 
-
-(when (executable-find "pyright-langserver")
-  (add-hook 'python-mode-hook 'local/lsp-python))
-
-
-(with-eval-after-load 'go-mode
-  (add-hook 'go-mode-hook 'local/lsp-go))
-
-
-(add-hook 'js-mode-hook 'local/lsp-deferred)
+(with-eval-after-load 'lsp-mode
+  (when (executable-find "pyright-langserver")
+    (add-hook 'python-mode-hook 'local/lsp-python))
+  (with-eval-after-load 'go-mode
+    (add-hook 'go-mode-hook 'local/lsp-go))
+  (add-hook 'js-mode-hook 'local/lsp-deferred))
 
 (with-eval-after-load 'js
   (define-key js-mode-map (kbd "M-.") #'lsp-find-type-definition))
