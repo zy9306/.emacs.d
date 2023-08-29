@@ -54,13 +54,4 @@
          ([f8] . treemacs-find-file)))
 
 
-(use-package symbols-outline
-  :ensure t
-  :commands (symbols-outline-show)
-  :config
-  (unless (executable-find "ctags")
-    (setq symbols-outline-fetch-fn #'symbols-outline-lsp-fetch))
-  (setq symbols-outline-window-position 'left))
-(key-chord-define-global "II" #'symbols-outline-show)
-
 (provide 'init-project)

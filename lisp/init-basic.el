@@ -81,17 +81,27 @@
   (which-key-setup-side-window-bottom)
   (which-key-mode))
 
-(use-package imenu-list
-  :defer 10)
-(with-eval-after-load 'imenu-list
-  (setq imenu-list-auto-resize nil)
-  (setq imenu-list-position 'right)
-  (setq imenu-list-size 0.2)
-  (setq imenu-max-item-length 120)
-  (setq imenu-list-focus-after-activation t))
+;; symbols-outline
+;; (use-package imenu-list
+;;   :defer 10)
+;; (with-eval-after-load 'imenu-list
+;;   (setq imenu-list-auto-resize nil)
+;;   (setq imenu-list-position 'right)
+;;   (setq imenu-list-size 0.2)
+;;   (setq imenu-max-item-length 120)
+;;   (setq imenu-list-focus-after-activation t))
 
-;; (with-eval-after-load 'key-chord
-;;   (key-chord-define-global "II" #'imenu-list-smart-toggle))
+(use-package symbols-outline
+  :ensure t
+  :commands (symbols-outline-show)
+  :config
+  (with-eval-after-load 'symbols-outline
+    (key-chord-define-global "II" #'symbols-outline-show)
+
+    (unless (executable-find "ctags")
+      (setq symbols-outline-fetch-fn #'symbols-outline-lsp-fetch))
+    (setq symbols-outline-window-position 'left)
+    (symbols-outline-follow-mode)))
 
 (when (or *linux* *mac*)
   (with-eval-after-load 'flycheck
