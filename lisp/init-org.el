@@ -135,19 +135,23 @@
 (when (or *linux* *mac*)
   (setq local/cloud-dir "~/OneDrive"))
 
-(let ((task (format "%s/Illyasviel/task.org" local/cloud-dir))
-      (Illyasviel (format "%s/Illyasviel/Chtholly.org" local/cloud-dir))
-      (journal (format "%s/Illyasviel/journal.org" local/cloud-dir)))
+(defun org-find-month-in-datetree ()
+  (org-datetree-find-date-create (calendar-current-date)))
+
+(defun org-find-week-in-datetree ()
+  (org-datetree-find-iso-week-create (calendar-current-date)))
+
+(let ((task (format "%s/Chtholly/org-capture/task.org" local/cloud-dir))
+      (daily (format "%s/Chtholly/org-capture/daily.org" local/cloud-dir))
+      )
+
   (setq org-capture-templates
         `(
-          ("t" "Task" entry (file+headline ,task "Task")
-           "* %u %?" :prepend t :empty-lines-after 2)
+          ("t" "" entry (file+function ,task org-find-week-in-datetree)
+           "* %?" :prepend nil :empty-lines-before 0)
 
-          ("c" "Chtholly" entry (file+headline ,Illyasviel "Chtholly")
-           "* %u %?" :prepend t :empty-lines-after 2)
-
-          ("j" "Journal" entry (file+datetree ,journal)
-           "* %?\nEntered on %U\n  %i\n  %a")
+          ("d" "" entry (file+olp+datetree ,daily)
+           "* %?" :prepend nil :empty-lines-before 0)
           )))
 
 (define-key global-map (kbd "C-c c t")

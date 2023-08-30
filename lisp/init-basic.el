@@ -248,12 +248,10 @@
   (setq highlight-indent-guides-method 'bitmap))
 (global-set-key (kbd "C-c C-l") 'highlight-indent-guides-mode)
 
-
 (use-package golden-ratio
   :commands golden-ratio)
 (with-eval-after-load 'golden-ratio
   (global-set-key (kbd "M--") 'golden-ratio))
-
 
 (defun local/setup-terminal ()
   (unless (display-graphic-p)
@@ -262,9 +260,7 @@
 
     (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
     (global-set-key (kbd "<mouse-5>") 'scroll-up-line)))
-
 (add-hook 'after-init-hook 'local/setup-terminal)
-
 
 ;; (with-eval-after-load 'better-jumper
 ;;   (better-jumper-mode +1)
@@ -272,7 +268,6 @@
 ;;   (global-set-key (kbd "M-<left>") 'better-jumper-jump-backward)
 ;;   (global-set-key (kbd "M-<right>") 'better-jumper-jump-forward))
 ;; (local/after-init-hook 'better-jumper)
-
 
 ;; bm
 (setq bm-highlight-style 'bm-highlight-only-fringe)
@@ -295,15 +290,12 @@
 (autoload 'bm-next     "bm" "Goto bookmark."                     t)
 (autoload 'bm-previous "bm" "Goto previous bookmark."            t)
 
-
 (with-eval-after-load 'xref
   (setq xref-marker-ring-length 100)
   (setq xref-search-program 'ripgrep)
   (global-set-key (kbd "M-<left>") 'xref-go-back)
   (global-set-key (kbd "M-<right>") 'xref-go-forward))
 
-
-;;; easy-kill
 (global-set-key [remap kill-ring-save] 'easy-kill)
 (with-eval-after-load 'easy-kill
   (require 'extra-things)
@@ -321,55 +313,46 @@
   (add-to-list 'easy-kill-alist '(?{  curlies-pair "\n") t)
   (add-to-list 'easy-kill-alist '(?>  angles-pair-content "\n") t)
   (add-to-list 'easy-kill-alist '(?<  angles-pair "\n") t))
-;;; easy-kill end
 
-;;; string-inflection
-(global-set-key (kbd "C-c C-u") 'string-inflection-all-cycle)
-(add-hook 'ruby-mode-hook
-          (lambda ()
-            (local-set-key (kbd "C-c C-u") 'string-inflection-ruby-style-cycle)))
-(add-hook 'java-mode-hook
-          (lambda ()
-            (local-set-key (kbd "C-c C-u") 'string-inflection-java-style-cycle)))
-(add-hook 'python-mode-hook
-          (lambda ()
-            (local-set-key (kbd "C-c C-u") 'string-inflection-python-style-cycle)))
-(add-hook 'protobuf-mode-hook
-          (lambda ()
-            (local-set-key (kbd "C-c C-u") 'string-inflection-all-cycle)))
-;;; string-inflection end
+(use-package string-inflection
+  :commands (string-inflection-all-cycle)
+  :config
+  (global-set-key (kbd "C-c C-u") 'string-inflection-all-cycle)
+  (add-hook 'ruby-mode-hook
+            (lambda ()
+              (local-set-key (kbd "C-c C-u") 'string-inflection-ruby-style-cycle)))
+  (add-hook 'java-mode-hook
+            (lambda ()
+              (local-set-key (kbd "C-c C-u") 'string-inflection-java-style-cycle)))
+  (add-hook 'python-mode-hook
+            (lambda ()
+              (local-set-key (kbd "C-c C-u") 'string-inflection-python-style-cycle)))
+  (add-hook 'protobuf-mode-hook
+            (lambda ()
+              (local-set-key (kbd "C-c C-u") 'string-inflection-all-cycle))))
 
-
-(global-unset-key (kbd "C-x C-b"))
-
-(global-set-key (kbd "C-S-v") 'scroll-up-command)
-(global-set-key (kbd "M-S-v") 'scroll-down-command)
-(global-unset-key (kbd "C-9"))
-(global-unset-key (kbd "C-0"))
-(global-set-key (kbd "C-0") (lambda () (interactive) (next-line 2)))
-(global-set-key (kbd "C-9") (lambda () (interactive) (previous-line 2)))
-(global-set-key (kbd "C-(") (lambda () (interactive) (scroll-down-line 2)))
-(global-set-key (kbd "C-)") (lambda () (interactive) (scroll-up-line 2)))
-(global-set-key (kbd "C-*") (lambda () (interactive) (scroll-left 1)))
-(global-set-key (kbd "C-&") (lambda () (interactive) (scroll-right 1)))
-(global-set-key (kbd "C-}") (lambda () (interactive) (scroll-left)))
-(global-set-key (kbd "C-{") (lambda () (interactive) (scroll-right)))
-
-(global-set-key (kbd "<mouse-6>")
-                (lambda () (interactive)
-                  (if truncate-lines (scroll-right 1))))
-(global-set-key (kbd "<mouse-7>")
-                (lambda () (interactive)
-                  (if truncate-lines (scroll-left 1))))
-
-(global-set-key (kbd "C-M-p") 'backward-list)
-(global-set-key (kbd "C-M-n") 'forward-list)
-
-(global-set-key (kbd "C-x <?\\t>") 'indent-rigidly)
-
-(global-set-key "\C-c$" 'toggle-truncate-lines)
-
-(global-set-key (kbd "S-<return>") 'newline-at-end-of-line)
+(use-package emacs
+  :config
+  (global-unset-key (kbd "C-x C-b"))
+  (global-set-key (kbd "C-S-v") 'scroll-up-command)
+  (global-set-key (kbd "M-S-v") 'scroll-down-command)
+  (global-unset-key (kbd "C-9"))
+  (global-unset-key (kbd "C-0"))
+  (global-set-key (kbd "C-0") (lambda () (interactive) (next-line 2)))
+  (global-set-key (kbd "C-9") (lambda () (interactive) (previous-line 2)))
+  (global-set-key (kbd "C-(") (lambda () (interactive) (scroll-down-line 2)))
+  (global-set-key (kbd "C-)") (lambda () (interactive) (scroll-up-line 2)))
+  (global-set-key (kbd "C-*") (lambda () (interactive) (scroll-left 1)))
+  (global-set-key (kbd "C-&") (lambda () (interactive) (scroll-right 1)))
+  (global-set-key (kbd "C-}") (lambda () (interactive) (scroll-left)))
+  (global-set-key (kbd "C-{") (lambda () (interactive) (scroll-right)))
+  (global-set-key (kbd "<mouse-6>") (lambda () (interactive) (if truncate-lines (scroll-right 1))))
+  (global-set-key (kbd "<mouse-7>") (lambda () (interactive) (if truncate-lines (scroll-left 1))))
+  (global-set-key (kbd "C-M-p") 'backward-list)
+  (global-set-key (kbd "C-M-n") 'forward-list)
+  (global-set-key (kbd "C-x <?\\t>") 'indent-rigidly)
+  (global-set-key "\C-c$" 'toggle-truncate-lines)
+  (global-set-key (kbd "S-<return>") 'newline-at-end-of-line))
 
 (with-eval-after-load 'key-chord
   (key-chord-define-global "JJ" 'read-only-mode))
@@ -380,27 +363,18 @@
   )
 (local/after-init-hook 'general)
 
-
-;;; format
 (setq sh-basic-offset 2)
 (setq shfmt-arguments (list "-i" "2"))
 (add-hook 'sh-mode-hook 'shfmt-on-save-mode)
 
-;; npm install -g prettier
 (with-eval-after-load 'prettier
+  ;; npm install -g prettier
   (delete 'python prettier-enabled-parsers)
   (delete 'sh prettier-enabled-parsers))
 
-
-(global-set-key (kbd "<mouse-3>") 'yank)
-
-
-;;; pasteex-mode
 (with-eval-after-load 'markdown-mode
   (require 'pasteex-mode)
   (define-key markdown-mode-map (kbd "C-x p i") #'pasteex-image)
-  (define-key markdown-mode-map (kbd "C-x p d") #'pasteex-delete-img-link-and-file-at-line)
-  )
-
+  (define-key markdown-mode-map (kbd "C-x p d") #'pasteex-delete-img-link-and-file-at-line))
 
 (provide 'init-basic)
