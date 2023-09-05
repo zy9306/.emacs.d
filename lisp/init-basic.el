@@ -91,17 +91,17 @@
 ;;   (setq imenu-max-item-length 120)
 ;;   (setq imenu-list-focus-after-activation t))
 
-(use-package symbols-outline
-  :ensure t
-  :commands (symbols-outline-show)
-  :config
-  (with-eval-after-load 'symbols-outline
-    (key-chord-define-global "II" #'symbols-outline-show)
-
-    (unless (executable-find "ctags")
-      (setq symbols-outline-fetch-fn #'symbols-outline-lsp-fetch))
-    (setq symbols-outline-window-position 'left)
-    (symbols-outline-follow-mode)))
+(progn
+  (key-chord-define-global "II" #'symbols-outline-show)
+  (use-package symbols-outline
+    :ensure t
+    :commands (symbols-outline-show)
+    :config
+    (with-eval-after-load 'symbols-outline
+      (unless (executable-find "ctags")
+        (setq symbols-outline-fetch-fn #'symbols-outline-lsp-fetch))
+      (setq symbols-outline-window-position 'left)
+      (symbols-outline-follow-mode))))
 
 (when (or *linux* *mac*)
   (with-eval-after-load 'flycheck
@@ -314,22 +314,23 @@
   (add-to-list 'easy-kill-alist '(?>  angles-pair-content "\n") t)
   (add-to-list 'easy-kill-alist '(?<  angles-pair "\n") t))
 
-(use-package string-inflection
-  :commands (string-inflection-all-cycle)
-  :config
+(progn
   (global-set-key (kbd "C-c C-u") 'string-inflection-all-cycle)
-  (add-hook 'ruby-mode-hook
-            (lambda ()
-              (local-set-key (kbd "C-c C-u") 'string-inflection-ruby-style-cycle)))
-  (add-hook 'java-mode-hook
-            (lambda ()
-              (local-set-key (kbd "C-c C-u") 'string-inflection-java-style-cycle)))
-  (add-hook 'python-mode-hook
-            (lambda ()
-              (local-set-key (kbd "C-c C-u") 'string-inflection-python-style-cycle)))
-  (add-hook 'protobuf-mode-hook
-            (lambda ()
-              (local-set-key (kbd "C-c C-u") 'string-inflection-all-cycle))))
+  (use-package string-inflection
+    :commands (string-inflection-all-cycle)
+    :config
+    (add-hook 'ruby-mode-hook
+              (lambda ()
+                (local-set-key (kbd "C-c C-u") 'string-inflection-ruby-style-cycle)))
+    (add-hook 'java-mode-hook
+              (lambda ()
+                (local-set-key (kbd "C-c C-u") 'string-inflection-java-style-cycle)))
+    (add-hook 'python-mode-hook
+              (lambda ()
+                (local-set-key (kbd "C-c C-u") 'string-inflection-python-style-cycle)))
+    (add-hook 'protobuf-mode-hook
+              (lambda ()
+                (local-set-key (kbd "C-c C-u") 'string-inflection-all-cycle)))))
 
 (use-package emacs
   :config
