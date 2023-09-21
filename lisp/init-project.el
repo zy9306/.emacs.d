@@ -35,6 +35,10 @@
 
 ;;; treemacs
 (with-eval-after-load 'treemacs
+  (require 'treemacs-all-the-icons)
+
+  (treemacs-load-theme "all-the-icons")
+
   ;; 默认在最后使用的 window 中打开文件
   (treemacs-define-RET-action 'file-node-open   #'treemacs-visit-node-in-most-recently-used-window)
   (treemacs-define-RET-action 'file-node-closed #'treemacs-visit-node-in-most-recently-used-window)
