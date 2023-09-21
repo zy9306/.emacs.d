@@ -10,7 +10,7 @@
 
 (add-to-list 'interpreter-mode-alist (cons "node" 'js2-mode))
 
-(add-hook 'js-mode-hook 'js2-minor-mode)
+;; (add-hook 'js-mode-hook 'js2-minor-mode)
 
 (setq js-indent-level 2)
 (setq json-reformat:indent-width 2)

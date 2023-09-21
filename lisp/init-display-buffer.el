@@ -50,6 +50,11 @@
            :select t
            :same t)
 
+          (".*Treemacs.*"
+           :regexp t
+           :select t
+           :align left)
+
           ("\\*.*\\*"
            :regexp t
            :select t
