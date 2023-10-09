@@ -12,6 +12,13 @@
 (setq max-specpdl-size 10000)
 
 
+;; fringe
+(fringe-mode '(0 . 2))
+(set-face-attribute
+ 'fringe nil
+ :background "gray94")
+
+
 ;; (setq mouse-drag-copy-region t)
 
 (setq xref-history-storage 'xref-window-local-history)
