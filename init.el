@@ -40,6 +40,7 @@
 (local/load-package 'init-web-mode)
 (local/load-package 'init-go)
 
+(local/load-package 'init-formatter)
 (local/load-package 'init-additional-major-mode)
 (local/load-package 'init-display-buffer)
 (local/load-package 'init-macro)

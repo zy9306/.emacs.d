@@ -364,15 +364,6 @@
   )
 (local/after-init-hook 'general)
 
-(setq sh-basic-offset 2)
-(setq shfmt-arguments (list "-i" "2"))
-(add-hook 'sh-mode-hook 'shfmt-on-save-mode)
-
-(with-eval-after-load 'prettier
-  ;; npm install -g prettier
-  (delete 'python prettier-enabled-parsers)
-  (delete 'sh prettier-enabled-parsers))
-
 (with-eval-after-load 'markdown-mode
   (require 'pasteex-mode)
   (define-key markdown-mode-map (kbd "C-x p i") #'pasteex-image)
