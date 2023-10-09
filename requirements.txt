@@ -3,3 +3,5 @@ openai
 orjson
 sexpdata
 six
+paramiko
+rapidfuzz

@@ -1,6 +1,6 @@
 (load-file (expand-file-name "site-lisp/load.el" user-emacs-directory))
 (load-file (expand-file-name "theme/load.el" user-emacs-directory))
-(load-file (expand-file-name "repo/load.el" user-emacs-directory))
+(load-file (expand-file-name "submodules/load.el" user-emacs-directory))
 
 (use-package paradox
   :defer 10)

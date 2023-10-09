@@ -1,8 +1,6 @@
 (use-package dart-mode
   :defer t
-  :mode "\\.dart\\'"
-  :config
-  (add-hook 'dart-mode-hook 'lsp))
+  :mode "\\.dart\\'")
 
 
 (provide 'init-flutter)

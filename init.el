@@ -63,7 +63,7 @@
 
 ;; (local/load-package 'init-corfu)
 
-;; (local/load-package 'init-lsp-bridge)
+(local/load-package 'init-lsp-bridge)
 (local/load-package 'init-lsp-mode)
 ;; (local/load-package 'init-eglot)
 
