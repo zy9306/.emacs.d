@@ -13,7 +13,6 @@
 
 
 ;; fringe
-(fringe-mode '(0 . 2))
 (set-face-attribute
  'fringe nil
  :background "gray94")

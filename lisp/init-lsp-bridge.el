@@ -2,7 +2,6 @@
 (setq lsp-bridge-disable-backup nil)
 (setq lsp-bridge-enable-diagnostics nil)
 (setq lsp-bridge-enable-auto-format-code nil)
-(setq lsp-bridge-diagnostics-fetch-idle 5)
 (setq lsp-bridge-enable-signature-help t)
 
 (dolist (hook '(text-mode-hook
@@ -24,10 +23,9 @@
 (dolist (item '())
   (add-to-list 'lsp-bridge-completion-stop-commands item))
 
-(add-to-list 'lsp-bridge-single-lang-server-extension-list
-             '(("json") . "javascript"))
-
-(add-hook lsp-bridge-mode-hook (lambda () (company-mode -1)))
+(with-eval-after-load 'company-mode
+  (add-hook 'lsp-bridge-mode-hook (lambda () (company-mode -1)))
+  )
 
 (with-eval-after-load 'dart-mode
   (add-hook 'dart-mode-hook (lambda () (lsp-bridge-mode 1))))
