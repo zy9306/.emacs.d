@@ -59,12 +59,12 @@
 
 (local/load-package 'init-codeium)
 (local/load-package 'init-copilot)
-(local/load-package 'init-company)
+;; (local/load-package 'init-company)
 
 ;; (local/load-package 'init-corfu)
 
 (local/load-package 'init-lsp-bridge)
-(local/load-package 'init-lsp-mode)
+;; (local/load-package 'init-lsp-mode)
 ;; (local/load-package 'init-eglot)
 
 (local/load-package 'init-translate)

@@ -52,5 +52,8 @@
           (async-shell-command go-test-command go-test-buffer-name))
       (error "Not in function"))))
 
+;; for mac m1
+(when *mac*
+  (setq go-dlv-command-name "arch -arm64 dlv"))
 
 (provide 'init-go)

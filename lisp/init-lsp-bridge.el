@@ -23,15 +23,13 @@
 (dolist (item '())
   (add-to-list 'lsp-bridge-completion-stop-commands item))
 
-(with-eval-after-load 'company-mode
-  (add-hook 'lsp-bridge-mode-hook (lambda () (company-mode -1)))
-  )
+;; (with-eval-after-load 'dart-mode
+;;   (add-hook 'dart-mode-hook (lambda () (lsp-bridge-mode 1))))
 
-(with-eval-after-load 'dart-mode
-  (add-hook 'dart-mode-hook (lambda () (lsp-bridge-mode 1))))
+;; (dolist (hook '())
+;;   (add-hook hook (lambda () (lsp-bridge-mode 1))))
 
-(dolist (hook '())
-  (add-hook hook (lambda () (lsp-bridge-mode 1))))
+(add-hook 'pyvenv-post-activate-hooks (lambda () (lsp-bridge-restart-process)))
 
 (define-key lsp-bridge-mode-map (kbd "M-.") #'lsp-bridge-find-def)
 (define-key lsp-bridge-mode-map (kbd "C-x 4 .") #'lsp-bridge-find-def-other-window)
@@ -43,7 +41,8 @@
 (define-key lsp-bridge-mode-map (kbd "C-c l a") #'lsp-bridge-code-action)
 (define-key lsp-bridge-mode-map (kbd "C-c l R") #'lsp-bridge-restart-process)
 
-(local/after-init-hook 'lsp-bridge)
+;; (local/after-init-hook 'lsp-bridge)
 
+(add-hook 'after-init-hook 'global-lsp-bridge-mode)
 
 (provide 'init-lsp-bridge)

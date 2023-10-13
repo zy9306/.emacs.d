@@ -13,6 +13,7 @@
 (require-package 'counsel)
 (require-package 'projectile)
 (require-package 'counsel-projectile)
+(require-package 'counsel-fd)
 
 (require-package 'anzu)
 (require-package 'auto-virtualenv)
