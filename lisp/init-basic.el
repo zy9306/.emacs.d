@@ -1,5 +1,13 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 
+(use-package treesit-auto
+  ;; build lib https://github.com/casouri/tree-sitter-module and copy to ~/.emacs.d/tree-sitter
+  ;; for m1: arch -arm64 ./build.sh python
+  :demand t
+  :config
+  (setq treesit-auto-install 'prompt)
+  (global-treesit-auto-mode))
+
 (defun local/after-init-hook (package)
   (add-hook 'after-init-hook (lambda () (require package))))
 

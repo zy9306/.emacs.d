@@ -33,5 +33,6 @@ request/
 codeium/
 chatgpt/
 dall-e/
+tree-sitter/
 .venv
 __pycache__

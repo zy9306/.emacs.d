@@ -52,9 +52,6 @@
 (local/load-package 'init-mark)
 (local/load-package 'init-bufler)
 
-;; TODO 有点卡，升级电脑后再开吧
-;; (local/load-package 'init-tree-sitter)
-
 (local/load-package 'init-edit)
 
 (local/load-package 'init-codeium)
