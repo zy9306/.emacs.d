@@ -20,7 +20,7 @@
 
 (setq-default lsp-bridge-python-command *python*)
 
-(dolist (item '())
+(dolist (item '("copilot-accept-completion"))
   (add-to-list 'lsp-bridge-completion-stop-commands item))
 
 ;; (with-eval-after-load 'dart-mode
