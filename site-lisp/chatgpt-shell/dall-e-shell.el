@@ -4,8 +4,8 @@
 
 ;; Author: Alvaro Ramirez https://xenodium.com
 ;; URL: https://github.com/xenodium/chatgpt-shell
-;; Version: 0.15.1
-;; Package-Requires: ((emacs "27.1"))
+;; Version: 0.33.1
+;; Package-Requires: ((emacs "27.1") (shell-maker "0.42.1"))
 
 ;; This package is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -22,9 +22,16 @@
 
 ;;; Commentary:
 
+;; `dall-e-shell' is a comint-based DALL-E shell for Emacs.
+;;
 ;; You must set `dall-e-shell-openai-key' to your key before using.
 ;;
-;; Run `chatgpt-shell' to get a ChatGPT shell.
+;; Run `dall-e-shell' to get a DALL-E shell.
+;;
+;; Note: This is young package still.  Please report issues or send
+;; patches to https://github.com/xenodium/chatgpt-shell
+;;
+;; Support the work https://github.com/sponsors/xenodium
 
 (require 'shell-maker)
 
@@ -51,6 +58,18 @@ For example: \"1024x1024\""
 (defcustom dall-e-shell-request-timeout 60
   "How long to wait for a request to time out."
   :type 'integer
+  :group 'dall-e-shell)
+
+(defcustom dall-e-shell-image-output-directory temporary-file-directory
+  "Output directory for the generated image."
+  :type 'directory
+  :group 'dall-e-shell)
+
+(defcustom dall-e-shell-welcome-function #'shell-maker-welcome-message
+  "Function returning welcome message or nil for no message.
+
+See `shell-maker-welcome-message' as an example."
+  :type 'function
   :group 'dall-e-shell)
 
 (defvaralias 'dall-e-shell-display-function 'shell-maker-display-function)
@@ -85,11 +104,13 @@ or
       callback
       error-callback))))
 
+(shell-maker-define-major-mode dall-e-shell--config)
+
 ;;;###autoload
 (defun dall-e-shell ()
   "Start a DALL-E shell."
   (interactive)
-  (shell-maker-start dall-e-shell--config))
+  (shell-maker-start dall-e-shell--config nil dall-e-shell-welcome-function))
 
 (defun dall-e-shell--make-payload (history)
   "Create the request payload from HISTORY."
@@ -104,13 +125,14 @@ or
 Set NO-DOWNLOAD to skip automatic downloading."
   (if-let ((parsed (shell-maker--json-parse-string-filtering
                     json "^curl:.*\n?"))
-           (buffer (shell-maker-buffer shell-maker-config)))
+           (buffer (shell-maker-buffer shell-maker--config)))
       (if-let* ((url (let-alist parsed
                        (let-alist (seq-first .data)
                          .url)))
                 (created (number-to-string (let-alist parsed
                                              .created)))
-                (path (expand-file-name (concat created ".png") temporary-file-directory)))
+                (path (expand-file-name (concat created ".png")
+                                        dall-e-shell-image-output-directory)))
           (if no-download
               `((url . ,url)
                 (created . ,created)
@@ -153,7 +175,7 @@ Set NO-DOWNLOAD to skip automatic downloading."
 
 Optionally provide model VERSION or IMAGE-SIZE."
   (with-temp-buffer
-    (setq-local shell-maker-config
+    (setq-local shell-maker--config
                 dall-e-shell--config)
     (let* ((api-buffer (current-buffer))
            (command
@@ -173,8 +195,8 @@ Optionally provide model VERSION or IMAGE-SIZE."
                        1)))
            (response (dall-e-shell--extract-response
                       (buffer-substring-no-properties
-	               (point-min)
-	               (point-max))
+                       (point-min)
+                       (point-max))
                       t)))
       (if (and (map-elt response 'url)
                (map-elt response 'path)
@@ -241,7 +263,7 @@ ERROR-CALLBACK otherwise."
         "--fail-with-body"
         "--no-progress-meter"
         "-m" (number-to-string dall-e-shell-request-timeout)
-        "-H" "Content-Type: application/json"
+        "-H" "Content-Type: application/json; charset=utf-8"
         "-H" (format "Authorization: Bearer %s"
                      (cond ((stringp dall-e-shell-openai-key)
                             dall-e-shell-openai-key)

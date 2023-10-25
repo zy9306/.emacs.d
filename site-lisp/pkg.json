@@ -19,7 +19,7 @@
     "repo": "git@github.com:joaotavora/breadcrumb.git"
   },
   "chatgpt-shell": {
-    "commit": "4b812342f3f1849612aef346becb49bbaaf03e66",
+    "commit": "311d732593d0b128a8bf69a8a70dc51b76731707",
     "ignore": [],
     "only": [
       "el"
