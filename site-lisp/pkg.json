@@ -121,7 +121,7 @@
     "repo": "git@github.com:oantolin/embark.git"
   },
   "gptel": {
-    "commit": "4f3ca234545a3643eb3bed2baf55645463b6f728",
+    "commit": "644fc1de2f1934f2db1e448de1edae065e848b77",
     "ignore": [],
     "only": [
       "el"
