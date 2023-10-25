@@ -12,6 +12,14 @@
 (setq max-specpdl-size 10000)
 
 
+;; long line
+(setq-default bidi-display-reordering nil)
+(setq bidi-inhibit-bpa t
+      long-line-threshold 1000
+      large-hscroll-threshold 1000
+      syntax-wholeline-max 1000)
+
+
 ;; fringe
 (set-face-attribute
  'fringe nil
