@@ -18,6 +18,9 @@
 (setq typescript-indent-level 2)
 
 
+(setq web-mode-enable-auto-indentation nil)
+
+
 ;;; deprecated
 ;;; tide (now use lsp-bridge instead)
 ;; (require-package 'web-mode)

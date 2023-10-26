@@ -1,5 +1,9 @@
 (use-package reformatter
   :config
+  (reformatter-define go-template-format
+    :program "prettier"
+    :args (list "--parser" "go-template" "--plugin" "prettier-plugin-go-template" input-file))
+
   (reformatter-define black-format
     :program "black"
     :args '("-t" "py310" "-"))
