@@ -25,6 +25,7 @@
 
 (defun local/go-test-current-func ()
   (interactive)
+  (require 'go-mode)
   (let (current-test-name current-bench-name current-func-loc)
     (save-excursion
       (when (go-beginning-of-defun)
