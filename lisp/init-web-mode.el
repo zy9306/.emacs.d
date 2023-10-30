@@ -18,7 +18,8 @@
 (setq typescript-indent-level 2)
 
 
-(setq web-mode-enable-auto-indentation nil)
+(with-eval-after-load 'web-mode
+  (setq web-mode-enable-auto-indentation nil))
 
 
 ;;; deprecated
