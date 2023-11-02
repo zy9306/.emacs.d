@@ -1,5 +1,10 @@
 (use-package reformatter
   :config
+  (reformatter-define goimports
+    :program "goimports")
+  (with-eval-after-load 'go-ts-mode
+    (add-hook 'go-ts-mode-hook #'goimports-on-save-mode))
+
   (reformatter-define go-template-format
     :program "prettier"
     :args (list "--parser" "go-template" "--plugin" "prettier-plugin-go-template" input-file))
