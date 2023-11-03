@@ -135,6 +135,7 @@
   (diminish 'symbol-overlay-mode)
   (dolist (hook '(prog-mode-hook
                   html-mode-hook
+                  go-ts-mode
                   conf-mode-hook
                   text-mode-hook
                   protobuf-mode-hook

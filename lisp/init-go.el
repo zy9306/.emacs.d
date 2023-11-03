@@ -14,15 +14,15 @@
     (add-to-list 'flycheck-disabled-checkers checker)))
 
 (add-hook 'go-mode-hook #'local/setup-flycheck-for-go)
+(add-hook 'go-ts-mode-hook #'local/setup-flycheck-for-go)
 
 
 ;;; FORMAT START
-(defun local/go-mode-save-hooks ()
-  (setq gofmt-show-errors 'echo)
-  (setq gofmt-command "goimports")
-  (add-hook 'before-save-hook 'gofmt-before-save))
-
-(add-hook 'go-mode-hook #'local/go-mode-save-hooks)
+;; (defun local/go-mode-save-hooks ()
+;;   (setq gofmt-show-errors 'echo)
+;;   (setq gofmt-command "goimports")
+;;   (add-hook 'before-save-hook 'gofmt-before-save))
+;; (add-hook 'go-mode-hook #'local/go-mode-save-hooks)
 
 (defun local/go-test-current-func ()
   (interactive)

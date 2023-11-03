@@ -4,6 +4,8 @@
     :program "goimports")
   (with-eval-after-load 'go-ts-mode
     (add-hook 'go-ts-mode-hook #'goimports-on-save-mode))
+  (with-eval-after-load 'go-mode
+    (add-hook 'go-mode-hook #'goimports-on-save-mode))
 
   (reformatter-define go-template-format
     :program "prettier"
