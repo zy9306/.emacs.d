@@ -16,6 +16,12 @@
 (add-hook 'go-mode-hook #'local/setup-flycheck-for-go)
 (add-hook 'go-ts-mode-hook #'local/setup-flycheck-for-go)
 
+(use-package go-playground
+  :commands (go-playground)
+  :init
+  (setq go-playground-init-command "go mod init go-playground")
+  (setq go-playground-basedir "~/go-playground"))
+
 
 ;;; FORMAT START
 ;; (defun local/go-mode-save-hooks ()
