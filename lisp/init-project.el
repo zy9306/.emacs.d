@@ -46,7 +46,7 @@
   (treemacs-define-doubleclick-action 'file-node-open   #'treemacs-visit-node-in-most-recently-used-window)
   (treemacs-define-doubleclick-action 'file-node-closed #'treemacs-visit-node-in-most-recently-used-window)
 
-  (setq treemacs-width 20)
+  (setq treemacs-width 40)
 
   (treemacs-follow-mode -1)
 
