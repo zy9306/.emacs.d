@@ -12,6 +12,10 @@
           (lambda()
             (local-unset-key (kbd "C-c C-f"))))
 
+(add-hook 'python-ts-mode-hook
+          (lambda()
+            (local-set-key (kbd "RET") 'electric-newline-and-maybe-indent)))
+
 (global-set-key (kbd "C-c C-y") 'yapfify-region)
 (global-set-key (kbd "C-c C-b") 'python-black-region)
 
