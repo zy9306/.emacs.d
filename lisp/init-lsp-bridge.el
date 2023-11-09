@@ -13,6 +13,7 @@
 (setq acm-enable-tabnine t)
 (setq acm-enable-citre nil)
 (setq acm-backend-lsp-candidate-max-length 60)
+(setq acm-quick-access t)
 
 (if (image-type-available-p 'svg)
     (setq acm-enable-icon t)
