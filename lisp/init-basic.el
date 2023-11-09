@@ -69,19 +69,6 @@
 (use-package vundo
   :defer 10)
 
-(use-package real-auto-save
-  :defer 10)
-(with-eval-after-load 'real-auto-save
-  (diminish 'real-auto-save-mode)
-  (setq real-auto-save-interval 30)
-  (dolist (hook '(text-mode-hook
-                  python-mode-hook
-                  go-mode-hook
-                  yaml-mode-hook
-                  conf-mode-hook
-                  elisp-mode-hook))
-    (add-hook hook 'real-auto-save-mode)))
-
 (use-package which-key
   :defer 5)
 (with-eval-after-load 'which-key

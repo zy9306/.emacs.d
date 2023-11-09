@@ -128,35 +128,6 @@
 
 (setq dired-listing-switches "-al -h --group-directories-first --color=auto")
 
-
-;; backup
-(make-directory "~/.emacs.d/autosaves/" t)
-(make-directory "~/.emacs.d/backups/" t)
-(setq backup-directory-alist
-      `((".*" . "~/.emacs.d/backups/")))
-(setq auto-save-file-name-transforms
-      `((".*" "~/.emacs.d/autosaves/" t)))
-(setq version-control t)
-(setq vc-make-backup-files t)
-(setq backup-by-copying t)
-(setq delete-old-versions t)
-(setq delete-by-moving-to-trash t)
-(setq kept-old-versions 0)
-(setq kept-new-versions 20)
-
-(setq create-lockfiles nil)
-
-(defun local/backup-on-save ()
-  (let ((buffer-backed-up nil))
-    (if (<= (buffer-size) (* 1 1024 1024))  ;; 1 MB
-        (progn
-          (message "Made per save backup of %s." (buffer-name))
-          (backup-buffer))
-      (message "WARNING: File %s too large to backup." (buffer-name)))))
-
-(add-hook 'before-save-hook 'local/backup-on-save)
-
-
 ;; read-only
 (dir-locals-set-class-variables 'read-only
                                 '((nil . ((buffer-read-only . t)))))

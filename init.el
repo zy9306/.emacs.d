@@ -19,6 +19,7 @@
 
 (local/load-package 'init-constant)
 (local/load-package 'init-option)
+(local/load-package 'init-auto-save)
 (local/load-package 'init-font)
 (local/load-package 'init-theme)
 (local/load-package 'init-color)
