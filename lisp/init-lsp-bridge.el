@@ -1,7 +1,7 @@
 (require 'lsp-bridge)
 (setq lsp-bridge-disable-backup nil)
 (setq lsp-bridge-enable-auto-format-code nil)
-(setq lsp-bridge-enable-hover-diagnostic t)
+(setq lsp-bridge-enable-hover-diagnostic nil)
 
 (dolist (hook '(text-mode-hook
                 yaml-mode-hook))

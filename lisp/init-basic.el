@@ -123,6 +123,7 @@
   (dolist (hook '(prog-mode-hook
                   html-mode-hook
                   go-ts-mode
+                  python-ts-mode
                   conf-mode-hook
                   text-mode-hook
                   protobuf-mode-hook
