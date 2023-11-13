@@ -1,5 +1,8 @@
 ;;; -*- coding: utf-8; lexical-binding: t; -*-
 
+(defun local/after-init-hook (package)
+  (add-hook 'after-init-hook (lambda () (require package))))
+
 (use-package treesit-auto
   ;; build lib https://github.com/casouri/tree-sitter-module and copy to ~/.emacs.d/tree-sitter
   ;; for m1: arch -arm64 ./build.sh python
@@ -8,8 +11,10 @@
   (setq treesit-auto-install 'prompt)
   (global-treesit-auto-mode))
 
-(defun local/after-init-hook (package)
-  (add-hook 'after-init-hook (lambda () (require package))))
+(dolist (hook '(python-ts-mode-hook
+                go-ts-mode-hook
+                yaml-ts-mode-hook))
+  (lambda() (local-set-key (kbd "RET") 'electric-newline-and-maybe-indent)))
 
 (with-eval-after-load 'prescient
   (setq prescient-save-file (concat "~/.emacs.d/.persist/" "prescient-save.el"))
