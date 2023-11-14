@@ -1,7 +1,7 @@
 (require 'lsp-bridge)
 (setq lsp-bridge-disable-backup nil)
+(setq lsp-bridge-enable-diagnostics nil)
 (setq lsp-bridge-enable-auto-format-code nil)
-(setq lsp-bridge-enable-hover-diagnostic nil)
 
 (dolist (hook '(text-mode-hook
                 yaml-mode-hook))
@@ -10,7 +10,7 @@
 (setq acm-backend-lsp-enable-auto-import nil)
 (setq acm-enable-doc nil)
 (setq acm-enable-yas nil)
-(setq acm-enable-tabnine t)
+(setq acm-enable-tabnine nil)
 (setq acm-enable-citre nil)
 (setq acm-backend-lsp-candidate-max-length 60)
 (setq acm-quick-access t)

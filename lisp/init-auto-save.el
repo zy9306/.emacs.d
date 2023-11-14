@@ -47,6 +47,7 @@
                                         ; auto-save ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'auto-save)
+(setq auto-save-idle 15)
 (auto-save-enable)
 (setq auto-save-silent t)
 
