@@ -11,11 +11,6 @@
   (setq treesit-auto-install 'prompt)
   (global-treesit-auto-mode))
 
-(dolist (hook '(python-ts-mode-hook
-                go-ts-mode-hook
-                yaml-ts-mode-hook))
-  (lambda() (local-set-key (kbd "RET") 'electric-newline-and-maybe-indent)))
-
 (with-eval-after-load 'prescient
   (setq prescient-save-file (concat "~/.emacs.d/.persist/" "prescient-save.el"))
   (prescient-persist-mode 1))

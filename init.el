@@ -96,6 +96,9 @@
   (setq desktop-dirname desktop-dir)
   (setq desktop-path `(,desktop-dir)))
 
+
+(local/load-package 'init-last)
+
 ;;; close debug when finally load
 (setq debug-on-error nil)
 
