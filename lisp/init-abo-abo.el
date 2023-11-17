@@ -26,41 +26,35 @@
   ;; recentf 显示相对路径，而不是只显示文件名
   (setq ivy-virtual-abbreviate 'abbreviate)
 
-  ;; TODO this will be overwrite
-  ;; (setcdr (assoc 'counsel-M-x ivy-initial-inputs-alist) "")
   (setq ivy-initial-inputs-alist nil)
   (setq counsel-search-engine 'google)
 
-  ;; swiper-isearch 弹出高度设为 1，使其更接近 isearch
-  ;; (add-to-list 'ivy-height-alist '(swiper-isearch . 1))
-  ;; (global-set-key (kbd "C-s") 'swiper-isearch)
-
   (global-set-key (kbd "C-s") 'swiper)
   (add-to-list 'ivy-height-alist '(swiper . 15))
+  (define-key swiper-map (kbd "C-r") 'previous-line)
 
   (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 
-  (global-set-key (kbd "<f1> f") 'counsel-describe-function)
-  (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-  (global-set-key (kbd "<f1> l") 'counsel-find-library)
-  (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-  (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-
-  ;; Ivy-based interface to shell and system tools
   (global-set-key (kbd "C-c g") 'counsel-git)
   (global-set-key (kbd "C-c j") 'counsel-git-grep)
-  (global-set-key (kbd "C-c k") 'counsel-ag)
   (global-set-key (kbd "C-x l") 'counsel-locate)
 
-  ;; ivy-resume resumes the last Ivy-based completion
   (global-set-key (kbd "C-c C-r") 'ivy-resume)
   (global-set-key (kbd "C-c C-o") 'ivy-occur)
 
   (define-key ivy-occur-grep-mode-map (kbd "z") 'ivy-occur-hide-lines-matching)
-  (define-key ivy-occur-grep-mode-map (kbd "/") 'ivy-occur-hide-lines-not-matching)
+  (define-key ivy-occur-grep-mode-map (kbd "/") 'ivy-occur-hide-lines-not-matching))
 
-  (define-key swiper-map (kbd "C-r") 'previous-line))
+(use-package avy
+  :commands (avy-goto-char avy-goto-char-2))
+(with-eval-after-load 'avy
+  (avy-setup-default))
+
+(eval-after-load "isearch"
+  '(progn
+     (require 'isearch-dabbrev)
+     (define-key isearch-mode-map (kbd "<tab>") 'isearch-dabbrev-expand)))
 
 ;;;###autoload
 (defun ivy-occur-hide-lines-not-matching (search-text)
@@ -130,8 +124,7 @@
   (global-set-key (kbd "C-<tab>") 'local/ivy-switch-buffer-ignore-star-buffers)
 
   (define-key ivy-switch-buffer-map (kbd "C-<tab>") 'next-line)
-  (define-key ivy-switch-buffer-map (kbd "C-S-<tab>") 'previous-line)
-  )
+  (define-key ivy-switch-buffer-map (kbd "C-S-<tab>") 'previous-line))
 
 
-(provide 'init-ivy)
+(provide 'init-abo-abo)
