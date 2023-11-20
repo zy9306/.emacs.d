@@ -11,6 +11,22 @@
   (setq treesit-auto-install 'prompt)
   (global-treesit-auto-mode))
 
+(use-package treesitter-context
+  :commands (treesitter-context-mode)
+  :init
+  (setq treesitter-context-background-color "#ECEFF1")
+  (setq treesitter-context-frame-min-height 1)
+  (setq treesitter-context-idle-time 1.0)
+  (setq treesitter-context-frame-autohide-timeout 60)
+  (add-hook 'python-ts-mode-hook #'treesitter-context-mode)
+  (add-hook 'go-ts-mode-hook #'treesitter-context-mode)
+  (add-hook 'yaml-ts-mode-hook #'treesitter-context-mode)
+  (add-hook 'toml-ts-mode-hook #'treesitter-context-mode)
+  (add-hook 'js-ts-mode-hook #'treesitter-context-mode)
+  :config
+  (dolist (hook '(yaml-ts-mode-hook js-ts-mode-hook))
+    (add-hook hook (lambda () (setq-local treesitter-context-frame-indent-offset 2)))))
+
 (with-eval-after-load 'prescient
   (setq prescient-save-file (concat "~/.emacs.d/.persist/" "prescient-save.el"))
   (prescient-persist-mode 1))
