@@ -275,13 +275,6 @@
     (global-set-key (kbd "<mouse-5>") 'scroll-up-line)))
 (add-hook 'after-init-hook 'local/setup-terminal)
 
-;; (with-eval-after-load 'better-jumper
-;;   (better-jumper-mode +1)
-;;   (global-set-key (kbd "M-*") 'better-jumper-set-jump)
-;;   (global-set-key (kbd "M-<left>") 'better-jumper-jump-backward)
-;;   (global-set-key (kbd "M-<right>") 'better-jumper-jump-forward))
-;; (local/after-init-hook 'better-jumper)
-
 ;; bm
 (setq bm-highlight-style 'bm-highlight-only-fringe)
 (setq bm-in-lifo-order t)

@@ -1,23 +1,4 @@
 {
-  "better-jumper": {
-    "commit": "3148a17b5920bba8ec4f81b717b99acde5fd5b74",
-    "ignore": [
-      "Readme.md",
-      "LICENSE"
-    ],
-    "pkg": "better-jumper",
-    "repo": "git@github.com:gilbertw1/better-jumper.git"
-  },
-  "breadcrumb": {
-    "commit": "cda39e32f0d61de3ee471ecc5b1b1aa91214ab52",
-    "ignore": [],
-    "only": [
-      "el"
-    ],
-    "only_el": false,
-    "pkg": "breadcrumb",
-    "repo": "git@github.com:joaotavora/breadcrumb.git"
-  },
   "chatgpt-shell": {
     "commit": "311d732593d0b128a8bf69a8a70dc51b76731707",
     "ignore": [],
@@ -74,16 +55,6 @@
     "only_el": false,
     "pkg": "copilot.el",
     "repo": "git@github.com:zerolfx/copilot.el.git"
-  },
-  "devil": {
-    "commit": "31a4a084d9d8affb62e53de31d5eae00f772a06a",
-    "ignore": [],
-    "only": [
-      "el"
-    ],
-    "only_el": false,
-    "pkg": "devil",
-    "repo": "git@github.com:susam/devil.git"
   },
   "duplicate-line": {
     "commit": "5abe4b81fa1618212938eb2e9b153975c34c11f1",
@@ -162,16 +133,6 @@
     "only_el": true,
     "pkg": "markmacro",
     "repo": "git@github.com:manateelazycat/markmacro.git"
-  },
-  "nano-modeline": {
-    "commit": "b8795c14ada38736fdc0288e388ac6b950b22ce9",
-    "ignore": [],
-    "only": [
-      "el"
-    ],
-    "only_el": false,
-    "pkg": "nano-modeline",
-    "repo": "git@github.com:rougier/nano-modeline.git"
   },
   "nano-theme": {
     "commit": "9d64dc167883835a6dc3a6d286c98dbbf7e95a96",
@@ -269,16 +230,6 @@
     "only_el": false,
     "pkg": "topsy.el",
     "repo": "git@github.com:alphapapa/topsy.el.git"
-  },
-  "ts-fold": {
-    "commit": "7667a376449174714574c18f179f8d604860f138",
-    "ignore": [],
-    "only": [
-      "el"
-    ],
-    "only_el": false,
-    "pkg": "ts-fold",
-    "repo": "git@github.com:emacs-tree-sitter/ts-fold.git"
   },
   "vertico": {
     "commit": "eedcb847869226701acaf9a36dce0a51d1b60862",
