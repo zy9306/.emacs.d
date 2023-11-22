@@ -1,34 +1,29 @@
 (require 'lsp-bridge)
 (setq lsp-bridge-disable-backup nil)
 (setq lsp-bridge-enable-diagnostics nil)
+(setq lsp-bridge-diagnostic-fetch-idle 5)
 (setq lsp-bridge-enable-auto-format-code nil)
 
 (dolist (hook '(text-mode-hook
                 yaml-mode-hook))
   (add-hook hook (lambda () (setq-local lsp-bridge-enable-signature-help nil))))
 
+(setq acm-backend-lsp-candidate-min-length 2)
+(setq acm-backend-codeium-candidate-min-length 2)
+(setq acm-backend-search-file-words-candidate-min-length 2)
 (setq acm-backend-lsp-enable-auto-import nil)
 (setq acm-enable-doc nil)
 (setq acm-enable-yas nil)
 (setq acm-enable-tabnine nil)
 (setq acm-enable-citre nil)
 (setq acm-backend-lsp-candidate-max-length 60)
-(setq acm-quick-access t)
-
-(if (image-type-available-p 'svg)
-    (setq acm-enable-icon t)
-  (setq acm-enable-icon nil))
+(setq acm-enable-quick-access t)
+(setq acm-quick-access-use-number-select t)
 
 (setq-default lsp-bridge-python-command *python*)
 
 (dolist (item '("copilot-accept-completion" "yank"))
   (add-to-list 'lsp-bridge-completion-stop-commands item))
-
-;; (with-eval-after-load 'dart-mode
-;;   (add-hook 'dart-mode-hook (lambda () (lsp-bridge-mode 1))))
-
-;; (dolist (hook '())
-;;   (add-hook hook (lambda () (lsp-bridge-mode 1))))
 
 (add-hook 'pyvenv-post-activate-hooks (lambda () (lsp-bridge-restart-process)))
 
@@ -41,8 +36,6 @@
 (define-key lsp-bridge-mode-map (kbd "C-c l r") #'lsp-bridge-rename)
 (define-key lsp-bridge-mode-map (kbd "C-c l a") #'lsp-bridge-code-action)
 (define-key lsp-bridge-mode-map (kbd "C-c l R") #'lsp-bridge-restart-process)
-
-;; (local/after-init-hook 'lsp-bridge)
 
 (add-hook 'after-init-hook 'global-lsp-bridge-mode)
 
