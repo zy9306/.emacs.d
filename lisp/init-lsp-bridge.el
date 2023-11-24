@@ -3,10 +3,23 @@
 (setq lsp-bridge-enable-diagnostics nil)
 (setq lsp-bridge-diagnostic-fetch-idle 5)
 (setq lsp-bridge-enable-auto-format-code nil)
+(setq lsp-bridge-enable-search-words nil)
 
 (dolist (hook '(text-mode-hook
                 yaml-mode-hook))
-  (add-hook hook (lambda () (setq-local lsp-bridge-enable-signature-help nil))))
+  (add-hook hook (lambda ()
+                   (progn
+                     (setq-local lsp-bridge-enable-signature-help nil)
+                     ))))
+
+(dolist (hook '(text-mode-hook
+                yaml-mode-hook))
+  (add-hook hook (lambda ()
+                   (progn
+                     (setq-local acm-enable-copilot t)
+                     (setq-local lsp-bridge-enable-search-words t)
+                     (setq-local acm-enable-search-file-words t)
+                     ))))
 
 (setq acm-backend-lsp-candidate-min-length 2)
 (setq acm-backend-codeium-candidate-min-length 2)
@@ -16,6 +29,7 @@
 (setq acm-enable-yas nil)
 (setq acm-enable-tabnine nil)
 (setq acm-enable-citre nil)
+(setq acm-enable-search-file-words nil)
 (setq acm-backend-lsp-candidate-max-length 60)
 (setq acm-enable-quick-access t)
 (setq acm-quick-access-use-number-select t)
