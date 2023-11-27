@@ -7,7 +7,7 @@
 (defun local/setup-corfu ()
   (use-package corfu
     :custom
-    (corfu-auto t)
+    (corfu-auto nil)
     (corfu-auto-prefix 1)
     (corfu-auto-delay 0.2)
     (corfu-quit-no-match t)
@@ -18,7 +18,6 @@
     (corfu-scroll-margin 5)
     :bind
     (:map corfu-map
-          ;; use default corfu-separator and corfu-quit-at-boundary
           ("M-SPC" . corfu-insert-separator)
           ([return] . corfu-insert)
           ([tab] . corfu-next)

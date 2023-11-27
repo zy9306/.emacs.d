@@ -55,6 +55,11 @@
            :select t
            :align left)
 
+          (".*\\.go"
+           :regexp t
+           :select t
+           :same t)
+
           ("\\*.*\\*"
            :regexp t
            :select t
