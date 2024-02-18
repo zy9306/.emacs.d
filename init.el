@@ -29,7 +29,6 @@
 (local/load-package 'init-posframe)
 (local/load-package 'init-window)
 (local/load-package 'init-project)
-(local/load-package 'init-rg)
 (local/load-package 'init-org)
 
 (local/load-package 'init-additional-major-mode)
