@@ -10,12 +10,3 @@
 [submodule "elpa"]
 	path = elpa
 	url = git@github.com:zy9306/elpa.git
-[submodule "submodules/lsp-bridge"]
-	path = submodules/lsp-bridge
-	url = git@github.com:manateelazycat/lsp-bridge.git
-[submodule "submodules/treesitter-context.el"]
-	path = submodules/treesitter-context.el
-	url = git@github.com:zbelial/treesitter-context.el.git
-[submodule "submodules/posframe-plus"]
-	path = submodules/posframe-plus
-	url = git@github.com:zbelial/posframe-plus.git
