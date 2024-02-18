@@ -15,8 +15,6 @@
 
 (load-file (expand-file-name "pkg.el" user-emacs-directory))
 
-(require 'lazy-load)
-
 (local/load-package 'init-constant)
 (local/load-package 'init-option)
 (local/load-package 'init-font)
