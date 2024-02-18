@@ -3,34 +3,6 @@
 (defun local/after-init-hook (package)
   (add-hook 'after-init-hook (lambda () (require package))))
 
-(use-package treesit-auto
-  ;; build lib https://github.com/casouri/tree-sitter-module and copy to ~/.emacs.d/tree-sitter
-  ;; for m1: arch -arm64 ./build.sh python
-  :demand t
-  :config
-  (setq treesit-auto-install 'prompt)
-  (global-treesit-auto-mode))
-
-(use-package treesitter-context
-  :commands (treesitter-context-mode)
-  :init
-  (setq treesitter-context-background-color "#ECEFF1")
-  (setq treesitter-context-frame-min-height 1)
-  (setq treesitter-context-idle-time 1.0)
-  (setq treesitter-context-frame-autohide-timeout 60)
-  (add-hook 'python-ts-mode-hook #'treesitter-context-mode)
-  (add-hook 'go-ts-mode-hook #'treesitter-context-mode)
-  (add-hook 'yaml-ts-mode-hook #'treesitter-context-mode)
-  (add-hook 'toml-ts-mode-hook #'treesitter-context-mode)
-  (add-hook 'js-ts-mode-hook #'treesitter-context-mode)
-  :config
-  (dolist (hook '(yaml-ts-mode-hook js-ts-mode-hook))
-    (add-hook hook (lambda () (setq-local treesitter-context-frame-indent-offset 2)))))
-
-(with-eval-after-load 'prescient
-  (setq prescient-save-file (concat "~/.emacs.d/.persist/" "prescient-save.el"))
-  (prescient-persist-mode 1))
-
 (use-package exec-path-from-shell
   :defer 3)
 (with-eval-after-load 'exec-path-from-shell
@@ -41,9 +13,6 @@
 (use-package smex :defer 3)
 
 (add-hook 'after-init-hook (lambda () (save-place-mode)))
-
-;; (use-package subword
-;;   :hook (after-init . global-subword-mode))
 
 (use-package so-long
   :hook (after-init . global-so-long-mode))
@@ -57,72 +26,24 @@
   :config
   (setq-default goggles-pulse t))
 
-
-;;; fill-column-indicator
-;; (global-display-fill-column-indicator-mode)
-
 (setq-default fill-column 120)
 
-
-;; 自带的使用上有点问题，先继续用 undo-tree
-(if (and nil (version<= "28.0" emacs-version))
-    (progn
-      (global-set-key (kbd "C-/") 'undo)
-      (global-set-key (kbd "M-_") 'undo-redo))
-  (progn
-    (with-eval-after-load 'undo-tree
-      ;; 也可以试试这个可视化包 https://github.com/casouri/vundo
-      (diminish 'undo-tree-mode)
-      ;; 不需要持久化
-      (setq undo-tree-auto-save-history nil)
-      (global-undo-tree-mode)
-      ;; also C-_
-      (global-set-key (kbd "C-/") 'undo-tree-undo)
-      ;; alse C-?
-      (global-set-key (kbd "M-_") 'undo-tree-redo))
-    (local/after-init-hook 'undo-tree)))
-
-(use-package vundo
-  :defer 10)
-
-(use-package which-key
-  :defer 5)
-(with-eval-after-load 'which-key
-  (diminish 'which-key-mode)
-  (which-key-setup-side-window-bottom)
-  (which-key-mode))
-
-;; symbols-outline
-;; (use-package imenu-list
-;;   :defer 10)
-;; (with-eval-after-load 'imenu-list
-;;   (setq imenu-list-auto-resize nil)
-;;   (setq imenu-list-position 'right)
-;;   (setq imenu-list-size 0.2)
-;;   (setq imenu-max-item-length 120)
-;;   (setq imenu-list-focus-after-activation t))
-
 (progn
-  (key-chord-define-global "II" #'symbols-outline-show)
-  (use-package symbols-outline
-    :ensure t
-    :commands (symbols-outline-show)
-    :config
-    (with-eval-after-load 'symbols-outline
-      (unless (executable-find "ctags")
-        (setq symbols-outline-fetch-fn #'symbols-outline-lsp-fetch))
-      (setq symbols-outline-window-position 'left)
-      (symbols-outline-follow-mode))))
+  (with-eval-after-load 'undo-tree
+    (diminish 'undo-tree-mode)
+    (setq undo-tree-auto-save-history nil)
+    (global-undo-tree-mode)
+    ;; also C-_
+    (global-set-key (kbd "C-/") 'undo-tree-undo)
+    ;; alse C-?
+    (global-set-key (kbd "M-_") 'undo-tree-redo))
+  (local/after-init-hook 'undo-tree))
 
 (when (or *linux* *mac*)
   (with-eval-after-load 'flycheck
     (setq-default flycheck-disabled-checkers '(emacs-lisp emacs-lisp-checkdoc))
     (global-flycheck-mode))
   (local/after-init-hook 'flycheck))
-
-(with-eval-after-load 'flymake
-  (define-key flymake-mode-map (kbd "C-c ! p") 'flymake-show-project-diagnostics)
-  (define-key flymake-mode-map (kbd "C-c ! b") 'flymake-show-buffer-diagnostics))
 
 (use-package diff-hl
   :defer 10)
@@ -160,20 +81,6 @@
   (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
   (global-set-key [remap query-replace] 'anzu-query-replace))
 
-(defun local/config-ace-isearch()
-  (require 'ace-isearch)
-  (global-ace-isearch-mode +1)
-  (diminish 'ace-isearch-mode)
-  ;; 默认输入超过 ace-isearch-input-length 个字符触发 swiper，禁用
-  (setq ace-isearch-use-function-from-isearch nil)
-  (setq ace-isearch-use-jump nil)
-  (setq ace-isearch-input-length 99))
-(add-hook 'after-init-hook #'local/config-ace-isearch)
-
-(use-package iedit
-  :commands (iedit-mode)
-  :bind (("C-c i" . iedit-mode)))
-
 ;; C-x r y for yank-rectangle
 (use-package multiple-cursors :defer 5)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
@@ -184,17 +91,6 @@
 (use-package expand-region
   :commands (er/expand-region))
 (global-set-key (kbd "C-=") 'er/expand-region)
-
-(use-package selected
-  :commands selected-minor-mode
-  :bind (:map selected-keymap
-              ("q" . selected-off)
-              ("d" . delete-region)
-              ("x" . kill-region)
-              ("c" . kill-ring-save)
-              ("y" . yank)))
-(add-hook 'after-init-hook 'selected-global-mode)
-
 
 (use-package rainbow-delimiters :defer 5)
 (with-eval-after-load 'rainbow-delimiters
@@ -218,7 +114,6 @@
   (setq browse-kill-ring-show-preview t))
 (global-set-key (kbd "M-y") 'browse-kill-ring)
 
-
 (with-eval-after-load 'recentf
   (recentf-mode t)
   (setq-default recentf-max-saved-items 50)
@@ -226,18 +121,15 @@
         (append '(abbreviate-file-name) recentf-filename-handlers)))
 (local/after-init-hook 'recentf)
 
-
 (use-package goto-last-change
   :commands (goto-last-change goto-last-change-reverse))
 (global-set-key (kbd "C-,") 'goto-last-change)
 (global-set-key (kbd "C-.") 'goto-last-change-reverse)
 
-
 (use-package move-text
   :commands (move-text-up move-text-down))
 (global-set-key (kbd "M-P") 'move-text-up)
 (global-set-key (kbd "M-N") 'move-text-down)
-
 
 (with-eval-after-load 'dired-subtree
   (setq dired-subtree-use-backgrounds nil)
@@ -256,45 +148,13 @@
 (local/after-init-hook 'dired-subtree)
 (local/after-init-hook 'diredfl)
 
-
-(with-eval-after-load 'highlight-indent-guides
-  (setq highlight-indent-guides-method 'bitmap))
-(global-set-key (kbd "C-c C-l") 'highlight-indent-guides-mode)
-
-(use-package golden-ratio
-  :commands golden-ratio)
-(with-eval-after-load 'golden-ratio
-  (global-set-key (kbd "M--") 'golden-ratio))
-
 (defun local/setup-terminal ()
   (unless (display-graphic-p)
     (xclip-mode)
     (xterm-mouse-mode 1)
-
     (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
     (global-set-key (kbd "<mouse-5>") 'scroll-up-line)))
 (add-hook 'after-init-hook 'local/setup-terminal)
-
-;; bm
-(setq bm-highlight-style 'bm-highlight-only-fringe)
-(setq bm-in-lifo-order t)
-
-(defun local/bm-toggle (x)
-  (interactive "P")
-  (cond
-   ((equal x nil)
-    (call-interactively 'bm-toggle))
-   ((equal x '(4))
-    (call-interactively 'bm-remove-all-current-buffer))
-   (t (message "nothing to do."))))
-
-(global-set-key (kbd "C-x m") 'local/bm-toggle)
-(global-set-key (kbd "M-<up>") 'bm-previous)
-(global-set-key (kbd "M-<down>") 'bm-next)
-
-(autoload 'bm-toggle   "bm" "Toggle bookmark in current buffer." t)
-(autoload 'bm-next     "bm" "Goto bookmark."                     t)
-(autoload 'bm-previous "bm" "Goto previous bookmark."            t)
 
 (with-eval-after-load 'xref
   (setq xref-marker-ring-length 100)
@@ -360,15 +220,6 @@
   (global-set-key (kbd "C-x <?\\t>") 'indent-rigidly)
   (global-set-key "\C-c$" 'toggle-truncate-lines)
   (global-set-key (kbd "S-<return>") 'newline-at-end-of-line))
-
-(with-eval-after-load 'key-chord
-  (key-chord-define-global "JJ" 'read-only-mode))
-
-(with-eval-after-load 'general
-  (key-chord-mode 1)
-  ;; (general-define-key (general-chord "cc") (general-simulate-key "C-c"))
-  )
-(local/after-init-hook 'general)
 
 (with-eval-after-load 'markdown-mode
   (require 'pasteex-mode)

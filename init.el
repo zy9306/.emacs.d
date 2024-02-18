@@ -19,61 +19,29 @@
 
 (local/load-package 'init-constant)
 (local/load-package 'init-option)
-(local/load-package 'init-auto-save)
 (local/load-package 'init-font)
 (local/load-package 'init-theme)
 (local/load-package 'init-color)
 (local/load-package 'init-modeline)
 (local/load-package 'init-basic)
 (local/load-package 'init-utils)
-(local/load-package 'init-citre)
-(local/load-package 'init-tabnine-capf)
 (local/load-package 'init-abo-abo)
 (local/load-package 'init-posframe)
 (local/load-package 'init-window)
 (local/load-package 'init-project)
 (local/load-package 'init-rg)
-(local/load-package 'init-gud)
 (local/load-package 'init-org)
-(local/load-package 'init-python)
-(local/load-package 'init-rust)
-(local/load-package 'init-web-mode)
-(local/load-package 'init-go)
-(local/load-package 'init-flutter)
 
-(local/load-package 'init-formatter)
 (local/load-package 'init-additional-major-mode)
 (local/load-package 'init-display-buffer)
 (local/load-package 'init-macro)
 (local/load-package 'init-snippet)
-(local/load-package 'init-folding)
-(local/load-package 'init-hydra)
-(local/load-package 'init-restclient)
-(local/load-package 'init-mark)
-(local/load-package 'init-bufler)
 
-(local/load-package 'init-edit)
-
-(local/load-package 'init-codeium)
-(local/load-package 'init-copilot)
-;; (local/load-package 'init-company)
-
-;; (local/load-package 'init-corfu)
-
-(local/load-package 'init-lsp-bridge)
-;; (local/load-package 'init-lsp-mode)
-;; (local/load-package 'init-eglot)
+(local/load-package 'init-company)
 
 (local/load-package 'init-translate)
 
-(local/load-package 'init-web-browser)
-
-;; (if (not (display-graphic-p))
-;;     (local/load-package 'init-evil-v3))
-
 (local/load-package 'init-proxy)
-
-(local/load-package 'init-easy-nav)
 
 ;;; unicad
 ;; 自动检测编码，如果错误的将utf-8检测成gbk等中文编码，可能会导致lsp崩
@@ -95,8 +63,6 @@
   (setq desktop-dirname desktop-dir)
   (setq desktop-path `(,desktop-dir)))
 
-
-(local/load-package 'init-last)
 
 ;;; close debug when finally load
 (setq debug-on-error nil)
