@@ -1,61 +1,4 @@
 {
-  "chatgpt-shell": {
-    "commit": "311d732593d0b128a8bf69a8a70dc51b76731707",
-    "ignore": [],
-    "only": [
-      "el"
-    ],
-    "only_el": false,
-    "pkg": "chatgpt-shell",
-    "repo": "git@github.com:xenodium/chatgpt-shell.git"
-  },
-  "citre": {
-    "commit": "87e2cbf3b2ae6d59ec919a2dcb38e56ccfa5ec14",
-    "ignore": [
-      "tests"
-    ],
-    "only_el": true,
-    "pkg": "citre",
-    "repo": "git@github.com:universal-ctags/citre.git"
-  },
-  "codeium.el": {
-    "commit": "28913fe8cdf5bb3c7471e5f39a6a162116427581",
-    "ignore": [],
-    "only_el": true,
-    "pkg": "codeium.el",
-    "repo": "git@github.com:Exafunction/codeium.el.git"
-  },
-  "consult": {
-    "commit": "39366355f4897dfae73d14d93dbe6ca97f7fc713",
-    "ignore": [
-      "images",
-      "CHANGELOG.org",
-      "README.org",
-      "LICENSE"
-    ],
-    "pkg": "consult",
-    "repo": "git@github.com:minad/consult.git"
-  },
-  "consult-projectile": {
-    "commit": "655b328ce3fe51a8ff89d7b0a839bc8dfe9e51c0",
-    "ignore": [
-      "README.org"
-    ],
-    "pkg": "consult-projectile",
-    "repo": "https://gitlab.com/OlMon/consult-projectile.git"
-  },
-  "copilot.el": {
-    "commit": "4f83577b3a3c120e9b1063b5a793c20a6ed9ece0",
-    "ignore": [
-      ".github",
-      "assets",
-      "readme.md"
-    ],
-    "only": [],
-    "only_el": false,
-    "pkg": "copilot.el",
-    "repo": "git@github.com:zerolfx/copilot.el.git"
-  },
   "duplicate-line": {
     "commit": "5abe4b81fa1618212938eb2e9b153975c34c11f1",
     "ignore": [
@@ -71,68 +14,12 @@
     "pkg": "easy-kill-extras.el",
     "repo": "git@github.com:knu/easy-kill-extras.el.git"
   },
-  "emacs-prisma-mode": {
-    "commit": "f7744a995e84b8cf51265930ce18f6a6b26dade7",
-    "ignore": [],
-    "only": [
-      "el"
-    ],
-    "only_el": false,
-    "pkg": "emacs-prisma-mode",
-    "repo": "git@github.com:pimeys/emacs-prisma-mode.git"
-  },
-  "embark": {
-    "commit": "2772ca0b35e8eb59724c31b5cb88ff802f21067a",
-    "ignore": [
-      ".gitignore",
-      "LICENSE",
-      "README.org"
-    ],
-    "pkg": "embark",
-    "repo": "git@github.com:oantolin/embark.git"
-  },
-  "gptel": {
-    "commit": "644fc1de2f1934f2db1e448de1edae065e848b77",
-    "ignore": [],
-    "only": [
-      "el"
-    ],
-    "only_el": false,
-    "pkg": "gptel",
-    "repo": "git@github.com:karthink/gptel.git"
-  },
-  "hydra-posframe": {
-    "commit": "343a269b52d6fb6e5ae6c09d91833ff4620490ec",
-    "ignore": [
-      ".github",
-      ".gitignore",
-      "screenshot",
-      "LICENSE",
-      "README.md"
-    ],
-    "pkg": "hydra-posframe",
-    "repo": "git@github.com:Ladicle/hydra-posframe.git"
-  },
   "ivy-posframe": {
     "commit": "533a8e368fcabfd534761a5c685ce713376fa594",
     "ignore": [],
     "only_el": true,
     "pkg": "ivy-posframe",
     "repo": "git@github.com:tumashu/ivy-posframe.git"
-  },
-  "lazy-load": {
-    "commit": "cd9819069c8d25cf34a844ba151c261387aeaa01",
-    "ignore": [],
-    "only_el": true,
-    "pkg": "lazy-load",
-    "repo": "git@github.com:manateelazycat/lazy-load.git"
-  },
-  "markmacro": {
-    "commit": "b4b0c261e4a0c64981557a895884cfd6fe555048",
-    "ignore": [],
-    "only_el": true,
-    "pkg": "markmacro",
-    "repo": "git@github.com:manateelazycat/markmacro.git"
   },
   "nano-theme": {
     "commit": "9d64dc167883835a6dc3a6d286c98dbbf7e95a96",
@@ -143,13 +30,6 @@
     "only_el": false,
     "pkg": "nano-theme",
     "repo": "git@github.com:rougier/nano-theme.git"
-  },
-  "orderless": {
-    "commit": "75eeae21971d86b51a712ed8ecd6434463b2d866",
-    "ignore": [],
-    "only_el": true,
-    "pkg": "orderless",
-    "repo": "git@github.com:oantolin/orderless.git"
   },
   "org-bars": {
     "commit": "59ff8976ce789c0c594fd4756cbeb5354b6178d2",
@@ -193,26 +73,6 @@
     "pkg": "posframe",
     "repo": "git@github.com:tumashu/posframe.git"
   },
-  "tabnine-capf": {
-    "commit": "f14956a3766f698ecc5bf22c37ed4f698ed11b15",
-    "ignore": [
-      ".gitignore",
-      "LICENSE",
-      "README.md"
-    ],
-    "only_el": false,
-    "pkg": "tabnine-capf",
-    "repo": "git@github.com:50ways2sayhard/tabnine-capf.git"
-  },
-  "thing-edit": {
-    "commit": "1948ae5498e58233f782fa91db9fb49880c933ca",
-    "ignore": [
-      "thing-edit.gif",
-      "README.md"
-    ],
-    "pkg": "thing-edit",
-    "repo": "git@github.com:manateelazycat/thing-edit.git"
-  },
   "toggle-one-window": {
     "commit": "8ca741ca6be97c6049043aec6cec2e2bfbca5d19",
     "ignore": [
@@ -240,22 +100,5 @@
     ],
     "pkg": "vertico",
     "repo": "git@github.com:minad/vertico.git"
-  },
-  "vundo": {
-    "commit": "9692bde8e2f1c2826871edb5588bbe3892527e63",
-    "ignore": [],
-    "only_el": true,
-    "pkg": "vundo",
-    "repo": "git@github.com:casouri/vundo.git"
-  },
-  "wrap-region.el": {
-    "commit": "fbae9b0f106187af19823f1a6260b5c68b7252e6",
-    "ignore": [],
-    "only": [
-      "el"
-    ],
-    "only_el": false,
-    "pkg": "wrap-region.el",
-    "repo": "git@github.com:rejeep/wrap-region.el.git"
   }
 }
